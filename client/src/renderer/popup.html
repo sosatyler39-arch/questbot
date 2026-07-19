@@ -1,0 +1,71 @@
+<meta charset="utf-8" />
+<title>Questbot</title>
+<link rel="stylesheet" href="./popup.css" />
+<link rel="stylesheet" href="./map.css" />
+<div id="questbot">
+  <div id="tabs">
+    <button class="tab-button active" data-tab="ask">Ask</button>
+    <button class="tab-button" data-tab="map">Map</button>
+    <button class="tab-button" data-tab="shapes">Shape Editor</button>
+  </div>
+
+  <div id="ask-panel" class="panel active">
+    <input id="question" type="text" placeholder="Ask about Elden Ring… (Enter to send)" autofocus />
+    <div id="answer" hidden></div>
+    <div id="source" hidden></div>
+    <div id="feedback" hidden>
+      <button id="thumbs-up" title="Helpful">👍</button>
+      <button id="thumbs-down" title="Not helpful">👎</button>
+    </div>
+  </div>
+
+  <div id="map-panel" class="panel">
+    <div id="map-toolbar">
+      <input id="map-search" type="text" placeholder="Search locations…" autocomplete="off" />
+      <div id="map-search-results"></div>
+      <label id="filter-locations-label"><input id="filter-locations" type="checkbox" checked /> Locations</label>
+      <label id="filter-bosses-label" title="Currently: Evergaols + open-world Great Enemies. Bosses inside dungeons are a planned addition.">
+        <input id="filter-bosses" type="checkbox" checked /> Bosses
+      </label>
+      <button id="map-edit-toggle" type="button">Edit positions</button>
+      <button id="map-layer-toggle" type="button">Surface</button>
+    </div>
+    <div id="map-edit-panel" hidden>
+      <p>Drag pins to reposition. Copy the adjustments below and paste them back into <code>locations.ts</code>.</p>
+      <textarea id="map-edit-output" readonly rows="3" placeholder="No adjustments yet."></textarea>
+      <button id="map-edit-copy" type="button">Copy adjustments</button>
+    </div>
+    <div id="map-viewport">
+      <div id="map-canvas-wrap"></div>
+    </div>
+    <div id="map-legend"></div>
+  </div>
+
+  <div id="shapes-panel" class="panel">
+    <div id="shapes-toolbar">
+      <p id="shapes-hint">Drag a dot to move it, click the outline to add one, double-click a dot to remove it. No locations here — the Map tab is untouched.</p>
+      <button id="shapes-reset" type="button">Reset shapes</button>
+      <button id="shapes-layer-toggle" type="button">Surface</button>
+    </div>
+    <div id="shapes-ref-toolbar">
+      <input id="shapes-ref-file" type="file" accept="image/*" hidden />
+      <button id="shapes-ref-load" type="button">Load reference image…</button>
+      <label id="shapes-ref-opacity-label">Opacity <input id="shapes-ref-opacity" type="range" min="0" max="100" value="45" /></label>
+      <button id="shapes-ref-clear" type="button">Clear reference</button>
+      <span id="shapes-ref-note">Loaded from your own disk only — never saved by this app.</span>
+    </div>
+    <div id="shapes-edit-panel">
+      <textarea id="shapes-edit-output" readonly rows="3" placeholder="No shape changes yet."></textarea>
+      <button id="shapes-edit-copy" type="button">Copy shape adjustments</button>
+    </div>
+    <div id="shapes-viewport">
+      <div id="shapes-canvas-wrap">
+        <img id="shapes-reference-img" hidden alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="./popup.js"></script>
+<script type="module" src="./map.js"></script>
+<script type="module" src="./shapes.js"></script>
+<script type="module" src="./tabs.js"></script>

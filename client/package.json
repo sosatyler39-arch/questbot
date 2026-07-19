@@ -1,0 +1,30 @@
+{
+  "name": "questbot-overlay",
+  "productName": "Questbot",
+  "version": "0.1.0",
+  "main": "dist/main/index.js",
+  "author": {
+    "name": "Questbot"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.renderer.json && node scripts/copy-renderer-assets.js",
+    "start": "npm run build && electron .",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.renderer.json --noEmit",
+    "package": "npm run build && electron-builder --publish=never"
+  },
+  "devDependencies": {
+    "electron": "^43.1.1",
+    "electron-builder": "^26.15.3",
+    "typescript": "^5.6.0"
+  },
+  "build": {
+    "appId": "com.questbot.overlay",
+    "productName": "Questbot",
+    "files": [
+      "dist/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

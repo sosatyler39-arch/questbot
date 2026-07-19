@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: transparent;
+}
+
+#questbot {
+  background: rgba(18, 16, 14, 0.92);
+  color: #e8e2d5;
+  border: 1px solid #6b5d3f;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#question {
+  background: rgba(0, 0, 0, 0.4);
+  color: inherit;
+  border: 1px solid #6b5d3f;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+#answer {
+  font-size: 13px;
+  line-height: 1.45;
+  max-height: 160px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+#answer.low-confidence {
+  color: #c9a24b;
+}
+
+#source a {
+  color: #c9a24b;
+}
+
+#source .card {
+  border: 1px solid #4a4234;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 12px;
+}
+
+#source iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 4px;
+  margin-top: 6px;
+}
+
+#feedback {
+  display: flex;
+  gap: 8px;
+}
+
+#feedback button {
+  background: none;
+  border: 1px solid #4a4234;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 10px;
+}
+
+#feedback button.selected {
+  border-color: #c9a24b;
+  background: rgba(201, 162, 75, 0.15);
+}
