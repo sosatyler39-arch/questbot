@@ -11,6 +11,12 @@ export interface QuestbotSettings {
   continuousMemoryHotkey: string;
   continuousMemoryBufferMinutes: number;
   sessionToken?: string;
+  // §B5: continuous memory is not enable-able until the player has seen
+  // and acknowledged the buffering explanation — the brief's "no silent
+  // buffering" rule made into an actual gate, enforced in main (index.ts)
+  // so the hotkey path can't bypass it either.
+  continuousMemoryConsent: boolean;
+  onboardingSeen: boolean;
 }
 
 export type HotkeyAction = 'popup' | 'continuousMemory';
@@ -19,6 +25,8 @@ export const DEFAULT_SETTINGS: QuestbotSettings = {
   popupHotkey: 'Control+Q',
   continuousMemoryHotkey: 'Control+Shift+Q',
   continuousMemoryBufferMinutes: 10,
+  continuousMemoryConsent: false,
+  onboardingSeen: false,
 };
 
 const MIN_BUFFER_MINUTES = 5;
@@ -42,6 +50,8 @@ function normalize(raw: unknown): QuestbotSettings {
         ? clampBufferMinutes(obj.continuousMemoryBufferMinutes)
         : DEFAULT_SETTINGS.continuousMemoryBufferMinutes,
     sessionToken: typeof obj.sessionToken === 'string' ? obj.sessionToken : undefined,
+    continuousMemoryConsent: obj.continuousMemoryConsent === true,
+    onboardingSeen: obj.onboardingSeen === true,
   };
 }
 

@@ -58,6 +58,15 @@ function togglePopup(): void {
   }
 }
 
+// §B5 consent gate: continuous memory can never start — from the hotkey OR
+// the Settings UI, both of which route through here — until the player has
+// explicitly acknowledged the buffering explanation in onboarding. The
+// brief's "no silent buffering" rule as an enforced gate, not a tutorial.
+function guardedToggleContinuousMemory(): void {
+  if (!getSettings().continuousMemoryConsent) return;
+  toggleContinuousMemory();
+}
+
 // Captures the game's window contents directly (not the whole screen) —
 // this also means our own popup, which sits in front, never ends up in
 // the captured image. Non-injecting: uses the OS compositor's own window
@@ -81,7 +90,7 @@ function rebindHotkey(action: HotkeyAction, accelerator: string): { ok: boolean;
   const isPopup = action === 'popup';
   const previous = isPopup ? currentPopupHotkey : currentContinuousMemoryHotkey;
   const other = isPopup ? currentContinuousMemoryHotkey : currentPopupHotkey;
-  const handler = isPopup ? togglePopup : toggleContinuousMemory;
+  const handler = isPopup ? togglePopup : guardedToggleContinuousMemory;
 
   // Reject up front if this would collide with Questbot's other hotkey —
   // globalShortcut.register doesn't return false for an accelerator this
@@ -134,7 +143,7 @@ app.whenReady().then(() => {
   globalShortcut.register(currentPopupHotkey, togglePopup);
   // Opt-in continuous memory toggle (§5). Paywall enforcement deferred (no
   // billing decision yet) — open to everyone during dev/playtest.
-  globalShortcut.register(currentContinuousMemoryHotkey, toggleContinuousMemory);
+  globalShortcut.register(currentContinuousMemoryHotkey, guardedToggleContinuousMemory);
 
   ipcMain.handle('dismiss-popup', () => {
     popup?.hide();
@@ -149,9 +158,12 @@ app.whenReady().then(() => {
   ipcMain.handle('get-continuous-memory-state', () => isContinuousMemoryEnabled());
 
   ipcMain.handle('toggle-continuous-memory', () => {
-    toggleContinuousMemory();
+    guardedToggleContinuousMemory();
     return isContinuousMemoryEnabled();
   });
+
+  ipcMain.handle('grant-continuous-memory-consent', () => updateSettings({ continuousMemoryConsent: true }));
+  ipcMain.handle('set-onboarding-seen', () => updateSettings({ onboardingSeen: true }));
 
   ipcMain.handle('set-hotkey', (_event, action: HotkeyAction, accelerator: string) => rebindHotkey(action, accelerator));
 

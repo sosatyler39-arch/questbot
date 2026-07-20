@@ -1,5 +1,6 @@
 import { acceleratorFromEvent, isDuplicateHotkey } from './settings-logic.js';
 import { fetchAccount } from './api.js';
+import { showConsentCard } from './onboarding.js';
 
 type HotkeyAction = 'popup' | 'continuousMemory';
 
@@ -77,6 +78,14 @@ settingsToggle.addEventListener('click', () => {
 settingsClose.addEventListener('click', closeSettings);
 
 continuousMemoryToggle.addEventListener('click', async () => {
+  // §B5: main refuses to start the buffer without persisted consent — if
+  // the player hasn't consented yet, route them to the consent card
+  // instead of showing a toggle that silently does nothing.
+  const settings = await window.questbot.getSettings();
+  if (!settings.continuousMemoryConsent) {
+    showConsentCard();
+    return;
+  }
   updateContinuousMemoryToggleLabel(await window.questbot.toggleContinuousMemory());
 });
 

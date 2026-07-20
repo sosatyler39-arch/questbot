@@ -66,3 +66,23 @@ test('updateSettings clamps continuousMemoryBufferMinutes to the 5-10 range', ()
   assert.equal(updateSettings({ continuousMemoryBufferMinutes: 2 }).continuousMemoryBufferMinutes, 5);
   assert.equal(updateSettings({ continuousMemoryBufferMinutes: 99 }).continuousMemoryBufferMinutes, 10);
 });
+
+test('continuous-memory consent defaults false and persists once granted', () => {
+  const filePath = tempSettingsPath();
+  const settings = initSettingsStore(filePath);
+  assert.equal(settings.continuousMemoryConsent, false);
+  assert.equal(settings.onboardingSeen, false);
+
+  updateSettings({ continuousMemoryConsent: true, onboardingSeen: true });
+  const reloaded = initSettingsStore(filePath);
+  assert.equal(reloaded.continuousMemoryConsent, true);
+  assert.equal(reloaded.onboardingSeen, true);
+});
+
+test('consent flags reject non-boolean garbage from a tampered file', () => {
+  const filePath = tempSettingsPath();
+  fs.writeFileSync(filePath, JSON.stringify({ continuousMemoryConsent: 'yes', onboardingSeen: 1 }));
+  const settings = initSettingsStore(filePath);
+  assert.equal(settings.continuousMemoryConsent, false);
+  assert.equal(settings.onboardingSeen, false);
+});
