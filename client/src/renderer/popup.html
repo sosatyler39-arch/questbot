@@ -7,6 +7,7 @@
     <div id="tabs">
       <button class="tab-button active" data-tab="ask">Ask</button>
       <button class="tab-button" data-tab="map">Map</button>
+      <button class="tab-button" data-tab="speedrun">Speedrun</button>
       <button class="tab-button" data-tab="shapes">Shape Editor</button>
     </div>
     <button id="settings-toggle" type="button" title="Settings">⚙️</button>
@@ -98,6 +99,24 @@
     <div id="map-legend"></div>
   </div>
 
+  <div id="speedrun-panel" class="panel">
+    <div id="speedrun-toolbar">
+      <p id="speedrun-hint">Click pins in the order you want to visit them. The route saves itself and comes back next time.</p>
+      <button id="speedrun-layer-toggle" type="button">Surface</button>
+      <button id="speedrun-clear" type="button" disabled>Clear route</button>
+      <button id="speedrun-make-checklist" type="button" disabled>Generate checklist</button>
+    </div>
+    <div id="speedrun-body">
+      <div id="speedrun-viewport">
+        <div id="speedrun-canvas-wrap"></div>
+      </div>
+      <div id="speedrun-side">
+        <ol id="speedrun-route"></ol>
+        <div id="speedrun-checklists"></div>
+      </div>
+    </div>
+  </div>
+
   <div id="shapes-panel" class="panel">
     <div id="shapes-toolbar">
       <p id="shapes-hint">Drag a dot to move it, click the outline to add one, double-click a dot to remove it. No locations here — the Map tab is untouched.</p>
@@ -124,6 +143,7 @@
 </div>
 <script type="module" src="./popup.js"></script>
 <script type="module" src="./map.js"></script>
+<script type="module" src="./speedrun.js"></script>
 <script type="module" src="./shapes.js"></script>
 <script type="module" src="./tabs.js"></script>
 <script type="module" src="./settings.js"></script>
