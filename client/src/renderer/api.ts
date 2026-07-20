@@ -41,6 +41,21 @@ export async function sendFeedback(answerId: string, helpful: boolean): Promise<
   });
 }
 
+// FEATURE_ADDENDUM §B1: server-side step extraction for an answer the
+// player already received.
+export async function generateChecklist(
+  question: string | undefined,
+  answer: string,
+): Promise<{ title: string; steps: string[] }> {
+  const res = await fetch(`${BACKEND_URL}/checklist`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', ...(await authHeader()) },
+    body: JSON.stringify({ question, answer }),
+  });
+  if (!res.ok) throw new Error(`checklist failed: ${res.status}`);
+  return res.json();
+}
+
 // Current account state, or null when signed out / backend unreachable /
 // token expired. Callers treat null as "not signed in" — the Settings
 // panel's account section is the only consumer today.

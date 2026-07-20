@@ -4,6 +4,7 @@ import askRoutes from './routes/ask.js';
 import feedbackRoutes from './routes/feedback.js';
 import authRoutes from './routes/auth.js';
 import billingRoutes from './routes/billing.js';
+import checklistRoutes from './routes/checklist.js';
 
 export async function buildServer() {
   // 25MB body limit: base64 screenshot frames ride in the JSON body.
@@ -26,5 +27,6 @@ export async function buildServer() {
   await app.register(feedbackRoutes);
   await app.register(authRoutes);
   await app.register(billingRoutes);
+  await app.register(checklistRoutes);
   return app;
 }

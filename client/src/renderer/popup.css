@@ -75,6 +75,61 @@ body {
   background: rgba(201, 162, 75, 0.15);
 }
 
+#answer-checklists {
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.checklist-card {
+  border: 1px solid #4a4234;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  font-size: 12.5px;
+}
+
+.checklist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.checklist-header button {
+  background: none;
+  border: 1px solid #4a4234;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 11px;
+  padding: 1px 6px;
+}
+
+.checklist-card ol {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.checklist-card li {
+  margin: 3px 0;
+}
+
+.checklist-card label {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.checklist-card label.done span {
+  text-decoration: line-through;
+  color: #7a705c;
+}
+
+.checklist-card input[type='checkbox'] {
+  accent-color: #c9a24b;
+}
+
 #settings-header {
   display: flex;
   align-items: center;

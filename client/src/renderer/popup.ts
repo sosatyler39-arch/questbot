@@ -1,5 +1,7 @@
 import type { AskResponse, SourceCard } from './types.js';
-import { ask, captureScreenshot, sendFeedback } from './api.js';
+import { ask, captureScreenshot, sendFeedback, generateChecklist } from './api.js';
+import { isMultiStepAnswer, makeChecklist } from './checklist-logic.js';
+import { saveChecklist, renderChecklistCard, renderSavedChecklists } from './checklists.js';
 
 const AUTO_DISMISS_MS = 30_000;
 
@@ -9,6 +11,8 @@ const sourceEl = document.getElementById('source')!;
 const feedbackEl = document.getElementById('feedback')!;
 const thumbsUp = document.getElementById('thumbs-up') as HTMLButtonElement;
 const thumbsDown = document.getElementById('thumbs-down') as HTMLButtonElement;
+const makeChecklistBtn = document.getElementById('make-checklist') as HTMLButtonElement;
+const answerChecklists = document.getElementById('answer-checklists')!;
 
 // Popup, not a sidebar: auto-dismiss after inactivity (§3.1 of the brief).
 let dismissTimer: number | undefined;
@@ -51,7 +55,7 @@ function renderSource(source: SourceCard): void {
   sourceEl.hidden = false;
 }
 
-function renderAnswer(res: AskResponse): void {
+function renderAnswer(res: AskResponse, question: string): void {
   answerEl.textContent = res.answer;
   answerEl.classList.toggle('low-confidence', !!res.lowConfidence);
   answerEl.hidden = false;
@@ -70,6 +74,28 @@ function renderAnswer(res: AskResponse): void {
     thumbsDown.classList.add('selected');
     thumbsUp.classList.remove('selected');
   };
+
+  // §B1: offer a checklist only when the answer reads as multi-step —
+  // never for low-confidence non-answers.
+  makeChecklistBtn.hidden = !!res.lowConfidence || !isMultiStepAnswer(res.answer);
+  makeChecklistBtn.disabled = false;
+  makeChecklistBtn.textContent = 'Turn into checklist';
+  makeChecklistBtn.onclick = async () => {
+    makeChecklistBtn.disabled = true;
+    makeChecklistBtn.textContent = 'Building…';
+    try {
+      const { title, steps } = await generateChecklist(question, res.answer);
+      if (steps.length) {
+        const list = makeChecklist(title, steps, 'answer');
+        saveChecklist(list);
+        answerChecklists.prepend(renderChecklistCard(list));
+      }
+      makeChecklistBtn.hidden = true;
+    } catch {
+      makeChecklistBtn.disabled = false;
+      makeChecklistBtn.textContent = 'Checklist failed — retry';
+    }
+  };
 }
 
 questionEl.addEventListener('keydown', async (e) => {
@@ -82,8 +108,12 @@ questionEl.addEventListener('keydown', async (e) => {
   feedbackEl.hidden = true;
   try {
     const shots = await captureScreenshot();
-    renderAnswer(await ask(question, shots));
+    renderAnswer(await ask(question, shots), question);
   } catch (err) {
     answerEl.textContent = `Something went wrong: ${err instanceof Error ? err.message : err}`;
   }
 });
+
+// Saved answer checklists survive close/reopen (§B1 persistence
+// requirement) — restore them on load.
+renderSavedChecklists(answerChecklists, 'answer');
