@@ -15,6 +15,7 @@ import { GENERAL_STATS_PAGES } from './data/mechanics-general-stats.js';
 import { DAMAGE_TYPE_PAGES } from './data/mechanics-damage-types.js';
 import { STATUS_EFFECT_PAGES } from './data/mechanics-status-effects.js';
 import { TALISMAN_PAGES } from './data/talismans.js';
+import { INCANTATION_PAGES } from './data/incantations.js';
 
 // Original guide content, written from general knowledge of the game — not
 // copied or adapted from Fextralife, Fandom, wiki.gg, or any other existing
@@ -499,6 +500,7 @@ export const ALL_PAGES: ArticlePage[] = [
   ...CHEST_PAGES,
   ...QUESTLINE_PAGES,
   ...TALISMAN_PAGES,
+  ...INCANTATION_PAGES,
 ];
 
 export const originalContentSource: TextSource = {
