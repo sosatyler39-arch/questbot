@@ -3,3 +3,4 @@ client/dist/
 shared/*.js
 .env
 .claude/settings.local.json
+.worktrees/
