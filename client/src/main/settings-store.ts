@@ -10,6 +10,7 @@ export interface QuestbotSettings {
   popupHotkey: string;
   continuousMemoryHotkey: string;
   continuousMemoryBufferMinutes: number;
+  sessionToken?: string;
 }
 
 export type HotkeyAction = 'popup' | 'continuousMemory';
@@ -40,6 +41,7 @@ function normalize(raw: unknown): QuestbotSettings {
       typeof obj.continuousMemoryBufferMinutes === 'number'
         ? clampBufferMinutes(obj.continuousMemoryBufferMinutes)
         : DEFAULT_SETTINGS.continuousMemoryBufferMinutes,
+    sessionToken: typeof obj.sessionToken === 'string' ? obj.sessionToken : undefined,
   };
 }
 

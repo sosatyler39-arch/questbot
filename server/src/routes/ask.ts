@@ -17,9 +17,14 @@ export default async function askRoutes(app: FastifyInstance) {
       });
     }
 
-    const { userId, tier } = getUser(req);
+    const { userId, tier } = await getUser(req);
     const answerId = randomUUID();
-    const ctx = await extractGameContext(screenshots);
+
+    // Continuous memory (multi-frame context) is paid-only (brief §5/§7).
+    // Server-side enforcement point: a free-tier client can still buffer
+    // and send extra frames locally, but only the newest is ever used.
+    const allowedScreenshots = tier === 'paid' ? screenshots : screenshots?.slice(0, 1);
+    const ctx = await extractGameContext(allowedScreenshots);
     const matches = await pgvectorRetriever.search(question, ctx);
     const top = matches[0];
 

@@ -12,7 +12,7 @@ export default async function feedbackRoutes(app: FastifyInstance) {
     if (!answerId || typeof helpful !== 'boolean') {
       return reply.code(400).send({ ok: false });
     }
-    const { userId } = getUser(req);
+    const { userId } = await getUser(req);
     feedbackLog.push({ answerId, helpful, userId, at: new Date().toISOString() });
     req.log.info({ answerId, helpful, userId }, 'feedback');
     return { ok: true };

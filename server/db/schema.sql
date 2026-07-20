@@ -1,15 +1,18 @@
--- Questbot schema. Not wired yet — applied at step 4 (real content pipeline).
+-- Questbot schema. Applied against a local Postgres+pgvector instance —
+-- see README "Local database" for setup.
 CREATE EXTENSION IF NOT EXISTS vector;
 
--- Keyed on Overwolf user ID; no bespoke auth. Stripe webhooks update tier.
+-- Keyed on Discord user ID (OAuth2 identify scope). Stripe webhooks update tier.
 CREATE TABLE users (
-  overwolf_id        TEXT PRIMARY KEY,
+  discord_id         TEXT PRIMARY KEY,
+  discord_username   TEXT NOT NULL,
   tier               TEXT NOT NULL DEFAULT 'free' CHECK (tier IN ('free', 'paid')),
   stripe_customer_id TEXT,
   created_at         TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- Pre-embedded content: Fextralife sections + YouTube transcript segments.
+-- Pre-embedded content: original-writing article sections + (future) video
+-- transcript segments.
 CREATE TABLE chunks (
   id            BIGSERIAL PRIMARY KEY,
   source_type   TEXT NOT NULL CHECK (source_type IN ('article', 'video')),
@@ -28,7 +31,7 @@ CREATE INDEX chunks_embedding_idx ON chunks USING hnsw (embedding vector_cosine_
 CREATE TABLE feedback (
   id          BIGSERIAL PRIMARY KEY,
   answer_id   UUID NOT NULL,
-  overwolf_id TEXT,
+  discord_id  TEXT,
   helpful     BOOLEAN NOT NULL,
   created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
@@ -36,7 +39,7 @@ CREATE TABLE feedback (
 -- Per-user metering (LLM calls cost money; paid features cost more).
 CREATE TABLE usage (
   id          BIGSERIAL PRIMARY KEY,
-  overwolf_id TEXT NOT NULL,
+  discord_id  TEXT NOT NULL,
   kind        TEXT NOT NULL, -- 'ask' | 'live_search' | ...
   created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );

@@ -1,11 +1,26 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { buildServer } from '../src/index.js';
+import { signSessionToken } from '../src/auth/session-token.js';
+import { upsertDiscordUser, setStripeCustomer, setTierByStripeCustomer } from '../src/auth/users.js';
+
+process.env.SESSION_SECRET ??= 'test-secret';
 
 // Minimal valid 1x1 JPEG (real magic bytes) — the vision API rejects placeholder
 // non-image base64, unlike the earlier mock which never validated the bytes.
 const FAKE_JPEG_B64 =
   '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=';
+
+// Builds a real, verifiable session token for a paid test user — the old
+// `x-user-tier: paid` header is no longer trusted (see tiers.ts), so tests
+// that need paid-tier behavior go through the real DB-backed path instead.
+async function paidUserToken(): Promise<string> {
+  const id = `test-paid-${Date.now()}`;
+  await upsertDiscordUser(id, 'paid-tester');
+  await setStripeCustomer(id, `cus_${id}`);
+  await setTierByStripeCustomer(`cus_${id}`, 'paid');
+  return signSessionToken(id, process.env.SESSION_SECRET!);
+}
 
 test('mocked end-to-end ask flow', async (t) => {
   const app = await buildServer();
@@ -22,7 +37,6 @@ test('mocked end-to-end ask flow', async (t) => {
       method: 'POST',
       url: '/ask',
       payload: { question: 'How do I beat Margit the Fell Omen?' },
-      headers: { 'x-user-id': 'test-user' },
     });
     assert.equal(res.statusCode, 200);
     const body = res.json();
@@ -56,15 +70,29 @@ test('mocked end-to-end ask flow', async (t) => {
   });
 
   await t.test('low confidence, paid tier: live-search fallback path', { skip: liveRetrieval }, async () => {
+    const token = await paidUserToken();
     const res = await app.inject({
       method: 'POST',
       url: '/ask',
       payload: { question: 'zzz completely unrelated gibberish qqq' },
-      headers: { 'x-user-tier': 'paid' },
+      headers: { authorization: `Bearer ${token}` },
     });
     const body = res.json();
     assert.ok(!body.lowConfidence);
     assert.match(body.answer, /live search/);
+  });
+
+  await t.test('client-claimed x-user-tier header is ignored (no real session)', { skip: liveRetrieval }, async () => {
+    const res = await app.inject({
+      method: 'POST',
+      url: '/ask',
+      payload: { question: 'zzz completely unrelated gibberish qqq' },
+      headers: { 'x-user-tier': 'paid' }, // no Authorization bearer token behind this claim
+    });
+    const body = res.json();
+    // Without a verified session, tier must fall back to free — the old
+    // header-trust path must no longer grant paid behavior.
+    assert.equal(body.lowConfidence, true);
   });
 
   await t.test('missing question is a 400', async () => {
