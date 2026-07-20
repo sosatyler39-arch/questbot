@@ -8,9 +8,14 @@ import type { PendingChunk } from './types.js';
 
 async function embedAndStore(url: string, chunks: PendingChunk[]): Promise<void> {
   if (chunks.length === 0) return;
-  const embedded = await Promise.all(
-    chunks.map(async (chunk) => ({ ...chunk, embedding: await embedText(chunk.content) })),
-  );
+  // Sequential, not Promise.all — the free-tier embed quota is 100
+  // requests/minute, and firing a page's chunks in parallel burns it in
+  // seconds. This is a scheduled batch job (brief §4); slow is fine,
+  // crashed is not. embeddings.ts additionally retries 429s.
+  const embedded = [];
+  for (const chunk of chunks) {
+    embedded.push({ ...chunk, embedding: await embedText(chunk.content) });
+  }
   await upsertChunksForUrl(url, embedded);
 }
 
