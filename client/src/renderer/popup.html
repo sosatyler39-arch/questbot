@@ -3,10 +3,53 @@
 <link rel="stylesheet" href="./popup.css" />
 <link rel="stylesheet" href="./map.css" />
 <div id="questbot">
-  <div id="tabs">
-    <button class="tab-button active" data-tab="ask">Ask</button>
-    <button class="tab-button" data-tab="map">Map</button>
-    <button class="tab-button" data-tab="shapes">Shape Editor</button>
+  <div id="chrome-bar">
+    <div id="tabs">
+      <button class="tab-button active" data-tab="ask">Ask</button>
+      <button class="tab-button" data-tab="map">Map</button>
+      <button class="tab-button" data-tab="shapes">Shape Editor</button>
+    </div>
+    <button id="settings-toggle" type="button" title="Settings">⚙️</button>
+  </div>
+
+  <div id="settings-panel">
+    <div id="settings-header">
+      <h2>Settings</h2>
+      <button id="settings-close" type="button" title="Close">✕</button>
+    </div>
+
+    <div class="settings-section">
+      <h3>Hotkeys</h3>
+      <div class="settings-row">
+        <span class="settings-label">Summon popup</span>
+        <span id="popup-hotkey-display" class="hotkey-display"></span>
+        <button id="popup-hotkey-record" type="button">Record</button>
+      </div>
+      <div class="settings-row">
+        <span class="settings-label">Toggle continuous memory</span>
+        <span id="continuous-memory-hotkey-display" class="hotkey-display"></span>
+        <button id="continuous-memory-hotkey-record" type="button">Record</button>
+      </div>
+      <p id="hotkey-error" class="settings-error" hidden></p>
+    </div>
+
+    <div class="settings-section">
+      <h3>Continuous memory</h3>
+      <div class="settings-row">
+        <span class="settings-label">Status</span>
+        <button id="continuous-memory-toggle" type="button"></button>
+      </div>
+      <div class="settings-row">
+        <label for="buffer-minutes" class="settings-label">Buffer length: <span id="buffer-minutes-value"></span> min</label>
+        <input id="buffer-minutes" type="range" min="5" max="10" step="1" />
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>App info</h3>
+      <p id="app-version"></p>
+      <p id="app-limitation-note">Renders reliably over borderless windowed mode; true exclusive fullscreen isn't supported (a desktop-compositor limitation).</p>
+    </div>
   </div>
 
   <div id="ask-panel" class="panel active">
@@ -69,3 +112,4 @@
 <script type="module" src="./map.js"></script>
 <script type="module" src="./shapes.js"></script>
 <script type="module" src="./tabs.js"></script>
+<script type="module" src="./settings.js"></script>
