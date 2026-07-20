@@ -74,3 +74,98 @@ body {
   border-color: #c9a24b;
   background: rgba(201, 162, 75, 0.15);
 }
+
+#settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#settings-header h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+#settings-close {
+  background: none;
+  border: 1px solid #4a4234;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+.settings-section {
+  border: 1px solid #4a4234;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.settings-section h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #b8ab90;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.settings-row:last-child {
+  margin-bottom: 0;
+}
+
+.settings-label {
+  flex: 1;
+}
+
+.hotkey-display {
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #6b5d3f;
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.settings-row button {
+  background: none;
+  border: 1px solid #4a4234;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+#continuous-memory-toggle.active {
+  border-color: #c9a24b;
+  background: rgba(201, 162, 75, 0.15);
+}
+
+.settings-error {
+  color: #c9724b;
+  font-size: 12px;
+  margin: 6px 0 0;
+}
+
+#buffer-minutes {
+  accent-color: #c9a24b;
+}
+
+#app-version {
+  margin: 0 0 4px;
+  font-size: 12px;
+}
+
+#app-limitation-note {
+  margin: 0;
+  font-size: 11px;
+  color: #7a705c;
+}

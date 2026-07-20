@@ -23,6 +23,27 @@
   border-color: #c9a24b;
 }
 
+#chrome-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#settings-toggle {
+  background: none;
+  border: 1px solid #4a4234;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+}
+
+#settings-toggle:hover {
+  border-color: #c9a24b;
+}
+
 .panel {
   display: none;
   flex: 1;
@@ -32,6 +53,23 @@
 }
 
 .panel.active {
+  display: flex;
+}
+
+#settings-panel {
+  display: none;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+#questbot.settings-open .panel {
+  display: none;
+}
+
+#questbot.settings-open #settings-panel {
   display: flex;
 }
 
