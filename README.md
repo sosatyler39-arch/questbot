@@ -21,10 +21,26 @@ npm install
 export GEMINI_API_KEY=...   # free key, no billing account: aistudio.google.com/apikey
 export DATABASE_URL=...     # Postgres with pgvector — see "Local database" below
 export YOUTUBE_API_KEY=...  # only needed for real video discovery
+
+# Identity + billing (FEATURE_ADDENDUM §A1 — all optional in dev; without
+# them every request is treated as anonymous/free, and auth/billing routes
+# 500 on use rather than at startup):
+export SESSION_SECRET=...          # HMAC key for backend-issued session tokens (any long random string)
+export DISCORD_CLIENT_ID=...       # Discord application OAuth2 credentials
+export DISCORD_CLIENT_SECRET=...   # (discord.com/developers — register redirect: $PUBLIC_BACKEND_URL/auth/discord/callback)
+export PUBLIC_BACKEND_URL=...      # e.g. http://localhost:8787 in dev
+export STRIPE_SECRET_KEY=...       # Stripe API key (test mode in dev)
+export STRIPE_WEBHOOK_SECRET=...   # from `stripe listen` in dev, or the dashboard webhook config
+export STRIPE_PRICE_ID=...         # subscription Price ID — price point stays env-configured, not hardcoded (brief §7)
+
 npm run dev        # server on http://localhost:8787
 npm test           # end-to-end + pipeline checks; live-service cases skip without credentials
 npm run typecheck  # server + client (two tsconfigs: main process + renderer)
 ```
+
+Dev-DB note: if your local database predates the identity work, re-apply
+`server/db/schema.sql` — the `users` table was migrated off `overwolf_id` to
+Discord-keyed identity (`discord_id`, `stripe_customer_id`, `tier`).
 
 **To actually populate the database with content** (needed before `/ask` can return real answers — without this, every question falls through to the low-confidence path):
 
@@ -62,7 +78,7 @@ Also worth knowing if Overwolf's app store is ever revisited as a promotion chan
 
 ### Continuous memory (§5)
 
-Opt-in rolling buffer, built in `client/src/main/continuous-memory.ts`. `Ctrl+Shift+Q` toggles it. While on: samples a screenshot every 5s, keeps the last 10 minutes, and shows a small pulsing red dot in the screen's top-right corner — visible independent of the popup, since buffering continues even while the popup is closed (the brief is explicit that silent buffering is a trust problem). Verified live: the dot appears on toggle-on and disappears cleanly on toggle-off. When a question is asked with this mode on, `captureForQuestion()` sends the latest frame plus up to 3 more spread across the buffered window (not just the most recent few seconds) — matching the brief's "latest + up to ~3 sampled recent frames." Real paywall enforcement is deferred (no billing decision made yet — see Backlog) — the toggle is open to everyone during dev/playtest.
+Opt-in rolling buffer, built in `client/src/main/continuous-memory.ts`. `Ctrl+Shift+Q` toggles it. While on: samples a screenshot every 5s, keeps the last 10 minutes, and shows a small pulsing red dot in the screen's top-right corner — visible independent of the popup, since buffering continues even while the popup is closed (the brief is explicit that silent buffering is a trust problem). Verified live: the dot appears on toggle-on and disappears cleanly on toggle-off. When a question is asked with this mode on, `captureForQuestion()` sends the latest frame plus up to 3 more spread across the buffered window (not just the most recent few seconds) — matching the brief's "latest + up to ~3 sampled recent frames." **Paywall enforcement is now server-side** (FEATURE_ADDENDUM §A1): the local toggle stays open to everyone (buffering is local-only and free by design), but `/ask` only *uses* multi-frame context for verified paid-tier sessions — free/anonymous requests have all but the newest frame discarded server-side (`server/src/routes/ask.ts`), so a modified client can't spoof its way into the paid feature.
 
 ## Interactive map
 
@@ -94,8 +110,8 @@ What's real, tested, and wired end-to-end: chunking (`chunking.ts`), embeddings 
 ## Blocking prerequisites before beta (from the brief)
 
 - YouTube transcript access (creator partnerships, or an accepted-risk decision) — see above.
-- ~~EAC compatibility verification~~ — no longer applicable in the same way: the client doesn't inject into the game process at all (see Client architecture above), so there's nothing for EAC to flag. Still worth a real-world smoke test once there's a game to run it against.
-- Real payment/tier enforcement — still deferred, see Backlog.
+- EAC compatibility verification — re-opened as a live risk by FEATURE_ADDENDUM §A2 (the Overwolf→Electron move means no vendor-allowlist standing). See [docs/EAC-RISK-ASSESSMENT.md](docs/EAC-RISK-ASSESSMENT.md) for the current analysis and what still requires a real in-game test.
+- ~~Real payment/tier enforcement~~ — **closed by FEATURE_ADDENDUM §A1**: Discord OAuth identity + Stripe subscription tier, enforced server-side in `tiers.ts`/`ask.ts` (client-claimed headers are no longer trusted). Needs the env vars above configured in any real deployment.
 
 ## Backlog
 

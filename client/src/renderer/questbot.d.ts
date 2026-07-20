@@ -6,6 +6,7 @@ interface QuestbotSettings {
   popupHotkey: string;
   continuousMemoryHotkey: string;
   continuousMemoryBufferMinutes: number;
+  sessionToken?: string;
 }
 
 type HotkeyAction = 'popup' | 'continuousMemory';
@@ -25,5 +26,9 @@ interface Window {
     setBufferMinutes(minutes: number): Promise<QuestbotSettings>;
     toggleContinuousMemory(): Promise<boolean>;
     getContinuousMemoryState(): Promise<boolean>;
+    signIn(): Promise<boolean>;
+    signOut(): Promise<void>;
+    getAuthToken(): Promise<string | undefined>;
+    startUpgrade(): Promise<boolean>;
   };
 }

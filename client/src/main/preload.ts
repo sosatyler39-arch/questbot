@@ -11,4 +11,8 @@ contextBridge.exposeInMainWorld('questbot', {
   setBufferMinutes: (minutes: number): Promise<QuestbotSettings> => ipcRenderer.invoke('set-buffer-minutes', minutes),
   toggleContinuousMemory: (): Promise<boolean> => ipcRenderer.invoke('toggle-continuous-memory'),
   getContinuousMemoryState: (): Promise<boolean> => ipcRenderer.invoke('get-continuous-memory-state'),
+  signIn: (): Promise<boolean> => ipcRenderer.invoke('sign-in'),
+  signOut: (): Promise<void> => ipcRenderer.invoke('sign-out'),
+  getAuthToken: (): Promise<string | undefined> => ipcRenderer.invoke('get-auth-token'),
+  startUpgrade: (): Promise<boolean> => ipcRenderer.invoke('start-upgrade'),
 });

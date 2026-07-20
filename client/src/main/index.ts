@@ -1,4 +1,4 @@
-import { app, BrowserWindow, globalShortcut, ipcMain, desktopCapturer } from 'electron';
+import { app, BrowserWindow, globalShortcut, ipcMain, desktopCapturer, shell } from 'electron';
 import path from 'node:path';
 import {
   setScreenshotCapturer,
@@ -9,6 +9,7 @@ import {
 } from './continuous-memory.js';
 import { setBufferDurationMinutes } from './buffer-duration.js';
 import { DEFAULT_SETTINGS, initSettingsStore, getSettings, updateSettings, type HotkeyAction } from './settings-store.js';
+import { startDiscordSignIn, getStoredToken, storeToken, clearStoredToken } from './auth.js';
 
 // Non-injecting overlay: a separate always-on-top desktop window, not code
 // injected into the game process. Deliberate choice over an Overwolf/DX-hook
@@ -18,6 +19,9 @@ import { DEFAULT_SETTINGS, initSettingsStore, getSettings, updateSettings, type 
 // limitation, not something fixable without touching the game's own render
 // pipeline — which is exactly the injection risk this avoids).
 const GAME_WINDOW_TITLE = 'ELDEN RING';
+// Local dev backend; also duplicated in renderer/api.ts (separate build
+// target). Becomes a real config value at deploy time.
+const BACKEND_URL = 'http://localhost:8787';
 
 let popup: BrowserWindow | undefined;
 let currentPopupHotkey: string = DEFAULT_SETTINGS.popupHotkey;
@@ -155,6 +159,33 @@ app.whenReady().then(() => {
     const updated = updateSettings({ continuousMemoryBufferMinutes: minutes });
     setBufferDurationMinutes(updated.continuousMemoryBufferMinutes);
     return updated;
+  });
+
+  ipcMain.handle('sign-in', async () => {
+    const token = await startDiscordSignIn(BACKEND_URL);
+    storeToken(token);
+    return true;
+  });
+  ipcMain.handle('sign-out', () => {
+    clearStoredToken();
+  });
+  ipcMain.handle('get-auth-token', () => getStoredToken());
+
+  // /billing/checkout requires the Bearer token and answers with a 302 to
+  // Stripe Checkout — a plain browser navigation can't send the header, so
+  // main fetches the redirect target itself and opens it externally.
+  ipcMain.handle('start-upgrade', async () => {
+    const token = getStoredToken();
+    if (!token) return false;
+    const res = await fetch(`${BACKEND_URL}/billing/checkout`, {
+      method: 'POST',
+      headers: { authorization: `Bearer ${token}` },
+      redirect: 'manual',
+    });
+    const url = res.headers.get('location');
+    if (!url) return false;
+    void shell.openExternal(url);
+    return true;
   });
 });
 

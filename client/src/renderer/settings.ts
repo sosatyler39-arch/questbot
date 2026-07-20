@@ -1,4 +1,5 @@
 import { acceleratorFromEvent, isDuplicateHotkey } from './settings-logic.js';
+import { fetchAccount } from './api.js';
 
 type HotkeyAction = 'popup' | 'continuousMemory';
 
@@ -14,6 +15,10 @@ const continuousMemoryToggle = document.getElementById('continuous-memory-toggle
 const bufferMinutesInput = document.getElementById('buffer-minutes') as HTMLInputElement;
 const bufferMinutesValue = document.getElementById('buffer-minutes-value')!;
 const appVersionEl = document.getElementById('app-version')!;
+const accountStatus = document.getElementById('account-status')!;
+const accountSignIn = document.getElementById('account-sign-in') as HTMLButtonElement;
+const accountSignOut = document.getElementById('account-sign-out') as HTMLButtonElement;
+const accountUpgrade = document.getElementById('account-upgrade') as HTMLButtonElement;
 
 let currentSettings: { popupHotkey: string; continuousMemoryHotkey: string; continuousMemoryBufferMinutes: number } | undefined;
 let recordingAction: HotkeyAction | null = null;
@@ -29,6 +34,25 @@ function cancelRecording(): void {
   continuousMemoryHotkeyRecord.textContent = 'Record';
 }
 
+// Sign-in state drives three controls at once, so all transitions go
+// through this one refresher. Tier comes from the backend (/auth/me), not
+// from anything client-stored — the token alone doesn't know the tier.
+async function refreshAccountStatus(): Promise<void> {
+  const token = await window.questbot.getAuthToken();
+  if (!token) {
+    accountStatus.textContent = 'Not signed in';
+    accountSignIn.hidden = false;
+    accountSignOut.hidden = true;
+    accountUpgrade.hidden = true;
+    return;
+  }
+  accountSignIn.hidden = true;
+  accountSignOut.hidden = false;
+  const account = await fetchAccount();
+  accountStatus.textContent = account ? `Signed in — ${account.tier} tier` : 'Signed in';
+  accountUpgrade.hidden = !account || account.tier !== 'free';
+}
+
 async function openSettings(): Promise<void> {
   questbotEl.classList.add('settings-open');
   currentSettings = await window.questbot.getSettings();
@@ -38,6 +62,7 @@ async function openSettings(): Promise<void> {
   bufferMinutesValue.textContent = String(currentSettings.continuousMemoryBufferMinutes);
   hotkeyError.hidden = true;
   updateContinuousMemoryToggleLabel(await window.questbot.getContinuousMemoryState());
+  void refreshAccountStatus();
 }
 
 function closeSettings(): void {
@@ -108,6 +133,34 @@ document.addEventListener('keydown', async (e) => {
     currentSettings.continuousMemoryHotkey = accelerator;
     continuousMemoryHotkeyDisplay.textContent = accelerator;
   }
+});
+
+accountSignIn.addEventListener('click', async () => {
+  accountStatus.textContent = 'Waiting for browser sign-in…';
+  try {
+    await window.questbot.signIn();
+  } catch {
+    // Browser closed / callback never arrived — refresh below shows the
+    // real (still signed-out) state instead of leaving "Waiting…" stuck.
+  }
+  await refreshAccountStatus();
+});
+
+accountSignOut.addEventListener('click', async () => {
+  await window.questbot.signOut();
+  await refreshAccountStatus();
+});
+
+accountUpgrade.addEventListener('click', async () => {
+  accountUpgrade.disabled = true;
+  try {
+    await window.questbot.startUpgrade();
+  } finally {
+    accountUpgrade.disabled = false;
+  }
+  // Tier flips only after Stripe's webhook lands; the player re-opens
+  // Settings (or we refresh here, likely still showing free) — no polling.
+  await refreshAccountStatus();
 });
 
 void window.questbot.getAppVersion().then((version) => {

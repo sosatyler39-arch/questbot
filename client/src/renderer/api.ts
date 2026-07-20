@@ -3,15 +3,13 @@ import type { AskRequest, AskResponse, FeedbackRequest } from './types.js';
 // Local dev backend. Becomes a real config value at deploy time.
 const BACKEND_URL = 'http://localhost:8787';
 
-// Placeholder identity for the mock phase — real Overwolf-account-based
-// identity + Stripe tier lookup is step 5 (paywall gating), not this.
-function getUserId(): string {
-  let id = localStorage.getItem('questbot_user_id');
-  if (!id) {
-    id = crypto.randomUUID();
-    localStorage.setItem('questbot_user_id', id);
-  }
-  return id;
+// Real identity (FEATURE_ADDENDUM §A1): the backend-issued session token,
+// stored by the main process after Discord sign-in. Unauthenticated players
+// send no header at all and are treated as anonymous/free server-side —
+// no client-claimed x-user-id/x-user-tier headers anymore.
+async function authHeader(): Promise<Record<string, string>> {
+  const token = await window.questbot.getAuthToken();
+  return token ? { authorization: `Bearer ${token}` } : {};
 }
 
 // On-demand capture by default (§3), or latest + sampled continuous-memory
@@ -27,7 +25,7 @@ export async function ask(question: string, screenshots: string[]): Promise<AskR
   const body: AskRequest = { question, screenshots: screenshots.length ? screenshots : undefined };
   const res = await fetch(`${BACKEND_URL}/ask`, {
     method: 'POST',
-    headers: { 'content-type': 'application/json', 'x-user-id': getUserId() },
+    headers: { 'content-type': 'application/json', ...(await authHeader()) },
     body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error(`ask failed: ${res.status}`);
@@ -38,7 +36,22 @@ export async function sendFeedback(answerId: string, helpful: boolean): Promise<
   const body: FeedbackRequest = { answerId, helpful };
   await fetch(`${BACKEND_URL}/feedback`, {
     method: 'POST',
-    headers: { 'content-type': 'application/json', 'x-user-id': getUserId() },
+    headers: { 'content-type': 'application/json', ...(await authHeader()) },
     body: JSON.stringify(body),
   });
+}
+
+// Current account state, or null when signed out / backend unreachable /
+// token expired. Callers treat null as "not signed in" — the Settings
+// panel's account section is the only consumer today.
+export async function fetchAccount(): Promise<{ discordId: string; tier: 'free' | 'paid' } | null> {
+  const headers = await authHeader();
+  if (!headers.authorization) return null;
+  try {
+    const res = await fetch(`${BACKEND_URL}/auth/me`, { headers });
+    if (!res.ok) return null;
+    return res.json();
+  } catch {
+    return null;
+  }
 }
