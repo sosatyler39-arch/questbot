@@ -1,12 +1,13 @@
 import { BrowserWindow, desktopCapturer, screen } from 'electron';
 import path from 'node:path';
+import { getBufferDurationMs } from './buffer-duration.js';
 
-// §5 of the brief: opt-in rolling local buffer, last 5-10 minutes, sampled
-// every few seconds (not every frame). Buffer never leaves the device until
-// a question is asked. Paywall enforcement is deferred (no billing decision
+// §5 of the brief: opt-in rolling local buffer, last 5-10 minutes (now
+// player-configurable via Settings — see buffer-duration.ts), sampled every
+// few seconds (not every frame). Buffer never leaves the device until a
+// question is asked. Paywall enforcement is deferred (no billing decision
 // yet — see project memory) — the toggle is open to everyone for now.
 const SAMPLE_INTERVAL_MS = 5_000;
-const BUFFER_DURATION_MS = 10 * 60 * 1000;
 const MAX_FRAMES_SENT = 4; // latest + up to 3 sampled, per the brief
 
 interface BufferedFrame {
@@ -42,7 +43,7 @@ function startContinuousMemory(): void {
     if (!image) return;
     const now = Date.now();
     buffer.push({ capturedAt: now, image });
-    buffer = buffer.filter((f) => now - f.capturedAt <= BUFFER_DURATION_MS);
+    buffer = buffer.filter((f) => now - f.capturedAt <= getBufferDurationMs());
   }, SAMPLE_INTERVAL_MS);
   showIndicator();
 }
