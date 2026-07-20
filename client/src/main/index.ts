@@ -115,6 +115,16 @@ app.whenReady().then(() => {
   currentPopupHotkey = settings.popupHotkey;
   currentContinuousMemoryHotkey = settings.continuousMemoryHotkey;
 
+  // Defensive guard against an externally-inconsistent settings file (hand-
+  // edited, or written by something other than rebindHotkey, which already
+  // prevents this via its own duplicate check): if both hotkeys somehow
+  // match, fall the continuous-memory one back to its default so startup
+  // never silently drops the popup hotkey.
+  if (currentContinuousMemoryHotkey.toLowerCase() === currentPopupHotkey.toLowerCase()) {
+    currentContinuousMemoryHotkey = DEFAULT_SETTINGS.continuousMemoryHotkey;
+    updateSettings({ continuousMemoryHotkey: currentContinuousMemoryHotkey });
+  }
+
   setScreenshotCapturer(captureGameScreenshot);
 
   globalShortcut.register(currentPopupHotkey, togglePopup);
