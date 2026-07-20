@@ -14,7 +14,15 @@ async function embedAndStore(url: string, chunks: PendingChunk[]): Promise<void>
   // crashed is not. embeddings.ts additionally retries 429s.
   const embedded = [];
   for (const chunk of chunks) {
-    embedded.push({ ...chunk, embedding: await embedText(chunk.content) });
+    // Embed title+content together, not content alone — chunk.title carries
+    // the item/section name (e.g. "Magic, skill, and FP talismans — Radagon
+    // Icon"), which a short generic effect string ("Shortens spell casting
+    // time.") never repeats on its own. Without the name in the embedded
+    // text, a query like "what does the Radagon Icon do?" can't find this
+    // chunk by name at all — found via real retrieval testing (talisman
+    // corpus addition). `chunk.content` itself is stored/displayed
+    // unchanged; only what gets embedded changes.
+    embedded.push({ ...chunk, embedding: await embedText(`${chunk.title}: ${chunk.content}`) });
   }
   await upsertChunksForUrl(url, embedded);
 }

@@ -91,7 +91,7 @@ export const CHEST_PAGES: ArticlePage[] = [
     sections: [
       {
         heading: 'What it does',
-        text: 'A talisman that boosts the wearer\'s Strength and Dexterity, associated thematically with Starscourge Radahn.',
+        text: 'A talisman that raises the wearer\'s Strength by 5, associated thematically with Starscourge Radahn.',
       },
       {
         heading: 'Where to find it',
@@ -105,7 +105,7 @@ export const CHEST_PAGES: ArticlePage[] = [
     sections: [
       {
         heading: 'Overview',
-        text: 'Several "heirloom" talismans exist (Starscourge Heirloom, Two Fingers Heirloom, Godfrey Icon, and others), each boosting a specific stat pair or ability. Most are found in specific chests tied to that talisman\'s thematic region rather than sold by merchants, so they\'re typically one-time finds worth planning a route around if a specific build needs one.',
+        text: 'Five "heirloom" talismans exist — Starscourge, Prosthesis-Wearer, Stargazer, Two Fingers, and Outer God — each raising a single core stat (Strength, Dexterity, Intelligence, Faith, and Arcane respectively) by 5. Each is found in a specific chest tied to its thematic region rather than sold by merchants, so they\'re typically one-time finds worth planning a route around if a specific build needs one.',
       },
     ],
   },
