@@ -2,6 +2,8 @@ import type { AskResponse, SourceCard } from './types.js';
 import { ask, captureScreenshot, sendFeedback, generateChecklist } from './api.js';
 import { isMultiStepAnswer, makeChecklist } from './checklist-logic.js';
 import { saveChecklist, renderChecklistCard, renderSavedChecklists } from './checklists.js';
+import { isAnswerFavorite } from './library-logic.js';
+import { loadFavorites, toggleFavoriteStored, recordHistory } from './library.js';
 
 const AUTO_DISMISS_MS = 30_000;
 
@@ -12,6 +14,7 @@ const feedbackEl = document.getElementById('feedback')!;
 const thumbsUp = document.getElementById('thumbs-up') as HTMLButtonElement;
 const thumbsDown = document.getElementById('thumbs-down') as HTMLButtonElement;
 const makeChecklistBtn = document.getElementById('make-checklist') as HTMLButtonElement;
+const favoriteAnswerBtn = document.getElementById('favorite-answer') as HTMLButtonElement;
 const answerChecklists = document.getElementById('answer-checklists')!;
 
 // Popup, not a sidebar: auto-dismiss after inactivity (§3.1 of the brief).
@@ -73,6 +76,31 @@ function renderAnswer(res: AskResponse, question: string): void {
     sendFeedback(res.answerId, false);
     thumbsDown.classList.add('selected');
     thumbsUp.classList.remove('selected');
+  };
+
+  // §B4: every answered question lands in history (low-confidence included
+  // — knowing what Questbot couldn't answer is useful too).
+  recordHistory({
+    id: res.answerId,
+    question,
+    answer: res.answer,
+    lowConfidence: res.lowConfidence,
+    createdAt: Date.now(),
+  });
+
+  // §B3: star saves the answer to favorites; hidden for low-confidence
+  // non-answers (nothing worth saving).
+  favoriteAnswerBtn.hidden = !!res.lowConfidence;
+  const refreshStar = () => {
+    const starred = isAnswerFavorite(loadFavorites(), res.answerId);
+    favoriteAnswerBtn.textContent = starred ? '★' : '☆';
+    favoriteAnswerBtn.classList.toggle('selected', starred);
+    favoriteAnswerBtn.title = starred ? 'Remove from favorites' : 'Save to favorites';
+  };
+  refreshStar();
+  favoriteAnswerBtn.onclick = () => {
+    toggleFavoriteStored({ kind: 'answer', id: res.answerId, question, answer: res.answer, createdAt: Date.now() });
+    refreshStar();
   };
 
   // §B1: offer a checklist only when the answer reads as multi-step —

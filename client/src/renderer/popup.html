@@ -8,6 +8,7 @@
       <button class="tab-button active" data-tab="ask">Ask</button>
       <button class="tab-button" data-tab="map">Map</button>
       <button class="tab-button" data-tab="speedrun">Speedrun</button>
+      <button class="tab-button" data-tab="library">Library</button>
       <button class="tab-button" data-tab="shapes">Shape Editor</button>
     </div>
     <button id="settings-toggle" type="button" title="Settings">⚙️</button>
@@ -72,6 +73,7 @@
     <div id="feedback" hidden>
       <button id="thumbs-up" title="Helpful">👍</button>
       <button id="thumbs-down" title="Not helpful">👎</button>
+      <button id="favorite-answer" type="button" title="Save to favorites" hidden>☆</button>
       <button id="make-checklist" type="button" hidden>Turn into checklist</button>
     </div>
     <div id="answer-checklists"></div>
@@ -97,6 +99,22 @@
       <div id="map-canvas-wrap"></div>
     </div>
     <div id="map-legend"></div>
+  </div>
+
+  <div id="library-panel" class="panel">
+    <div id="library-body">
+      <div class="library-section">
+        <h3>Favorites</h3>
+        <div id="library-favorites"></div>
+      </div>
+      <div class="library-section">
+        <div class="library-section-header">
+          <h3>History</h3>
+          <button id="library-clear-history" type="button" disabled>Clear</button>
+        </div>
+        <div id="library-history"></div>
+      </div>
+    </div>
   </div>
 
   <div id="speedrun-panel" class="panel">
@@ -144,6 +162,7 @@
 <script type="module" src="./popup.js"></script>
 <script type="module" src="./map.js"></script>
 <script type="module" src="./speedrun.js"></script>
+<script type="module" src="./library.js"></script>
 <script type="module" src="./shapes.js"></script>
 <script type="module" src="./tabs.js"></script>
 <script type="module" src="./settings.js"></script>

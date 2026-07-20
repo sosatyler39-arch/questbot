@@ -1,6 +1,8 @@
 import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './regions.js';
 import { MAP_LOCATIONS, type MapLocation } from './locations.js';
 import { clamp, clamp01, seeded, catmullRomPath, polygonCentroid } from './geometry.js';
+import { isLocationFavorite } from '../library-logic.js';
+import { loadFavorites, toggleFavoriteStored } from '../library.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const SURFACE_VIEWBOX = { width: 1200, height: 1050 };
@@ -256,6 +258,16 @@ function addPin(svg: SVGSVGElement, frontLayer: SVGGElement, loc: MapLocation): 
 
   const group = document.createElementNS(SVG_NS, 'g');
   group.setAttribute('class', `pin-group role-${ROLE_FOR_CATEGORY[loc.category]}`);
+  group.classList.toggle('favorited', isLocationFavorite(loadFavorites(), loc.name));
+
+  // §B3: click a pin (outside edit mode) to save/unsave the location. A
+  // drag that happens to end on the same pin won't fire `click`, so this
+  // doesn't fight the pan handler.
+  group.addEventListener('click', () => {
+    if (editMode) return;
+    const favorites = toggleFavoriteStored({ kind: 'location', name: loc.name, createdAt: Date.now() });
+    group.classList.toggle('favorited', isLocationFavorite(favorites, loc.name));
+  });
 
   const dot = document.createElementNS(SVG_NS, 'circle');
   dot.setAttribute('cx', String(pos.x));
