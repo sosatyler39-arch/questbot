@@ -5,7 +5,10 @@ import {
   toggleContinuousMemory,
   captureForQuestion,
   shutdownContinuousMemory,
+  isContinuousMemoryEnabled,
 } from './continuous-memory.js';
+import { setBufferDurationMinutes } from './buffer-duration.js';
+import { DEFAULT_SETTINGS, initSettingsStore, getSettings, updateSettings, type HotkeyAction } from './settings-store.js';
 
 // Non-injecting overlay: a separate always-on-top desktop window, not code
 // injected into the game process. Deliberate choice over an Overwolf/DX-hook
@@ -17,6 +20,8 @@ import {
 const GAME_WINDOW_TITLE = 'ELDEN RING';
 
 let popup: BrowserWindow | undefined;
+let currentPopupHotkey: string = DEFAULT_SETTINGS.popupHotkey;
+let currentContinuousMemoryHotkey: string = DEFAULT_SETTINGS.continuousMemoryHotkey;
 
 function createPopup(): BrowserWindow {
   const win = new BrowserWindow({
@@ -64,13 +69,41 @@ async function captureGameScreenshot(): Promise<string | null> {
   return gameWindow.thumbnail.toJPEG(90).toString('base64');
 }
 
+// Rebinds one of Questbot's two global hotkeys. `globalShortcut.register`
+// returns false (doesn't throw) on an OS-level conflict — on failure, the
+// previous accelerator is re-registered so a rebind attempt never leaves
+// Questbot with no working hotkey for that action.
+function rebindHotkey(action: HotkeyAction, accelerator: string): { ok: boolean; reason?: string } {
+  const isPopup = action === 'popup';
+  const previous = isPopup ? currentPopupHotkey : currentContinuousMemoryHotkey;
+  const handler = isPopup ? togglePopup : toggleContinuousMemory;
+
+  globalShortcut.unregister(previous);
+  const registered = globalShortcut.register(accelerator, handler);
+  if (!registered) {
+    globalShortcut.register(previous, handler);
+    return { ok: false, reason: 'conflict' };
+  }
+
+  if (isPopup) currentPopupHotkey = accelerator;
+  else currentContinuousMemoryHotkey = accelerator;
+  updateSettings(isPopup ? { popupHotkey: accelerator } : { continuousMemoryHotkey: accelerator });
+  return { ok: true };
+}
+
 app.whenReady().then(() => {
+  const settingsFilePath = path.join(app.getPath('userData'), 'settings.json');
+  const settings = initSettingsStore(settingsFilePath);
+  setBufferDurationMinutes(settings.continuousMemoryBufferMinutes);
+  currentPopupHotkey = settings.popupHotkey;
+  currentContinuousMemoryHotkey = settings.continuousMemoryHotkey;
+
   setScreenshotCapturer(captureGameScreenshot);
 
-  globalShortcut.register('Control+Q', togglePopup);
+  globalShortcut.register(currentPopupHotkey, togglePopup);
   // Opt-in continuous memory toggle (§5). Paywall enforcement deferred (no
   // billing decision yet) — open to everyone during dev/playtest.
-  globalShortcut.register('Control+Shift+Q', toggleContinuousMemory);
+  globalShortcut.register(currentContinuousMemoryHotkey, toggleContinuousMemory);
 
   ipcMain.handle('dismiss-popup', () => {
     popup?.hide();
@@ -79,6 +112,23 @@ app.whenReady().then(() => {
   // Single on-demand shot by default, or latest + sampled buffer frames
   // when continuous memory is active — see continuous-memory.ts.
   ipcMain.handle('capture-screenshot', (): Promise<string[]> => captureForQuestion());
+
+  ipcMain.handle('get-settings', () => getSettings());
+  ipcMain.handle('get-app-version', () => app.getVersion());
+  ipcMain.handle('get-continuous-memory-state', () => isContinuousMemoryEnabled());
+
+  ipcMain.handle('toggle-continuous-memory', () => {
+    toggleContinuousMemory();
+    return isContinuousMemoryEnabled();
+  });
+
+  ipcMain.handle('set-hotkey', (_event, action: HotkeyAction, accelerator: string) => rebindHotkey(action, accelerator));
+
+  ipcMain.handle('set-buffer-minutes', (_event, minutes: number) => {
+    const updated = updateSettings({ continuousMemoryBufferMinutes: minutes });
+    setBufferDurationMinutes(updated.continuousMemoryBufferMinutes);
+    return updated;
+  });
 });
 
 app.on('will-quit', () => {
