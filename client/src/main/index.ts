@@ -76,10 +76,27 @@ async function captureGameScreenshot(): Promise<string | null> {
 function rebindHotkey(action: HotkeyAction, accelerator: string): { ok: boolean; reason?: string } {
   const isPopup = action === 'popup';
   const previous = isPopup ? currentPopupHotkey : currentContinuousMemoryHotkey;
+  const other = isPopup ? currentContinuousMemoryHotkey : currentPopupHotkey;
   const handler = isPopup ? togglePopup : toggleContinuousMemory;
 
+  // Reject up front if this would collide with Questbot's other hotkey —
+  // globalShortcut.register doesn't return false for an accelerator this
+  // same process already owns, it just silently reassigns the callback,
+  // which would leave the other action's hotkey dead with no signal.
+  if (accelerator.toLowerCase() === other.toLowerCase()) {
+    return { ok: false, reason: 'duplicate' };
+  }
+
   globalShortcut.unregister(previous);
-  const registered = globalShortcut.register(accelerator, handler);
+  let registered: boolean;
+  try {
+    registered = globalShortcut.register(accelerator, handler);
+  } catch {
+    // Malformed accelerator string — register() can throw synchronously
+    // instead of returning false. Treat exactly like a registration
+    // failure so the rollback below still runs.
+    registered = false;
+  }
   if (!registered) {
     globalShortcut.register(previous, handler);
     return { ok: false, reason: 'conflict' };
