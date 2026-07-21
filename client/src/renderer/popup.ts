@@ -4,6 +4,8 @@ import { isMultiStepAnswer, makeChecklist } from './checklist-logic.js';
 import { saveChecklist, renderChecklistCard, renderSavedChecklists } from './checklists.js';
 import { isAnswerFavorite } from './library-logic.js';
 import { loadFavorites, toggleFavoriteStored, recordHistory } from './library.js';
+import { switchToTab } from './tabs.js';
+import { focusLocationByName } from './map/render.js';
 
 const AUTO_DISMISS_MS = 30_000;
 
@@ -35,7 +37,7 @@ function dismiss(): void {
 );
 resetDismissTimer();
 
-function renderSource(source: SourceCard): void {
+function renderSource(source: SourceCard, locations?: string[]): void {
   const card = document.createElement('div');
   card.className = 'card';
   const link = document.createElement('a');
@@ -54,6 +56,17 @@ function renderSource(source: SourceCard): void {
     iframe.allowFullscreen = true;
     card.append(iframe);
   }
+  for (const name of locations ?? []) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'show-on-map';
+    btn.textContent = `Show on map: ${name}`;
+    btn.addEventListener('click', () => {
+      switchToTab('map');
+      focusLocationByName(name);
+    });
+    card.append(btn);
+  }
   sourceEl.replaceChildren(card);
   sourceEl.hidden = false;
 }
@@ -63,7 +76,7 @@ function renderAnswer(res: AskResponse, question: string): void {
   answerEl.classList.toggle('low-confidence', !!res.lowConfidence);
   answerEl.hidden = false;
   sourceEl.hidden = true;
-  if (res.source) renderSource(res.source);
+  if (res.source) renderSource(res.source, res.locations);
   thumbsUp.classList.remove('selected');
   thumbsDown.classList.remove('selected');
   feedbackEl.hidden = false;

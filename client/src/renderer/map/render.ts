@@ -447,6 +447,16 @@ function centerOn(loc: MapLocation): void {
   applyTransform();
 }
 
+// Exposed for cross-tab "Show on map" links (Ask panel). Returns false
+// without effect if `name` doesn't match any known MapLocation — the
+// safety valve for the loose string coupling to server-side location data.
+export function focusLocationByName(name: string): boolean {
+  const match = MAP_LOCATIONS.find((l) => l.name === name);
+  if (!match) return false;
+  centerOn(match);
+  return true;
+}
+
 function initPanZoom(): void {
   const viewport = document.getElementById('map-viewport')!;
 

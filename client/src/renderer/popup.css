@@ -48,6 +48,18 @@ body {
   font-size: 12px;
 }
 
+#source .show-on-map {
+  display: block;
+  margin-top: 6px;
+  background: none;
+  border: 1px solid #4a4234;
+  border-radius: 4px;
+  color: #c9a24b;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
 #source iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
