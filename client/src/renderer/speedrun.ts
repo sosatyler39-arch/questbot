@@ -136,7 +136,12 @@ function buildSvg(): SVGSVGElement {
     const orderIndex = route.indexOf(loc.name);
 
     const group = document.createElementNS(SVG_NS, 'g');
-    group.setAttribute('class', `route-pin${orderIndex !== -1 ? ' selected' : ''}`);
+    // pin-group is what the shared .pin-group.pin-hover CSS (map.css) keys
+    // off for both the hover enlarge and the bold label — route-pin alone
+    // doesn't match it, which is why bold (and the real enlarge) weren't
+    // actually applying before, just a color-brightening from a separate
+    // native :hover rule.
+    group.setAttribute('class', `route-pin pin-group${orderIndex !== -1 ? ' selected' : ''}`);
 
     const dot = document.createElementNS(SVG_NS, 'circle');
     dot.setAttribute('cx', String(pos.x));
