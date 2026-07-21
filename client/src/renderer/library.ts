@@ -5,6 +5,8 @@ import {
   isAnswerFavorite,
   pushHistory,
 } from './library-logic.js';
+import { switchToTab } from './tabs.js';
+import { focusLocationByName } from './map/render.js';
 
 // Library tab (FEATURE_ADDENDUM §B3 favorites + §B4 history): storage
 // wrappers and rendering. Thin shell over library-logic.ts, same pattern
@@ -53,8 +55,18 @@ const historyEl = document.getElementById('library-history');
 const clearHistoryBtn = document.getElementById('library-clear-history') as HTMLButtonElement | null;
 
 // Q&A entry shared by both sections: question line expands to the full
-// answer on click; star toggles/removes the favorite.
-function qaEntry(opts: { question: string; answer: string; id: string; createdAt: number; starred: boolean }): HTMLElement {
+// answer on click; star toggles/removes the favorite. `locations` is a
+// frozen snapshot from when the answer was originally received — same
+// "Show on map" behavior as the live Ask panel (popup.ts), just reading
+// from saved data instead of a fresh AskResponse.
+function qaEntry(opts: {
+  question: string;
+  answer: string;
+  id: string;
+  createdAt: number;
+  starred: boolean;
+  locations?: string[];
+}): HTMLElement {
   const item = document.createElement('div');
   item.className = 'library-entry';
 
@@ -70,7 +82,14 @@ function qaEntry(opts: { question: string; answer: string; id: string; createdAt
   star.title = opts.starred ? 'Remove from favorites' : 'Save to favorites';
   star.textContent = opts.starred ? '★' : '☆';
   star.addEventListener('click', () => {
-    toggleFavoriteStored({ kind: 'answer', id: opts.id, question: opts.question, answer: opts.answer, createdAt: opts.createdAt });
+    toggleFavoriteStored({
+      kind: 'answer',
+      id: opts.id,
+      question: opts.question,
+      answer: opts.answer,
+      locations: opts.locations,
+      createdAt: opts.createdAt,
+    });
   });
   row.append(q, star);
 
@@ -78,11 +97,26 @@ function qaEntry(opts: { question: string; answer: string; id: string; createdAt
   answer.className = 'library-answer';
   answer.textContent = opts.answer;
   answer.hidden = true;
-  q.addEventListener('click', () => {
-    answer.hidden = !answer.hidden;
+
+  const mapButtons = (opts.locations ?? []).map((name) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'show-on-map';
+    btn.textContent = `Show on map: ${name}`;
+    btn.hidden = true;
+    btn.addEventListener('click', () => {
+      switchToTab('map');
+      focusLocationByName(name);
+    });
+    return btn;
   });
 
-  item.append(row, answer);
+  q.addEventListener('click', () => {
+    answer.hidden = !answer.hidden;
+    for (const btn of mapButtons) btn.hidden = answer.hidden;
+  });
+
+  item.append(row, answer, ...mapButtons);
   return item;
 }
 
@@ -137,7 +171,7 @@ export function renderLibrary(): void {
   for (const fav of favorites) {
     favoritesEl.append(
       fav.kind === 'answer'
-        ? qaEntry({ question: fav.question, answer: fav.answer, id: fav.id, createdAt: fav.createdAt, starred: true })
+        ? qaEntry({ question: fav.question, answer: fav.answer, id: fav.id, createdAt: fav.createdAt, starred: true, locations: fav.locations })
         : locationEntry(fav.name, fav.createdAt),
     );
   }
@@ -159,6 +193,7 @@ export function renderLibrary(): void {
         id: entry.id,
         createdAt: entry.createdAt,
         starred: isAnswerFavorite(favs, entry.id),
+        locations: entry.locations,
       }),
     );
   }

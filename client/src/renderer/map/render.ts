@@ -1,30 +1,15 @@
 import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './regions.js';
 import { MAP_LOCATIONS, type MapLocation } from './locations.js';
-import { clamp, clamp01, seeded, catmullRomPath, polygonCentroid } from './geometry.js';
+import { clamp, clamp01, seeded, catmullRomPath, polygonCentroid, minZoomScale } from './geometry.js';
 import { isLocationFavorite } from '../library-logic.js';
 import { loadFavorites, toggleFavoriteStored } from '../library.js';
+import { ROLE_FOR_CATEGORY, type Category } from './roles.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const SURFACE_VIEWBOX = { width: 1200, height: 1050 };
 const UNDERGROUND_VIEWBOX = { width: 1200, height: 800 };
 
 type Layer = 'surface' | 'underground';
-type Category = MapLocation['category'];
-type Role = 'location' | 'boss';
-
-// Grouping for the two filter checkboxes. Evergaol + Great Enemy are the
-// only boss-type pins we place today; legacy/minor dungeon *bosses* (the
-// thing inside the dungeon) aren't in the dataset yet — planned addition,
-// at which point they'll join the 'boss' role too.
-const ROLE_FOR_CATEGORY: Record<Category, Role> = {
-  'legacy-dungeon': 'location',
-  'minor-dungeon': 'location',
-  church: 'location',
-  landmark: 'location',
-  'town-or-fort': 'location',
-  evergaol: 'boss',
-  'great-enemy': 'boss',
-};
 
 // One visually distinct hue per category (legend + pins share this map).
 const CATEGORY_COLOR: Record<Category, string> = {
@@ -499,10 +484,9 @@ function initPanZoom(): void {
 
       const factor = e.deltaY < 0 ? 1.1 : 1 / 1.1;
       const { width, height } = viewboxFor(layer);
-      // Zoom out only until the whole map is visible, plus a small margin
-      // — not the old fixed 0.4 floor, which allowed zooming out far past
-      // that. Zoom-in ceiling (4) is unchanged.
-      const minScale = Math.max(0.05, Math.min(viewport.clientWidth / width, viewport.clientHeight / height) * 0.85);
+      // Zoom out only until the whole map is visible, plus a small margin.
+      // Zoom-in ceiling (4) is unchanged.
+      const minScale = minZoomScale(viewport.clientWidth, viewport.clientHeight, width, height);
       scale = Math.min(4, Math.max(minScale, scale * factor));
 
       panX = mx - contentX * scale;

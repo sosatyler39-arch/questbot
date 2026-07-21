@@ -9,6 +9,25 @@ export function clamp(v: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, v));
 }
 
+// Lowest zoom scale that still keeps the whole map visible, plus a small
+// margin (the `margin` factor). Falls back to `fallback` only when the
+// viewport isn't measurable yet (0/NaN clientWidth or clientHeight) —
+// an unconditional low floor (e.g. a bare 0.05) would let zoom-out go far
+// past "the whole map fits" whenever that happens, which is the bug this
+// replaced (shared by both the Map tab and the Speedrun tab, which
+// duplicate the same pan/zoom viewport).
+export function minZoomScale(
+  viewportWidth: number,
+  viewportHeight: number,
+  contentWidth: number,
+  contentHeight: number,
+  margin = 0.85,
+  fallback = 0.3,
+): number {
+  const fitScale = Math.min(viewportWidth / contentWidth, viewportHeight / contentHeight) * margin;
+  return Number.isFinite(fitScale) && fitScale > 0 ? fitScale : fallback;
+}
+
 // Deterministic pseudo-random in [0,1), seeded by a string + index.
 export function seeded(seed: string, i: number): number {
   let h = 0;

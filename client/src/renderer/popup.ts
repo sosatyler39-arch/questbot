@@ -92,12 +92,15 @@ function renderAnswer(res: AskResponse, question: string): void {
   };
 
   // §B4: every answered question lands in history (low-confidence included
-  // — knowing what Questbot couldn't answer is useful too).
+  // — knowing what Questbot couldn't answer is useful too). locations is a
+  // frozen snapshot, same as the answer text itself, so "Show on map" still
+  // works when revisiting an old entry.
   recordHistory({
     id: res.answerId,
     question,
     answer: res.answer,
     lowConfidence: res.lowConfidence,
+    locations: res.locations,
     createdAt: Date.now(),
   });
 
@@ -112,7 +115,7 @@ function renderAnswer(res: AskResponse, question: string): void {
   };
   refreshStar();
   favoriteAnswerBtn.onclick = () => {
-    toggleFavoriteStored({ kind: 'answer', id: res.answerId, question, answer: res.answer, createdAt: Date.now() });
+    toggleFavoriteStored({ kind: 'answer', id: res.answerId, question, answer: res.answer, locations: res.locations, createdAt: Date.now() });
     refreshStar();
   };
 

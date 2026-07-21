@@ -28,8 +28,21 @@ export async function ask(question: string, screenshots: string[]): Promise<AskR
     headers: { 'content-type': 'application/json', ...(await authHeader()) },
     body: JSON.stringify(body),
   });
-  if (!res.ok) throw new Error(`ask failed: ${res.status}`);
+  if (!res.ok) throw new Error(await errorMessage(res, 'ask'));
   return res.json();
+}
+
+// Fastify's default error body is {statusCode, error, message} — surface the
+// real message (e.g. "Daily embedding quota exhausted...") instead of a bare
+// status code, so a failure is as informative as a low-confidence answer.
+async function errorMessage(res: Response, action: string): Promise<string> {
+  try {
+    const body = await res.json();
+    if (typeof body?.message === 'string') return body.message;
+  } catch {
+    // response wasn't JSON — fall through to the generic message
+  }
+  return `${action} failed: ${res.status}`;
 }
 
 export async function sendFeedback(answerId: string, helpful: boolean): Promise<void> {
@@ -52,7 +65,7 @@ export async function generateChecklist(
     headers: { 'content-type': 'application/json', ...(await authHeader()) },
     body: JSON.stringify({ question, answer }),
   });
-  if (!res.ok) throw new Error(`checklist failed: ${res.status}`);
+  if (!res.ok) throw new Error(await errorMessage(res, 'checklist'));
   return res.json();
 }
 

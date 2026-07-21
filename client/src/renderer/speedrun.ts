@@ -1,6 +1,7 @@
 import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './map/regions.js';
 import { MAP_LOCATIONS, type MapLocation } from './map/locations.js';
-import { catmullRomPath } from './map/geometry.js';
+import { catmullRomPath, minZoomScale } from './map/geometry.js';
+import { ROLE_FOR_CATEGORY } from './map/roles.js';
 import { toggleStop, removeStopAt, serializeRoute, deserializeRoute } from './speedrun-logic.js';
 import { makeChecklist } from './checklist-logic.js';
 import { saveChecklist, renderSavedChecklists } from './checklists.js';
@@ -33,6 +34,8 @@ const clearButton = document.getElementById('speedrun-clear') as HTMLButtonEleme
 const checklistButton = document.getElementById('speedrun-make-checklist') as HTMLButtonElement;
 const layerToggle = document.getElementById('speedrun-layer-toggle') as HTMLButtonElement;
 const checklistsEl = document.getElementById('speedrun-checklists')!;
+const filterLocations = document.getElementById('speedrun-filter-locations') as HTMLInputElement;
+const filterBosses = document.getElementById('speedrun-filter-bosses') as HTMLInputElement;
 
 const locationsByName = new Map<string, MapLocation>(MAP_LOCATIONS.map((l) => [l.name, l]));
 
@@ -48,6 +51,13 @@ function absolutePosition(loc: MapLocation): { x: number; y: number } | null {
   const region = regionsFor(loc.layer).find((r) => r.id === loc.regionId);
   if (!region) return null;
   return { x: region.x + loc.fx * region.width, y: region.y + loc.fy * region.height };
+}
+
+// Same two-group filter as the Map tab (locations vs. bosses) — a route stop
+// that's currently filtered out stays in the saved route, it just isn't
+// shown as a clickable pin until the filter is switched back on.
+function filterAllows(loc: MapLocation): boolean {
+  return ROLE_FOR_CATEGORY[loc.category] === 'boss' ? filterBosses.checked : filterLocations.checked;
 }
 
 function setRoute(next: string[]): void {
@@ -98,7 +108,7 @@ function buildSvg(): SVGSVGElement {
     svg.appendChild(line);
   }
 
-  for (const loc of MAP_LOCATIONS.filter((l) => l.layer === layer)) {
+  for (const loc of MAP_LOCATIONS.filter((l) => l.layer === layer && filterAllows(l))) {
     const pos = absolutePosition(loc);
     if (!pos) continue;
     const orderIndex = route.indexOf(loc.name);
@@ -114,6 +124,16 @@ function buildSvg(): SVGSVGElement {
     title.textContent = loc.name;
     dot.append(title);
     group.append(dot);
+
+    // Visible label, not just the hover-delay native tooltip above — hard
+    // to tell stops apart by an unlabeled dot alone (found via user testing).
+    const label = document.createElementNS(SVG_NS, 'text');
+    label.setAttribute('x', String(pos.x + 6));
+    label.setAttribute('y', String(pos.y + 3));
+    label.setAttribute('class', 'pin-label');
+    label.style.fontSize = '9px';
+    label.textContent = loc.name;
+    group.append(label);
 
     if (orderIndex !== -1) {
       const order = document.createElementNS(SVG_NS, 'text');
@@ -203,7 +223,7 @@ function initPanZoom(): void {
       const contentY = (my - panY) / scale;
       const factor = e.deltaY < 0 ? 1.1 : 1 / 1.1;
       const { width, height } = viewboxFor(layer);
-      const minScale = Math.max(0.05, Math.min(viewport.clientWidth / width, viewport.clientHeight / height) * 0.85);
+      const minScale = minZoomScale(viewport.clientWidth, viewport.clientHeight, width, height);
       scale = Math.min(4, Math.max(minScale, scale * factor));
       panX = mx - contentX * scale;
       panY = my - contentY * scale;
@@ -221,6 +241,9 @@ layerToggle.addEventListener('click', () => {
   panY = 0;
   renderLayer();
 });
+
+filterLocations.addEventListener('change', renderLayer);
+filterBosses.addEventListener('change', renderLayer);
 
 clearButton.addEventListener('click', () => setRoute([]));
 

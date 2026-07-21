@@ -134,7 +134,9 @@
 }
 
 #filter-locations-label,
-#filter-bosses-label {
+#filter-bosses-label,
+#speedrun-filter-locations-label,
+#speedrun-filter-bosses-label {
   display: flex;
   align-items: center;
   gap: 5px;

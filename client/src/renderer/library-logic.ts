@@ -6,6 +6,7 @@ export interface FavoriteAnswer {
   id: string; // the answerId from /ask
   question: string;
   answer: string;
+  locations?: string[]; // frozen snapshot from AskResponse at the time this was saved
   createdAt: number;
 }
 
@@ -42,6 +43,7 @@ export interface HistoryEntry {
   question: string;
   answer: string;
   lowConfidence?: boolean;
+  locations?: string[]; // frozen snapshot from AskResponse at the time this was asked
   createdAt: number;
 }
 
