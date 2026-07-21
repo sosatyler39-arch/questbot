@@ -1,6 +1,6 @@
 import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './regions.js';
 import { MAP_LOCATIONS, type MapLocation } from './locations.js';
-import { clamp, clamp01, seeded, catmullRomPath, polygonCentroid, minZoomScale } from './geometry.js';
+import { clamp, clamp01, seeded, catmullRomPath, polygonCentroid, minZoomScale, clampedLabelFontSize } from './geometry.js';
 import { isLocationFavorite } from '../library-logic.js';
 import { loadFavorites, toggleFavoriteStored } from '../library.js';
 import { ROLE_FOR_CATEGORY, type Category } from './roles.js';
@@ -47,17 +47,12 @@ const REGION_LABEL_BASE_PX = 21;
 const REGION_LABEL_MIN_SCREEN_PX = 14;
 const REGION_LABEL_MAX_SCREEN_PX = 40;
 
-// Returns a font-size in SVG user-space units — dividing the clamped
-// *screen*-pixel target by `scale` cancels out the wrap's CSS transform, so
-// the rendered on-screen size is exactly the clamped target.
 function pinLabelFontSize(scaleVal: number): number {
-  return clamp(PIN_LABEL_BASE_PX * scaleVal, PIN_LABEL_MIN_SCREEN_PX, PIN_LABEL_MAX_SCREEN_PX) / scaleVal;
+  return clampedLabelFontSize(scaleVal, PIN_LABEL_BASE_PX, PIN_LABEL_MIN_SCREEN_PX, PIN_LABEL_MAX_SCREEN_PX);
 }
 
 function pinLabelHoverFontSize(scaleVal: number): number {
-  const normalScreenPx = clamp(PIN_LABEL_BASE_PX * scaleVal, PIN_LABEL_MIN_SCREEN_PX, PIN_LABEL_MAX_SCREEN_PX);
-  const hoverScreenPx = clamp(normalScreenPx * PIN_LABEL_HOVER_FACTOR, PIN_LABEL_MIN_SCREEN_PX * PIN_LABEL_HOVER_FACTOR, PIN_LABEL_MAX_SCREEN_PX * PIN_LABEL_HOVER_FACTOR);
-  return hoverScreenPx / scaleVal;
+  return clampedLabelFontSize(scaleVal, PIN_LABEL_BASE_PX, PIN_LABEL_MIN_SCREEN_PX, PIN_LABEL_MAX_SCREEN_PX, PIN_LABEL_HOVER_FACTOR);
 }
 
 function regionLabelFontSize(scaleVal: number): number {

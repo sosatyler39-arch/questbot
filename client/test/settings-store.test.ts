@@ -86,3 +86,15 @@ test('consent flags reject non-boolean garbage from a tampered file', () => {
   assert.equal(settings.continuousMemoryConsent, false);
   assert.equal(settings.onboardingSeen, false);
 });
+
+test('autoDismissSeconds accepts only the discrete options, 0 meaning never', () => {
+  const filePath = tempSettingsPath();
+  initSettingsStore(filePath);
+  assert.equal(updateSettings({ autoDismissSeconds: 60 }).autoDismissSeconds, 60);
+  assert.equal(updateSettings({ autoDismissSeconds: 0 }).autoDismissSeconds, 0);
+  assert.equal(
+    updateSettings({ autoDismissSeconds: 42 }).autoDismissSeconds,
+    DEFAULT_SETTINGS.autoDismissSeconds,
+    'a value outside the fixed option set falls back to the default',
+  );
+});

@@ -173,6 +173,8 @@ app.whenReady().then(() => {
     return updated;
   });
 
+  ipcMain.handle('set-auto-dismiss-seconds', (_event, seconds: number) => updateSettings({ autoDismissSeconds: seconds }));
+
   ipcMain.handle('sign-in', async () => {
     const token = await startDiscordSignIn(BACKEND_URL);
     storeToken(token);

@@ -7,8 +7,6 @@ import { loadFavorites, toggleFavoriteStored, recordHistory } from './library.js
 import { switchToTab } from './tabs.js';
 import { focusLocationByName } from './map/render.js';
 
-const AUTO_DISMISS_MS = 30_000;
-
 const questionEl = document.getElementById('question') as HTMLInputElement;
 const answerEl = document.getElementById('answer')!;
 const sourceEl = document.getElementById('source')!;
@@ -19,11 +17,17 @@ const makeChecklistBtn = document.getElementById('make-checklist') as HTMLButton
 const favoriteAnswerBtn = document.getElementById('favorite-answer') as HTMLButtonElement;
 const answerChecklists = document.getElementById('answer-checklists')!;
 
-// Popup, not a sidebar: auto-dismiss after inactivity (§3.1 of the brief).
+// Popup, not a sidebar: auto-dismiss after inactivity (§3.1 of the brief),
+// configurable in Settings. null means "never" — deliberately a distinct
+// off-switch rather than a huge millisecond number: window.setTimeout with
+// an enormous/Infinity delay isn't guaranteed to mean "never fires" (32-bit
+// overflow risk), so "never" instead means no timer gets scheduled at all.
+let autoDismissMs: number | null = 30_000;
 let dismissTimer: number | undefined;
 function resetDismissTimer(): void {
   clearTimeout(dismissTimer);
-  dismissTimer = window.setTimeout(dismiss, AUTO_DISMISS_MS);
+  if (autoDismissMs === null) return;
+  dismissTimer = window.setTimeout(dismiss, autoDismissMs);
 }
 function dismiss(): void {
   if (typeof window.questbot !== 'undefined') {
@@ -35,7 +39,20 @@ function dismiss(): void {
 ['keydown', 'mousemove', 'mousedown'].forEach((ev) =>
   document.addEventListener(ev, resetDismissTimer),
 );
-resetDismissTimer();
+
+// Exported so settings.ts can apply a change live, in the same session,
+// without a page reload — same cross-module call pattern already used
+// elsewhere (e.g. library.ts calling into map/render.ts).
+export function setAutoDismissSeconds(seconds: number): void {
+  autoDismissMs = seconds === 0 ? null : seconds * 1000;
+  resetDismissTimer();
+}
+
+if (typeof window.questbot !== 'undefined') {
+  void window.questbot.getSettings().then((s) => setAutoDismissSeconds(s.autoDismissSeconds));
+} else {
+  resetDismissTimer(); // no preload bridge (tests/plain-browser preview) — fall back to the 30s default
+}
 
 function renderSource(source: SourceCard, locations?: string[]): void {
   const card = document.createElement('div');

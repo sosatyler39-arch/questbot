@@ -1,6 +1,7 @@
 import { acceleratorFromEvent, isDuplicateHotkey } from './settings-logic.js';
 import { fetchAccount } from './api.js';
 import { showConsentCard } from './onboarding.js';
+import { setAutoDismissSeconds } from './popup.js';
 
 type HotkeyAction = 'popup' | 'continuousMemory';
 
@@ -15,13 +16,16 @@ const hotkeyError = document.getElementById('hotkey-error')!;
 const continuousMemoryToggle = document.getElementById('continuous-memory-toggle') as HTMLButtonElement;
 const bufferMinutesInput = document.getElementById('buffer-minutes') as HTMLInputElement;
 const bufferMinutesValue = document.getElementById('buffer-minutes-value')!;
+const autoDismissSelect = document.getElementById('auto-dismiss-select') as HTMLSelectElement;
 const appVersionEl = document.getElementById('app-version')!;
 const accountStatus = document.getElementById('account-status')!;
 const accountSignIn = document.getElementById('account-sign-in') as HTMLButtonElement;
 const accountSignOut = document.getElementById('account-sign-out') as HTMLButtonElement;
 const accountUpgrade = document.getElementById('account-upgrade') as HTMLButtonElement;
 
-let currentSettings: { popupHotkey: string; continuousMemoryHotkey: string; continuousMemoryBufferMinutes: number } | undefined;
+let currentSettings:
+  | { popupHotkey: string; continuousMemoryHotkey: string; continuousMemoryBufferMinutes: number; autoDismissSeconds: number }
+  | undefined;
 let recordingAction: HotkeyAction | null = null;
 
 function updateContinuousMemoryToggleLabel(running: boolean): void {
@@ -61,6 +65,9 @@ async function openSettings(): Promise<void> {
   continuousMemoryHotkeyDisplay.textContent = currentSettings.continuousMemoryHotkey;
   bufferMinutesInput.value = String(currentSettings.continuousMemoryBufferMinutes);
   bufferMinutesValue.textContent = String(currentSettings.continuousMemoryBufferMinutes);
+  autoDismissSelect.value = String(currentSettings.autoDismissSeconds);
+  const neverOption = autoDismissSelect.querySelector<HTMLOptionElement>('option[value="0"]')!;
+  neverOption.textContent = `Never (close with ${currentSettings.popupHotkey})`;
   hotkeyError.hidden = true;
   updateContinuousMemoryToggleLabel(await window.questbot.getContinuousMemoryState());
   void refreshAccountStatus();
@@ -94,6 +101,13 @@ bufferMinutesInput.addEventListener('change', async () => {
   bufferMinutesValue.textContent = String(minutes);
   const updated = await window.questbot.setBufferMinutes(minutes);
   if (currentSettings) currentSettings.continuousMemoryBufferMinutes = updated.continuousMemoryBufferMinutes;
+});
+
+autoDismissSelect.addEventListener('change', async () => {
+  const seconds = Number(autoDismissSelect.value);
+  const updated = await window.questbot.setAutoDismissSeconds(seconds);
+  if (currentSettings) currentSettings.autoDismissSeconds = updated.autoDismissSeconds;
+  setAutoDismissSeconds(updated.autoDismissSeconds); // applies live, same session
 });
 
 function startRecording(action: HotkeyAction, button: HTMLButtonElement): void {

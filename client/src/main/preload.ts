@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld('questbot', {
   setHotkey: (action: HotkeyAction, accelerator: string): Promise<{ ok: boolean; reason?: string }> =>
     ipcRenderer.invoke('set-hotkey', action, accelerator),
   setBufferMinutes: (minutes: number): Promise<QuestbotSettings> => ipcRenderer.invoke('set-buffer-minutes', minutes),
+  setAutoDismissSeconds: (seconds: number): Promise<QuestbotSettings> => ipcRenderer.invoke('set-auto-dismiss-seconds', seconds),
   toggleContinuousMemory: (): Promise<boolean> => ipcRenderer.invoke('toggle-continuous-memory'),
   getContinuousMemoryState: (): Promise<boolean> => ipcRenderer.invoke('get-continuous-memory-state'),
   grantContinuousMemoryConsent: (): Promise<QuestbotSettings> => ipcRenderer.invoke('grant-continuous-memory-consent'),

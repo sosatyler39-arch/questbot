@@ -1,6 +1,6 @@
 import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './map/regions.js';
 import { MAP_LOCATIONS, type MapLocation } from './map/locations.js';
-import { catmullRomPath, minZoomScale } from './map/geometry.js';
+import { catmullRomPath, minZoomScale, clampedLabelFontSize } from './map/geometry.js';
 import { ROLE_FOR_CATEGORY } from './map/roles.js';
 import { toggleStop, removeStopAt, serializeRoute, deserializeRoute } from './speedrun-logic.js';
 import { makeChecklist } from './checklist-logic.js';
@@ -18,6 +18,21 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 const SURFACE_VIEWBOX = { width: 1200, height: 1050 };
 const UNDERGROUND_VIEWBOX = { width: 1200, height: 800 };
 const ROUTE_KEY = 'questbot_route';
+
+// Same clamp values as the Map tab (render.ts) — pins should feel identical
+// when zooming/hovering across both tabs.
+const PIN_LABEL_BASE_PX = 9;
+const PIN_LABEL_MIN_SCREEN_PX = 6;
+const PIN_LABEL_MAX_SCREEN_PX = 20;
+const PIN_LABEL_HOVER_FACTOR = 1.35;
+
+function pinLabelFontSize(scaleVal: number): number {
+  return clampedLabelFontSize(scaleVal, PIN_LABEL_BASE_PX, PIN_LABEL_MIN_SCREEN_PX, PIN_LABEL_MAX_SCREEN_PX);
+}
+
+function pinLabelHoverFontSize(scaleVal: number): number {
+  return clampedLabelFontSize(scaleVal, PIN_LABEL_BASE_PX, PIN_LABEL_MIN_SCREEN_PX, PIN_LABEL_MAX_SCREEN_PX, PIN_LABEL_HOVER_FACTOR);
+}
 
 type Layer = 'surface' | 'underground';
 
@@ -108,6 +123,13 @@ function buildSvg(): SVGSVGElement {
     svg.appendChild(line);
   }
 
+  // Painted last (see below) so a hovered pin's enlarged clone always draws
+  // above its neighbors — same technique as the Map tab (render.ts), for
+  // the same reason: reparenting the real pin on hover instead of cloning
+  // caused a "stuck enlarged" bug there.
+  const frontLayer = document.createElementNS(SVG_NS, 'g');
+  frontLayer.style.pointerEvents = 'none';
+
   for (const loc of MAP_LOCATIONS.filter((l) => l.layer === layer && filterAllows(l))) {
     const pos = absolutePosition(loc);
     if (!pos) continue;
@@ -120,6 +142,7 @@ function buildSvg(): SVGSVGElement {
     dot.setAttribute('cx', String(pos.x));
     dot.setAttribute('cy', String(pos.y));
     dot.setAttribute('r', orderIndex !== -1 ? '7' : '4');
+    dot.setAttribute('class', 'pin');
     const title = document.createElementNS(SVG_NS, 'title');
     title.textContent = loc.name;
     dot.append(title);
@@ -127,11 +150,13 @@ function buildSvg(): SVGSVGElement {
 
     // Visible label, not just the hover-delay native tooltip above — hard
     // to tell stops apart by an unlabeled dot alone (found via user testing).
+    // Sized live from the current zoom scale, same clamp as the Map tab, so
+    // it shrinks/grows on zoom instead of staying a fixed size.
     const label = document.createElementNS(SVG_NS, 'text');
     label.setAttribute('x', String(pos.x + 6));
     label.setAttribute('y', String(pos.y + 3));
     label.setAttribute('class', 'pin-label');
-    label.style.fontSize = '9px';
+    label.style.fontSize = `${pinLabelFontSize(scale)}px`;
     label.textContent = loc.name;
     group.append(label);
 
@@ -149,14 +174,41 @@ function buildSvg(): SVGSVGElement {
       e.stopPropagation();
       setRoute(toggleStop(route, loc.name));
     });
+
+    let hoverClone: SVGGElement | null = null;
+    group.addEventListener('mouseenter', () => {
+      hoverClone = group.cloneNode(true) as SVGGElement;
+      hoverClone.classList.add('pin-hover');
+      hoverClone.style.pointerEvents = 'none';
+      const cloneLabel = hoverClone.querySelector<SVGTextElement>('.pin-label');
+      if (cloneLabel) cloneLabel.style.fontSize = `${pinLabelHoverFontSize(scale)}px`;
+      frontLayer.appendChild(hoverClone);
+    });
+    group.addEventListener('mouseleave', () => {
+      hoverClone?.remove();
+      hoverClone = null;
+    });
+
     svg.appendChild(group);
   }
 
+  svg.appendChild(frontLayer); // last child: hover clones paint above every pin
   return svg;
+}
+
+// Re-applies the current scale's clamped label size to every already-built
+// pin, so text grows/shrinks continuously while zooming instead of only on
+// the next full re-render (layer toggle) — same as the Map tab.
+function updateLabelSizes(): void {
+  const px = pinLabelFontSize(scale);
+  wrap.querySelectorAll<SVGTextElement>('.pin-label').forEach((el) => {
+    el.style.fontSize = `${px}px`;
+  });
 }
 
 function applyTransform(): void {
   wrap.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+  updateLabelSizes();
 }
 
 function renderLayer(): void {

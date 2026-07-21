@@ -6,6 +6,7 @@ interface QuestbotSettings {
   popupHotkey: string;
   continuousMemoryHotkey: string;
   continuousMemoryBufferMinutes: number;
+  autoDismissSeconds: number;
   sessionToken?: string;
   continuousMemoryConsent: boolean;
   onboardingSeen: boolean;
@@ -26,6 +27,7 @@ interface Window {
     getAppVersion(): Promise<string>;
     setHotkey(action: HotkeyAction, accelerator: string): Promise<HotkeyResult>;
     setBufferMinutes(minutes: number): Promise<QuestbotSettings>;
+    setAutoDismissSeconds(seconds: number): Promise<QuestbotSettings>;
     toggleContinuousMemory(): Promise<boolean>;
     getContinuousMemoryState(): Promise<boolean>;
     grantContinuousMemoryConsent(): Promise<QuestbotSettings>;

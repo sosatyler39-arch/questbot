@@ -10,6 +10,10 @@ export interface QuestbotSettings {
   popupHotkey: string;
   continuousMemoryHotkey: string;
   continuousMemoryBufferMinutes: number;
+  // How long the popup stays open after the last input before auto-dismiss
+  // (§3.1). 0 is the "never" sentinel — the popup then only closes via the
+  // popup hotkey or dismiss(), never on a timer.
+  autoDismissSeconds: number;
   sessionToken?: string;
   // §B5: continuous memory is not enable-able until the player has seen
   // and acknowledged the buffering explanation — the brief's "no silent
@@ -25,6 +29,7 @@ export const DEFAULT_SETTINGS: QuestbotSettings = {
   popupHotkey: 'Control+Q',
   continuousMemoryHotkey: 'Control+Shift+Q',
   continuousMemoryBufferMinutes: 10,
+  autoDismissSeconds: 30,
   continuousMemoryConsent: false,
   onboardingSeen: false,
 };
@@ -34,6 +39,15 @@ const MAX_BUFFER_MINUTES = 10;
 
 function clampBufferMinutes(minutes: number): number {
   return Math.min(MAX_BUFFER_MINUTES, Math.max(MIN_BUFFER_MINUTES, minutes));
+}
+
+// Discrete choices only (a select, not a range) — 0 means "never".
+export const AUTO_DISMISS_SECONDS_OPTIONS = [15, 30, 60, 300, 0] as const;
+
+function normalizeAutoDismissSeconds(seconds: unknown): number {
+  return typeof seconds === 'number' && (AUTO_DISMISS_SECONDS_OPTIONS as readonly number[]).includes(seconds)
+    ? seconds
+    : DEFAULT_SETTINGS.autoDismissSeconds;
 }
 
 // Merges parsed JSON with defaults field-by-field so a partially-corrupt or
@@ -49,6 +63,7 @@ function normalize(raw: unknown): QuestbotSettings {
       typeof obj.continuousMemoryBufferMinutes === 'number'
         ? clampBufferMinutes(obj.continuousMemoryBufferMinutes)
         : DEFAULT_SETTINGS.continuousMemoryBufferMinutes,
+    autoDismissSeconds: normalizeAutoDismissSeconds(obj.autoDismissSeconds),
     sessionToken: typeof obj.sessionToken === 'string' ? obj.sessionToken : undefined,
     continuousMemoryConsent: obj.continuousMemoryConsent === true,
     onboardingSeen: obj.onboardingSeen === true,

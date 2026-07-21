@@ -9,6 +9,29 @@ export function clamp(v: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, v));
 }
 
+// Label font size clamped in *screen* pixels as the view zooms — like Google
+// Maps, labels grow/shrink with zoom but never wash out illegibly small nor
+// balloon oversized. Returns a size in SVG user-space units: dividing the
+// clamped screen-pixel target by `scaleVal` cancels out the wrap's CSS
+// transform scale, so the rendered on-screen size is exactly the clamped
+// target. `hoverFactor` (> 1) scales the result further for a hover state,
+// itself reclamped to the same min/max range scaled by that same factor, so
+// hovering near either end of the zoom range doesn't blow past it.
+// Shared by the Map tab and the Speedrun tab, which duplicate the same pin
+// rendering (both need identical zoom-responsive labels).
+export function clampedLabelFontSize(
+  scaleVal: number,
+  basePx: number,
+  minScreenPx: number,
+  maxScreenPx: number,
+  hoverFactor = 1,
+): number {
+  const normalScreenPx = clamp(basePx * scaleVal, minScreenPx, maxScreenPx);
+  if (hoverFactor === 1) return normalScreenPx / scaleVal;
+  const hoverScreenPx = clamp(normalScreenPx * hoverFactor, minScreenPx * hoverFactor, maxScreenPx * hoverFactor);
+  return hoverScreenPx / scaleVal;
+}
+
 // Lowest zoom scale that still keeps the whole map visible, plus a small
 // margin (the `margin` factor). Falls back to `fallback` only when the
 // viewport isn't measurable yet (0/NaN clientWidth or clientHeight) —
