@@ -43,3 +43,15 @@ CREATE TABLE usage (
   kind        TEXT NOT NULL, -- 'ask' | 'live_search' | ...
   created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- Where each item is actually found ("where do I find X"), kept separate
+-- from the chunks/pgvector pipeline entirely — no embedding involved.
+-- location_names ties (by exact string match, not a foreign key) to
+-- MapLocation.name values in client/src/renderer/map/locations.ts; empty
+-- when an item's real source is too diffuse for a single map pin (roaming
+-- merchants, common enemy drops).
+CREATE TABLE item_locations (
+  item_name      TEXT PRIMARY KEY,
+  location_names TEXT[] NOT NULL DEFAULT '{}',
+  summary        TEXT NOT NULL
+);

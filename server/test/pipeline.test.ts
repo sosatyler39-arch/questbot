@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { chunkArticle, chunkTranscript } from '../src/pipeline/chunking.js';
 import { normalize } from '../src/pipeline/embeddings.js';
+import { extractItemName } from '../src/pipeline/location-store.js';
 
 test('chunkArticle: one chunk per non-empty section, titled by heading', () => {
   const chunks = chunkArticle('Margit', 'https://example.com/margit', [
@@ -42,4 +43,12 @@ test('normalize: rescales a truncated embedding to unit length', () => {
 
 test('normalize: zero vector passes through unchanged (no divide-by-zero)', () => {
   assert.deepEqual(normalize([0, 0]), [0, 0]);
+});
+
+test('extractItemName: splits on the chunkArticle title separator', () => {
+  assert.equal(extractItemName('Magic, skill, and FP talismans — Radagon Icon'), 'Radagon Icon');
+});
+
+test('extractItemName: returns null when there is no separator (e.g. video chunk titles)', () => {
+  assert.equal(extractItemName('Some Video Title With No Heading'), null);
 });
