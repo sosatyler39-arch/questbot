@@ -145,9 +145,13 @@ decided here.
   mechanism for free once built.
 - **New map cartography** — reuses the existing approximate `fx`/`fy`
   positions in `MAP_LOCATIONS` as-is; no new precision work.
-- **Exhaustive drop-source enumeration** — items with many/random sources
-  (e.g. "dropped by various basic enemies") get an honest `summary` and an
-  empty `location_names`, rather than a pin that overstates precision.
+- **Exhaustive drop-source enumeration** — every item still gets a fully
+  researched, non-empty `summary` describing how it's actually obtained; no
+  item is skipped or left blank. What's scoped out is *pinning a single map
+  point* for items whose real source is diffuse (e.g. "dropped by various
+  basic enemies," "sold by a merchant who relocates"). Those get an honest
+  summary and an empty `location_names`, rather than a pin that overstates
+  precision the item doesn't actually have.
 - **Reverse lookup on the Map tab** ("click a pin, see what's found here")
   — a reasonable future idea, but out of scope; the entry point for this
   feature is asking the bot, not browsing the map.
