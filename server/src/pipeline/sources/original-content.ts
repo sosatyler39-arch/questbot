@@ -18,6 +18,9 @@ import { TALISMAN_PAGES } from './data/talismans.js';
 import { INCANTATION_PAGES } from './data/incantations.js';
 import { SORCERY_PAGES } from './data/sorceries.js';
 import { CONSUMABLE_PAGES } from './data/consumables.js';
+import { CRYSTAL_TEAR_PAGES } from './data/crystal-tears.js';
+import { WHETSTONE_PAGES } from './data/whetstones.js';
+import { GREAT_RUNE_PAGES } from './data/great-runes.js';
 
 // Original guide content, written from general knowledge of the game — not
 // copied or adapted from Fextralife, Fandom, wiki.gg, or any other existing
@@ -505,6 +508,9 @@ export const ALL_PAGES: ArticlePage[] = [
   ...INCANTATION_PAGES,
   ...SORCERY_PAGES,
   ...CONSUMABLE_PAGES,
+  ...CRYSTAL_TEAR_PAGES,
+  ...WHETSTONE_PAGES,
+  ...GREAT_RUNE_PAGES,
 ];
 
 export const originalContentSource: TextSource = {
