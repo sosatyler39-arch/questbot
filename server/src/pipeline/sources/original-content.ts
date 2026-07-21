@@ -17,6 +17,7 @@ import { STATUS_EFFECT_PAGES } from './data/mechanics-status-effects.js';
 import { TALISMAN_PAGES } from './data/talismans.js';
 import { INCANTATION_PAGES } from './data/incantations.js';
 import { SORCERY_PAGES } from './data/sorceries.js';
+import { CONSUMABLE_PAGES } from './data/consumables.js';
 
 // Original guide content, written from general knowledge of the game — not
 // copied or adapted from Fextralife, Fandom, wiki.gg, or any other existing
@@ -503,6 +504,7 @@ export const ALL_PAGES: ArticlePage[] = [
   ...TALISMAN_PAGES,
   ...INCANTATION_PAGES,
   ...SORCERY_PAGES,
+  ...CONSUMABLE_PAGES,
 ];
 
 export const originalContentSource: TextSource = {
