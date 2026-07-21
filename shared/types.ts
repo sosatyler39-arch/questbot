@@ -21,6 +21,7 @@ export interface AskResponse {
   confidence: number; // 0..1
   source?: SourceCard;
   lowConfidence?: boolean; // free tier, no confident match: show upgrade prompt, no guess
+  locations?: string[]; // map pin name(s), when the matched item resolves to a known location
 }
 
 export interface FeedbackRequest {

@@ -5,6 +5,7 @@ import { extractGameContext } from '../vision.js';
 import { pgvectorRetriever } from '../retrieval.js';
 import { synthesize, liveSearchFallback } from '../synthesis.js';
 import { getUser, CONFIDENCE_THRESHOLD } from '../tiers.js';
+import { extractItemName, getItemLocation } from '../pipeline/location-store.js';
 
 export default async function askRoutes(app: FastifyInstance) {
   app.post<{ Body: AskRequest; Reply: AskResponse }>('/ask', async (req, reply) => {
@@ -48,11 +49,23 @@ export default async function askRoutes(app: FastifyInstance) {
       };
     }
 
+    let locationSummary: string | undefined;
+    let locations: string[] | undefined;
+    if (top.source.kind === 'article') {
+      const itemName = extractItemName(top.source.title);
+      const loc = itemName ? await getItemLocation(itemName) : null;
+      if (loc) {
+        locationSummary = loc.summary;
+        if (loc.locationNames.length > 0) locations = loc.locationNames;
+      }
+    }
+
     return {
       answerId,
-      answer: await synthesize(question, ctx, top),
+      answer: await synthesize(question, ctx, top, locationSummary),
       confidence: top.score,
       source: top.source,
+      locations,
     };
   });
 }

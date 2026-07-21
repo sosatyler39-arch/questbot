@@ -7,12 +7,14 @@ const SYSTEM_PROMPT =
   'question using ONLY the provided source content — do not add facts beyond it. ' +
   'Keep the answer to 2-3 short sentences, written for someone glancing at an overlay ' +
   'mid-game. If the source is a video transcript segment, phrase the answer as a ' +
-  'summary of what the video shows at that point.';
+  'summary of what the video shows at that point. If a "Where to find it" note is ' +
+  'included, work it naturally into the answer.';
 
 export async function synthesize(
   question: string,
   ctx: GameContext | null,
   match: Match,
+  locationSummary?: string,
 ): Promise<string> {
   const response = await genai.models.generateContent({
     model: MODEL,
@@ -20,7 +22,8 @@ export async function synthesize(
     contents:
       `Question: ${question}\n\n` +
       (ctx ? `Current game state: ${ctx.summary}\n\n` : '') +
-      `Source (${match.source.title}):\n${match.content}`,
+      `Source (${match.source.title}):\n${match.content}` +
+      (locationSummary ? `\n\nWhere to find it: ${locationSummary}` : ''),
   });
 
   return response.text ?? '';

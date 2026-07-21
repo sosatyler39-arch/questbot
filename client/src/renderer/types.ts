@@ -13,6 +13,7 @@ export interface AskResponse {
   confidence: number;
   source?: SourceCard;
   lowConfidence?: boolean;
+  locations?: string[]; // map pin name(s), when the matched item resolves to a known location
 }
 
 export interface AskRequest {
