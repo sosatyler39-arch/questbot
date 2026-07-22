@@ -23,6 +23,7 @@ import { WHETSTONE_PAGES } from './data/whetstones.js';
 import { GREAT_RUNE_PAGES } from './data/great-runes.js';
 import { ASH_OF_WAR_PAGES } from './data/ashes-of-war.js';
 import { WEAPON_PAGES } from './data/weapons.js';
+import { ARMOR_PAGES } from './data/armor.js';
 
 // Original guide content, written from general knowledge of the game — not
 // copied or adapted from Fextralife, Fandom, wiki.gg, or any other existing
@@ -515,6 +516,7 @@ export const ALL_PAGES: ArticlePage[] = [
   ...GREAT_RUNE_PAGES,
   ...ASH_OF_WAR_PAGES,
   ...WEAPON_PAGES,
+  ...ARMOR_PAGES,
 ];
 
 export const originalContentSource: TextSource = {
