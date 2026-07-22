@@ -85,7 +85,7 @@ export const WEAPON_LOCATIONS: ItemLocationEntry[] = [
   {
     itemName: "Blade of Calling",
     locationNames: [],
-    summary: "Shadow of the Erdtree content — found in the Land of Shadow, not covered by this map yet.",
+    summary: "A base-game dagger found in the underground Ainsel River region.",
   },
   {
     itemName: "Main-gauche",
