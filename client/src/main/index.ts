@@ -1,4 +1,4 @@
-import { app, BrowserWindow, globalShortcut, ipcMain, desktopCapturer, shell } from 'electron';
+import { app, BrowserWindow, globalShortcut, ipcMain, desktopCapturer, shell, Tray, Menu, nativeImage } from 'electron';
 import path from 'node:path';
 import {
   setScreenshotCapturer,
@@ -26,6 +26,13 @@ const BACKEND_URL = 'http://localhost:8787';
 let popup: BrowserWindow | undefined;
 let currentPopupHotkey: string = DEFAULT_SETTINGS.popupHotkey;
 let currentContinuousMemoryHotkey: string = DEFAULT_SETTINGS.continuousMemoryHotkey;
+let trayIcon: Tray | undefined;
+
+// "Questbot — press Control+Q to summon" — reflects whatever the current
+// popup hotkey actually is, kept in sync by rebindHotkey() below.
+function updateTrayTooltip(): void {
+  trayIcon?.setToolTip(`Questbot — press ${currentPopupHotkey} to summon`);
+}
 
 function createPopup(): BrowserWindow {
   const win = new BrowserWindow({
@@ -115,8 +122,12 @@ function rebindHotkey(action: HotkeyAction, accelerator: string): { ok: boolean;
     return { ok: false, reason: 'conflict' };
   }
 
-  if (isPopup) currentPopupHotkey = accelerator;
-  else currentContinuousMemoryHotkey = accelerator;
+  if (isPopup) {
+    currentPopupHotkey = accelerator;
+    updateTrayTooltip();
+  } else {
+    currentContinuousMemoryHotkey = accelerator;
+  }
   updateSettings(isPopup ? { popupHotkey: accelerator } : { continuousMemoryHotkey: accelerator });
   return { ok: true };
 }
@@ -144,6 +155,20 @@ app.whenReady().then(() => {
   // Opt-in continuous memory toggle (§5). Paywall enforcement deferred (no
   // billing decision yet) — open to everyone during dev/playtest.
   globalShortcut.register(currentContinuousMemoryHotkey, guardedToggleContinuousMemory);
+
+  // System tray icon: the popup itself is deliberately skipTaskbar (a
+  // fleeting overlay, not a persistent taskbar app — see createPopup()),
+  // which means there was previously no way at all to tell Questbot is
+  // running when the popup is hidden, or to quit it short of Task Manager.
+  trayIcon = new Tray(nativeImage.createFromPath(path.join(__dirname, '../assets/tray-icon.png')));
+  updateTrayTooltip();
+  trayIcon.on('click', togglePopup);
+  trayIcon.setContextMenu(
+    Menu.buildFromTemplate([
+      { label: 'Show/Hide Questbot', click: togglePopup },
+      { label: 'Quit Questbot', click: () => app.quit() },
+    ]),
+  );
 
   ipcMain.handle('dismiss-popup', () => {
     popup?.hide();
