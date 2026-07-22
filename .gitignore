@@ -4,3 +4,4 @@ shared/*.js
 .env
 .claude/settings.local.json
 .worktrees/
+server/db/backups/
