@@ -832,8 +832,8 @@ export const ARMOR_LOCATIONS: ItemLocationEntry[] = [
   },
   {
     itemName: "Dane's Hat",
-    locationNames: [],
-    summary: "Shadow of the Erdtree content — associated with the NPC Dane in the Land of Shadow, not covered by this map yet.",
+    locationNames: ["Warmaster's Shack"],
+    summary: "Associated with Dryleaf Dane, the swordsman NPC found at the Warmaster's Shack in Limgrave.",
   },
   {
     itemName: "Gaius's Helm",
