@@ -48,11 +48,11 @@ pluralization directly tied to that number) — no other wording was changed.
 | Scouring Black Flame | Stamina | 36 → 29 |
 | Flame, Fall Upon Them | Stamina | 40 → 10 |
 | Giantsflame Take Thee | Stamina | 43 → 34 |
-| Inescapable Frenzy | Stamina | 22 → 32 |
+| Inescapable Frenzy | FP | 22 → 32 |
 | Pest Threads | Stamina | 35 → 29 |
 | Scarlet Aeonia | Stamina | 50 → 66 |
 
-Every corrected incantation was a Stamina-cost mismatch.
+All corrected incantations were Stamina-cost mismatches except Inescapable Frenzy, which was an FP-cost mismatch.
 
 ### Unmatched (29 — no data to check against; left untouched)
 
