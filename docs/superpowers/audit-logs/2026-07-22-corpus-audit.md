@@ -85,13 +85,11 @@ consistent with the brief's expectation, no DLC-detection judgment call was need
 | Thops's Barrier | FP/sec while channeled | 7 → 0 |
 | Shattering Crystal | Stamina | 30 → 35 |
 
-**Concern on Thops's Barrier:** the source data says this spell has no per-second channel cost
-(`fpCostExtra: 0`), but the authored text's framing — "Costs 7 FP to cast **plus 0 FP/sec
-while channeled**" — now reads oddly since the phrase implies a channel cost that no longer
-exists. Fixing only the number (per this task's rule against rewriting surrounding prose)
-leaves that phrasing slightly stale; a follow-up human pass to drop the "plus 0 FP/sec while
-channeled" clause entirely would be a wording change, not a number correction, so it was left
-for manual review rather than auto-applied.
+**Resolved — Thops's Barrier wording cleanup:** the source data says this spell has no
+per-second channel cost (`fpCostExtra: 0`), so the number-only correction left "Costs 7 FP to
+cast plus 0 FP/sec while channeled" reading oddly (implying a channel mechanic that no longer
+applies). A follow-up commit (`ef64788`) dropped the now-meaningless clause, leaving "Costs 7
+FP" — the base 7 FP cost itself was untouched, only the stale phrasing was removed.
 
 ### Unmatched (15 — no data to check against; left untouched)
 

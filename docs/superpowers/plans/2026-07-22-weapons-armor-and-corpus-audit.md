@@ -1,5 +1,15 @@
 # Weapons/Armor Corpus + Full Item-Data Audit Implementation Plan
 
+> **⚠️ POST-EXECUTION NOTE (see Addendum at end of file):** This plan's ERDB-based approach did
+> not work as written — ERDB cannot parse the current game version's `regulation.bin` at all.
+> The actual implementation used different, substituted data sources for Weapons/Armor and for
+> the audit's Incantations/Sorceries portion, and the audit's other 5 categories were deferred
+> entirely (no working source found). The checkboxes below reflect the ORIGINAL intended
+> approach and were never updated to match — read the Addendum for what actually happened
+> before treating this file as ground truth. `docs/superpowers/audit-logs/2026-07-22-corpus-audit.md`
+> and the README's "Weapons and Armor" / "Corpus audit against ERDB" sections are the accurate,
+> up-to-date record.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Author the full base-game Weapons and Armor corpora (stats + locations), and audit the 8 existing item-stat categories against the same ground-truth source, fixing wrong numbers and adding missing fields without touching anything already correct.
@@ -945,3 +955,72 @@ corrected, how many unmatched, link to the audit log).
 git add README.md
 git commit -m "Document Weapons/Armor corpus and corpus audit, verified live"
 ```
+
+---
+
+## Addendum: what actually happened (post-execution)
+
+Added after all 8 tasks completed, subagent-driven, in the same session. This plan's
+ERDB-based approach did not survive contact with reality. Recording the real story here so
+this file stays a useful historical record instead of a misleading one.
+
+**Task 2 (extraction) never worked as written.** Dispatching a subagent to run UXM
+(executable-patching) against the real game install was blocked outright by the platform's own
+safety classifier, independent of user consent already given in chat. The user then ran
+UXM/erdb manually themselves, following an exact command sequence. `erdb source`, run against a
+real, correctly UXM-unpacked, current game install, failed with `System.FormatException:
+Unknown DCX format` while decrypting `regulation.bin` — erdb's last release (July 2023) cannot
+parse the current, DLC-patched game version's regulation file at all. This is a hard, verified
+tool incompatibility, not a skipped step or a syntax error (a real command-syntax mistake —
+`ashes_of_war` vs the CLI's actual `ashes-of-war` — was found and fixed along the way, but
+fixing it didn't matter, since `source` itself never got past decryption).
+
+**Weapons and Armor (Tasks 3–4) were rescued by different data sources**, found via the same
+kind of research this plan's Data source section originally did for ERDB itself:
+- Weapons: [`ThomasJClark/elden-ring-weapon-calculator`](https://github.com/ThomasJClark/elden-ring-weapon-calculator)
+  (MIT), `public/regulation-vanilla-v1.14.js` — extracted from the game's own files by that
+  project, not scraped, not model recall. Includes Shadow of the Erdtree content (`dlc: true`
+  flag per weapon). Real schema lacks `weight`/innate-skill fields the original plan's
+  ERDB-based `ErdbArmament` interface assumed — a genuine, disclosed limitation of the
+  replacement source, documented in `weapons.ts`'s header and the README.
+- Armor: [`jerpdoesgames/EldenRingArmorOptimizer`](https://github.com/jerpdoesgames/EldenRingArmorOptimizer)
+  (GPL-3.0), `armor/data/armor.js` — data-mined by a third party credited as
+  "TarnishedSpreadsheet." Also includes DLC content, but with no explicit DLC flag at all
+  (unlike the weapon source) — DLC armor is included but untagged in the corpus text,
+  documented as an intentional, disclosed difference from how weapons handle it.
+
+**The user explicitly approved including Shadow of the Erdtree content** for Weapons/Armor once
+it turned out to be available in the replacement sources — this plan's original "DLC deferred"
+Global Constraint no longer applies to those two categories specifically (it still applies to
+the audit's untouched 5 categories, see below).
+
+**The audit (Task 7) shrank from 7 categories to 2.** No working replacement source was found
+for Talismans, Consumables/Crystal Tears/Whetstones, or Ashes of War — those 5 categories'
+audit is deferred, not done, not silently dropped (explicit user decision, documented in
+`docs/superpowers/audit-logs/2026-07-22-corpus-audit.md` and the README). Incantations and
+Sorceries WERE audited, using [`jerpdoesgames/EldenRingSpellComparer`](https://github.com/jerpdoesgames/EldenRingSpellComparer)
+(GPL-3.0, base-game only) in place of ERDB's `spells` table — 213 entries checked, 26 real
+numeric corrections applied, full results in the audit log.
+
+**Real bugs found across per-task review and the final whole-branch review**, all fixed:
+- Task 5: "Blade of Calling" wrongly tagged DLC in its location entry (weapons.ts itself
+  doesn't tag it DLC) — fixed.
+- Task 6: "Dane's Hat" wrongly tagged DLC (base-game Dryleaf Dane's set; its other 3 pieces
+  were correctly classified) — fixed.
+- Task 7: audit log mislabeled one correction's field (said Stamina, diff showed FP) — fixed.
+- **Whole-branch review**: "Beast Claw" — a real, coincidental name collision between a
+  base-game incantation and an unrelated DLC weapon — caused the weapon's (wrong) DLC claim to
+  silently overwrite the incantation's correct location in the `item_locations` table (primary
+  key is `item_name` alone, no category disambiguation). This is the same class of collision
+  already documented as a known limitation elsewhere in the README (6 prior cases, all benign);
+  this one wasn't benign — restored the correct row, documented as collision #7. A composite
+  key (name + source category) would fix this class of bug properly; not done here, flagged as
+  a follow-up.
+
+**Net effect on scope**, compared to what this plan originally promised:
+- ✅ Delivered: full Weapons + Armor corpora and location data, including DLC (better than
+  planned — DLC was meant to be deferred).
+- ⚠️ Partially delivered: the audit — 2 of 7 categories, not 7 of 7.
+- ❌ Not delivered, explicitly deferred: audit of Talismans/Consumables/Crystal
+  Tears/Whetstones/Ashes of War.
+- Known gap carried forward: Weapons corpus lacks weight/innate-skill fields.

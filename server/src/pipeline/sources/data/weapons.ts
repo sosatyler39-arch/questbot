@@ -8,6 +8,11 @@ import type { ArticlePage } from '../types.js';
 // Standard/uninfused form, or for weapons with a fixed built-in affinity
 // (e.g. Bloodhound's Fang), their only form. DLC weapons are tagged
 // "Shadow of the Erdtree." per the convention in talismans.ts.
+//
+// Known gap: this source doesn't carry weight or innate Ash of War name,
+// unlike armor.ts (which does have weight). Not added here since guessing
+// either would violate the never-scraped/never-from-model-recall policy —
+// flagged as an open follow-up, not silently dropped.
 export const WEAPON_PAGES: ArticlePage[] = [
   {
     "title": "Dagger",
