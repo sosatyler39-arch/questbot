@@ -180,7 +180,7 @@ export const SORCERY_PAGES: ArticlePage[] = [
       },
       {
         heading: "Thops's Barrier",
-        text: 'Erects a magic forcefield that deflects spells. Costs 7 FP to cast plus 0 FP/sec while channeled, takes 1 memory slot, requires 18 Intelligence, and costs 10 Stamina.',
+        text: 'Erects a magic forcefield that deflects spells. Costs 7 FP, takes 1 memory slot, requires 18 Intelligence, and costs 10 Stamina.',
       },
     ],
   },
