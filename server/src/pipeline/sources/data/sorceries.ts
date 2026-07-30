@@ -96,7 +96,7 @@ export const SORCERY_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Comet',
-        text: 'Fires a great magic comet. Costs 24 FP, takes 1 memory slot, requires 52 Intelligence, and costs 31 Stamina.',
+        text: 'Fires a great magic comet. Costs 24 FP, takes 1 memory slot, requires 52 Intelligence, and costs 35 Stamina.',
       },
       {
         heading: 'Comet Azur',
@@ -112,11 +112,11 @@ export const SORCERY_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Founding Rain of Stars',
-        text: 'Releases a downpour of star rain over a duration. Costs 27 FP, takes 2 memory slots, requires 52 Intelligence, and costs 31 Stamina.',
+        text: 'Releases a downpour of star rain over a duration. Costs 27 FP, takes 2 memory slots, requires 52 Intelligence, and costs 37 Stamina.',
       },
       {
         heading: 'Gavel of Haima',
-        text: 'Attacks using a magic greathammer. Costs 22 FP, takes 1 memory slot, requires 25 Intelligence, and costs 38 Stamina.',
+        text: 'Attacks using a magic greathammer. Costs 22 FP, takes 1 memory slot, requires 25 Intelligence, and costs 46 Stamina.',
       },
       {
         heading: 'Glintstone Arc',
@@ -124,7 +124,7 @@ export const SORCERY_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Glintstone Cometshard',
-        text: 'Fires a magic comet with a trailing tail. Costs 17 FP, takes 1 memory slot, requires 36 Intelligence, and costs 28 Stamina.',
+        text: 'Fires a magic comet with a trailing tail. Costs 17 FP, takes 1 memory slot, requires 36 Intelligence, and costs 30 Stamina.',
       },
       {
         heading: 'Glintstone Pebble',
@@ -140,7 +140,7 @@ export const SORCERY_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Rock Blaster',
-        text: 'Thrusts a staff into the ground to emit a massive shockwave. Costs 22 FP to cast plus 5 FP/sec while channeled, takes 1 memory slot, requires 21 Intelligence, and costs 35 Stamina.',
+        text: 'Thrusts a staff into the ground to emit a massive shockwave. Costs 22 FP to cast plus 4 FP/sec while channeled, takes 1 memory slot, requires 21 Intelligence, and costs 35 Stamina.',
       },
       {
         heading: "Scholar's Armament",
@@ -168,7 +168,7 @@ export const SORCERY_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Stars of Ruin',
-        text: 'Fires twelve dark shooting stars that pursue foes. Costs 32 FP, takes 1 memory slot, requires 43 Intelligence, and costs 29 Stamina.',
+        text: 'Fires twelve dark shooting stars that pursue foes. Costs 32 FP, takes 1 memory slot, requires 43 Intelligence, and costs 33 Stamina.',
       },
       {
         heading: 'Swift Glintstone Shard',
@@ -180,7 +180,7 @@ export const SORCERY_PAGES: ArticlePage[] = [
       },
       {
         heading: "Thops's Barrier",
-        text: 'Erects a magic forcefield that deflects spells. Costs 7 FP to cast plus 7 FP/sec while channeled, takes 1 memory slot, requires 18 Intelligence, and costs 10 Stamina.',
+        text: 'Erects a magic forcefield that deflects spells. Costs 7 FP to cast plus 0 FP/sec while channeled, takes 1 memory slot, requires 18 Intelligence, and costs 10 Stamina.',
       },
     ],
   },
@@ -348,7 +348,7 @@ export const SORCERY_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Shattering Crystal',
-        text: 'Creates a crystal mass that shatters in a forward burst. Costs 21 FP, takes 1 memory slot, requires 38 Intelligence, and costs 30 Stamina.',
+        text: 'Creates a crystal mass that shatters in a forward burst. Costs 21 FP, takes 1 memory slot, requires 38 Intelligence, and costs 35 Stamina.',
       },
     ],
   },

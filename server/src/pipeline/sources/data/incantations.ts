@@ -31,7 +31,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Dragonclaw',
-        text: 'Channels a dragon to rend foes with dragon claws. Costs 24 FP, takes 1 memory slot, requires 17 Faith and 13 Arcane, and costs 50 Stamina. A Damage incantation.',
+        text: 'Channels a dragon to rend foes with dragon claws. Costs 24 FP, takes 1 memory slot, requires 17 Faith and 13 Arcane, and costs 35 Stamina. A Damage incantation.',
       },
       {
         heading: 'Dragonfire',
@@ -43,7 +43,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Dragonmaw',
-        text: 'Channels a dragon to bite foes directly in front of the caster. Costs 34 FP, takes 1 memory slot, requires 24 Faith and 16 Arcane, and costs 72 Stamina. A Damage incantation.',
+        text: 'Channels a dragon to bite foes directly in front of the caster. Costs 34 FP, takes 1 memory slot, requires 24 Faith and 16 Arcane, and costs 50 Stamina. A Damage incantation.',
       },
       {
         heading: "Ekzykes's Decay",
@@ -59,7 +59,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: "Greyoll's Roar",
-        text: 'Emits the roar of Elder Dragon Greyoll. Costs 50 FP, takes 2 memory slots, requires 28 Faith and 17 Arcane, and costs 80 Stamina. A Damage incantation.',
+        text: 'Emits the roar of Elder Dragon Greyoll. Costs 50 FP, takes 2 memory slots, requires 28 Faith and 17 Arcane, and costs 72 Stamina. A Damage incantation.',
       },
       {
         heading: 'Magma Breath',
@@ -89,7 +89,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
     sections: [
       {
         heading: "Ancient Dragons' Lightning Spear",
-        text: 'Stabs with a red lightning spear from above. Costs 25 FP, takes 1 memory slot, requires 32 Faith, and costs 41 Stamina. A Damage incantation.',
+        text: 'Stabs with a red lightning spear from above. Costs 25 FP, takes 1 memory slot, requires 32 Faith, and costs 29 Stamina. A Damage incantation.',
       },
       {
         heading: "Ancient Dragons' Lightning Strike",
@@ -117,11 +117,11 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: "Fortissax's Lightning Spear",
-        text: 'Stabs from above with two red lightning spears in tandem. Costs 35 FP, takes 1 memory slot, requires 46 Faith, and costs 52 Stamina. A Damage incantation.',
+        text: 'Stabs from above with two red lightning spears in tandem. Costs 35 FP, takes 1 memory slot, requires 46 Faith, and costs 42 Stamina. A Damage incantation.',
       },
       {
         heading: 'Frozen Lightning Spear',
-        text: 'Stabs with an ice lightning spear from above. Costs 29 FP, takes 1 memory slot, requires 34 Faith, and costs 45 Stamina. A Damage incantation.',
+        text: 'Stabs with an ice lightning spear from above. Costs 29 FP, takes 1 memory slot, requires 34 Faith, and costs 39 Stamina. A Damage incantation.',
       },
       {
         heading: 'Honed Bolt',
@@ -133,7 +133,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: "Lansseax's Glaive",
-        text: 'Sweeps from above with a red lightning glaive. Costs 22 FP, takes 1 memory slot, requires 40 Faith, and costs 55 Stamina. A Damage incantation.',
+        text: 'Sweeps from above with a red lightning glaive. Costs 22 FP, takes 1 memory slot, requires 40 Faith, and costs 45 Stamina. A Damage incantation.',
       },
       {
         heading: 'Lightning Spear',
@@ -141,7 +141,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Lightning Strike',
-        text: 'Summons a lightning bolt that spreads out from its point of impact. Costs 19 FP, takes 1 memory slot, requires 28 Faith, and costs 37 Stamina. A Damage incantation.',
+        text: 'Summons a lightning bolt that spreads out from its point of impact. Costs 19 FP, takes 1 memory slot, requires 28 Faith, and costs 32 Stamina. A Damage incantation.',
       },
       {
         heading: "Vyke's Dragonbolt",
@@ -163,11 +163,11 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Aspects of the Crucible: Horns',
-        text: 'Creates a shoulder horn to gore foes from a low stance. Costs 18 FP, takes 1 memory slot, requires 27 Faith, and costs 49 Stamina. A Damage incantation.',
+        text: 'Creates a shoulder horn to gore foes from a low stance. Costs 18 FP, takes 1 memory slot, requires 27 Faith, and costs 42 Stamina. A Damage incantation.',
       },
       {
         heading: 'Aspects of the Crucible: Tail',
-        text: 'Creates a supple tail to sweep the area in front of the caster. Costs 20 FP, takes 1 memory slot, requires 27 Faith, and costs 42 Stamina. A Damage incantation.',
+        text: 'Creates a supple tail to sweep the area in front of the caster. Costs 20 FP, takes 1 memory slot, requires 27 Faith, and costs 38 Stamina. A Damage incantation.',
       },
       {
         heading: 'Aspects of the Crucible: Thorns',
@@ -179,7 +179,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Black Blade',
-        text: 'A black blade spinning slash that emits a wave of light. Costs 26 FP, takes 2 memory slots, requires 46 Faith, and costs 44 Stamina. A Damage incantation.',
+        text: 'A black blade spinning slash that emits a wave of light. Costs 26 FP, takes 2 memory slots, requires 46 Faith, and costs 51 Stamina. A Damage incantation.',
       },
       {
         heading: 'Blessing of the Erdtree',
@@ -349,11 +349,11 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Noble Presence',
-        text: 'Thrusts out the belly with gusto to unleash a repelling shockwave. Costs 20 FP, takes 1 memory slot, requires 26 Faith, and costs 28 Stamina. A Damage incantation.',
+        text: 'Thrusts out the belly with gusto to unleash a repelling shockwave. Costs 20 FP, takes 1 memory slot, requires 26 Faith, and costs 35 Stamina. A Damage incantation.',
       },
       {
         heading: 'Scouring Black Flame',
-        text: 'Sweeps the area in front of the caster with black flame. Costs 21 FP, takes 1 memory slot, requires 28 Faith, and costs 36 Stamina. A Damage incantation.',
+        text: 'Sweeps the area in front of the caster with black flame. Costs 21 FP, takes 1 memory slot, requires 28 Faith, and costs 29 Stamina. A Damage incantation.',
       },
     ],
   },
@@ -413,7 +413,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Flame, Fall Upon Them',
-        text: 'Hurls several balls of fire at once. Costs 16 FP, takes 1 memory slot, requires 28 Faith, and costs 40 Stamina. A Damage incantation.',
+        text: 'Hurls several balls of fire at once. Costs 16 FP, takes 1 memory slot, requires 28 Faith, and costs 10 Stamina. A Damage incantation.',
       },
       {
         heading: 'Flame, Grant Me Strength',
@@ -425,7 +425,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Giantsflame Take Thee',
-        text: 'Hurls a massive ball of raging fire. Costs 30 FP, takes 2 memory slots, requires 30 Faith, and costs 43 Stamina. A Damage incantation.',
+        text: 'Hurls a massive ball of raging fire. Costs 30 FP, takes 2 memory slots, requires 30 Faith, and costs 34 Stamina. A Damage incantation.',
       },
       {
         heading: 'O, Flame!',
@@ -473,7 +473,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Inescapable Frenzy',
-        text: 'Latches onto foes to spread madness. Costs 22 FP, takes 1 memory slot, requires 21 Faith, and costs 31 Stamina. A Damage incantation.',
+        text: 'Latches onto foes to spread madness. Costs 32 FP, takes 1 memory slot, requires 21 Faith, and costs 31 Stamina. A Damage incantation.',
       },
       {
         heading: "Midra's Flame of Frenzy",
@@ -495,7 +495,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
     sections: [
       {
         heading: 'Pest Threads',
-        text: 'Launches countless sticky threads in front of the caster. Costs 19 FP, takes 1 memory slot, requires 11 Faith, and costs 35 Stamina. A Damage incantation.',
+        text: 'Launches countless sticky threads in front of the caster. Costs 19 FP, takes 1 memory slot, requires 11 Faith, and costs 29 Stamina. A Damage incantation.',
       },
       {
         heading: 'Pest-Thread Spears',
@@ -515,7 +515,7 @@ export const INCANTATION_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Scarlet Aeonia',
-        text: 'Creates a giant flower that explodes with scarlet rot. Costs 48 FP, takes 3 memory slots, requires 35 Faith, and costs 50 Stamina. A Damage incantation.',
+        text: 'Creates a giant flower that explodes with scarlet rot. Costs 48 FP, takes 3 memory slots, requires 35 Faith, and costs 66 Stamina. A Damage incantation.',
       },
     ],
   },
