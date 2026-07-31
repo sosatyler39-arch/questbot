@@ -465,6 +465,38 @@ const editCopy = document.getElementById('map-edit-copy') as HTMLButtonElement;
 
 Delete these four lines entirely.
 
+**Edit 2b** — deleting `editOutput` breaks one more caller `astro check` will catch: `renderEditOutput()`, a shape-editor-only helper that writes adjustment text into that now-removed textarea. It's only ever called from a pin-drag handler already gated behind `if (!editMode) return;`, so it's dead code in the web port. Delete the whole function:
+
+```ts
+function renderEditOutput(): void {
+  if (adjustments.size === 0) {
+    editOutput.value = '';
+    return;
+  }
+  const lines = [...adjustments.entries()].map(
+    ([name, pos]) => `  // '${name}': fx: ${pos.fx.toFixed(3)}, fy: ${pos.fy.toFixed(3)}`,
+  );
+  editOutput.value = lines.join('\n');
+}
+```
+
+And remove its now-dangling call site, a few lines earlier in the same drag handler:
+
+Find:
+```ts
+      pinPositionOverrides[loc.name] = { fx, fy };
+      adjustments.set(loc.name, { fx, fy });
+      renderEditOutput();
+    };
+```
+
+Replace with:
+```ts
+      pinPositionOverrides[loc.name] = { fx, fy };
+      adjustments.set(loc.name, { fx, fy });
+    };
+```
+
 **Edit 3** — the `initEditMode()` function wires up the (now-removed) edit-mode buttons, but also contains a genuinely useful, edit-mode-independent safety net (clearing stray pin-hover clones if focus leaves the window). Split those apart:
 
 Find:
