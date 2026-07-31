@@ -1,0 +1,23 @@
+---
+// The bare /elden-ring URL (what the header's game tab links to) defaults
+// to the Wiki sub-tab — same content as wiki.astro, not a redirect, so it
+// loads directly with no extra hop.
+import Header from '../../components/Header.astro';
+import SubTabs from '../../components/SubTabs.astro';
+import '../../styles/theme.css';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Questbot — Elden Ring</title>
+  </head>
+  <body>
+    <Header />
+    <SubTabs active="wiki" />
+    <main>
+      <p style="padding: 40px; text-align: center; color: var(--text-dim);">
+        Wiki coming soon.
+      </p>
+    </main>
+  </body>
+</html>

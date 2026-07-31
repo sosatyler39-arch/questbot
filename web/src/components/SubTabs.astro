@@ -1,0 +1,32 @@
+---
+interface Props {
+  active: 'wiki' | 'map';
+}
+const { active } = Astro.props;
+---
+<nav class="sub-tabs">
+  <a href="/elden-ring/wiki" class:list={['sub-tab', { active: active === 'wiki' }]}>Wiki</a>
+  <a href="/elden-ring/map" class:list={['sub-tab', { active: active === 'map' }]}>Map</a>
+</nav>
+
+<style>
+  .sub-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sub-tab {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-dim);
+  }
+
+  .sub-tab.active {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>
