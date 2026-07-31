@@ -7,12 +7,31 @@ import '../../styles/theme.css';
   <head>
     <meta charset="utf-8" />
     <title>Questbot — Elden Ring</title>
+    <link rel="stylesheet" href="/map.css" />
   </head>
   <body>
     <Header />
     <SubTabs active="map" />
     <main>
-      <div id="map-root"></div>
+      <div id="map-root">
+        <div id="map-toolbar">
+          <input id="map-search" type="text" placeholder="Search locations…" autocomplete="off" />
+          <div id="map-search-results"></div>
+          <label id="filter-locations-label"><input id="filter-locations" type="checkbox" checked /> Locations</label>
+          <label id="filter-bosses-label" title="Currently: Evergaols + open-world Great Enemies.">
+            <input id="filter-bosses" type="checkbox" checked /> Bosses
+          </label>
+          <button id="map-layer-toggle" type="button">Surface</button>
+        </div>
+        <div id="map-viewport">
+          <div id="map-canvas-wrap"></div>
+        </div>
+        <div id="map-legend"></div>
+      </div>
     </main>
+    <script>
+      import { initMap } from '../../map/render.js';
+      initMap();
+    </script>
   </body>
 </html>
