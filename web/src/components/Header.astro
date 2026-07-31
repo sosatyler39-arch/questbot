@@ -1,0 +1,60 @@
+---
+---
+<header class="site-header">
+  <span class="wordmark">Questbot</span>
+  <nav class="game-tabs">
+    <a href="/elden-ring" class="game-tab active">Elden Ring</a>
+    <span class="game-tab disabled" title="Coming soon">Game 2</span>
+    <span class="game-tab disabled" title="Coming soon">Game 3</span>
+  </nav>
+  <a href="#" class="download-button" id="download-button">Download</a>
+</header>
+
+<style>
+  .site-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 20px;
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .wordmark {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--accent);
+  }
+
+  .game-tabs {
+    display: flex;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .game-tab {
+    padding: 6px 2px;
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 2px solid transparent;
+  }
+
+  .game-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .game-tab.disabled {
+    color: var(--text-dim);
+    cursor: default;
+  }
+
+  .download-button {
+    padding: 8px 18px;
+    background: var(--accent);
+    color: var(--bg);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>

@@ -1,0 +1,29 @@
+:root {
+  --bg: #15130f;
+  --bg-panel: #1f1c15;
+  --text: #d8cfae;
+  --text-dim: #8a8168;
+  --accent: #c9a24b;
+  --border: #3a331f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, 'Times New Roman', serif;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
