@@ -232,8 +232,21 @@ git commit -m "Add site shell: header, game tabs, dark/gold theme"
 
 ## Task 3: Elden Ring page — Wiki/Map sub-tabs
 
+> **As actually implemented, this task's structure below is superseded** —
+> query-param-based tab switching (`?tab=map`) doesn't work with Astro's
+> static output (static HTML is pre-rendered once at build time, so a
+> query string has nothing server-side to act on, discovered live during
+> execution, even in `astro dev`). Built instead as three separate static
+> routes: `web/src/pages/elden-ring/index.astro` (defaults to Wiki, no
+> redirect — same content as wiki.astro), `web/src/pages/elden-ring/
+> wiki.astro`, and `web/src/pages/elden-ring/map.astro`, each passing a
+> literal `active="wiki"`/`active="map"` prop to `SubTabs` directly instead
+> of reading a query string. Task 5 below has been corrected to match —
+> its file paths and code now reference `elden-ring/map.astro`, not the
+> single `elden-ring.astro` this task originally described.
+
 **Files:**
-- Create: `web/src/pages/elden-ring.astro`
+- Create: `web/src/pages/elden-ring/index.astro`, `web/src/pages/elden-ring/wiki.astro`, `web/src/pages/elden-ring/map.astro`
 - Create: `web/src/components/SubTabs.astro`
 
 **Interfaces:**
@@ -537,87 +550,54 @@ git commit -m "Port map code into web/ (dropping shape-editor dev tooling)"
 ## Task 5: Wire the map into the Map sub-tab
 
 **Files:**
-- Modify: `web/src/pages/elden-ring.astro`
+- Modify: `web/src/pages/elden-ring/map.astro` (real path — see Task 3's correction note; the page is at `elden-ring/map.astro`, not a single `elden-ring.astro`)
 
 **Interfaces:**
-- Consumes: `initMap` from `../map/render.js` (Task 4), `map.css` (Task 4).
-- Produces: a fully interactive map rendered inside `#map-root` when the Map sub-tab is active.
+- Consumes: `initMap` from `../../map/render.js` (Task 4 — two levels up from `pages/elden-ring/`, not one, given the nested route), `map.css` (Task 4).
+- Produces: a fully interactive map rendered inside `#map-root` on the `/elden-ring/map` page.
 
 - [ ] **Step 1: Add the map's DOM structure and bootstrap script**
 
 The ported `render.ts` expects a specific set of element IDs to exist (`map-search`, `map-search-results`, `filter-locations`, `filter-bosses`, `map-layer-toggle`, `map-viewport` > `map-canvas-wrap`, `map-legend`) — this is the same structure `client/src/renderer/popup.html` uses, minus the shape-editor elements dropped in Task 4.
 
-Replace the `{tab === 'map' && <div id="map-root"></div>}` line in `web/src/pages/elden-ring.astro` with:
-
-```astro
-      {tab === 'map' && (
-        <div id="map-root">
-          <div id="map-toolbar">
-            <input id="map-search" type="text" placeholder="Search locations…" autocomplete="off" />
-            <div id="map-search-results"></div>
-            <label id="filter-locations-label"><input id="filter-locations" type="checkbox" checked /> Locations</label>
-            <label id="filter-bosses-label" title="Currently: Evergaols + open-world Great Enemies.">
-              <input id="filter-bosses" type="checkbox" checked /> Bosses
-            </label>
-            <button id="map-layer-toggle" type="button">Surface</button>
-          </div>
-          <div id="map-viewport">
-            <div id="map-canvas-wrap"></div>
-          </div>
-          <div id="map-legend"></div>
-        </div>
-      )}
-```
-
-And add the map's stylesheet plus its bootstrap script to the page's frontmatter/head. Full updated `web/src/pages/elden-ring.astro`:
+Replace the full contents of `web/src/pages/elden-ring/map.astro` with:
 
 ```astro
 ---
-import Header from '../components/Header.astro';
-import SubTabs from '../components/SubTabs.astro';
-import '../styles/theme.css';
-
-const tab = Astro.url.searchParams.get('tab') === 'map' ? 'map' : 'wiki';
+import Header from '../../components/Header.astro';
+import SubTabs from '../../components/SubTabs.astro';
+import '../../styles/theme.css';
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Questbot — Elden Ring</title>
-    {tab === 'map' && <link rel="stylesheet" href="/map.css" />}
+    <link rel="stylesheet" href="/map.css" />
   </head>
   <body>
     <Header />
-    <SubTabs active={tab} />
+    <SubTabs active="map" />
     <main>
-      {tab === 'wiki' && (
-        <p style="padding: 40px; text-align: center; color: var(--text-dim);">
-          Wiki coming soon.
-        </p>
-      )}
-      {tab === 'map' && (
-        <div id="map-root">
-          <div id="map-toolbar">
-            <input id="map-search" type="text" placeholder="Search locations…" autocomplete="off" />
-            <div id="map-search-results"></div>
-            <label id="filter-locations-label"><input id="filter-locations" type="checkbox" checked /> Locations</label>
-            <label id="filter-bosses-label" title="Currently: Evergaols + open-world Great Enemies.">
-              <input id="filter-bosses" type="checkbox" checked /> Bosses
-            </label>
-            <button id="map-layer-toggle" type="button">Surface</button>
-          </div>
-          <div id="map-viewport">
-            <div id="map-canvas-wrap"></div>
-          </div>
-          <div id="map-legend"></div>
+      <div id="map-root">
+        <div id="map-toolbar">
+          <input id="map-search" type="text" placeholder="Search locations…" autocomplete="off" />
+          <div id="map-search-results"></div>
+          <label id="filter-locations-label"><input id="filter-locations" type="checkbox" checked /> Locations</label>
+          <label id="filter-bosses-label" title="Currently: Evergaols + open-world Great Enemies.">
+            <input id="filter-bosses" type="checkbox" checked /> Bosses
+          </label>
+          <button id="map-layer-toggle" type="button">Surface</button>
         </div>
-      )}
+        <div id="map-viewport">
+          <div id="map-canvas-wrap"></div>
+        </div>
+        <div id="map-legend"></div>
+      </div>
     </main>
-    {tab === 'map' && (
-      <script>
-        import { initMap } from '../map/render.js';
-        initMap();
-      </script>
-    )}
+    <script>
+      import { initMap } from '../../map/render.js';
+      initMap();
+    </script>
   </body>
 </html>
 ```
@@ -634,7 +614,7 @@ cp web/src/styles/map.css web/public/map.css
 npm run dev -w web
 ```
 
-Visit `/elden-ring?tab=map`. Expected: the map renders (surface regions, named location pins), pan by dragging works, mouse-wheel zoom works, typing in the search box shows matching results and clicking one centers the map, the Locations/Bosses filter checkboxes toggle pin visibility, the Surface/Underground layer toggle switches layers, hovering a pin enlarges/bolds it, and clicking a pin's star (favorite) toggles it — reload the page and confirm the favorited state persists (via `localStorage`).
+Visit `/elden-ring/map`. Expected: the map renders (surface regions, named location pins), pan by dragging works, mouse-wheel zoom works, typing in the search box shows matching results and clicking one centers the map, the Locations/Bosses filter checkboxes toggle pin visibility, the Surface/Underground layer toggle switches layers, hovering a pin enlarges/bolds it, and clicking a pin's star (favorite) toggles it — reload the page and confirm the favorited state persists (via `localStorage`).
 
 - [ ] **Step 3: Typecheck**
 
@@ -647,7 +627,7 @@ Expected: clean.
 - [ ] **Step 4: Commit**
 
 ```bash
-git add web/src/pages/elden-ring.astro web/public/map.css
+git add web/src/pages/elden-ring/map.astro web/public/map.css
 git commit -m "Wire the ported map into the Map sub-tab"
 ```
 
@@ -710,7 +690,7 @@ Replace `href="#"` with the exact asset URL from Task 6, Step 3 (e.g.
 
 - [ ] **Step 2: Add the SmartScreen warning note**
 
-Directly below the `<Header />` usage in `web/src/pages/index.astro` and `web/src/pages/elden-ring.astro`, nothing is required structurally, but add a short note near the Download button itself. In `Header.astro`, right after the download link, add:
+Since every page renders `<Header />` (Task 2), this note only needs to be added once, in `Header.astro` itself, to appear on every page automatically. Right after the download link, add:
 
 ```astro
   <span class="download-note" title="This installer isn't code-signed yet — Windows may show an Unknown Publisher warning. Click 'More info' → 'Run anyway' to proceed.">ⓘ</span>
