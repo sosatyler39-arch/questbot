@@ -1,0 +1,8 @@
+{
+  "name": "Loretta's Greatbow",
+  "text": "Fires a great arrow from a magic greatbow. Costs 24 FP, takes 1 memory slot, requires 26 Intelligence, and costs 30 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Carian sorceries",
+  "pageSlug": "carian",
+  "itemSlug": "lorettas-greatbow"
+}

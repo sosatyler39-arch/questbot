@@ -1,0 +1,8 @@
+{
+  "name": "Pulley Bow",
+  "text": "77 physical attack. Requires Str 11, Dex 11. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Bow",
+  "pageSlug": "bow",
+  "itemSlug": "pulley-bow"
+}

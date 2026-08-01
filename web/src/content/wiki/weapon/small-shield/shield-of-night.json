@@ -1,0 +1,8 @@
+{
+  "name": "Shield of Night",
+  "text": "65 physical attack, 42 magic attack. Requires Str 8, Dex 15. Dex scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Small Shield",
+  "pageSlug": "small-shield",
+  "itemSlug": "shield-of-night"
+}

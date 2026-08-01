@@ -1,0 +1,8 @@
+{
+  "name": "Surging Frenzied Flame",
+  "text": "Consumes FP to cast; spews frenzied flame from the caster.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "surging-frenzied-flame"
+}

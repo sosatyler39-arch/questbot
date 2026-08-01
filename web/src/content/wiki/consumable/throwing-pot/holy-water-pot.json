@@ -1,0 +1,8 @@
+{
+  "name": "Holy Water Pot",
+  "text": "Consumes FP to cast; thrown at enemies to inflict holy damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "holy-water-pot"
+}

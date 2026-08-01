@@ -1,0 +1,8 @@
+{
+  "name": "Rot Pot",
+  "text": "A standard clay pot thrown at enemies to cause a buildup of scarlet rot.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "rot-pot"
+}

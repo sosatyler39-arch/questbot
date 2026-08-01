@@ -1,0 +1,8 @@
+{
+  "name": "Blood Loss (Bleed)",
+  "text": "Builds up as you land hits on an enemy, then inflicts instant damage based on the target's max HP once buildup exceeds the enemy's robustness. Buildup varies based on the source of bleed inflicted, and bleed can build up faster the more Arcane the attacking character has.",
+  "category": "status-effect",
+  "pageTitle": "Status effects",
+  "pageSlug": "status-effects",
+  "itemSlug": "blood-loss-bleed"
+}

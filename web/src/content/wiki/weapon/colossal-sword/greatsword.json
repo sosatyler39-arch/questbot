@@ -1,0 +1,8 @@
+{
+  "name": "Greatsword",
+  "text": "164 physical attack. Requires Str 31, Dex 12. Str scaling C, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Colossal Sword",
+  "pageSlug": "colossal-sword",
+  "itemSlug": "greatsword"
+}

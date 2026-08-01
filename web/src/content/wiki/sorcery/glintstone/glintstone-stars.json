@@ -1,0 +1,8 @@
+{
+  "name": "Glintstone Stars",
+  "text": "Fires guided magic shooting stars. Costs 12 FP, takes 1 memory slot, requires 12 Intelligence, and costs 21 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "glintstone-stars"
+}

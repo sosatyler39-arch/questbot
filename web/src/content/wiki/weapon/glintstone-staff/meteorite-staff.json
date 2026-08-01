@@ -1,0 +1,8 @@
+{
+  "name": "Meteorite Staff",
+  "text": "39 physical attack. Requires Str 6, Int 18. Str scaling D, Int scaling S.",
+  "category": "weapon",
+  "pageTitle": "Glintstone Staff",
+  "pageSlug": "glintstone-staff",
+  "itemSlug": "meteorite-staff"
+}

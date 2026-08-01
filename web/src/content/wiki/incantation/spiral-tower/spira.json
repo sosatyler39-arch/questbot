@@ -1,0 +1,8 @@
+{
+  "name": "Spira",
+  "text": "Summons a spiral of light that erupts at the enemy's feet. Costs 10 FP, takes 2 memory slots, requires 48 Faith, and costs 14 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Spiral Tower incantations",
+  "pageSlug": "spiral-tower",
+  "itemSlug": "spira"
+}

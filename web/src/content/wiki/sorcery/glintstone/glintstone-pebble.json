@@ -1,0 +1,8 @@
+{
+  "name": "Glintstone Pebble",
+  "text": "Fires magic projectiles from glintstone. Costs 7 FP, takes 1 memory slot, requires 10 Intelligence, and costs 20 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "glintstone-pebble"
+}

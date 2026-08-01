@@ -1,0 +1,8 @@
+{
+  "name": "Serpent Bow",
+  "text": "75 physical attack. Requires Str 8, Dex 15, Arc 11. Str scaling E, Dex scaling D, Arc scaling D.",
+  "category": "weapon",
+  "pageTitle": "Bow",
+  "pageSlug": "bow",
+  "itemSlug": "serpent-bow"
+}

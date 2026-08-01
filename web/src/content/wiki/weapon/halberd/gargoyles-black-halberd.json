@@ -1,0 +1,8 @@
+{
+  "name": "Gargoyle's Black Halberd",
+  "text": "103 physical attack, 123 holy attack. Requires Str 26, Dex 10, Fai 22. Str scaling D, Dex scaling E, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Halberd",
+  "pageSlug": "halberd",
+  "itemSlug": "gargoyles-black-halberd"
+}

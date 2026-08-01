@@ -1,0 +1,8 @@
+{
+  "name": "Greyoll's Roar",
+  "text": "Emits the roar of Elder Dragon Greyoll. Costs 50 FP, takes 2 memory slots, requires 28 Faith and 17 Arcane, and costs 72 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Dragon Communion incantations",
+  "pageSlug": "dragon-communion",
+  "itemSlug": "greyolls-roar"
+}

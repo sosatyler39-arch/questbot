@@ -1,0 +1,8 @@
+{
+  "name": "Fallingstar Beast Jaw",
+  "text": "131 physical attack, 85 magic attack. Requires Str 34, Dex 12, Int 20. Str scaling D, Dex scaling D, Int scaling E.",
+  "category": "weapon",
+  "pageTitle": "Colossal Weapon",
+  "pageSlug": "colossal-weapon",
+  "itemSlug": "fallingstar-beast-jaw"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Crystal Knife",
+  "text": "82 physical attack, 53 magic attack. Requires Str 8, Dex 12, Int 9. Str scaling D, Dex scaling D, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "crystal-knife"
+}

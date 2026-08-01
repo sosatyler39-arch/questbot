@@ -1,0 +1,8 @@
+{
+  "name": "Magic Pot",
+  "text": "Consumes FP to cast; a standard clay pot thrown to inflict magic damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "magic-pot"
+}

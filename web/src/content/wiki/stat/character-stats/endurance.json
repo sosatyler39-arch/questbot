@@ -1,0 +1,8 @@
+{
+  "name": "Endurance",
+  "text": "Governs Stamina. Increases Robustness. Determines Equip Load. Stamina soft caps: 15 / 30 / 50. Equip Load soft caps: 25 / 60.",
+  "category": "stat",
+  "pageTitle": "Character stats",
+  "pageSlug": "character-stats",
+  "itemSlug": "endurance"
+}

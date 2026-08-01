@@ -1,0 +1,8 @@
+{
+  "name": "Hand Ballista",
+  "text": "150 physical attack. Requires Str 30, Dex 14.",
+  "category": "weapon",
+  "pageTitle": "Ballista",
+  "pageSlug": "ballista",
+  "itemSlug": "hand-ballista"
+}

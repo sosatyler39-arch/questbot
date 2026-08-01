@@ -1,0 +1,8 @@
+{
+  "name": "Magic Downpour",
+  "text": "Summons a magic mass that sprays projectiles over an area. Costs 18 FP, takes 1 memory slot, requires 15 Intelligence, and costs 17 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Carian sorceries",
+  "pageSlug": "carian",
+  "itemSlug": "magic-downpour"
+}

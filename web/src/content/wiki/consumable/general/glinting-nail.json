@@ -1,0 +1,8 @@
+{
+  "name": "Glinting Nail",
+  "text": "Consumes FP to cast; fires a shattering magic nail.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "glinting-nail"
+}

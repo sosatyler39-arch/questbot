@@ -1,0 +1,8 @@
+{
+  "name": "Flask of Crimson Tears",
+  "text": "The core HP-restoring flask, refilled at Sites of Grace.",
+  "category": "consumable",
+  "pageTitle": "Healing items",
+  "pageSlug": "healing",
+  "itemSlug": "flask-of-crimson-tears"
+}

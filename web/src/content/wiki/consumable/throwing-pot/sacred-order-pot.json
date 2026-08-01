@@ -1,0 +1,8 @@
+{
+  "name": "Sacred Order Pot",
+  "text": "Consumes FP to cast; thrown at enemies to inflict heavy holy damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "sacred-order-pot"
+}

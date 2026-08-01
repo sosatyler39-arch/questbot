@@ -1,0 +1,8 @@
+{
+  "name": "Madness",
+  "text": "Builds up depending on the source inflicted. Enemies afflicted by Madness take damage, are inflicted with increased damage, and lose FP.",
+  "category": "status-effect",
+  "pageTitle": "Status effects",
+  "pageSlug": "status-effects",
+  "itemSlug": "madness"
+}

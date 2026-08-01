@@ -1,0 +1,8 @@
+{
+  "name": "Meteoric Ore Blade",
+  "text": "112 physical attack, 72 magic attack. Requires Str 15, Dex 14, Int 18. Str scaling D, Dex scaling E, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Katana",
+  "pageSlug": "katana",
+  "itemSlug": "meteoric-ore-blade"
+}

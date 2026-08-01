@@ -1,0 +1,8 @@
+{
+  "name": "Holy Grease",
+  "text": "Coats the caster's armament, inflicting holy damage on hit.",
+  "category": "consumable",
+  "pageTitle": "Greases",
+  "pageSlug": "grease",
+  "itemSlug": "holy-grease"
+}

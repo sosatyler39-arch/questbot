@@ -1,0 +1,8 @@
+{
+  "name": "Carian Thrusting Shield",
+  "text": "122 physical attack, 36 magic attack. Requires Str 17, Dex 13, Int 15. Str scaling D, Dex scaling D, Int scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Thrusting Shield",
+  "pageSlug": "thrusting-shield",
+  "itemSlug": "carian-thrusting-shield"
+}

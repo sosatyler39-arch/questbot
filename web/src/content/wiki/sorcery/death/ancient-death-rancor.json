@@ -1,0 +1,8 @@
+{
+  "name": "Ancient Death Rancor",
+  "text": "Summons a horde of vengeful spirits that chase down foes. Costs 21 FP, takes 1 memory slot, requires 34 Intelligence and 24 Faith, and costs 27 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Death sorceries",
+  "pageSlug": "death",
+  "itemSlug": "ancient-death-rancor"
+}

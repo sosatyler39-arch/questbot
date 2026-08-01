@@ -1,0 +1,8 @@
+{
+  "name": "Rotten Staff",
+  "text": "165 physical attack. Requires Str 34, Dex 8. Str scaling D, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Colossal Weapon",
+  "pageSlug": "colossal-weapon",
+  "itemSlug": "rotten-staff"
+}

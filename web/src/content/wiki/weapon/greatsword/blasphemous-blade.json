@@ -1,0 +1,8 @@
+{
+  "name": "Blasphemous Blade",
+  "text": "121 physical attack, 78 fire attack. Requires Str 22, Dex 15, Fai 21. Str scaling D, Dex scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "blasphemous-blade"
+}

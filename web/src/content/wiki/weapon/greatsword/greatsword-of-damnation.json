@@ -1,0 +1,8 @@
+{
+  "name": "Greatsword of Damnation",
+  "text": "123 physical attack, 79 holy attack. Requires Str 20, Dex 15, Fai 20. Str scaling D, Dex scaling E, Fai scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "greatsword-of-damnation"
+}

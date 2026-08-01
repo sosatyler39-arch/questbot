@@ -1,0 +1,8 @@
+{
+  "name": "Greatbow",
+  "text": "125 physical attack. Requires Str 20, Dex 20. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatbow",
+  "pageSlug": "greatbow",
+  "itemSlug": "greatbow"
+}

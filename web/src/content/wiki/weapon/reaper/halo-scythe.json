@@ -1,0 +1,8 @@
+{
+  "name": "Halo Scythe",
+  "text": "118 physical attack, 76 holy attack. Requires Str 13, Dex 16, Fai 15. Str scaling D, Dex scaling D, Fai scaling E.",
+  "category": "weapon",
+  "pageTitle": "Reaper",
+  "pageSlug": "reaper",
+  "itemSlug": "halo-scythe"
+}

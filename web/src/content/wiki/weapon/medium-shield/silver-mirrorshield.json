@@ -1,0 +1,8 @@
+{
+  "name": "Silver Mirrorshield",
+  "text": "59 physical attack, 38 magic attack. Requires Str 12, Dex 10, Int 10. Str scaling D, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Medium Shield",
+  "pageSlug": "medium-shield",
+  "itemSlug": "silver-mirrorshield"
+}

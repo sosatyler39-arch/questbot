@@ -1,0 +1,8 @@
+{
+  "name": "Elemental damage",
+  "text": "Magic, Fire, Lightning, and Holy all fall under the Elemental Damage category, each increased by its respective stat: Magic damage is increased by the Intelligence stat, Fire damage is increased by the Strength stat, Lightning damage is increased by the Dexterity stat, and Holy damage is increased by the Faith stat.",
+  "category": "damage-type",
+  "pageTitle": "Damage types and scaling",
+  "pageSlug": "damage-types",
+  "itemSlug": "elemental-damage"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Great Oracular Bubble",
+  "text": "Launches a large magic bubble. Costs 16 FP, takes 1 memory slot, requires 25 Intelligence and 18 Arcane, and costs 27 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Oracle sorceries",
+  "pageSlug": "oracle",
+  "itemSlug": "great-oracular-bubble"
+}

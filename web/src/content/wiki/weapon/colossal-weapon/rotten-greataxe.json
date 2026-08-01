@@ -1,0 +1,8 @@
+{
+  "name": "Rotten Greataxe",
+  "text": "162 physical attack. Requires Str 30, Dex 10. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Colossal Weapon",
+  "pageSlug": "colossal-weapon",
+  "itemSlug": "rotten-greataxe"
+}

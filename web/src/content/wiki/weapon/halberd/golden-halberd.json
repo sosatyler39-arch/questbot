@@ -1,0 +1,8 @@
+{
+  "name": "Golden Halberd",
+  "text": "134 physical attack, 87 holy attack. Requires Str 30, Dex 14, Fai 12. Str scaling D, Dex scaling E, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Halberd",
+  "pageSlug": "halberd",
+  "itemSlug": "golden-halberd"
+}

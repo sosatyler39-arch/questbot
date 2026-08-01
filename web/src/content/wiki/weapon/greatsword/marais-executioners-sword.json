@@ -1,0 +1,8 @@
+{
+  "name": "Marais Executioner's Sword",
+  "text": "94 physical attack, 61 magic attack. Requires Str 24, Dex 14, Arc 23. Str scaling C, Dex scaling E, Arc scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "marais-executioners-sword"
+}

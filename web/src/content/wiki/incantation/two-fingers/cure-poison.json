@@ -1,0 +1,8 @@
+{
+  "name": "Cure Poison",
+  "text": "Cures the poison ailment and reduces poison buildup. Costs 7 FP, takes 1 memory slot, requires 10 Faith, and costs 10 Stamina. A Healing incantation.",
+  "category": "incantation",
+  "pageTitle": "Two Fingers incantations",
+  "pageSlug": "two-fingers",
+  "itemSlug": "cure-poison"
+}

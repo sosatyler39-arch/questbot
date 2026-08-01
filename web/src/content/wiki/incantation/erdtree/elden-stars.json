@@ -1,0 +1,8 @@
+{
+  "name": "Elden Stars",
+  "text": "Creates a stream of golden shooting stars that assail the area. Costs 41 FP, takes 2 memory slots, requires 50 Faith, and costs 48 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Erdtree incantations",
+  "pageSlug": "erdtree",
+  "itemSlug": "elden-stars"
+}

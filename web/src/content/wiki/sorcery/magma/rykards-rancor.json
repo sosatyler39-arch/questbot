@@ -1,0 +1,8 @@
+{
+  "name": "Rykard's Rancor",
+  "text": "Releases searing spirits that repeatedly explode after a delay. Costs 23 FP, takes 2 memory slots, requires 40 Intelligence and 18 Faith, and costs 36 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Magma sorceries",
+  "pageSlug": "magma",
+  "itemSlug": "rykards-rancor"
+}

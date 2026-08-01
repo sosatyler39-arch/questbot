@@ -1,0 +1,8 @@
+{
+  "name": "Beast Claw",
+  "text": "Creates claws that tear through the land. Costs 10 FP, takes 1 memory slot, requires 8 Faith, and costs 27 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Bestial incantations",
+  "pageSlug": "bestial",
+  "itemSlug": "beast-claw"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Carian Knight's Sword",
+  "text": "88 physical attack, 88 magic attack. Requires Str 10, Dex 10, Int 18. Str scaling D, Dex scaling D, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Straight Sword",
+  "pageSlug": "straight-sword",
+  "itemSlug": "carian-knights-sword"
+}

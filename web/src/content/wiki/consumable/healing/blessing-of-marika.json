@@ -1,0 +1,8 @@
+{
+  "name": "Blessing of Marika",
+  "text": "Completely restores HP and heals all ailments at once.",
+  "category": "consumable",
+  "pageTitle": "Healing items",
+  "pageSlug": "healing",
+  "itemSlug": "blessing-of-marika"
+}

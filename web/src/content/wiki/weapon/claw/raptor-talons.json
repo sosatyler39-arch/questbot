@@ -1,0 +1,8 @@
+{
+  "name": "Raptor Talons",
+  "text": "86 physical attack. Requires Str 6, Dex 14. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Claw",
+  "pageSlug": "claw",
+  "itemSlug": "raptor-talons"
+}

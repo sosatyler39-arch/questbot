@@ -1,0 +1,8 @@
+{
+  "name": "Death Blight",
+  "text": "Builds up depending on the source inflicted. Enemies in Elden Ring cannot be inflicted with Death Blight unless they are a fellow Tarnished.",
+  "category": "status-effect",
+  "pageTitle": "Status effects",
+  "pageSlug": "status-effects",
+  "itemSlug": "death-blight"
+}

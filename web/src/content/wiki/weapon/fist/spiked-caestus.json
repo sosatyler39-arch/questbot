@@ -1,0 +1,8 @@
+{
+  "name": "Spiked Caestus",
+  "text": "91 physical attack. Requires Str 8, Dex 10. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Fist",
+  "pageSlug": "fist",
+  "itemSlug": "spiked-caestus"
+}

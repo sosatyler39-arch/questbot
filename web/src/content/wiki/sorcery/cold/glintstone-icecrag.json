@@ -1,0 +1,8 @@
+{
+  "name": "Glintstone Icecrag",
+  "text": "Fires a mass of cold magic from glintstone. Costs 12 FP, takes 1 memory slot, requires 15 Intelligence, and costs 26 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Cold sorceries",
+  "pageSlug": "cold",
+  "itemSlug": "glintstone-icecrag"
+}

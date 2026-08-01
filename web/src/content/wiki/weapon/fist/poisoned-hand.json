@@ -1,0 +1,8 @@
+{
+  "name": "Poisoned Hand",
+  "text": "76 physical attack. Requires Str 8, Dex 8, Arc 28. Str scaling E, Arc scaling C. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Fist",
+  "pageSlug": "fist",
+  "itemSlug": "poisoned-hand"
+}

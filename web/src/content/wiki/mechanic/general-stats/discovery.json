@@ -1,0 +1,8 @@
+{
+  "name": "Discovery",
+  "text": "The stat that determines the chance of receiving percentage-based item drops. Increased by the Arcane stat, and also by certain talismans, armor, and items.",
+  "category": "mechanic",
+  "pageTitle": "General stats",
+  "pageSlug": "general-stats",
+  "itemSlug": "discovery"
+}

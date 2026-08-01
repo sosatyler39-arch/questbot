@@ -1,0 +1,8 @@
+{
+  "name": "Troll's Hammer",
+  "text": "153 physical attack, 45 fire attack. Requires Str 28, Dex 8, Fai 10. Str scaling C, Dex scaling E, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Colossal Weapon",
+  "pageSlug": "colossal-weapon",
+  "itemSlug": "trolls-hammer"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Order Healing",
+  "text": "Alleviates death blight buildup. Costs 15 FP, takes 1 memory slot, requires 11 Intelligence and 11 Faith, and costs 10 Stamina. A Healing incantation.",
+  "category": "incantation",
+  "pageTitle": "Golden Order incantations",
+  "pageSlug": "golden-order",
+  "itemSlug": "order-healing"
+}

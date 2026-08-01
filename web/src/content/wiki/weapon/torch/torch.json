@@ -1,0 +1,8 @@
+{
+  "name": "Torch",
+  "text": "54 physical attack, 97 fire attack. Requires Str 5, Dex 5. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Torch",
+  "pageSlug": "torch",
+  "itemSlug": "torch"
+}

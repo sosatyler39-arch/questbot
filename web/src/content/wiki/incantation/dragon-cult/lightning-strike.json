@@ -1,0 +1,8 @@
+{
+  "name": "Lightning Strike",
+  "text": "Summons a lightning bolt that spreads out from its point of impact. Costs 19 FP, takes 1 memory slot, requires 28 Faith, and costs 32 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Dragon Cult incantations",
+  "pageSlug": "dragon-cult",
+  "itemSlug": "lightning-strike"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Surge, O Flame!",
+  "text": "Incinerates the area in front of the caster with a stream of fire. Costs 1 FP to cast plus 1 FP/sec while channeled, takes 1 memory slot, requires 9 Faith, and costs 2 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Giants' Flame incantations",
+  "pageSlug": "giants-flame",
+  "itemSlug": "surge-o-flame"
+}

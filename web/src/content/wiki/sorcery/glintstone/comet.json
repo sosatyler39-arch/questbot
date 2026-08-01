@@ -1,0 +1,8 @@
+{
+  "name": "Comet",
+  "text": "Fires a great magic comet. Costs 24 FP, takes 1 memory slot, requires 52 Intelligence, and costs 35 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "comet"
+}

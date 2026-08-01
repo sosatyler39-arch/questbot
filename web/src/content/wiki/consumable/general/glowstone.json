@@ -1,0 +1,8 @@
+{
+  "name": "Glowstone",
+  "text": "Emits a faint light from wherever it is placed.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "glowstone"
+}

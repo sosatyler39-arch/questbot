@@ -1,0 +1,8 @@
+{
+  "name": "Winged Greathorn",
+  "text": "130 physical attack. Requires Str 30, Dex 20. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greataxe",
+  "pageSlug": "greataxe",
+  "itemSlug": "winged-greathorn"
+}

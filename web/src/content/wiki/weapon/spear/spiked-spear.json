@@ -1,0 +1,8 @@
+{
+  "name": "Spiked Spear",
+  "text": "120 physical attack. Requires Str 14, Dex 16. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Spear",
+  "pageSlug": "spear",
+  "itemSlug": "spiked-spear"
+}

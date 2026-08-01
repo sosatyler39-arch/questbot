@@ -1,0 +1,8 @@
+{
+  "name": "Marika's Hammer",
+  "text": "101 physical attack, 65 holy attack. Requires Str 20, Dex 12, Fai 19. Str scaling D, Dex scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Hammer",
+  "pageSlug": "hammer",
+  "itemSlug": "marikas-hammer"
+}

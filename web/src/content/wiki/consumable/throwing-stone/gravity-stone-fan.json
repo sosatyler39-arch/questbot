@@ -1,0 +1,8 @@
+{
+  "name": "Gravity Stone Fan",
+  "text": "Consumes FP to cast; emits a fan-shaped gravitational shockwave.",
+  "category": "consumable",
+  "pageTitle": "Throwing stones",
+  "pageSlug": "throwing-stone",
+  "itemSlug": "gravity-stone-fan"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Sword of Night and Flame",
+  "text": "87 physical attack, 56 magic attack, 56 fire attack. Requires Str 12, Dex 12, Int 24, Fai 24. Str scaling E, Dex scaling E, Int scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Straight Sword",
+  "pageSlug": "straight-sword",
+  "itemSlug": "sword-of-night-and-flame"
+}

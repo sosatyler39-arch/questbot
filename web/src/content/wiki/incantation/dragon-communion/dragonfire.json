@@ -1,0 +1,8 @@
+{
+  "name": "Dragonfire",
+  "text": "Channels a dragon to spew flame breath. Costs 28 FP to cast plus 4 FP/sec while channeled, takes 1 memory slot, requires 15 Faith and 12 Arcane, and costs 40 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Dragon Communion incantations",
+  "pageSlug": "dragon-communion",
+  "itemSlug": "dragonfire"
+}

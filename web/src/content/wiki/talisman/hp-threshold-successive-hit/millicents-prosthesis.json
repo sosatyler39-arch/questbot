@@ -1,0 +1,8 @@
+{
+  "name": "Millicent's Prosthesis",
+  "text": "Boosts Dexterity by 5, and raises attack power with successive attacks, stacking roughly 4% then 6% then 11%.",
+  "category": "talisman",
+  "pageTitle": "HP-threshold and successive-hit talismans",
+  "pageSlug": "hp-threshold-successive-hit",
+  "itemSlug": "millicents-prosthesis"
+}

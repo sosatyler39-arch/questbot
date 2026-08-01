@@ -1,0 +1,8 @@
+{
+  "name": "Spiked Club",
+  "text": "114 physical attack. Requires Str 12, Dex 7. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Hammer",
+  "pageSlug": "hammer",
+  "itemSlug": "spiked-club"
+}

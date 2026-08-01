@@ -1,0 +1,8 @@
+{
+  "name": "Rogier's Rapier",
+  "text": "93 physical attack. Requires Str 8, Dex 17. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Thrusting Sword",
+  "pageSlug": "thrusting-sword",
+  "itemSlug": "rogiers-rapier"
+}

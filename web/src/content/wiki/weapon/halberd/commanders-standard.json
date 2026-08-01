@@ -1,0 +1,8 @@
+{
+  "name": "Commander's Standard",
+  "text": "138 physical attack. Requires Str 24, Dex 14. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Halberd",
+  "pageSlug": "halberd",
+  "itemSlug": "commanders-standard"
+}

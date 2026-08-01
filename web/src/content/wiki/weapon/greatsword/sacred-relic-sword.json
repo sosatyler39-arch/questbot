@@ -1,0 +1,8 @@
+{
+  "name": "Sacred Relic Sword",
+  "text": "118 physical attack, 76 holy attack. Requires Str 14, Dex 24, Fai 22. Str scaling E, Dex scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "sacred-relic-sword"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Arbalest",
+  "text": "77 physical attack. Requires Str 18, Dex 12.",
+  "category": "weapon",
+  "pageTitle": "Crossbow",
+  "pageSlug": "crossbow",
+  "itemSlug": "arbalest"
+}

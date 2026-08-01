@@ -1,0 +1,8 @@
+{
+  "name": "Lazuli Glintstone Sword",
+  "text": "79 physical attack, 94 magic attack. Requires Str 8, Dex 9, Int 13. Str scaling D, Dex scaling E, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Straight Sword",
+  "pageSlug": "straight-sword",
+  "itemSlug": "lazuli-glintstone-sword"
+}

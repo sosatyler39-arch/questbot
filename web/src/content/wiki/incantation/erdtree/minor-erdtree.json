@@ -1,0 +1,8 @@
+{
+  "name": "Minor Erdtree",
+  "text": "Continuously heals allies within its area. Costs 30 FP, takes 2 memory slots, requires 70 Faith, and costs 30 Stamina. A Healing incantation.",
+  "category": "incantation",
+  "pageTitle": "Erdtree incantations",
+  "pageSlug": "erdtree",
+  "itemSlug": "minor-erdtree"
+}

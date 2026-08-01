@@ -1,0 +1,8 @@
+{
+  "name": "Explosive Stone Clump",
+  "text": "A cluster of explosive stones that detonates when thrown together, inflicting fire damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing stones",
+  "pageSlug": "throwing-stone",
+  "itemSlug": "explosive-stone-clump"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Bestial Vitality",
+  "text": "Heals HP over a period of time. Costs 18 FP, takes 1 memory slot, requires 12 Faith, and costs 10 Stamina. A Buff incantation.",
+  "category": "incantation",
+  "pageTitle": "Bestial incantations",
+  "pageSlug": "bestial",
+  "itemSlug": "bestial-vitality"
+}

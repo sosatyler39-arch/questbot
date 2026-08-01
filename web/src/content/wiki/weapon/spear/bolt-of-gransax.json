@@ -1,0 +1,8 @@
+{
+  "name": "Bolt of Gransax",
+  "text": "98 physical attack, 63 lightning attack. Requires Str 20, Dex 40. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Spear",
+  "pageSlug": "spear",
+  "itemSlug": "bolt-of-gransax"
+}

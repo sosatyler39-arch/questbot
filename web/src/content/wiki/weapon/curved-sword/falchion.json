@@ -1,0 +1,8 @@
+{
+  "name": "Falchion",
+  "text": "109 physical attack. Requires Str 9, Dex 13. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Curved Sword",
+  "pageSlug": "curved-sword",
+  "itemSlug": "falchion"
+}

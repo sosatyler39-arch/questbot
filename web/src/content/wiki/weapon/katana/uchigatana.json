@@ -1,0 +1,8 @@
+{
+  "name": "Uchigatana",
+  "text": "115 physical attack. Requires Str 11, Dex 15. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Katana",
+  "pageSlug": "katana",
+  "itemSlug": "uchigatana"
+}

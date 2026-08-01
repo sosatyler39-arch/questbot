@@ -1,0 +1,8 @@
+{
+  "name": "Baldachin's Blessing",
+  "text": "Consumes FP to cast; temporarily boosts Poise.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "baldachins-blessing"
+}

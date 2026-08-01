@@ -1,0 +1,8 @@
+{
+  "name": "Spirit Glaive",
+  "text": "121 physical attack, 36 magic attack. Requires Str 14, Dex 17, Int 16. Str scaling D, Dex scaling D, Int scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Halberd",
+  "pageSlug": "halberd",
+  "itemSlug": "spirit-glaive"
+}

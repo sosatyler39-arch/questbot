@@ -1,0 +1,8 @@
+{
+  "name": "Madding Hand",
+  "text": "53 physical attack, 63 fire attack. Requires Str 8, Dex 8, Int 13, Fai 20. Str scaling D, Dex scaling E, Int scaling E, Fai scaling E. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Fist",
+  "pageSlug": "fist",
+  "itemSlug": "madding-hand"
+}

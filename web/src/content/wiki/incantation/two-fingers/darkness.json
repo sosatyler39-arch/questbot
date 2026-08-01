@@ -1,0 +1,8 @@
+{
+  "name": "Darkness",
+  "text": "Creates an area of darkness that conceals the caster. Costs 24 FP, takes 1 memory slot, requires 18 Faith, and costs 24 Stamina. A Buff incantation.",
+  "category": "incantation",
+  "pageTitle": "Two Fingers incantations",
+  "pageSlug": "two-fingers",
+  "itemSlug": "darkness"
+}

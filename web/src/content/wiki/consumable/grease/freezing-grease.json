@@ -1,0 +1,8 @@
+{
+  "name": "Freezing Grease",
+  "text": "Coats the caster's armament, inflicting frost buildup on hit.",
+  "category": "consumable",
+  "pageTitle": "Greases",
+  "pageSlug": "grease",
+  "itemSlug": "freezing-grease"
+}

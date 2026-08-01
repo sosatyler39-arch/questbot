@@ -1,0 +1,8 @@
+{
+  "name": "Gravity Stone Chunk",
+  "text": "Consumes FP to cast; causes a gravitational explosion on impact.",
+  "category": "consumable",
+  "pageTitle": "Throwing stones",
+  "pageSlug": "throwing-stone",
+  "itemSlug": "gravity-stone-chunk"
+}

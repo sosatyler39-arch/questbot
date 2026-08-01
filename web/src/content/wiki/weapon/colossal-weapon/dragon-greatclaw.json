@@ -1,0 +1,8 @@
+{
+  "name": "Dragon Greatclaw",
+  "text": "120 physical attack, 78 lightning attack. Requires Str 30, Dex 14. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Colossal Weapon",
+  "pageSlug": "colossal-weapon",
+  "itemSlug": "dragon-greatclaw"
+}

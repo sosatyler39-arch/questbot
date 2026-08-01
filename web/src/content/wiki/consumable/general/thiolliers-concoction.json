@@ -1,0 +1,8 @@
+{
+  "name": "Thiollier's Concoction",
+  "text": "Causes immediate death if imbibed by an ordinary human.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "thiolliers-concoction"
+}

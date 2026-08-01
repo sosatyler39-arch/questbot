@@ -1,0 +1,8 @@
+{
+  "name": "Torchpole",
+  "text": "104 physical attack, 31 fire attack. Requires Str 14, Dex 15. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Spear",
+  "pageSlug": "spear",
+  "itemSlug": "torchpole"
+}

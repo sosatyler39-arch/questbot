@@ -1,0 +1,8 @@
+{
+  "name": "Icerind Hatchet",
+  "text": "115 physical attack. Requires Str 11, Dex 16. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Axe",
+  "pageSlug": "axe",
+  "itemSlug": "icerind-hatchet"
+}

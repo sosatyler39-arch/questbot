@@ -1,0 +1,8 @@
+{
+  "name": "Clinging Bone",
+  "text": "80 physical attack, 24 magic attack. Requires Str 8, Dex 22, Arc 16. Str scaling E, Dex scaling C, Arc scaling D.",
+  "category": "weapon",
+  "pageTitle": "Fist",
+  "pageSlug": "fist",
+  "itemSlug": "clinging-bone"
+}

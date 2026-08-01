@@ -1,0 +1,8 @@
+{
+  "name": "Dexterity",
+  "text": "Required for advanced weapons. Increases Dexterity weapon damage. Reduces spell casting time. Reduces fall damage. Makes you harder to knock off your horse. Weapon damage breakpoints: 16, 18, 20, 30, 45, 50, 60, 80. Casting breakpoints: 30 / 45.",
+  "category": "stat",
+  "pageTitle": "Character stats",
+  "pageSlug": "character-stats",
+  "itemSlug": "dexterity"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Messmer's Orb",
+  "text": "Shapes Messmer's flame into a giant orb that soars toward the target. Costs 31 FP, takes 2 memory slots, requires 60 Faith, and costs 43 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Messmer's Flame incantations",
+  "pageSlug": "messmers-flame",
+  "itemSlug": "messmers-orb"
+}

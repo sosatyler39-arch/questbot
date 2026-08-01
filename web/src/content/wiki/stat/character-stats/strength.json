@@ -1,0 +1,8 @@
+{
+  "name": "Strength",
+  "text": "Required for heavy weapons. Increases physical weapon damage for Strength-scaling weapons. Two-handing a weapon effectively increases Strength by 50%. Weapon damage breakpoints: 16, 18, 20, 30, 45, 50, 60, 80. Casting breakpoints: 30 / 45.",
+  "category": "stat",
+  "pageTitle": "Character stats",
+  "pageSlug": "character-stats",
+  "itemSlug": "strength"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Carian Knight's Shield",
+  "text": "63 physical attack, 40 magic attack. Requires Str 10, Dex 10, Int 15. Str scaling D, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Medium Shield",
+  "pageSlug": "medium-shield",
+  "itemSlug": "carian-knights-shield"
+}

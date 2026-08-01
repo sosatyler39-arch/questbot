@@ -1,0 +1,8 @@
+{
+  "name": "Comet Azur",
+  "text": "Fires a tremendous comet within a sustained starry torrent. Costs 40 FP to cast plus 10 FP/sec while channeled, takes 3 memory slots, requires 60 Intelligence, and costs 34 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "comet-azur"
+}

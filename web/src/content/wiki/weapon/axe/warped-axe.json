@@ -1,0 +1,8 @@
+{
+  "name": "Warped Axe",
+  "text": "124 physical attack. Requires Str 24, Dex 8. Str scaling C.",
+  "category": "weapon",
+  "pageTitle": "Axe",
+  "pageSlug": "axe",
+  "itemSlug": "warped-axe"
+}

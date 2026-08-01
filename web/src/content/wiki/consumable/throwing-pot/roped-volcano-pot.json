@@ -1,0 +1,8 @@
+{
+  "name": "Roped Volcano Pot",
+  "text": "A roped pot thrown behind the caster that creates a heat cloud, causing continuous fire damage to anyone standing in it.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "roped-volcano-pot"
+}

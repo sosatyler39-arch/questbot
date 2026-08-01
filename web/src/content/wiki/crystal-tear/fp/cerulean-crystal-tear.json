@@ -1,0 +1,8 @@
+{
+  "name": "Cerulean Crystal Tear",
+  "text": "Instantly restores half of the total FP bar. Effect is instantaneous, not timed.",
+  "category": "crystal-tear",
+  "pageTitle": "FP Crystal Tears",
+  "pageSlug": "fp",
+  "itemSlug": "cerulean-crystal-tear"
+}

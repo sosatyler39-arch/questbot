@@ -1,0 +1,8 @@
+{
+  "name": "Gargoyle's Great Axe",
+  "text": "123 physical attack. Requires Str 24, Dex 8. Str scaling C, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Greataxe",
+  "pageSlug": "greataxe",
+  "itemSlug": "gargoyles-great-axe"
+}

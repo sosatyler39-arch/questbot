@@ -1,0 +1,8 @@
+{
+  "name": "Magma Whip Candlestick",
+  "text": "74 physical attack, 74 fire attack. Requires Str 8, Dex 16, Fai 18. Str scaling E, Dex scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Whip",
+  "pageSlug": "whip",
+  "itemSlug": "magma-whip-candlestick"
+}

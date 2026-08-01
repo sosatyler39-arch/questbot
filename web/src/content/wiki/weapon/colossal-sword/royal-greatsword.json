@@ -1,0 +1,8 @@
+{
+  "name": "Royal Greatsword",
+  "text": "112 physical attack, 134 magic attack. Requires Str 26, Dex 18, Int 22. Str scaling D, Dex scaling E, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Colossal Sword",
+  "pageSlug": "colossal-sword",
+  "itemSlug": "royal-greatsword"
+}

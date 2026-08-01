@@ -1,0 +1,8 @@
+{
+  "name": "Starlight",
+  "text": "Creates starlight to illuminate the surroundings. Costs 9 FP, takes 1 memory slot, requires 15 Intelligence, and costs 5 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "starlight"
+}

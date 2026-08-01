@@ -1,0 +1,8 @@
+{
+  "name": "Guardian's Swordspear",
+  "text": "139 physical attack. Requires Str 17, Dex 16. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Halberd",
+  "pageSlug": "halberd",
+  "itemSlug": "guardians-swordspear"
+}

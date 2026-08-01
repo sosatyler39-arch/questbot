@@ -1,0 +1,8 @@
+{
+  "name": "Scepter of the All-Knowing",
+  "text": "99 physical attack, 64 magic attack. Requires Str 12, Dex 18, Int 21. Str scaling E, Dex scaling D, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Hammer",
+  "pageSlug": "hammer",
+  "itemSlug": "scepter-of-the-all-knowing"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Rancor Pot",
+  "text": "Consumes FP to cast; thrown to summon vengeful spirits that assail the target.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "rancor-pot"
+}

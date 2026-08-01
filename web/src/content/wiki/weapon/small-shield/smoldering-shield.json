@@ -1,0 +1,8 @@
+{
+  "name": "Smoldering Shield",
+  "text": "58 physical attack, 37 fire attack. Requires Str 10, Dex 9, Fai 12. Str scaling E, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Small Shield",
+  "pageSlug": "small-shield",
+  "itemSlug": "smoldering-shield"
+}

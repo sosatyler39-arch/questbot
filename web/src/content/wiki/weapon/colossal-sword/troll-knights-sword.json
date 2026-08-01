@@ -1,0 +1,8 @@
+{
+  "name": "Troll Knight's Sword",
+  "text": "124 physical attack, 80 magic attack. Requires Str 20, Dex 14, Int 18. Str scaling D, Dex scaling D, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Colossal Sword",
+  "pageSlug": "colossal-sword",
+  "itemSlug": "troll-knights-sword"
+}

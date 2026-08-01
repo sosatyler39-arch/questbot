@@ -1,0 +1,8 @@
+{
+  "name": "Twiggy Cracked Tear",
+  "text": "Briefly stops rune loss on death; takes precedence over an equipped Sacrificial Twig while active. Lasts 180 seconds.",
+  "category": "crystal-tear",
+  "pageTitle": "Defensive Crystal Tears",
+  "pageSlug": "defensive",
+  "itemSlug": "twiggy-cracked-tear"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Roped Holy Water Pot",
+  "text": "Consumes FP to cast; a roped pot thrown behind the caster to inflict holy damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "roped-holy-water-pot"
+}

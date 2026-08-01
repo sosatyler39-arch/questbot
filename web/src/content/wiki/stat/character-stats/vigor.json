@@ -1,0 +1,8 @@
+{
+  "name": "Vigor",
+  "text": "Governs HP. Increases Fire Resistance and Immunity. HP scaling is strongest until 40. Soft caps: 40 / 60.",
+  "category": "stat",
+  "pageTitle": "Character stats",
+  "pageSlug": "character-stats",
+  "itemSlug": "vigor"
+}

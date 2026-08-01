@@ -1,0 +1,8 @@
+{
+  "name": "Roiling Magma",
+  "text": "Fires a lump of magma that explodes after a delay. Costs 28 FP, takes 1 memory slot, requires 21 Intelligence and 12 Faith, and costs 27 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Magma sorceries",
+  "pageSlug": "magma",
+  "itemSlug": "roiling-magma"
+}

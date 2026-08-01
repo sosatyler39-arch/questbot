@@ -1,0 +1,8 @@
+{
+  "name": "Collapsing Stars",
+  "text": "Pulls foes toward the caster with a volley of gravity projectiles. Costs 18 FP, takes 1 memory slot, requires 36 Intelligence, and costs 27 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Gravity sorceries",
+  "pageSlug": "gravity",
+  "itemSlug": "collapsing-stars"
+}

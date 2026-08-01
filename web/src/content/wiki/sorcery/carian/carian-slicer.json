@@ -1,0 +1,8 @@
+{
+  "name": "Carian Slicer",
+  "text": "Performs a swift sweeping slash using a magical sword. Costs 4 FP, takes 1 memory slot, requires 14 Intelligence, and costs 12 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Carian sorceries",
+  "pageSlug": "carian",
+  "itemSlug": "carian-slicer"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Poison",
+  "text": "Deals damage over time (DOT) slowly; damage and buildup vary based on the type and/or source of poison inflicted.",
+  "category": "status-effect",
+  "pageTitle": "Status effects",
+  "pageSlug": "status-effects",
+  "itemSlug": "poison"
+}

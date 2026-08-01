@@ -1,0 +1,8 @@
+{
+  "name": "Erdtree Bow",
+  "text": "40 physical attack, 50 holy attack. Requires Str 8, Dex 12, Fai 14. Str scaling E, Dex scaling E, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Bow",
+  "pageSlug": "bow",
+  "itemSlug": "erdtree-bow"
+}

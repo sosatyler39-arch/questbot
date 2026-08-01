@@ -1,0 +1,8 @@
+{
+  "name": "Heal from Afar",
+  "text": "Greatly heals HP for distant allies the spell reaches. Costs 45 FP, takes 1 memory slot, requires 18 Faith, and costs 40 Stamina. A Healing incantation.",
+  "category": "incantation",
+  "pageTitle": "Erdtree incantations",
+  "pageSlug": "erdtree",
+  "itemSlug": "heal-from-afar"
+}

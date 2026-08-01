@@ -1,0 +1,8 @@
+{
+  "name": "Carian Retaliation",
+  "text": "Dispels an enemy's spell and retaliates with glintblades. Costs 8 FP, takes 1 memory slot, requires 17 Intelligence, and costs 15 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Carian sorceries",
+  "pageSlug": "carian",
+  "itemSlug": "carian-retaliation"
+}

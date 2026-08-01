@@ -1,0 +1,8 @@
+{
+  "name": "Flamberge",
+  "text": "129 physical attack. Requires Str 15, Dex 14. Str scaling D, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "flamberge"
+}

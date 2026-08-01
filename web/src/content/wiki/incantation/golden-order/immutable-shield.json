@@ -1,0 +1,8 @@
+{
+  "name": "Immutable Shield",
+  "text": "Increases the left-hand shield's affinity and ailment resistance. Costs 15 FP, takes 1 memory slot, requires 19 Intelligence and 19 Faith, and costs 10 Stamina. A Buff incantation.",
+  "category": "incantation",
+  "pageTitle": "Golden Order incantations",
+  "pageSlug": "golden-order",
+  "itemSlug": "immutable-shield"
+}

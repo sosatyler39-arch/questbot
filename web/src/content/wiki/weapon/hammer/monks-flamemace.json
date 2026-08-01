@@ -1,0 +1,8 @@
+{
+  "name": "Monk's Flamemace",
+  "text": "126 physical attack. Requires Str 13, Dex 13. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Hammer",
+  "pageSlug": "hammer",
+  "itemSlug": "monks-flamemace"
+}

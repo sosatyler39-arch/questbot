@@ -1,0 +1,8 @@
+{
+  "name": "Zweihander",
+  "text": "141 physical attack. Requires Str 19, Dex 11. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Colossal Sword",
+  "pageSlug": "colossal-sword",
+  "itemSlug": "zweihander"
+}

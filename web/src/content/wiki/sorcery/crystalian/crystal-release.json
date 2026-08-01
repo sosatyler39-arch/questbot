@@ -1,0 +1,8 @@
+{
+  "name": "Crystal Release",
+  "text": "Scours an area with a violent rain of crystal shards. Costs 34 FP, takes 1 memory slot, requires 41 Intelligence, and costs 26 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Crystalian sorceries",
+  "pageSlug": "crystalian",
+  "itemSlug": "crystal-release"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Erdsteel Dagger",
+  "text": "67 physical attack. Requires Str 7, Dex 12, Fai 14. Str scaling D, Dex scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "erdsteel-dagger"
+}

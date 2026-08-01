@@ -1,0 +1,8 @@
+{
+  "name": "Primal Glintstone Blade",
+  "text": "Spells consume 25% less FP, but the wearer’s maximum HP is reduced by 15% as a tradeoff.",
+  "category": "talisman",
+  "pageTitle": "Magic, skill, and FP talismans",
+  "pageSlug": "magic-skills-fp",
+  "itemSlug": "primal-glintstone-blade"
+}

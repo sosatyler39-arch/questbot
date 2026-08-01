@@ -1,0 +1,8 @@
+{
+  "name": "Sword of St. Trina",
+  "text": "107 physical attack, 32 magic attack. Requires Str 10, Dex 12, Int 14. Str scaling D, Dex scaling D, Int scaling E.",
+  "category": "weapon",
+  "pageTitle": "Straight Sword",
+  "pageSlug": "straight-sword",
+  "itemSlug": "sword-of-st-trina"
+}

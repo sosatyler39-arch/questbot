@@ -1,0 +1,8 @@
+{
+  "name": "Longsword",
+  "text": "110 physical attack. Requires Str 10, Dex 10. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Straight Sword",
+  "pageSlug": "straight-sword",
+  "itemSlug": "longsword"
+}

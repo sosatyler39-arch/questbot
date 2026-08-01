@@ -1,0 +1,8 @@
+{
+  "name": "Stone of Gurranq",
+  "text": "Hurls a boulder in front of the caster. Costs 15 FP, takes 1 memory slot, requires 13 Faith, and costs 37 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Bestial incantations",
+  "pageSlug": "bestial",
+  "itemSlug": "stone-of-gurranq"
+}

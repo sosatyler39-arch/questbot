@@ -1,0 +1,8 @@
+{
+  "name": "Red Lightning Pot",
+  "text": "A standard clay pot that inflicts lightning damage which arcs to link with nearby enemies.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "red-lightning-pot"
+}

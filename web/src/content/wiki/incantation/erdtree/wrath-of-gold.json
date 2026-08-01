@@ -1,0 +1,8 @@
+{
+  "name": "Wrath of Gold",
+  "text": "Produces a golden shockwave that knocks back foes. Costs 40 FP, takes 1 memory slot, requires 32 Faith, and costs 44 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Erdtree incantations",
+  "pageSlug": "erdtree",
+  "itemSlug": "wrath-of-gold"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Glintblade Trio",
+  "text": "Creates a sigil that forms three projectile glintblades after a delay. Costs 19 FP, takes 1 memory slot, requires 28 Intelligence, and costs 22 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Carian sorceries",
+  "pageSlug": "carian",
+  "itemSlug": "glintblade-trio"
+}

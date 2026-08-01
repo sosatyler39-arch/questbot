@@ -1,0 +1,8 @@
+{
+  "name": "Crimson Bubbletear",
+  "text": "Restores HP automatically when the caster is near death. Lasts 180 seconds.",
+  "category": "crystal-tear",
+  "pageTitle": "HP Crystal Tears",
+  "pageSlug": "hp",
+  "itemSlug": "crimson-bubbletear"
+}

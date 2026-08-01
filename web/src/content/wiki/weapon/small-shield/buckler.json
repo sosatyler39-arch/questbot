@@ -1,0 +1,8 @@
+{
+  "name": "Buckler",
+  "text": "68 physical attack. Requires Str 8, Dex 13. Str scaling E, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Small Shield",
+  "pageSlug": "small-shield",
+  "itemSlug": "buckler"
+}

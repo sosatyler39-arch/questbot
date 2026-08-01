@@ -1,0 +1,8 @@
+{
+  "name": "Crystal Torrent",
+  "text": "Creates a crystal mass that fires a stream of crystal shards. Costs 20 FP to cast plus 5 FP/sec while channeled, takes 1 memory slot, requires 47 Intelligence, and costs 30 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Crystalian sorceries",
+  "pageSlug": "crystalian",
+  "itemSlug": "crystal-torrent"
+}

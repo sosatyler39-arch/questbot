@@ -1,0 +1,8 @@
+{
+  "name": "Electrocharge",
+  "text": "Calls down lightning to charge the caster's body with electricity. Costs 26 FP, takes 1 memory slot, requires 30 Faith, and costs 28 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Dragon Cult incantations",
+  "pageSlug": "dragon-cult",
+  "itemSlug": "electrocharge"
+}

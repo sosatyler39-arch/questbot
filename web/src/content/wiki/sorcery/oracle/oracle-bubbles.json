@@ -1,0 +1,8 @@
+{
+  "name": "Oracle Bubbles",
+  "text": "Launches several small magic bubbles. Costs 12 FP, takes 1 memory slot, requires 19 Intelligence and 15 Arcane, and costs 18 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Oracle sorceries",
+  "pageSlug": "oracle",
+  "itemSlug": "oracle-bubbles"
+}

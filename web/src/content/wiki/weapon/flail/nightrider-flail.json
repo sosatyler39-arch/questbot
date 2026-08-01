@@ -1,0 +1,8 @@
+{
+  "name": "Nightrider Flail",
+  "text": "115 physical attack. Requires Str 10, Dex 24. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Flail",
+  "pageSlug": "flail",
+  "itemSlug": "nightrider-flail"
+}

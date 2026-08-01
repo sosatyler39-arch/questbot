@@ -1,0 +1,8 @@
+{
+  "name": "Horn Bow",
+  "text": "65 physical attack, 30 magic attack. Requires Str 10, Dex 14, Int 12. Str scaling E, Dex scaling D, Int scaling E.",
+  "category": "weapon",
+  "pageTitle": "Bow",
+  "pageSlug": "bow",
+  "itemSlug": "horn-bow"
+}

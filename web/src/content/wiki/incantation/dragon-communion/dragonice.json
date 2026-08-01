@@ -1,0 +1,8 @@
+{
+  "name": "Dragonice",
+  "text": "Channels a dragon to spew icy breath. Costs 36 FP to cast plus 4 FP/sec while channeled, takes 1 memory slot, requires 15 Faith and 12 Arcane, and costs 48 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Dragon Communion incantations",
+  "pageSlug": "dragon-communion",
+  "itemSlug": "dragonice"
+}

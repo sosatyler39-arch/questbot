@@ -1,0 +1,8 @@
+{
+  "name": "Celebrant's Sickle",
+  "text": "79 physical attack. Requires Str 6, Dex 11. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "celebrants-sickle"
+}

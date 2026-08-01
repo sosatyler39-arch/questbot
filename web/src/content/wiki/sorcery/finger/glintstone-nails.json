@@ -1,0 +1,8 @@
+{
+  "name": "Glintstone Nails",
+  "text": "Fires multiple shattering magic nails. Costs 23 FP, takes 1 memory slot, requires 32 Intelligence, and costs 26 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Finger sorceries",
+  "pageSlug": "finger",
+  "itemSlug": "glintstone-nails"
+}

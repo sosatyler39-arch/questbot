@@ -1,0 +1,8 @@
+{
+  "name": "Boiled Prawn",
+  "text": "A consumable that boosts physical damage negation for 1 minute.",
+  "category": "keepsake",
+  "pageTitle": "Starting keepsakes",
+  "pageSlug": "keepsakes",
+  "itemSlug": "boiled-prawn"
+}

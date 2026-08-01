@@ -1,0 +1,8 @@
+{
+  "name": "Swarm of Flies",
+  "text": "Releases a swarm of bloodflies in front of the caster. Costs 14 FP, takes 1 memory slot, requires 11 Faith and 16 Arcane, and costs 24 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Blood Oath incantations",
+  "pageSlug": "blood-oath",
+  "itemSlug": "swarm-of-flies"
+}

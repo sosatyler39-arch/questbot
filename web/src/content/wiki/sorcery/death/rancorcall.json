@@ -1,0 +1,8 @@
+{
+  "name": "Rancorcall",
+  "text": "Summons vengeful spirits that chase down foes. Costs 12 FP, takes 1 memory slot, requires 16 Intelligence and 14 Faith, and costs 21 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Death sorceries",
+  "pageSlug": "death",
+  "itemSlug": "rancorcall"
+}

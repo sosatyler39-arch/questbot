@@ -1,0 +1,8 @@
+{
+  "name": "Family Heads",
+  "text": "90 physical attack, 58 magic attack. Requires Str 8, Dex 18, Int 16. Str scaling E, Dex scaling C, Int scaling E.",
+  "category": "weapon",
+  "pageTitle": "Flail",
+  "pageSlug": "flail",
+  "itemSlug": "family-heads"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Poisonbone Dart",
+  "text": "A bone dart thrown at enemies to inflict physical damage and build up poison.",
+  "category": "consumable",
+  "pageTitle": "Throwing knives",
+  "pageSlug": "throwing-knife",
+  "itemSlug": "poisonbone-dart"
+}

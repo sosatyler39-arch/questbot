@@ -1,0 +1,8 @@
+{
+  "name": "Ghostflame Breath",
+  "text": "Channels a dragon to spew ghostflame breath. Costs 36 FP, takes 1 memory slot, requires 23 Faith and 15 Arcane, and costs 60 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Dragon Communion incantations",
+  "pageSlug": "dragon-communion",
+  "itemSlug": "ghostflame-breath"
+}

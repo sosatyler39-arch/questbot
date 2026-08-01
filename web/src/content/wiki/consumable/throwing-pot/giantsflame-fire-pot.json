@@ -1,0 +1,8 @@
+{
+  "name": "Giantsflame Fire Pot",
+  "text": "Consumes FP to cast; thrown at enemies to inflict heavy fire damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "giantsflame-fire-pot"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Fire Grease",
+  "text": "Coats a weapon, inflicting fire damage on hit.",
+  "category": "consumable",
+  "pageTitle": "Greases",
+  "pageSlug": "grease",
+  "itemSlug": "fire-grease"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Mace",
+  "text": "115 physical attack. Requires Str 12, Dex 7. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Hammer",
+  "pageSlug": "hammer",
+  "itemSlug": "mace"
+}

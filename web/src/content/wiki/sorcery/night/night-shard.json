@@ -1,0 +1,8 @@
+{
+  "name": "Night Shard",
+  "text": "Swiftly fires a semi-invisible magic projectile. Costs 7 FP, takes 1 memory slot, requires 18 Intelligence, and costs 9 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Night sorceries",
+  "pageSlug": "night",
+  "itemSlug": "night-shard"
+}

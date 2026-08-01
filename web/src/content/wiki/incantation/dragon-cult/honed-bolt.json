@@ -1,0 +1,8 @@
+{
+  "name": "Honed Bolt",
+  "text": "Strikes the target with a lightning bolt from above. Costs 12 FP, takes 1 memory slot, requires 24 Faith, and costs 29 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Dragon Cult incantations",
+  "pageSlug": "dragon-cult",
+  "itemSlug": "honed-bolt"
+}

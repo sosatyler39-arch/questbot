@@ -1,0 +1,8 @@
+{
+  "name": "Fire Knight's Shortsword",
+  "text": "75 physical attack, 22 fire attack. Requires Str 8, Dex 13, Fai 12. Str scaling D, Dex scaling D, Fai scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "fire-knights-shortsword"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Radagon's Rings of Light",
+  "text": "Creates a golden ring of light that attacks a wide area. Costs 21 FP, takes 1 memory slot, requires 31 Intelligence and 31 Faith, and costs 37 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Golden Order incantations",
+  "pageSlug": "golden-order",
+  "itemSlug": "radagons-rings-of-light"
+}

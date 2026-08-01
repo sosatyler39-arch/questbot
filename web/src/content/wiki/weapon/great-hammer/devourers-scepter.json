@@ -1,0 +1,8 @@
+{
+  "name": "Devourer's Scepter",
+  "text": "112 physical attack, 69 fire attack. Requires Str 24, Dex 20, Fai 25. Str scaling D, Dex scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Great Hammer",
+  "pageSlug": "great-hammer",
+  "itemSlug": "devourers-scepter"
+}

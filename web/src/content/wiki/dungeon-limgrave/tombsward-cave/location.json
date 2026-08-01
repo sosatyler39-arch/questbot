@@ -1,0 +1,8 @@
+{
+  "name": "Location",
+  "text": "A separate cave from Tombsward Catacombs, also on the Weeping Peninsula, containing standard early enemies and loot rather than a unique named boss.",
+  "category": "dungeon-limgrave",
+  "pageTitle": "Tombsward Cave",
+  "pageSlug": "tombsward-cave",
+  "itemSlug": "location"
+}

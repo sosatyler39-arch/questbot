@@ -1,0 +1,8 @@
+{
+  "name": "Death Ritual Spear",
+  "text": "99 physical attack, 64 magic attack. Requires Str 14, Dex 20, Int 18. Str scaling E, Dex scaling D, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Spear",
+  "pageSlug": "spear",
+  "itemSlug": "death-ritual-spear"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Smithscript Greathammer",
+  "text": "141 physical attack. Requires Str 20, Dex 10, Int 11, Fai 11. Str scaling D, Dex scaling E, Int scaling E, Fai scaling E. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Great Hammer",
+  "pageSlug": "great-hammer",
+  "itemSlug": "smithscript-greathammer"
+}

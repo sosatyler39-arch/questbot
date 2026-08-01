@@ -1,0 +1,8 @@
+{
+  "name": "Erdtree Greatshield",
+  "text": "100 physical attack, 65 holy attack. Requires Str 30, Fai 12. Str scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatshield",
+  "pageSlug": "greatshield",
+  "itemSlug": "erdtree-greatshield"
+}

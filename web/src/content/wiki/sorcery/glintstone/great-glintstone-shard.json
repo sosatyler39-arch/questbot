@@ -1,0 +1,8 @@
+{
+  "name": "Great Glintstone Shard",
+  "text": "Fires larger magic projectiles from glintstone. Costs 12 FP, takes 1 memory slot, requires 16 Intelligence, and costs 26 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "great-glintstone-shard"
+}

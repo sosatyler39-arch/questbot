@@ -1,0 +1,8 @@
+{
+  "name": "Crimson Crystal Tear",
+  "text": "Instantly restores half of the total HP bar. Effect is instantaneous, not timed.",
+  "category": "crystal-tear",
+  "pageTitle": "HP Crystal Tears",
+  "pageSlug": "hp",
+  "itemSlug": "crimson-crystal-tear"
+}

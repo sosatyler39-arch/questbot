@@ -1,0 +1,8 @@
+{
+  "name": "Blades of Stone",
+  "text": "Summons rock blades from the earth. Costs 18 FP, takes 2 memory slots, requires 48 Intelligence, and costs 29 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Gravity sorceries",
+  "pageSlug": "gravity",
+  "itemSlug": "blades-of-stone"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Composite Bow",
+  "text": "65 physical attack. Requires Str 15, Dex 15. Str scaling E, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Light Bow",
+  "pageSlug": "light-bow",
+  "itemSlug": "composite-bow"
+}

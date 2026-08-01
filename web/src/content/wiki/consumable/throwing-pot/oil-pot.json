@@ -1,0 +1,8 @@
+{
+  "name": "Oil Pot",
+  "text": "A standard clay pot thrown at enemies to soak them in oil.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "oil-pot"
+}

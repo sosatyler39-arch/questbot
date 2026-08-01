@@ -1,0 +1,8 @@
+{
+  "name": "Glintstone Scrap",
+  "text": "Consumes FP to cast; breaking the gem produces a single magic bolt.",
+  "category": "consumable",
+  "pageTitle": "Throwing stones",
+  "pageSlug": "throwing-stone",
+  "itemSlug": "glintstone-scrap"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Unseen Form",
+  "text": "Makes the caster semi-invisible. Costs 20 FP, takes 1 memory slot, requires 16 Intelligence, and costs 10 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Night sorceries",
+  "pageSlug": "night",
+  "itemSlug": "unseen-form"
+}

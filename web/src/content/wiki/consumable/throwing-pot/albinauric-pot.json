@@ -1,0 +1,8 @@
+{
+  "name": "Albinauric Pot",
+  "text": "Consumes FP to cast; thrown at enemies to impede their recovery actions, including flask use, for a certain duration.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "albinauric-pot"
+}

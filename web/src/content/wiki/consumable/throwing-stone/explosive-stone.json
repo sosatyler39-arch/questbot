@@ -1,0 +1,8 @@
+{
+  "name": "Explosive Stone",
+  "text": "Explodes when thrown at enemies, inflicting fire damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing stones",
+  "pageSlug": "throwing-stone",
+  "itemSlug": "explosive-stone"
+}

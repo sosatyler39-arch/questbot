@@ -1,0 +1,8 @@
+{
+  "name": "Sleep",
+  "text": "Puts the target to sleep. Some enemies stay asleep until attacked, while others shake their head and wake up on their own. Buildup varies based on the type and/or source of sleep inflicted. A sleeping target is available to be critically attacked.",
+  "category": "status-effect",
+  "pageTitle": "Status effects",
+  "pageSlug": "status-effects",
+  "itemSlug": "sleep"
+}

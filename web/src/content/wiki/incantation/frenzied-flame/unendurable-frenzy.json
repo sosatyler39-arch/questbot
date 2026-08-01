@@ -1,0 +1,8 @@
+{
+  "name": "Unendurable Frenzy",
+  "text": "Emits a violent burst of the frenzy flame's yellow fire from the eyes. Costs 22 FP to cast plus 6 FP/sec while channeled, takes 1 memory slot, requires 31 Faith, and costs 40 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Frenzied Flame incantations",
+  "pageSlug": "frenzied-flame",
+  "itemSlug": "unendurable-frenzy"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Ailment Talisman",
+  "text": "Boosts resistance stats by roughly 350 for a short time after a status effect (poison, bleed, frostbite, etc.) is applied to the wearer. Shadow of the Erdtree.",
+  "category": "talisman",
+  "pageTitle": "Status and resistance talismans",
+  "pageSlug": "status-resistance",
+  "itemSlug": "ailment-talisman"
+}

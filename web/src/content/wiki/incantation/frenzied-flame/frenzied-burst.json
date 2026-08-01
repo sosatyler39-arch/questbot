@@ -1,0 +1,8 @@
+{
+  "name": "Frenzied Burst",
+  "text": "Emits a concentrated blast of the frenzy flame's yellow fire from the eyes. Costs 24 FP, takes 1 memory slot, requires 22 Faith, and costs 33 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Frenzied Flame incantations",
+  "pageSlug": "frenzied-flame",
+  "itemSlug": "frenzied-burst"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Full Moon Crossbow",
+  "text": "50 physical attack, 50 magic attack. Requires Str 10, Dex 10, Int 14.",
+  "category": "weapon",
+  "pageTitle": "Crossbow",
+  "pageSlug": "crossbow",
+  "itemSlug": "full-moon-crossbow"
+}

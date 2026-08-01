@@ -1,0 +1,8 @@
+{
+  "name": "Lordsworn's Greatsword",
+  "text": "136 physical attack. Requires Str 16, Dex 10. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "lordsworns-greatsword"
+}

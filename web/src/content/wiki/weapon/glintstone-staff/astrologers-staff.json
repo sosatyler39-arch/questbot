@@ -1,0 +1,8 @@
+{
+  "name": "Astrologer's Staff",
+  "text": "25 physical attack. Requires Str 7, Int 16. Str scaling E, Int scaling C.",
+  "category": "weapon",
+  "pageTitle": "Glintstone Staff",
+  "pageSlug": "glintstone-staff",
+  "itemSlug": "astrologers-staff"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Bloodstained Dagger",
+  "text": "81 physical attack. Requires Str 9, Dex 12. Str scaling C, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "bloodstained-dagger"
+}

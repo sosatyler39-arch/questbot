@@ -1,0 +1,8 @@
+{
+  "name": "Steel-Wire Torch",
+  "text": "61 physical attack, 109 fire attack. Requires Str 10, Dex 8. Str scaling D, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Torch",
+  "pageSlug": "torch",
+  "itemSlug": "steel-wire-torch"
+}

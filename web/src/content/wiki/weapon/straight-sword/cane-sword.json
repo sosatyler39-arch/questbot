@@ -1,0 +1,8 @@
+{
+  "name": "Cane Sword",
+  "text": "96 physical attack. Requires Str 8, Dex 11. Str scaling E, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Straight Sword",
+  "pageSlug": "straight-sword",
+  "itemSlug": "cane-sword"
+}

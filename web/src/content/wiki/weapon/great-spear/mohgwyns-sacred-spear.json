@@ -1,0 +1,8 @@
+{
+  "name": "Mohgwyn's Sacred Spear",
+  "text": "96 physical attack, 62 fire attack. Requires Str 24, Dex 14, Arc 27. Str scaling D, Dex scaling E, Arc scaling D.",
+  "category": "weapon",
+  "pageTitle": "Great Spear",
+  "pageSlug": "great-spear",
+  "itemSlug": "mohgwyns-sacred-spear"
+}

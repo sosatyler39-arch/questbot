@@ -1,0 +1,8 @@
+{
+  "name": "Great Knife",
+  "text": "75 physical attack. Requires Str 6, Dex 12. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "great-knife"
+}

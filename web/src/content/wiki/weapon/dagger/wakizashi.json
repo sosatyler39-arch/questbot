@@ -1,0 +1,8 @@
+{
+  "name": "Wakizashi",
+  "text": "94 physical attack. Requires Str 9, Dex 13. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "wakizashi"
+}

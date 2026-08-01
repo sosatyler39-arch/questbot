@@ -1,0 +1,8 @@
+{
+  "name": "Lance",
+  "text": "123 physical attack. Requires Str 20, Dex 14. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Great Spear",
+  "pageSlug": "great-spear",
+  "itemSlug": "lance"
+}

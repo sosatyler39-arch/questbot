@@ -1,0 +1,8 @@
+{
+  "name": "Explosive Ghostflame",
+  "text": "Causes a ghostflame explosion that burns a wide area. Costs 29 FP, takes 1 memory slot, requires 42 Intelligence and 30 Faith, and costs 45 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Death sorceries",
+  "pageSlug": "death",
+  "itemSlug": "explosive-ghostflame"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Magic Grease",
+  "text": "Coats the caster's armament, inflicting magic damage on hit.",
+  "category": "consumable",
+  "pageTitle": "Greases",
+  "pageSlug": "grease",
+  "itemSlug": "magic-grease"
+}

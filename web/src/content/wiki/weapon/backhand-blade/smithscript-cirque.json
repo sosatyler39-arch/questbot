@@ -1,0 +1,8 @@
+{
+  "name": "Smithscript Cirque",
+  "text": "100 physical attack. Requires Str 9, Dex 14, Int 11, Fai 11. Str scaling D, Dex scaling D, Int scaling E, Fai scaling E. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Backhand Blade",
+  "pageSlug": "backhand-blade",
+  "itemSlug": "smithscript-cirque"
+}

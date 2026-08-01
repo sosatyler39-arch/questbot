@@ -1,0 +1,8 @@
+{
+  "name": "Lord's Rune",
+  "text": "Consumed to gain 50,000 runes.",
+  "category": "consumable",
+  "pageTitle": "Runes (consumable currency items)",
+  "pageSlug": "runes",
+  "itemSlug": "lords-rune"
+}

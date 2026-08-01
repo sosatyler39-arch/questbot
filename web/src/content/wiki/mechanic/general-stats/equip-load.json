@@ -1,0 +1,8 @@
+{
+  "name": "Equip Load",
+  "text": "The set amount of weight the player can carry before reaching certain tiers, calculated only from equipped armor, weapons, and talismans. The tiers in order are Light, Medium, Heavy, and Overloaded. Light-weight dodges have the most invincibility frames, Heavy dodges have the least, and while Overloaded you cannot dodge roll or run. Certain talismans and Crystal Tears can reduce effective weight. Maximum Equip Load is increased by leveling the Endurance stat.",
+  "category": "mechanic",
+  "pageTitle": "General stats",
+  "pageSlug": "general-stats",
+  "itemSlug": "equip-load"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Shortbow",
+  "text": "65 physical attack. Requires Str 8, Dex 10. Str scaling E, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Light Bow",
+  "pageSlug": "light-bow",
+  "itemSlug": "shortbow"
+}

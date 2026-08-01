@@ -1,0 +1,8 @@
+{
+  "name": "Dragonclaw Shield",
+  "text": "99 physical attack, 64 lightning attack. Requires Str 28, Dex 12. Str scaling D, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Greatshield",
+  "pageSlug": "greatshield",
+  "itemSlug": "dragonclaw-shield"
+}

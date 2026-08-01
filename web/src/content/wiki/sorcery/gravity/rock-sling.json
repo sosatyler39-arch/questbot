@@ -1,0 +1,8 @@
+{
+  "name": "Rock Sling",
+  "text": "Summons rocks from the earth and sends them flying. Costs 18 FP, takes 1 memory slot, requires 18 Intelligence, and costs 29 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Gravity sorceries",
+  "pageSlug": "gravity",
+  "itemSlug": "rock-sling"
+}

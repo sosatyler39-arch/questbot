@@ -1,0 +1,8 @@
+{
+  "name": "Polterstone",
+  "text": "Makes a noise imitative of human presence when placed.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "polterstone"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Crystal Burst",
+  "text": "Fires a burst of glintstone crystal shards. Costs 14 FP, takes 1 memory slot, requires 18 Intelligence, and costs 9 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "crystal-burst"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Parrying Dagger",
+  "text": "75 physical attack. Requires Str 5, Dex 14. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "parrying-dagger"
+}

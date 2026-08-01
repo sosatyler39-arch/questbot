@@ -1,0 +1,8 @@
+{
+  "name": "Frozen Armament",
+  "text": "Enchants the caster's right-hand armament with frost. Costs 20 FP, takes 1 memory slot, requires 15 Intelligence, and costs 10 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Cold sorceries",
+  "pageSlug": "cold",
+  "itemSlug": "frozen-armament"
+}

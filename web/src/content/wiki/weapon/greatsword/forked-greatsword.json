@@ -1,0 +1,8 @@
+{
+  "name": "Forked Greatsword",
+  "text": "124 physical attack. Requires Str 14, Dex 16. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "forked-greatsword"
+}

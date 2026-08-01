@@ -1,0 +1,8 @@
+{
+  "name": "Activation",
+  "text": "After defeating a demigod, the corresponding Divine Tower (a specific tower tied to that region) must be visited to unlock the Great Rune. Once unlocked, the rune is equipped in the Prayer Room menu and then activated using a Rune Arc consumable, which lasts until death.",
+  "category": "general",
+  "pageTitle": "Great Runes",
+  "pageSlug": "great-runes",
+  "itemSlug": "activation"
+}

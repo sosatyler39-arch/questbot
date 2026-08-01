@@ -1,0 +1,8 @@
+{
+  "name": "Erdtree Greatbow",
+  "text": "60 physical attack, 65 holy attack. Requires Str 20, Dex 14, Fai 14. Str scaling E, Dex scaling E, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatbow",
+  "pageSlug": "greatbow",
+  "itemSlug": "erdtree-greatbow"
+}

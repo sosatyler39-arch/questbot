@@ -1,0 +1,8 @@
+{
+  "name": "Arcane",
+  "text": "Increases Holy Defense and Death Resistance. Increases Item Discovery. Increases Arcane weapon scaling. Improves Poison, Blood, Sleep, and Madness buildup. Weapon damage breakpoints: 18, 20, 30, 45, 60, 80. Casting breakpoints: 30 / 45. Status buildup breakpoints: 40 / 45 / 60.",
+  "category": "stat",
+  "pageTitle": "Character stats",
+  "pageSlug": "character-stats",
+  "itemSlug": "arcane"
+}

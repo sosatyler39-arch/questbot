@@ -1,0 +1,8 @@
+{
+  "name": "Large Glintstone Scrap",
+  "text": "Consumes FP to cast; breaking the larger gem produces many magic bolts at once.",
+  "category": "consumable",
+  "pageTitle": "Throwing stones",
+  "pageSlug": "throwing-stone",
+  "itemSlug": "large-glintstone-scrap"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Gurranq's Beast Claw",
+  "text": "Creates beast claws to rend the surroundings with shockwaves. Costs 21 FP, takes 1 memory slot, requires 15 Faith, and costs 42 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Bestial incantations",
+  "pageSlug": "bestial",
+  "itemSlug": "gurranqs-beast-claw"
+}

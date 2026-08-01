@@ -1,0 +1,8 @@
+{
+  "name": "Iron Ball",
+  "text": "101 physical attack. Requires Str 11, Dex 8. Str scaling D, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Fist",
+  "pageSlug": "fist",
+  "itemSlug": "iron-ball"
+}

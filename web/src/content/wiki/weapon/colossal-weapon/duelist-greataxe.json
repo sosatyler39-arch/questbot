@@ -1,0 +1,8 @@
+{
+  "name": "Duelist Greataxe",
+  "text": "170 physical attack. Requires Str 30, Dex 10. Str scaling E, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Colossal Weapon",
+  "pageSlug": "colossal-weapon",
+  "itemSlug": "duelist-greataxe"
+}

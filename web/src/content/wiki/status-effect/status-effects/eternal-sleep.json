@@ -1,0 +1,8 @@
+{
+  "name": "Eternal Sleep",
+  "text": "A special case of sleep that puts the target into an everlasting sleep — the enemy falls asleep permanently and does not wake up even when attacked. Enemies under Eternal Sleep cannot be critically attacked. Some bosses affected by Eternal Sleep instead fall asleep for roughly 5-10 seconds, or shake their head and get back up rather than staying asleep permanently.",
+  "category": "status-effect",
+  "pageTitle": "Status effects",
+  "pageSlug": "status-effects",
+  "itemSlug": "eternal-sleep"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Rock Blaster",
+  "text": "Thrusts a staff into the ground to emit a massive shockwave. Costs 22 FP to cast plus 4 FP/sec while channeled, takes 1 memory slot, requires 21 Intelligence, and costs 35 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "rock-blaster"
+}

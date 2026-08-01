@@ -1,0 +1,8 @@
+{
+  "name": "Ritual Sword Talisman",
+  "text": "Raises attack power by 10% while the wearer’s HP is at maximum.",
+  "category": "talisman",
+  "pageTitle": "HP-threshold and successive-hit talismans",
+  "pageSlug": "hp-threshold-successive-hit",
+  "itemSlug": "ritual-sword-talisman"
+}

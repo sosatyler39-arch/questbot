@@ -1,0 +1,8 @@
+{
+  "name": "Beast-Repellent Torch",
+  "text": "58 physical attack, 104 fire attack. Requires Str 12, Dex 8. Str scaling C, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Torch",
+  "pageSlug": "torch",
+  "itemSlug": "beast-repellent-torch"
+}

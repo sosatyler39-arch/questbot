@@ -1,0 +1,8 @@
+{
+  "name": "Acid Spraymist",
+  "text": "Consumes FP to cast; releases a cloud of acid mist from the mouth.",
+  "category": "consumable",
+  "pageTitle": "Perfume arts",
+  "pageSlug": "perfume-arts",
+  "itemSlug": "acid-spraymist"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Swift Glintstone Shard",
+  "text": "Swiftly fires magic projectiles from glintstone. Costs 5 FP, takes 1 memory slot, requires 12 Intelligence, and costs 9 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "swift-glintstone-shard"
+}

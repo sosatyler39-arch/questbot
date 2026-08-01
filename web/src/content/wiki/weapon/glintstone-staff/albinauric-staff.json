@@ -1,0 +1,8 @@
+{
+  "name": "Albinauric Staff",
+  "text": "17 physical attack. Requires Str 6, Int 10, Arc 12. Str scaling E, Int scaling D, Arc scaling C.",
+  "category": "weapon",
+  "pageTitle": "Glintstone Staff",
+  "pageSlug": "glintstone-staff",
+  "itemSlug": "albinauric-staff"
+}

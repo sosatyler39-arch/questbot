@@ -1,0 +1,8 @@
+{
+  "name": "Assassin's Crimson Dagger",
+  "text": "Landing a critical hit restores 10% of maximum HP plus a flat 85 HP.",
+  "category": "talisman",
+  "pageTitle": "HP-threshold and successive-hit talismans",
+  "pageSlug": "hp-threshold-successive-hit",
+  "itemSlug": "assassins-crimson-dagger"
+}

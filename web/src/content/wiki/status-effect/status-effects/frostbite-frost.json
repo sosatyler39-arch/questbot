@@ -1,0 +1,8 @@
+{
+  "name": "Frostbite (Frost)",
+  "text": "Builds up as you land hits on an enemy. Once the meter fills, it deals damage and lowers the target's defenses by 20%. Buildup varies based on the source of frost inflicted, and frost can build up faster the more Intelligence the attacking character has.",
+  "category": "status-effect",
+  "pageTitle": "Status effects",
+  "pageSlug": "status-effects",
+  "itemSlug": "frostbite-frost"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Sacrificial Twig",
+  "text": "Prevents lost Runes from being dropped on death, but the twig itself is consumed/lost in the exchange.",
+  "category": "talisman",
+  "pageTitle": "Item and utility talismans",
+  "pageSlug": "item-utility",
+  "itemSlug": "sacrificial-twig"
+}

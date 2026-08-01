@@ -1,0 +1,8 @@
+{
+  "name": "Ivory Sickle",
+  "text": "60 physical attack, 60 magic attack. Requires Str 6, Dex 11, Int 13. Str scaling E, Dex scaling D, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "ivory-sickle"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Magic Glintblade",
+  "text": "Creates a sigil that forms a projectile glintblade after a delay. Costs 12 FP, takes 1 memory slot, requires 14 Intelligence, and costs 22 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Carian sorceries",
+  "pageSlug": "carian",
+  "itemSlug": "magic-glintblade"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Finger Seal",
+  "text": "25 physical attack. Requires Str 4, Fai 10. Str scaling E, Fai scaling C.",
+  "category": "weapon",
+  "pageTitle": "Sacred Seal",
+  "pageSlug": "sacred-seal",
+  "itemSlug": "finger-seal"
+}

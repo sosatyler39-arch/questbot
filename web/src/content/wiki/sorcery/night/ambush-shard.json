@@ -1,0 +1,8 @@
+{
+  "name": "Ambush Shard",
+  "text": "Strikes from behind with a projectile fired from a distance. Costs 13 FP, takes 1 memory slot, requires 23 Intelligence, and costs 15 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Night sorceries",
+  "pageSlug": "night",
+  "itemSlug": "ambush-shard"
+}

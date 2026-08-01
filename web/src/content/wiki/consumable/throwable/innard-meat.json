@@ -1,0 +1,8 @@
+{
+  "name": "Innard Meat",
+  "text": "A scrap of innards thrown at enemies to inflict physical damage.",
+  "category": "consumable",
+  "pageTitle": "Other throwables",
+  "pageSlug": "throwable",
+  "itemSlug": "innard-meat"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Heal",
+  "text": "Heals HP for the caster and nearby allies. Costs 32 FP, takes 1 memory slot, requires 12 Faith, and costs 35 Stamina. A Healing incantation.",
+  "category": "incantation",
+  "pageTitle": "Two Fingers incantations",
+  "pageSlug": "two-fingers",
+  "itemSlug": "heal"
+}

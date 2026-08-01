@@ -1,0 +1,8 @@
+{
+  "name": "Alluring Pot",
+  "text": "Consumes FP to cast; thrown to lure enemies of human build only.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "alluring-pot"
+}

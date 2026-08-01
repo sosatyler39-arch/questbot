@@ -1,0 +1,8 @@
+{
+  "name": "Freezing Pot",
+  "text": "A standard clay pot thrown at enemies to cause a buildup of frost.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "freezing-pot"
+}

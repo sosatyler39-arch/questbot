@@ -1,0 +1,8 @@
+{
+  "name": "Chainlink Flail",
+  "text": "112 physical attack. Requires Str 18, Dex 12. Str scaling C, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Flail",
+  "pageSlug": "flail",
+  "itemSlug": "chainlink-flail"
+}

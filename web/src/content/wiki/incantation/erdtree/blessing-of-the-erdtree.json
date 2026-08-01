@@ -1,0 +1,8 @@
+{
+  "name": "Blessing of the Erdtree",
+  "text": "Grants a greater blessing to the caster and nearby allies. Costs 60 FP, takes 1 memory slot, requires 38 Faith, and costs 50 Stamina. A Buff incantation.",
+  "category": "incantation",
+  "pageTitle": "Erdtree incantations",
+  "pageSlug": "erdtree",
+  "itemSlug": "blessing-of-the-erdtree"
+}

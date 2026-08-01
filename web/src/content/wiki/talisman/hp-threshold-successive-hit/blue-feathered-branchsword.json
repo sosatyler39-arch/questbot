@@ -1,0 +1,8 @@
+{
+  "name": "Blue-Feathered Branchsword",
+  "text": "Reduces damage taken by 50% while the wearer’s HP is below 20%.",
+  "category": "talisman",
+  "pageTitle": "HP-threshold and successive-hit talismans",
+  "pageSlug": "hp-threshold-successive-hit",
+  "itemSlug": "blue-feathered-branchsword"
+}

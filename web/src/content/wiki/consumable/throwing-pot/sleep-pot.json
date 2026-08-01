@@ -1,0 +1,8 @@
+{
+  "name": "Sleep Pot",
+  "text": "Consumes FP to cast; thrown to cause a buildup of sleep.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "sleep-pot"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Butchering Knife",
+  "text": "134 physical attack. Requires Str 16, Dex 20. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Greataxe",
+  "pageSlug": "greataxe",
+  "itemSlug": "butchering-knife"
+}

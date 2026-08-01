@@ -1,0 +1,8 @@
+{
+  "name": "Black Knife",
+  "text": "66 physical attack, 65 holy attack. Requires Str 8, Dex 12, Fai 18. Str scaling E, Dex scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "black-knife"
+}

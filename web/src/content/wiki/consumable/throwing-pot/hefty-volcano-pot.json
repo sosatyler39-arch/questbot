@@ -1,0 +1,8 @@
+{
+  "name": "Hefty Volcano Pot",
+  "text": "Creates a heat cloud on impact, causing continuous heavy fire damage to anyone standing in it.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "hefty-volcano-pot"
+}

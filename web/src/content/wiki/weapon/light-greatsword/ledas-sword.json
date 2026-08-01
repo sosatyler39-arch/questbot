@@ -1,0 +1,8 @@
+{
+  "name": "Leda's Sword",
+  "text": "101 physical attack, 65 holy attack. Requires Str 11, Dex 22, Fai 19. Str scaling E, Dex scaling C, Fai scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Light Greatsword",
+  "pageSlug": "light-greatsword",
+  "itemSlug": "ledas-sword"
+}

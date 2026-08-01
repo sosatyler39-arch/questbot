@@ -1,0 +1,8 @@
+{
+  "name": "Guard Counter and Riposte",
+  "text": "While blocking with a weapon or shield, getting hit during that blocking animation lets you perform a Guard Counter — an attack that deals increased damage and posture damage when it lands. After an enemy's posture bar is maxed out, they enter a staggered animation during which you can perform a Riposte — an attack dealing large, unavoidable damage. Consumables that deal damage (throwing pots, throwing knives, etc.) are also a valid way to attack.",
+  "category": "mechanic",
+  "pageTitle": "Ways to attack",
+  "pageSlug": "ways-to-attack",
+  "itemSlug": "guard-counter-and-riposte"
+}

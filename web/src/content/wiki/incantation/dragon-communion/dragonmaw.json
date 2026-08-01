@@ -1,0 +1,8 @@
+{
+  "name": "Dragonmaw",
+  "text": "Channels a dragon to bite foes directly in front of the caster. Costs 34 FP, takes 1 memory slot, requires 24 Faith and 16 Arcane, and costs 50 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Dragon Communion incantations",
+  "pageSlug": "dragon-communion",
+  "itemSlug": "dragonmaw"
+}

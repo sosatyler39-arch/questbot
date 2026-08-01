@@ -1,0 +1,8 @@
+{
+  "name": "Bone Dart",
+  "text": "A crude dart thrown at enemies to inflict physical damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing knives",
+  "pageSlug": "throwing-knife",
+  "itemSlug": "bone-dart"
+}

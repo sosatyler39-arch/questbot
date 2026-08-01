@@ -1,0 +1,8 @@
+{
+  "name": "Smithscript Axe",
+  "text": "131 physical attack. Requires Str 13, Dex 10, Int 11, Fai 11. Str scaling D, Dex scaling D, Int scaling E, Fai scaling E. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Axe",
+  "pageSlug": "axe",
+  "itemSlug": "smithscript-axe"
+}

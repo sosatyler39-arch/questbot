@@ -1,0 +1,8 @@
+{
+  "name": "Frenzyflame Stone",
+  "text": "Consumes FP to cast; continuously heals nearby followers of the Frenzied Flame.",
+  "category": "consumable",
+  "pageTitle": "Healing items",
+  "pageSlug": "healing",
+  "itemSlug": "frenzyflame-stone"
+}

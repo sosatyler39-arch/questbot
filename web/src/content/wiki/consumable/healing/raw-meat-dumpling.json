@@ -1,0 +1,8 @@
+{
+  "name": "Raw Meat Dumpling",
+  "text": "Restores HP but causes a poison buildup as a side effect.",
+  "category": "consumable",
+  "pageTitle": "Healing items",
+  "pageSlug": "healing",
+  "itemSlug": "raw-meat-dumpling"
+}

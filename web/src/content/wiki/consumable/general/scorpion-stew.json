@@ -1,0 +1,8 @@
+{
+  "name": "Scorpion Stew",
+  "text": "Temporarily boosts physical damage negation and gradually restores HP.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "scorpion-stew"
+}

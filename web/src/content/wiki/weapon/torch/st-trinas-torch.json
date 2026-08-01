@@ -1,0 +1,8 @@
+{
+  "name": "St. Trina's Torch",
+  "text": "51 physical attack, 91 fire attack. Requires Str 10, Dex 10, Fai 14. Str scaling E, Dex scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Torch",
+  "pageSlug": "torch",
+  "itemSlug": "st-trinas-torch"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Urgent Heal",
+  "text": "Heals a small amount of HP. Costs 16 FP, takes 1 memory slot, requires 8 Faith, and costs 30 Stamina. A Healing incantation.",
+  "category": "incantation",
+  "pageTitle": "Two Fingers incantations",
+  "pageSlug": "two-fingers",
+  "itemSlug": "urgent-heal"
+}

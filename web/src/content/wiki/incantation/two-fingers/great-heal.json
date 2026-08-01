@@ -1,0 +1,8 @@
+{
+  "name": "Great Heal",
+  "text": "Greatly heals HP for the caster and nearby allies. Costs 45 FP, takes 1 memory slot, requires 15 Faith, and costs 40 Stamina. A Healing incantation.",
+  "category": "incantation",
+  "pageTitle": "Two Fingers incantations",
+  "pageSlug": "two-fingers",
+  "itemSlug": "great-heal"
+}

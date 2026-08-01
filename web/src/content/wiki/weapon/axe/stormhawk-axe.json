@@ -1,0 +1,8 @@
+{
+  "name": "Stormhawk Axe",
+  "text": "136 physical attack. Requires Str 19, Dex 15. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Axe",
+  "pageSlug": "axe",
+  "itemSlug": "stormhawk-axe"
+}

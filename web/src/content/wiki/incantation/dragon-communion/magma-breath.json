@@ -1,0 +1,8 @@
+{
+  "name": "Magma Breath",
+  "text": "Channels a wyrm to spew magma breath. Costs 30 FP, takes 1 memory slot, requires 14 Faith and 10 Arcane, and costs 40 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Dragon Communion incantations",
+  "pageSlug": "dragon-communion",
+  "itemSlug": "magma-breath"
+}

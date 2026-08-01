@@ -1,0 +1,8 @@
+{
+  "name": "Inquisitor's Girandole",
+  "text": "102 physical attack, 66 fire attack. Requires Str 18, Dex 15, Fai 16. Str scaling D, Dex scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Spear",
+  "pageSlug": "spear",
+  "itemSlug": "inquisitors-girandole"
+}

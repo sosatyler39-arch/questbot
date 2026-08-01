@@ -1,0 +1,8 @@
+{
+  "name": "Golden Order Greatsword",
+  "text": "86 physical attack, 103 holy attack. Requires Str 16, Dex 21, Fai 28. Str scaling E, Dex scaling D, Fai scaling C.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "golden-order-greatsword"
+}

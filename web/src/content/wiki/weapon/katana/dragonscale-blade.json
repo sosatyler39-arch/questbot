@@ -1,0 +1,8 @@
+{
+  "name": "Dragonscale Blade",
+  "text": "110 physical attack. Requires Str 12, Dex 20. Str scaling D, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Katana",
+  "pageSlug": "katana",
+  "itemSlug": "dragonscale-blade"
+}

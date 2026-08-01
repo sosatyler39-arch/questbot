@@ -1,0 +1,8 @@
+{
+  "name": "Fire Pot",
+  "text": "A standard clay pot that explodes on impact, dealing fire damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "fire-pot"
+}

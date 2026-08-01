@@ -1,0 +1,8 @@
+{
+  "name": "Anvil Hammer",
+  "text": "131 physical attack, 85 fire attack. Requires Str 39, Dex 10, Int 11, Fai 20. Str scaling C, Dex scaling E, Int scaling E, Fai scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Colossal Weapon",
+  "pageSlug": "colossal-weapon",
+  "itemSlug": "anvil-hammer"
+}

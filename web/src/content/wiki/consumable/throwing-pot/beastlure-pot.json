@@ -1,0 +1,8 @@
+{
+  "name": "Beastlure Pot",
+  "text": "Consumes FP to cast; thrown to lure beasts only.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "beastlure-pot"
+}

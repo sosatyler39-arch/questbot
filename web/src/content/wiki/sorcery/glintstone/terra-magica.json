@@ -1,0 +1,8 @@
+{
+  "name": "Terra Magica",
+  "text": "Raises the magic strength of those standing within its sigil. Costs 20 FP, takes 1 memory slot, requires 20 Intelligence, and costs 12 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "terra-magica"
+}

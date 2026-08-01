@@ -1,0 +1,8 @@
+{
+  "name": "Light Crossbow",
+  "text": "65 physical attack. Requires Str 12, Dex 8.",
+  "category": "weapon",
+  "pageTitle": "Crossbow",
+  "pageSlug": "crossbow",
+  "itemSlug": "light-crossbow"
+}

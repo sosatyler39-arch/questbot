@@ -1,0 +1,8 @@
+{
+  "name": "Gargoyle's Black Axe",
+  "text": "100 physical attack, 120 holy attack. Requires Str 24, Dex 8, Fai 22. Str scaling D, Dex scaling E, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greataxe",
+  "pageSlug": "greataxe",
+  "itemSlug": "gargoyles-black-axe"
+}

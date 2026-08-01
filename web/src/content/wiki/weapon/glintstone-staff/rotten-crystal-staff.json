@@ -1,0 +1,8 @@
+{
+  "name": "Rotten Crystal Staff",
+  "text": "42 physical attack. Requires Str 8, Int 48. Str scaling D, Int scaling B.",
+  "category": "weapon",
+  "pageTitle": "Glintstone Staff",
+  "pageSlug": "glintstone-staff",
+  "itemSlug": "rotten-crystal-staff"
+}

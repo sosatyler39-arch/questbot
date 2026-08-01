@@ -1,0 +1,8 @@
+{
+  "name": "Pulley Crossbow",
+  "text": "65 physical attack. Requires Str 16, Dex 16.",
+  "category": "weapon",
+  "pageTitle": "Crossbow",
+  "pageSlug": "crossbow",
+  "itemSlug": "pulley-crossbow"
+}

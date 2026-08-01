@@ -1,0 +1,8 @@
+{
+  "name": "Lizard Greatsword",
+  "text": "140 physical attack. Requires Str 12, Dex 14. Str scaling D, Dex scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "lizard-greatsword"
+}

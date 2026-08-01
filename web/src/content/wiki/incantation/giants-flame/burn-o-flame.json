@@ -1,0 +1,8 @@
+{
+  "name": "Burn, O Flame!",
+  "text": "Raises a series of flame pillars around the caster. Costs 26 FP, takes 1 memory slot, requires 27 Faith, and costs 36 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Giants' Flame incantations",
+  "pageSlug": "giants-flame",
+  "itemSlug": "burn-o-flame"
+}

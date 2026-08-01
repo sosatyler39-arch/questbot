@@ -1,0 +1,8 @@
+{
+  "name": "Ordovis's Greatsword",
+  "text": "107 physical attack, 69 holy attack. Requires Str 25, Dex 13, Fai 15. Str scaling C, Dex scaling E, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "ordoviss-greatsword"
+}

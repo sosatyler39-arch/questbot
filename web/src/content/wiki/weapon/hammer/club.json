@@ -1,0 +1,8 @@
+{
+  "name": "Club",
+  "text": "103 physical attack. Requires Str 10. Str scaling C.",
+  "category": "weapon",
+  "pageTitle": "Hammer",
+  "pageSlug": "hammer",
+  "itemSlug": "club"
+}

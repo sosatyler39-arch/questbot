@@ -1,0 +1,8 @@
+{
+  "name": "Greatsword of Radahn (Lord)",
+  "text": "127 physical attack, 82 magic attack. Requires Str 32, Dex 24, Int 15. Str scaling D, Dex scaling D, Int scaling E. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Colossal Sword",
+  "pageSlug": "colossal-sword",
+  "itemSlug": "greatsword-of-radahn-lord"
+}

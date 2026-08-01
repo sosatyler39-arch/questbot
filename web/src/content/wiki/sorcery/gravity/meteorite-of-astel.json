@@ -1,0 +1,8 @@
+{
+  "name": "Meteorite of Astel",
+  "text": "Calls a hail of small meteorites down from the void. Costs 60 FP to cast plus 12 FP/sec while channeled, takes 2 memory slots, requires 55 Intelligence, and costs 40 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Gravity sorceries",
+  "pageSlug": "gravity",
+  "itemSlug": "meteorite-of-astel"
+}

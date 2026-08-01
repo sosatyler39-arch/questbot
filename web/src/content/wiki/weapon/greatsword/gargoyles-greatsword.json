@@ -1,0 +1,8 @@
+{
+  "name": "Gargoyle's Greatsword",
+  "text": "133 physical attack. Requires Str 18, Dex 10. Str scaling C, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "gargoyles-greatsword"
+}

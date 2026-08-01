@@ -1,0 +1,8 @@
+{
+  "name": "Deadly Poison",
+  "text": "A special, stronger version of poison. When poison is already active and Deadly Poison is applied on top of it, it causes a massive burst of damage but then completely removes the poison status from the target.",
+  "category": "status-effect",
+  "pageTitle": "Status effects",
+  "pageSlug": "status-effects",
+  "itemSlug": "deadly-poison"
+}

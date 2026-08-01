@@ -1,0 +1,8 @@
+{
+  "name": "Meteorite",
+  "text": "Calls small meteors down from the sky. Costs 30 FP to cast plus 10 FP/sec while channeled, takes 1 memory slot, requires 30 Intelligence, and costs 35 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Gravity sorceries",
+  "pageSlug": "gravity",
+  "itemSlug": "meteorite"
+}

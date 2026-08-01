@@ -1,0 +1,8 @@
+{
+  "name": "Winged Scythe",
+  "text": "87 physical attack, 104 holy attack. Requires Str 16, Dex 16, Fai 24. Str scaling E, Dex scaling D, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Reaper",
+  "pageSlug": "reaper",
+  "itemSlug": "winged-scythe"
+}

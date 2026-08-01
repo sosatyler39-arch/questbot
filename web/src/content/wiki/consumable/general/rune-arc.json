@@ -1,0 +1,8 @@
+{
+  "name": "Rune Arc",
+  "text": "Grants the blessing of an equipped Great Rune when used.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "rune-arc"
+}

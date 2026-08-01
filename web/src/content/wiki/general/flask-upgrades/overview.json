@@ -1,0 +1,8 @@
+{
+  "name": "Overview",
+  "text": "The Flask of Crimson Tears (HP) and Flask of Cerulean Tears (FP) are the core healing and mana resources, refilled at Sites of Grace. Two separate upgrade paths improve them: Golden Seeds increase the total number of flask charges available, and Sacred Tears increase how much each flask charge restores.",
+  "category": "general",
+  "pageTitle": "Flask upgrades",
+  "pageSlug": "flask-upgrades",
+  "itemSlug": "overview"
+}

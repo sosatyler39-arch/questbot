@@ -1,0 +1,8 @@
+{
+  "name": "Poise",
+  "text": "The stat that determines how much punishment a character can take before staggering (\"crumbling\") to enemy attacks. Poise can only be increased through what armor is worn, not through leveling a core stat.",
+  "category": "mechanic",
+  "pageTitle": "General stats",
+  "pageSlug": "general-stats",
+  "itemSlug": "poise"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Antspur Rapier",
+  "text": "98 physical attack. Requires Str 10, Dex 20. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Thrusting Sword",
+  "pageSlug": "thrusting-sword",
+  "itemSlug": "antspur-rapier"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Starscourge Greatsword",
+  "text": "129 physical attack, 83 magic attack. Requires Str 38, Dex 12, Int 15. Str scaling D, Dex scaling D, Int scaling E.",
+  "category": "weapon",
+  "pageTitle": "Colossal Sword",
+  "pageSlug": "colossal-sword",
+  "itemSlug": "starscourge-greatsword"
+}

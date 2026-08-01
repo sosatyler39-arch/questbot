@@ -1,0 +1,8 @@
+{
+  "name": "Magic Fortification",
+  "text": "Increases magic damage negation. Costs 20 FP, takes 1 memory slot, requires 10 Faith, and costs 13 Stamina. A Buff incantation.",
+  "category": "incantation",
+  "pageTitle": "Two Fingers incantations",
+  "pageSlug": "two-fingers",
+  "itemSlug": "magic-fortification"
+}

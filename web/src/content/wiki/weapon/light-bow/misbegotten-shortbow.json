@@ -1,0 +1,8 @@
+{
+  "name": "Misbegotten Shortbow",
+  "text": "68 physical attack. Requires Str 16, Dex 8. Str scaling D, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Light Bow",
+  "pageSlug": "light-bow",
+  "itemSlug": "misbegotten-shortbow"
+}

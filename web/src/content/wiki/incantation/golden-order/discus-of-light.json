@@ -1,0 +1,8 @@
+{
+  "name": "Discus of Light",
+  "text": "Fires a ring of light in front of the caster. Costs 3 FP, takes 1 memory slot, requires 13 Intelligence and 13 Faith, and costs 20 Stamina. A Damage incantation — one of the few incantations that scales with both Intelligence and Faith.",
+  "category": "incantation",
+  "pageTitle": "Golden Order incantations",
+  "pageSlug": "golden-order",
+  "itemSlug": "discus-of-light"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Warming Stone",
+  "text": "Consumes FP to cast; continuously heals nearby allies over time.",
+  "category": "consumable",
+  "pageTitle": "Healing items",
+  "pageSlug": "healing",
+  "itemSlug": "warming-stone"
+}

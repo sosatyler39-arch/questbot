@@ -1,0 +1,8 @@
+{
+  "name": "Dragonclaw",
+  "text": "Channels a dragon to rend foes with dragon claws. Costs 24 FP, takes 1 memory slot, requires 17 Faith and 13 Arcane, and costs 35 Stamina. A Damage incantation.",
+  "category": "incantation",
+  "pageTitle": "Dragon Communion incantations",
+  "pageSlug": "dragon-communion",
+  "itemSlug": "dragonclaw"
+}

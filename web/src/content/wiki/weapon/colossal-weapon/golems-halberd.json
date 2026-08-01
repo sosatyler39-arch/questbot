@@ -1,0 +1,8 @@
+{
+  "name": "Golem's Halberd",
+  "text": "158 physical attack. Requires Str 36, Dex 14. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Colossal Weapon",
+  "pageSlug": "colossal-weapon",
+  "itemSlug": "golems-halberd"
+}

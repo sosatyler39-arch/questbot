@@ -1,0 +1,8 @@
+{
+  "name": "Leather Armor",
+  "text": "8% physical, 9.5% strike, 8% slash, 8.8% pierce, 9.5% magic, 9.5% fire, 10.2% lightning, 10.2% holy damage negation. Immunity 60, Robustness 35, Focus 42, Vitality 50, Poise 12. Weight 7.1.",
+  "category": "armor",
+  "pageTitle": "Body",
+  "pageSlug": "body",
+  "itemSlug": "leather-armor"
+}

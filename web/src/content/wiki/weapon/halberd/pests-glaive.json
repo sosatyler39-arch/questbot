@@ -1,0 +1,8 @@
+{
+  "name": "Pest's Glaive",
+  "text": "120 physical attack. Requires Str 13, Dex 13. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Halberd",
+  "pageSlug": "halberd",
+  "itemSlug": "pests-glaive"
+}

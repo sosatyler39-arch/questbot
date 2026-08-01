@@ -1,0 +1,8 @@
+{
+  "name": "Vortex of Putrescence",
+  "text": "Launches a whirl of putrescent jets. Costs 29 FP, takes 2 memory slots, requires 32 Intelligence and 26 Faith, and costs 45 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Death sorceries",
+  "pageSlug": "death",
+  "itemSlug": "vortex-of-putrescence"
+}

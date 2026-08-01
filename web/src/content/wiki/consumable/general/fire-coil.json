@@ -1,0 +1,8 @@
+{
+  "name": "Fire Coil",
+  "text": "Consumes FP to cast; conjures a tiny fire snake that attacks nearby foes.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "fire-coil"
+}

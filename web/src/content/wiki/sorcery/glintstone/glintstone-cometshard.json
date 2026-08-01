@@ -1,0 +1,8 @@
+{
+  "name": "Glintstone Cometshard",
+  "text": "Fires a magic comet with a trailing tail. Costs 17 FP, takes 1 memory slot, requires 36 Intelligence, and costs 30 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "glintstone-cometshard"
+}

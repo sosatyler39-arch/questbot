@@ -1,0 +1,8 @@
+{
+  "name": "Dark Moon Greatsword",
+  "text": "82 physical attack, 98 magic attack. Requires Str 16, Dex 11, Int 38. Str scaling D, Dex scaling D, Int scaling C.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "dark-moon-greatsword"
+}

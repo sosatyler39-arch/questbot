@@ -1,0 +1,8 @@
+{
+  "name": "Sentry's Torch",
+  "text": "56 physical attack, 100 holy attack. Requires Str 15, Dex 8, Fai 15. Str scaling D, Dex scaling E, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Torch",
+  "pageSlug": "torch",
+  "itemSlug": "sentrys-torch"
+}

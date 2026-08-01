@@ -1,0 +1,8 @@
+{
+  "name": "Radahn's Great Rune",
+  "text": "Raises maximum HP, FP, and Stamina by 15% once activated. Dropped by Starscourge Radahn at Redmane Castle in Caelid. Restored at the Divine Tower of Caelid.",
+  "category": "great-rune",
+  "pageTitle": "Great Runes",
+  "pageSlug": "great-runes",
+  "itemSlug": "radahns-great-rune"
+}

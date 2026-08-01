@@ -1,0 +1,8 @@
+{
+  "name": "Rings of Spectral Light",
+  "text": "Creates rings of spectral light that fire in unison. Costs 14 FP, takes 1 memory slot, requires 24 Intelligence and 18 Faith, and costs 21 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Death sorceries",
+  "pageSlug": "death",
+  "itemSlug": "rings-of-spectral-light"
+}

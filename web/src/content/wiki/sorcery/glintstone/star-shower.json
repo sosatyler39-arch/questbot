@@ -1,0 +1,8 @@
+{
+  "name": "Star Shower",
+  "text": "Fires six shooting stars that pursue foes. Costs 23 FP, takes 1 memory slot, requires 24 Intelligence, and costs 26 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "star-shower"
+}

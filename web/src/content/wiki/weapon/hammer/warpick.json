@@ -1,0 +1,8 @@
+{
+  "name": "Warpick",
+  "text": "108 physical attack. Requires Str 11, Dex 9. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Hammer",
+  "pageSlug": "hammer",
+  "itemSlug": "warpick"
+}

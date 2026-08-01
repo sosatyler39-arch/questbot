@@ -1,0 +1,8 @@
+{
+  "name": "Vyke's War Spear",
+  "text": "103 physical attack, 66 fire attack. Requires Str 16, Dex 20, Fai 18. Str scaling E, Dex scaling C, Fai scaling D.",
+  "category": "weapon",
+  "pageTitle": "Great Spear",
+  "pageSlug": "great-spear",
+  "itemSlug": "vykes-war-spear"
+}

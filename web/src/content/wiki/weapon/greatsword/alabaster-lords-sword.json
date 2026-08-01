@@ -1,0 +1,8 @@
+{
+  "name": "Alabaster Lord's Sword",
+  "text": "128 physical attack, 38 magic attack. Requires Str 16, Dex 12, Int 18. Str scaling D, Dex scaling E, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "alabaster-lords-sword"
+}

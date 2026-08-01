@@ -1,0 +1,8 @@
+{
+  "name": "Spirit Sword",
+  "text": "92 physical attack, 59 magic attack. Requires Str 8, Dex 16, Int 16. Str scaling E, Dex scaling D, Int scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Curved Sword",
+  "pageSlug": "curved-sword",
+  "itemSlug": "spirit-sword"
+}

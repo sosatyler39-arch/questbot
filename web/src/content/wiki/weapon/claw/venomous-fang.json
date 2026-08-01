@@ -1,0 +1,8 @@
+{
+  "name": "Venomous Fang",
+  "text": "97 physical attack. Requires Str 9, Dex 9. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Claw",
+  "pageSlug": "claw",
+  "itemSlug": "venomous-fang"
+}

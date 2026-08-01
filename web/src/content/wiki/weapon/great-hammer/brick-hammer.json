@@ -1,0 +1,8 @@
+{
+  "name": "Brick Hammer",
+  "text": "122 physical attack. Requires Str 31. Str scaling B.",
+  "category": "weapon",
+  "pageTitle": "Great Hammer",
+  "pageSlug": "great-hammer",
+  "itemSlug": "brick-hammer"
+}

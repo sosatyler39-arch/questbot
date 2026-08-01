@@ -1,0 +1,8 @@
+{
+  "name": "Jar Cannon",
+  "text": "192 physical attack. Requires Str 34, Dex 12.",
+  "category": "weapon",
+  "pageTitle": "Ballista",
+  "pageSlug": "ballista",
+  "itemSlug": "jar-cannon"
+}

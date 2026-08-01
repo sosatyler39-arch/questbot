@@ -1,0 +1,8 @@
+{
+  "name": "Thorned Whip",
+  "text": "105 physical attack. Requires Str 8, Dex 16. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Whip",
+  "pageSlug": "whip",
+  "itemSlug": "thorned-whip"
+}

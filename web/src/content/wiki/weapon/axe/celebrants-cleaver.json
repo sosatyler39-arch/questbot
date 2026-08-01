@@ -1,0 +1,8 @@
+{
+  "name": "Celebrant's Cleaver",
+  "text": "125 physical attack. Requires Str 12, Dex 8. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Axe",
+  "pageSlug": "axe",
+  "itemSlug": "celebrants-cleaver"
+}

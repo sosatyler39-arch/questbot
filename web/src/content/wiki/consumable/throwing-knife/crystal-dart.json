@@ -1,0 +1,8 @@
+{
+  "name": "Crystal Dart",
+  "text": "Consumes FP to cast; a shard thrown to inflict magic damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing knives",
+  "pageSlug": "throwing-knife",
+  "itemSlug": "crystal-dart"
+}

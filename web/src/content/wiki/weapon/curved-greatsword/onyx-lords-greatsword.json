@@ -1,0 +1,8 @@
+{
+  "name": "Onyx Lord's Greatsword",
+  "text": "118 physical attack, 76 magic attack. Requires Str 20, Dex 16, Int 16. Str scaling D, Dex scaling E, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Curved Greatsword",
+  "pageSlug": "curved-greatsword",
+  "itemSlug": "onyx-lords-greatsword"
+}

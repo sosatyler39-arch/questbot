@@ -1,0 +1,8 @@
+{
+  "name": "Smithscript Shield",
+  "text": "72 physical attack. Requires Str 10, Dex 15, Int 11, Fai 11. Str scaling D, Dex scaling E, Int scaling E, Fai scaling E. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Small Shield",
+  "pageSlug": "small-shield",
+  "itemSlug": "smithscript-shield"
+}

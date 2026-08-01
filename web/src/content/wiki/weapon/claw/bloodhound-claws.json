@@ -1,0 +1,8 @@
+{
+  "name": "Bloodhound Claws",
+  "text": "99 physical attack. Requires Str 10, Dex 15. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Claw",
+  "pageSlug": "claw",
+  "itemSlug": "bloodhound-claws"
+}

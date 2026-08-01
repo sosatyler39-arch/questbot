@@ -1,0 +1,8 @@
+{
+  "name": "Lord's Aid",
+  "text": "Alleviates poison, blood loss, and sleep buildup for the caster and allies. Costs 12 FP, takes 1 memory slot, requires 12 Faith, and costs 10 Stamina. A Healing incantation.",
+  "category": "incantation",
+  "pageTitle": "Two Fingers incantations",
+  "pageSlug": "two-fingers",
+  "itemSlug": "lords-aid"
+}

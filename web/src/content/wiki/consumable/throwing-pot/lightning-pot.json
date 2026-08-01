@@ -1,0 +1,8 @@
+{
+  "name": "Lightning Pot",
+  "text": "A standard clay pot thrown at enemies to inflict lightning damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "lightning-pot"
+}

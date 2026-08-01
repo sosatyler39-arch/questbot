@@ -1,0 +1,8 @@
+{
+  "name": "Death's Poker",
+  "text": "123 physical attack, 36 magic attack. Requires Str 15, Dex 17, Int 11. Str scaling D, Dex scaling D, Int scaling E.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "deaths-poker"
+}

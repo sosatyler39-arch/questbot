@@ -1,0 +1,8 @@
+{
+  "name": "Smithscript Spear",
+  "text": "107 physical attack. Requires Str 9, Dex 12, Int 11, Fai 11. Str scaling D, Dex scaling D, Int scaling E, Fai scaling E. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Spear",
+  "pageSlug": "spear",
+  "itemSlug": "smithscript-spear"
+}

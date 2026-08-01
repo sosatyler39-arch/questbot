@@ -1,0 +1,8 @@
+{
+  "name": "Barbed Staff-Spear",
+  "text": "86 physical attack, 86 holy attack. Requires Str 14, Dex 18, Fai 22. Str scaling E, Dex scaling E, Fai scaling C. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Great Spear",
+  "pageSlug": "great-spear",
+  "itemSlug": "barbed-staff-spear"
+}

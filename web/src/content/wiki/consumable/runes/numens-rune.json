@@ -1,0 +1,8 @@
+{
+  "name": "Numen's Rune",
+  "text": "Consumed to gain 12,500 runes.",
+  "category": "consumable",
+  "pageTitle": "Runes (consumable currency items)",
+  "pageSlug": "runes",
+  "itemSlug": "numens-rune"
+}

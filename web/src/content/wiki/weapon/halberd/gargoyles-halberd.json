@@ -1,0 +1,8 @@
+{
+  "name": "Gargoyle's Halberd",
+  "text": "131 physical attack. Requires Str 26, Dex 10. Str scaling C, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Halberd",
+  "pageSlug": "halberd",
+  "itemSlug": "gargoyles-halberd"
+}

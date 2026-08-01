@@ -1,0 +1,8 @@
+{
+  "name": "Knight's Greatsword",
+  "text": "141 physical attack. Requires Str 16, Dex 12. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "knights-greatsword"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Morning Star",
+  "text": "118 physical attack. Requires Str 12, Dex 8. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Hammer",
+  "pageSlug": "hammer",
+  "itemSlug": "morning-star"
+}

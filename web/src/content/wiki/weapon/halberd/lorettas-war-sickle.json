@@ -1,0 +1,8 @@
+{
+  "name": "Loretta's War Sickle",
+  "text": "110 physical attack, 71 magic attack. Requires Str 20, Dex 15, Int 20. Str scaling D, Dex scaling D, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Halberd",
+  "pageSlug": "halberd",
+  "itemSlug": "lorettas-war-sickle"
+}

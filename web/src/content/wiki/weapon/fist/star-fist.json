@@ -1,0 +1,8 @@
+{
+  "name": "Star Fist",
+  "text": "105 physical attack. Requires Str 12, Dex 8. Str scaling D, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Fist",
+  "pageSlug": "fist",
+  "itemSlug": "star-fist"
+}

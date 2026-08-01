@@ -1,0 +1,8 @@
+{
+  "name": "FP (Focus Points)",
+  "text": "How the player casts Ashes of War, spells, and incantations. FP is raised by leveling the Mind stat and replenished with a Cerulean Flask. Other methods of gaining FP come from talismans. FP resets to maximum every time you rest at a Site of Grace.",
+  "category": "mechanic",
+  "pageTitle": "General stats",
+  "pageSlug": "general-stats",
+  "itemSlug": "fp-focus-points"
+}

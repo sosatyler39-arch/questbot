@@ -1,0 +1,8 @@
+{
+  "name": "Clayman's Harpoon",
+  "text": "99 physical attack, 64 magic attack. Requires Str 12, Dex 10, Int 12. Str scaling D, Dex scaling E, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Spear",
+  "pageSlug": "spear",
+  "itemSlug": "claymans-harpoon"
+}

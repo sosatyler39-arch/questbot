@@ -1,0 +1,8 @@
+{
+  "name": "Night Comet",
+  "text": "Fires a semi-invisible magic comet. Costs 21 FP, takes 1 memory slot, requires 38 Intelligence, and costs 30 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Night sorceries",
+  "pageSlug": "night",
+  "itemSlug": "night-comet"
+}

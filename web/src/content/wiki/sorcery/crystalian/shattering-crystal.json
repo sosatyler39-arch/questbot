@@ -1,0 +1,8 @@
+{
+  "name": "Shattering Crystal",
+  "text": "Creates a crystal mass that shatters in a forward burst. Costs 21 FP, takes 1 memory slot, requires 38 Intelligence, and costs 35 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Crystalian sorceries",
+  "pageSlug": "crystalian",
+  "itemSlug": "shattering-crystal"
+}

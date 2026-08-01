@@ -1,0 +1,8 @@
+{
+  "name": "Eternal Darkness",
+  "text": "Creates a dark space that draws in spells. Costs 25 FP, takes 1 memory slot, requires 35 Intelligence, and costs 15 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Night sorceries",
+  "pageSlug": "night",
+  "itemSlug": "eternal-darkness"
+}

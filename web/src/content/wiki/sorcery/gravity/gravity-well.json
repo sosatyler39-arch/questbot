@@ -1,0 +1,8 @@
+{
+  "name": "Gravity Well",
+  "text": "Pulls foes toward the caster with a gravity projectile. Costs 12 FP, takes 1 memory slot, requires 17 Intelligence, and costs 20 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Gravity sorceries",
+  "pageSlug": "gravity",
+  "itemSlug": "gravity-well"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Brass Shield",
+  "text": "84 physical attack. Requires Str 16. Str scaling D.",
+  "category": "weapon",
+  "pageTitle": "Medium Shield",
+  "pageSlug": "medium-shield",
+  "itemSlug": "brass-shield"
+}

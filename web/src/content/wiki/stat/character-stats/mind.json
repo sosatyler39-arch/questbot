@@ -1,0 +1,8 @@
+{
+  "name": "Mind",
+  "text": "Governs FP. Increases Focus. FP scaling is strongest until 50. Soft caps: 50 / 60.",
+  "category": "stat",
+  "pageTitle": "Character stats",
+  "pageSlug": "character-stats",
+  "itemSlug": "mind"
+}

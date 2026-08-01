@@ -1,0 +1,8 @@
+{
+  "name": "Serpentbone Blade",
+  "text": "120 physical attack. Requires Str 11, Dex 22. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Katana",
+  "pageSlug": "katana",
+  "itemSlug": "serpentbone-blade"
+}

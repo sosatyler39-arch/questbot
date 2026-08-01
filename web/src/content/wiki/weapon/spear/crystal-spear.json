@@ -1,0 +1,8 @@
+{
+  "name": "Crystal Spear",
+  "text": "110 physical attack, 33 magic attack. Requires Str 10, Dex 16, Int 16. Str scaling E, Dex scaling D, Int scaling E.",
+  "category": "weapon",
+  "pageTitle": "Spear",
+  "pageSlug": "spear",
+  "itemSlug": "crystal-spear"
+}

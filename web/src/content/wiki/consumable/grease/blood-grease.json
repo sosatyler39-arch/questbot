@@ -1,0 +1,8 @@
+{
+  "name": "Blood Grease",
+  "text": "Coats the caster's armament, inflicting blood loss buildup on hit.",
+  "category": "consumable",
+  "pageTitle": "Greases",
+  "pageSlug": "grease",
+  "itemSlug": "blood-grease"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Unarmed",
+  "text": "20 physical attack. No stat requirements. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Fist",
+  "pageSlug": "fist",
+  "itemSlug": "unarmed"
+}

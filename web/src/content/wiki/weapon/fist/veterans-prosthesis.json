@@ -1,0 +1,8 @@
+{
+  "name": "Veteran's Prosthesis",
+  "text": "83 physical attack, 53 lightning attack. Requires Str 15, Dex 12. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Fist",
+  "pageSlug": "fist",
+  "itemSlug": "veterans-prosthesis"
+}

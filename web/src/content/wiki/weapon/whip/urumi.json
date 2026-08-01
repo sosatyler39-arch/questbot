@@ -1,0 +1,8 @@
+{
+  "name": "Urumi",
+  "text": "101 physical attack. Requires Str 10, Dex 19. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Whip",
+  "pageSlug": "whip",
+  "itemSlug": "urumi"
+}

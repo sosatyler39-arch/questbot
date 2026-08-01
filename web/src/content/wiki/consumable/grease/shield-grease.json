@@ -1,0 +1,8 @@
+{
+  "name": "Shield Grease",
+  "text": "Coats the caster's shield, boosting guarding ability and all damage negation while blocking.",
+  "category": "consumable",
+  "pageTitle": "Greases",
+  "pageSlug": "grease",
+  "itemSlug": "shield-grease"
+}

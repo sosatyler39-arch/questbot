@@ -1,0 +1,8 @@
+{
+  "name": "Glintstone Arc",
+  "text": "Launches a horizontally-widening magic arc. Costs 9 FP, takes 1 memory slot, requires 13 Intelligence, and costs 18 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "glintstone-arc"
+}

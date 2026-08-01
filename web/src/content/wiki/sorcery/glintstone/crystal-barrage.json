@@ -1,0 +1,8 @@
+{
+  "name": "Crystal Barrage",
+  "text": "Fires a volley of glintstone crystal shards. Costs 14 FP to cast plus 2 FP/sec while channeled, takes 1 memory slot, requires 23 Intelligence, and costs 26 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Glintstone sorceries",
+  "pageSlug": "glintstone",
+  "itemSlug": "crystal-barrage"
+}

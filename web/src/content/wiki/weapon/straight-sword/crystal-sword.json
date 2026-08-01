@@ -1,0 +1,8 @@
+{
+  "name": "Crystal Sword",
+  "text": "106 physical attack, 68 magic attack. Requires Str 13, Dex 10, Int 15. Str scaling D, Dex scaling E, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Straight Sword",
+  "pageSlug": "straight-sword",
+  "itemSlug": "crystal-sword"
+}

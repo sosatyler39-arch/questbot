@@ -1,0 +1,8 @@
+{
+  "name": "Moonveil",
+  "text": "73 physical attack, 87 magic attack. Requires Str 12, Dex 18, Int 23. Str scaling E, Dex scaling D, Int scaling C.",
+  "category": "weapon",
+  "pageTitle": "Katana",
+  "pageSlug": "katana",
+  "itemSlug": "moonveil"
+}

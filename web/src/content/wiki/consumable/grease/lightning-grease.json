@@ -1,0 +1,8 @@
+{
+  "name": "Lightning Grease",
+  "text": "Coats the caster's armament, inflicting lightning damage on hit.",
+  "category": "consumable",
+  "pageTitle": "Greases",
+  "pageSlug": "grease",
+  "itemSlug": "lightning-grease"
+}

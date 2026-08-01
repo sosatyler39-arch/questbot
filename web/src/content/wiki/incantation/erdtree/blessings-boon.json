@@ -1,0 +1,8 @@
+{
+  "name": "Blessing's Boon",
+  "text": "Grants a blessing to the caster and nearby allies. Costs 30 FP, takes 1 memory slot, requires 24 Faith, and costs 30 Stamina. A Buff incantation.",
+  "category": "incantation",
+  "pageTitle": "Erdtree incantations",
+  "pageSlug": "erdtree",
+  "itemSlug": "blessings-boon"
+}

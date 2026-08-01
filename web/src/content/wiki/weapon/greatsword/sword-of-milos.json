@@ -1,0 +1,8 @@
+{
+  "name": "Sword of Milos",
+  "text": "141 physical attack. Requires Str 15, Dex 19. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "sword-of-milos"
+}

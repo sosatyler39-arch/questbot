@@ -1,0 +1,8 @@
+{
+  "name": "Inseparable Sword",
+  "text": "98 physical attack, 98 holy attack. Requires Str 18, Dex 18, Fai 20. Str scaling D, Dex scaling D, Fai scaling C.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "inseparable-sword"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Gargoyle's Twinblade",
+  "text": "123 physical attack. Requires Str 18, Dex 15. Str scaling C, Dex scaling E.",
+  "category": "weapon",
+  "pageTitle": "Twinblade",
+  "pageSlug": "twinblade",
+  "itemSlug": "gargoyles-twinblade"
+}

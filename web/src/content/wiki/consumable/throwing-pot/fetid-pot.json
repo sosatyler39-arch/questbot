@@ -1,0 +1,8 @@
+{
+  "name": "Fetid Pot",
+  "text": "A standard clay pot thrown at enemies to cause a buildup of deadly poison.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "fetid-pot"
+}

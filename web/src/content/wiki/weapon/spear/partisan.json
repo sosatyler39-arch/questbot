@@ -1,0 +1,8 @@
+{
+  "name": "Partisan",
+  "text": "123 physical attack. Requires Str 15, Dex 12. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Spear",
+  "pageSlug": "spear",
+  "itemSlug": "partisan"
+}

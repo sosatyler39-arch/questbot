@@ -1,0 +1,8 @@
+{
+  "name": "Ancient Dragon's Blessing",
+  "text": "Consumes FP to cast; increases all damage negation for the caster.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "ancient-dragons-blessing"
+}

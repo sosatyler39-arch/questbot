@@ -1,0 +1,8 @@
+{
+  "name": "HP (Hit Points)",
+  "text": "The amount of damage a player can take before dying. Maximum HP increases by leveling the Vigor stat. Once HP gets low, healing is done with a Crimson Flask; other healing methods come from talismans and incantations. HP resets to maximum every time you rest at a Site of Grace.",
+  "category": "mechanic",
+  "pageTitle": "General stats",
+  "pageSlug": "general-stats",
+  "itemSlug": "hp-hit-points"
+}

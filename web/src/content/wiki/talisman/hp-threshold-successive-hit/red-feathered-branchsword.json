@@ -1,0 +1,8 @@
+{
+  "name": "Red-Feathered Branchsword",
+  "text": "Raises attack power by 20% while the wearer’s HP is below 20%.",
+  "category": "talisman",
+  "pageTitle": "HP-threshold and successive-hit talismans",
+  "pageSlug": "hp-threshold-successive-hit",
+  "itemSlug": "red-feathered-branchsword"
+}

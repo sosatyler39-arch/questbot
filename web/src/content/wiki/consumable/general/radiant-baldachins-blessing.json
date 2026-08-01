@@ -1,0 +1,8 @@
+{
+  "name": "Radiant Baldachin's Blessing",
+  "text": "Consumes FP to cast; temporarily raises Poise, with a longer-lasting effect than the standard blessing.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "radiant-baldachins-blessing"
+}

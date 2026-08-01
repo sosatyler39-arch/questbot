@@ -1,0 +1,8 @@
+{
+  "name": "Usage",
+  "text": "Each respec consumes one Larval Tear, and total character level and total item/spell requirements aren't affected — only where existing stat points are allocated changes. Larval Tears are a limited but replenishable resource found from certain enemy drops and purchasable in small quantities from specific merchants.",
+  "category": "general",
+  "pageTitle": "Respeccing your character",
+  "pageSlug": "respeccing",
+  "itemSlug": "usage"
+}

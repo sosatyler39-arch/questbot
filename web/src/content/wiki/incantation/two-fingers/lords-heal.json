@@ -1,0 +1,8 @@
+{
+  "name": "Lord's Heal",
+  "text": "Massively heals HP for the caster and nearby allies. Costs 55 FP, takes 1 memory slot, requires 20 Faith, and costs 45 Stamina. A Healing incantation.",
+  "category": "incantation",
+  "pageTitle": "Two Fingers incantations",
+  "pageSlug": "two-fingers",
+  "itemSlug": "lords-heal"
+}

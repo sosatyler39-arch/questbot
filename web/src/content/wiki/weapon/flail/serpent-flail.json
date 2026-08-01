@@ -1,0 +1,8 @@
+{
+  "name": "Serpent Flail",
+  "text": "77 physical attack, 92 fire attack. Requires Str 10, Dex 24, Fai 21. Str scaling E, Dex scaling D, Fai scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Flail",
+  "pageSlug": "flail",
+  "itemSlug": "serpent-flail"
+}

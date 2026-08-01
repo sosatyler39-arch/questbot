@@ -1,0 +1,8 @@
+{
+  "name": "Star-Lined Sword",
+  "text": "82 physical attack, 82 magic attack. Requires Str 10, Dex 23, Int 21. Str scaling E, Dex scaling C, Int scaling D. Shadow of the Erdtree.",
+  "category": "weapon",
+  "pageTitle": "Katana",
+  "pageSlug": "katana",
+  "itemSlug": "star-lined-sword"
+}

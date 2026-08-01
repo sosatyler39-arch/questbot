@@ -1,0 +1,8 @@
+{
+  "name": "Academy Magic Pot",
+  "text": "Consumes FP to cast; thrown at enemies to inflict heavy magic damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "academy-magic-pot"
+}

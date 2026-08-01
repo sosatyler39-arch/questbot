@@ -1,0 +1,8 @@
+{
+  "name": "Rosus' Axe",
+  "text": "112 physical attack, 72 magic attack. Requires Str 18, Dex 10, Int 18. Str scaling D, Dex scaling E, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Axe",
+  "pageSlug": "axe",
+  "itemSlug": "rosus-axe"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Zamor Ice Storm",
+  "text": "Thrusts a staff into the ground to create a freezing tornado. Costs 17 FP, takes 1 memory slot, requires 36 Intelligence, and costs 27 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Cold sorceries",
+  "pageSlug": "cold",
+  "itemSlug": "zamor-ice-storm"
+}

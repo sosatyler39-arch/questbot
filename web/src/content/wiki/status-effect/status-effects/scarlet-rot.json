@@ -1,0 +1,8 @@
+{
+  "name": "Scarlet Rot",
+  "text": "Deals more damage over time than poison, and at a faster rate, at the cost of a shorter duration. Damage and buildup vary based on the source of rot inflicted.",
+  "category": "status-effect",
+  "pageTitle": "Status effects",
+  "pageSlug": "status-effects",
+  "itemSlug": "scarlet-rot"
+}

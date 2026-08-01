@@ -1,0 +1,8 @@
+{
+  "name": "Roped Magic Pot",
+  "text": "Consumes FP to cast; a roped pot thrown behind the caster to inflict magic damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing pots",
+  "pageSlug": "throwing-pot",
+  "itemSlug": "roped-magic-pot"
+}

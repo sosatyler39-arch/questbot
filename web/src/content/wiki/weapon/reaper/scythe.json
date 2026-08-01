@@ -1,0 +1,8 @@
+{
+  "name": "Scythe",
+  "text": "125 physical attack. Requires Str 14, Dex 14. Str scaling E, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Reaper",
+  "pageSlug": "reaper",
+  "itemSlug": "scythe"
+}

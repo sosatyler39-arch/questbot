@@ -1,0 +1,8 @@
+{
+  "name": "Fia's Mist",
+  "text": "Releases a mist of death in front of the caster. Costs 25 FP, takes 1 memory slot, requires 23 Intelligence and 18 Faith, and costs 13 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Death sorceries",
+  "pageSlug": "death",
+  "itemSlug": "fias-mist"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Throwing Dagger",
+  "text": "A small blade thrown at an enemy to inflict physical damage.",
+  "category": "consumable",
+  "pageTitle": "Throwing knives",
+  "pageSlug": "throwing-knife",
+  "itemSlug": "throwing-dagger"
+}

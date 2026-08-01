@@ -1,0 +1,8 @@
+{
+  "name": "Claymore",
+  "text": "138 physical attack. Requires Str 16, Dex 13. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Greatsword",
+  "pageSlug": "greatsword",
+  "itemSlug": "claymore"
+}

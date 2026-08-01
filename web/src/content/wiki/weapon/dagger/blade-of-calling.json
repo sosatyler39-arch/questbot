@@ -1,0 +1,8 @@
+{
+  "name": "Blade of Calling",
+  "text": "71 physical attack, 43 holy attack. Requires Str 6, Dex 13, Fai 15. Str scaling D, Dex scaling D, Fai scaling C.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "blade-of-calling"
+}

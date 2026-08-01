@@ -1,0 +1,8 @@
+{
+  "name": "Forked Hatchet",
+  "text": "113 physical attack. Requires Str 9, Dex 14. Str scaling D, Dex scaling C.",
+  "category": "weapon",
+  "pageTitle": "Axe",
+  "pageSlug": "axe",
+  "itemSlug": "forked-hatchet"
+}

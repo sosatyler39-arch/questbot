@@ -1,0 +1,8 @@
+{
+  "name": "Stamina",
+  "text": "Required to complete almost every action in Elden Ring. Stamina replenishes automatically. Out-of-combat actions don't cost stamina, but in combat the only actions that don't cost stamina are walking and a few specific other actions. Stamina is raised by increasing the Endurance stat.",
+  "category": "mechanic",
+  "pageTitle": "General stats",
+  "pageSlug": "general-stats",
+  "itemSlug": "stamina"
+}

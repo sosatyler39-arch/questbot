@@ -1,0 +1,8 @@
+{
+  "name": "Magma Shot",
+  "text": "Fires a lump of magma that explodes on contact. Costs 16 FP, takes 1 memory slot, requires 19 Intelligence and 10 Faith, and costs 21 Stamina.",
+  "category": "sorcery",
+  "pageTitle": "Magma sorceries",
+  "pageSlug": "magma",
+  "itemSlug": "magma-shot"
+}

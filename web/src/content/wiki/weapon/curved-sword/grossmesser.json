@@ -1,0 +1,8 @@
+{
+  "name": "Grossmesser",
+  "text": "115 physical attack. Requires Str 14, Dex 12. Str scaling D, Dex scaling D.",
+  "category": "weapon",
+  "pageTitle": "Curved Sword",
+  "pageSlug": "curved-sword",
+  "itemSlug": "grossmesser"
+}

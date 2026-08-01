@@ -1,0 +1,8 @@
+{
+  "name": "Flask of Wondrous Physick",
+  "text": "Bestows various special effects depending on which two Crystal Tears are mixed into it.",
+  "category": "consumable",
+  "pageTitle": "General consumables",
+  "pageSlug": "general",
+  "itemSlug": "flask-of-wondrous-physick"
+}

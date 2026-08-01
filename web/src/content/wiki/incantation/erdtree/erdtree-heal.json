@@ -1,0 +1,8 @@
+{
+  "name": "Erdtree Heal",
+  "text": "Vastly heals HP for the caster and nearby allies. Costs 65 FP, takes 1 memory slot, requires 42 Faith, and costs 50 Stamina. A Healing incantation.",
+  "category": "incantation",
+  "pageTitle": "Erdtree incantations",
+  "pageSlug": "erdtree",
+  "itemSlug": "erdtree-heal"
+}

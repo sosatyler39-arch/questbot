@@ -1,0 +1,8 @@
+{
+  "name": "Physical damage",
+  "text": "Standard, Strike, Pierce, and Slash all fall under the Physical Damage category, and can have increased damage by upgrading Strength and/or Dexterity.",
+  "category": "damage-type",
+  "pageTitle": "Damage types and scaling",
+  "pageSlug": "damage-types",
+  "itemSlug": "physical-damage"
+}

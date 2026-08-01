@@ -1,0 +1,8 @@
+{
+  "name": "Glintstone Kris",
+  "text": "57 physical attack, 68 magic attack. Requires Str 5, Dex 12, Int 16. Str scaling E, Dex scaling D, Int scaling D.",
+  "category": "weapon",
+  "pageTitle": "Dagger",
+  "pageSlug": "dagger",
+  "itemSlug": "glintstone-kris"
+}
