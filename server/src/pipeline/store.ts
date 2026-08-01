@@ -4,22 +4,28 @@ import type { PendingChunk } from './types.js';
 
 export type EmbeddedChunk = PendingChunk & { embedding: number[] };
 
-// Replaces every chunk for a URL with the freshly-embedded set — the sync job
-// re-fetches a whole page/video each run, so this is simpler and safer than
-// diffing individual chunks, and naturally handles content that shrank.
-export async function upsertChunksForUrl(url: string, chunks: EmbeddedChunk[]): Promise<void> {
+// Replaces every chunk for a page/video with the freshly-embedded set — the
+// sync job re-fetches a whole page/video each run, so this is simpler and
+// safer than diffing individual chunks, and naturally handles content that
+// shrank. `pageKey` is a stable per-page/per-video grouping key used only
+// for this delete-and-replace — it's deliberately separate from each
+// chunk's own `url` (shown to users as SourceCard.url), since one page now
+// produces several chunks that each link to a different real wiki item
+// page rather than all sharing one URL.
+export async function upsertChunksForUrl(pageKey: string, chunks: EmbeddedChunk[]): Promise<void> {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
-    await client.query('DELETE FROM chunks WHERE url = $1', [url]);
+    await client.query('DELETE FROM chunks WHERE page_key = $1', [pageKey]);
     for (const chunk of chunks) {
       await client.query(
-        `INSERT INTO chunks (source_type, title, url, content, video_id, start_seconds, embedding)
-         VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+        `INSERT INTO chunks (source_type, title, url, page_key, content, video_id, start_seconds, embedding)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
         [
           chunk.sourceType,
           chunk.title,
           chunk.url,
+          pageKey,
           chunk.content,
           chunk.sourceType === 'video' ? chunk.videoId : null,
           chunk.sourceType === 'video' ? chunk.startSeconds : null,

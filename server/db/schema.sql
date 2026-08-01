@@ -13,11 +13,17 @@ CREATE TABLE users (
 
 -- Pre-embedded content: original-writing article sections + (future) video
 -- transcript segments.
+-- `url` is the real, individually-addressable link shown to users
+-- (SourceCard.url — a wiki item page, or a timestamped video link).
+-- `page_key` is separate: a stable per-source-page/video grouping key used
+-- only by sync.ts's delete-and-replace on re-sync, since one page/video now
+-- produces several chunks that each carry a *different* `url`.
 CREATE TABLE chunks (
   id            BIGSERIAL PRIMARY KEY,
   source_type   TEXT NOT NULL CHECK (source_type IN ('article', 'video')),
   title         TEXT NOT NULL,
   url           TEXT NOT NULL,
+  page_key      TEXT NOT NULL,
   content       TEXT NOT NULL,
   video_id      TEXT,     -- video chunks only
   start_seconds INT,      -- video chunks only
@@ -26,6 +32,7 @@ CREATE TABLE chunks (
   CHECK (source_type <> 'video' OR (video_id IS NOT NULL AND start_seconds IS NOT NULL))
 );
 CREATE INDEX chunks_embedding_idx ON chunks USING hnsw (embedding vector_cosine_ops);
+CREATE INDEX chunks_page_key_idx ON chunks (page_key);
 
 -- Thumbs up/down per answer, for quality tracking.
 CREATE TABLE feedback (

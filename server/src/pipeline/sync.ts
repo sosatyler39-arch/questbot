@@ -1,12 +1,13 @@
 import { CREATORS } from './creators.js';
-import { originalContentSource } from './sources/original-content.js';
+import { CATEGORIZED_PAGES } from './sources/original-content.js';
 import { listRecentVideos, fetchTranscript } from './sources/youtube.js';
 import { chunkArticle, chunkTranscript } from './chunking.js';
 import { embedText } from './embeddings.js';
 import { upsertChunksForUrl } from './store.js';
+import { wikiUrlFor } from './wiki-url.js';
 import type { PendingChunk } from './types.js';
 
-async function embedAndStore(url: string, chunks: PendingChunk[]): Promise<void> {
+async function embedAndStore(pageKey: string, chunks: PendingChunk[]): Promise<void> {
   if (chunks.length === 0) return;
   // Sequential, not Promise.all — the free-tier embed quota is 100
   // requests/minute, and firing a page's chunks in parallel burns it in
@@ -24,7 +25,7 @@ async function embedAndStore(url: string, chunks: PendingChunk[]): Promise<void>
     // unchanged; only what gets embedded changes.
     embedded.push({ ...chunk, embedding: await embedText(`${chunk.title}: ${chunk.content}`) });
   }
-  await upsertChunksForUrl(url, embedded);
+  await upsertChunksForUrl(pageKey, embedded);
 }
 
 // Scheduled sync job (brief §4: nightly/weekly, not live per-question).
@@ -37,9 +38,20 @@ export async function syncGame(gameKey: keyof typeof CREATORS): Promise<void> {
   const creators = CREATORS[gameKey];
   if (!creators) throw new Error(`No creator config for game "${gameKey}"`);
 
-  const pages = await originalContentSource.fetchPages();
-  for (const page of pages) {
-    await embedAndStore(page.url, chunkArticle(page.title, page.url, page.sections));
+  for (const { category, page } of CATEGORIZED_PAGES) {
+    const chunks = chunkArticle(page.title, page.url, page.sections);
+    // chunkArticle drops empty-text sections, so re-apply the same filter
+    // here to line sections back up with the chunks it produced 1:1.
+    const nonEmptySections = page.sections.filter((s) => s.text.trim().length > 0);
+    const withWikiUrls = chunks.map((chunk, i) => ({
+      ...chunk,
+      url: wikiUrlFor(category, page.url, nonEmptySections[i].heading),
+    }));
+    // page.url (the old questbot://guide/... placeholder) is kept only as
+    // the stable per-page dedup key passed to upsertChunksForUrl — each
+    // chunk's own `url` (used for SourceCard.url) is now the real,
+    // individually-addressable wiki link instead.
+    await embedAndStore(page.url, withWikiUrls);
   }
 
   for (const channelId of creators.youtubeChannelIds) {

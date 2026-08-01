@@ -490,34 +490,48 @@ export const ORIGINAL_PAGES: ArticlePage[] = [
   },
 ];
 
-export const ALL_PAGES: ArticlePage[] = [
-  ...ORIGINAL_PAGES,
-  ...STARTING_CLASS_PAGES,
-  ...KEEPSAKE_PAGES,
-  ...STAT_PAGES,
-  ...GENERAL_STATS_PAGES,
-  ...DAMAGE_TYPE_PAGES,
-  ...STATUS_EFFECT_PAGES,
-  ...EVERGAOL_PAGES,
-  ...CHURCH_PAGES,
-  ...GREAT_ENEMY_PAGES,
-  ...KEY_ITEM_PAGES,
-  ...LIMGRAVE_DUNGEON_PAGES,
-  ...LIURNIA_CAELID_DUNGEON_PAGES,
-  ...LATE_GAME_DUNGEON_PAGES,
-  ...CHEST_PAGES,
-  ...QUESTLINE_PAGES,
-  ...TALISMAN_PAGES,
-  ...INCANTATION_PAGES,
-  ...SORCERY_PAGES,
-  ...CONSUMABLE_PAGES,
-  ...CRYSTAL_TEAR_PAGES,
-  ...WHETSTONE_PAGES,
-  ...GREAT_RUNE_PAGES,
-  ...ASH_OF_WAR_PAGES,
-  ...WEAPON_PAGES,
-  ...ARMOR_PAGES,
+// Category slug per source array — same slugs the wiki's own one-time
+// conversion script used to lay out web/src/content/wiki/{category}/..., so
+// wiki-url.ts can rebuild a URL here that actually resolves on the site.
+export interface CategorizedPage {
+  category: string;
+  page: ArticlePage;
+}
+
+function tag(category: string, pages: ArticlePage[]): CategorizedPage[] {
+  return pages.map((page) => ({ category, page }));
+}
+
+export const CATEGORIZED_PAGES: CategorizedPage[] = [
+  ...tag('general', ORIGINAL_PAGES),
+  ...tag('starting-class', STARTING_CLASS_PAGES),
+  ...tag('keepsake', KEEPSAKE_PAGES),
+  ...tag('stat', STAT_PAGES),
+  ...tag('mechanic', GENERAL_STATS_PAGES),
+  ...tag('damage-type', DAMAGE_TYPE_PAGES),
+  ...tag('status-effect', STATUS_EFFECT_PAGES),
+  ...tag('evergaol', EVERGAOL_PAGES),
+  ...tag('church', CHURCH_PAGES),
+  ...tag('great-enemy', GREAT_ENEMY_PAGES),
+  ...tag('key-item', KEY_ITEM_PAGES),
+  ...tag('dungeon-limgrave', LIMGRAVE_DUNGEON_PAGES),
+  ...tag('dungeon-liurnia-caelid', LIURNIA_CAELID_DUNGEON_PAGES),
+  ...tag('dungeon-late-game', LATE_GAME_DUNGEON_PAGES),
+  ...tag('chest', CHEST_PAGES),
+  ...tag('questline', QUESTLINE_PAGES),
+  ...tag('talisman', TALISMAN_PAGES),
+  ...tag('incantation', INCANTATION_PAGES),
+  ...tag('sorcery', SORCERY_PAGES),
+  ...tag('consumable', CONSUMABLE_PAGES),
+  ...tag('crystal-tear', CRYSTAL_TEAR_PAGES),
+  ...tag('whetstone', WHETSTONE_PAGES),
+  ...tag('great-rune', GREAT_RUNE_PAGES),
+  ...tag('ash-of-war', ASH_OF_WAR_PAGES),
+  ...tag('weapon', WEAPON_PAGES),
+  ...tag('armor', ARMOR_PAGES),
 ];
+
+export const ALL_PAGES: ArticlePage[] = CATEGORIZED_PAGES.map((c) => c.page);
 
 export const originalContentSource: TextSource = {
   async fetchPages(): Promise<ArticlePage[]> {

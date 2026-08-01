@@ -50,6 +50,14 @@ Dev-DB note: if your local database predates the identity work, re-apply
 `server/db/schema.sql` — the `users` table was migrated off `overwolf_id` to
 Discord-keyed identity (`discord_id`, `stripe_customer_id`, `tier`).
 
+Dev-DB note (wiki source links): `chunks` gained a `page_key TEXT NOT NULL`
+column (separate from `url`, see the schema's comment) so each chunk can
+link to its own real wiki item page instead of every chunk on a page
+sharing one `questbot://guide/...` placeholder. A database from before this
+change needs either a fresh `schema.sql` apply, or `ALTER TABLE chunks ADD
+COLUMN page_key TEXT` followed by a full `syncGame('elden-ring')` re-run
+(which repopulates `page_key` for every row) before making it `NOT NULL`.
+
 **To actually populate the database with content** (needed before `/ask` can return real answers — without this, every question falls through to the low-confidence path):
 
 ```ts
