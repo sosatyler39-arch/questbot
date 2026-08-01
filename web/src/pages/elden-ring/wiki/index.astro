@@ -1,0 +1,44 @@
+---
+import WikiLayout from '../../../components/WikiLayout.astro';
+import { getCollection } from 'astro:content';
+import { humanize } from '../../../wiki/format';
+
+const entries = await getCollection('wiki');
+const categories = [...new Set(entries.map((e) => e.data.category))].sort();
+---
+<WikiLayout title="Elden Ring Wiki">
+  <div class="wiki-index">
+    <h1>Wiki</h1>
+    <ul class="wiki-list">
+      {categories.map((category) => (
+        <li><a href={`/elden-ring/wiki/${category}`}>{humanize(category)}</a></li>
+      ))}
+    </ul>
+  </div>
+</WikiLayout>
+<style>
+  .wiki-index {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .wiki-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .wiki-list a {
+    display: block;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .wiki-list a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>
