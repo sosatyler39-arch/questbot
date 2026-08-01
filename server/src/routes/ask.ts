@@ -6,6 +6,8 @@ import { pgvectorRetriever } from '../retrieval.js';
 import { synthesize, liveSearchFallback } from '../synthesis.js';
 import { getUser, CONFIDENCE_THRESHOLD } from '../tiers.js';
 import { extractItemName, getItemLocation } from '../pipeline/location-store.js';
+import { categoryFromWikiUrl } from '../pipeline/wiki-url.js';
+import { locationCategoryForWikiCategory } from '../pipeline/sources/data/item-locations/categorized.js';
 
 export default async function askRoutes(app: FastifyInstance) {
   app.post<{ Body: AskRequest; Reply: AskResponse }>('/ask', async (req, reply) => {
@@ -53,7 +55,9 @@ export default async function askRoutes(app: FastifyInstance) {
     let locations: string[] | undefined;
     if (top.source.kind === 'article') {
       const itemName = extractItemName(top.source.title);
-      const loc = itemName ? await getItemLocation(itemName) : null;
+      const wikiCategory = categoryFromWikiUrl(top.source.url);
+      const locationCategory = wikiCategory ? locationCategoryForWikiCategory(wikiCategory) : null;
+      const loc = itemName && locationCategory ? await getItemLocation(itemName, locationCategory) : null;
       if (loc) {
         locationSummary = loc.summary;
         if (loc.locationNames.length > 0) locations = loc.locationNames;

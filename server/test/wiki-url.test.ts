@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { slugify, pageSlugFromUrl, wikiUrlFor } from '../src/pipeline/wiki-url.js';
+import { slugify, pageSlugFromUrl, wikiUrlFor, categoryFromWikiUrl } from '../src/pipeline/wiki-url.js';
 
 test('slugify lowercases, strips apostrophes, and hyphenates', () => {
   assert.equal(slugify('Golden Vow'), 'golden-vow');
@@ -24,4 +24,19 @@ test('wikiUrlFor builds the real 3-level wiki URL for a 1-segment placeholder', 
     wikiUrlFor('general', 'questbot://guide/margit-the-fell-omen', 'Strategy'),
     'https://questbot-web.vercel.app/elden-ring/wiki/general/margit-the-fell-omen/strategy',
   );
+});
+
+test('categoryFromWikiUrl extracts the category segment from a real wiki item URL', () => {
+  assert.equal(
+    categoryFromWikiUrl('https://questbot-web.vercel.app/elden-ring/wiki/weapon/katana/uchigatana'),
+    'weapon',
+  );
+  assert.equal(
+    categoryFromWikiUrl('https://questbot-web.vercel.app/elden-ring/wiki/general/margit-the-fell-omen/strategy'),
+    'general',
+  );
+});
+
+test('categoryFromWikiUrl returns null for a non-wiki URL (e.g. a video source card)', () => {
+  assert.equal(categoryFromWikiUrl('https://www.youtube.com/watch?v=abc&t=10s'), null);
 });

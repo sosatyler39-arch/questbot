@@ -15,6 +15,10 @@ export interface ItemLocationEntry {
   summary: string;
 }
 
+export interface CategorizedItemLocationEntry extends ItemLocationEntry {
+  category: string;
+}
+
 // Pluggable text-content source. No implementation is wired in yet — see
 // sources/articles.ts for why (Fextralife's Terms of Use block scraping it).
 export interface TextSource {

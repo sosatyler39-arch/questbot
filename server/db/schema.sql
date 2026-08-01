@@ -57,8 +57,17 @@ CREATE TABLE usage (
 -- MapLocation.name values in client/src/renderer/map/locations.ts; empty
 -- when an item's real source is too diffuse for a single map pin (roaming
 -- merchants, common enemy drops).
+--
+-- Primary key is (item_name, category), not item_name alone: the game
+-- itself reuses names across categories (e.g. an incantation and its
+-- matching Ash of War both named "Golden Vow"; "Beast Claw" names both an
+-- incantation and an unrelated weapon) — a single-column key let one
+-- silently overwrite the other depending on sync order. See README's "Item
+-- location index" section for the real "Beast Claw" bug this fixes.
 CREATE TABLE item_locations (
-  item_name      TEXT PRIMARY KEY,
+  item_name      TEXT NOT NULL,
+  category       TEXT NOT NULL,
   location_names TEXT[] NOT NULL DEFAULT '{}',
-  summary        TEXT NOT NULL
+  summary        TEXT NOT NULL,
+  PRIMARY KEY (item_name, category)
 );

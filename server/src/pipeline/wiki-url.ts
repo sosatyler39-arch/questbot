@@ -24,3 +24,12 @@ export function wikiUrlFor(category: string, pageUrl: string, heading: string): 
   const itemSlug = slugify(heading);
   return `${WIKI_BASE}/${category}/${pageSlug}/${itemSlug}`;
 }
+
+// Inverse of wikiUrlFor's category segment — used by ask.ts to recover which
+// content category the top-matching chunk came from, now that its URL is a
+// real wiki link instead of an opaque questbot://guide/... placeholder.
+export function categoryFromWikiUrl(url: string): string | null {
+  if (!url.startsWith(`${WIKI_BASE}/`)) return null;
+  const rest = url.slice(WIKI_BASE.length + 1).split('/').filter(Boolean);
+  return rest[0] ?? null;
+}
