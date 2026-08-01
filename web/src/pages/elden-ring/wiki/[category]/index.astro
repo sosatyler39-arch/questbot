@@ -1,0 +1,52 @@
+---
+import WikiLayout from '../../../../components/WikiLayout.astro';
+import { getCollection } from 'astro:content';
+import { humanize } from '../../../../wiki/format';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('wiki');
+  const categories = [...new Set(entries.map((e) => e.data.category))];
+  return categories.map((category) => ({ params: { category } }));
+}
+
+const { category } = Astro.params as { category: string };
+const entries = await getCollection('wiki', (e) => e.data.category === category);
+const pages = [...new Map(entries.map((e) => [e.data.pageSlug, e.data.pageTitle])).entries()];
+---
+<WikiLayout title={humanize(category)}>
+  <div class="wiki-index">
+    <p><a href="/elden-ring/wiki">&larr; Wiki</a></p>
+    <h1>{humanize(category)}</h1>
+    <ul class="wiki-list">
+      {pages.map(([pageSlug, pageTitle]) => (
+        <li><a href={`/elden-ring/wiki/${category}/${pageSlug}`}>{pageTitle}</a></li>
+      ))}
+    </ul>
+  </div>
+</WikiLayout>
+<style>
+  .wiki-index {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .wiki-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .wiki-list a {
+    display: block;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .wiki-list a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>
