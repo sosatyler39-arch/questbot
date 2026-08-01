@@ -23,6 +23,7 @@
   "build": {
     "appId": "com.questbot.overlay",
     "productName": "Questbot",
+    "icon": "assets/app-icon.ico",
     "files": [
       "dist/**/*"
     ],
