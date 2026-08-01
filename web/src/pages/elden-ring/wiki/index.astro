@@ -9,6 +9,10 @@ const categories = [...new Set(entries.map((e) => e.data.category))].sort();
 <WikiLayout title="Elden Ring Wiki">
   <div class="wiki-index">
     <h1>Wiki</h1>
+    <div id="wiki-search-box">
+      <input id="wiki-search" type="text" placeholder="Search all wiki entries…" autocomplete="off" />
+      <div id="wiki-search-results"></div>
+    </div>
     <ul class="wiki-list">
       {categories.map((category) => (
         <li><a href={`/elden-ring/wiki/${category}`}>{humanize(category)}</a></li>
@@ -16,11 +20,57 @@ const categories = [...new Set(entries.map((e) => e.data.category))].sort();
     </ul>
   </div>
 </WikiLayout>
+<script>
+  import { initWikiSearch } from '../../../wiki/search.js';
+  initWikiSearch();
+</script>
 <style>
   .wiki-index {
     padding: 40px;
     max-width: 800px;
     margin: 0 auto;
+  }
+  #wiki-search-box {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  #wiki-search {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    background: var(--bg-panel);
+    color: inherit;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font: inherit;
+  }
+  #wiki-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+  }
+  .wiki-search-result {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 14px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .wiki-search-result:hover {
+    background: rgba(201, 162, 75, 0.15);
+  }
+  .wiki-search-result-page {
+    color: var(--text-dim);
+    font-size: 0.85em;
+    white-space: nowrap;
   }
   .wiki-list {
     list-style: none;
