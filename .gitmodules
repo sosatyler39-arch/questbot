@@ -1,0 +1,3 @@
+[submodule "tools/msb-extractor/vendor/SoulsFormatsNEXT"]
+	path = tools/msb-extractor/vendor/SoulsFormatsNEXT
+	url = https://github.com/soulsmods/SoulsFormatsNEXT.git
