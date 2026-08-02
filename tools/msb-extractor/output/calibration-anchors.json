@@ -1051,5 +1051,86 @@
     "existingFy": 0.794,
     "worldX": 13793.61,
     "worldZ": 14142.3
+  },
+  {
+    "name": "Tree Sentinel (Limgrave)",
+    "category": "great-enemy",
+    "regionId": "limgrave",
+    "existingFx": 0.756,
+    "existingFy": 0.598,
+    "worldX": 10587.089,
+    "worldZ": 13024.653
+  },
+  {
+    "name": "Tibia Mariner (Limgrave site)",
+    "category": "great-enemy",
+    "regionId": "limgrave",
+    "existingFx": 0.951,
+    "existingFy": 0.594,
+    "worldX": 11484.95,
+    "worldZ": 9985.295
+  },
+  {
+    "name": "Flying Dragon Agheel (site)",
+    "category": "great-enemy",
+    "regionId": "limgrave",
+    "existingFx": 0.875,
+    "existingFy": 0.885,
+    "worldX": 13198.412,
+    "worldZ": 10633.471
+  },
+  {
+    "name": "Erdtree Avatar (Weeping Peninsula site)",
+    "category": "great-enemy",
+    "regionId": "weeping-peninsula",
+    "existingFx": 1.23,
+    "existingFy": 0.614,
+    "worldX": 10952.247,
+    "worldZ": 8466.901
+  },
+  {
+    "name": "Glintstone Dragon Smarag (site)",
+    "category": "great-enemy",
+    "regionId": "liurnia",
+    "existingFx": 0.213,
+    "existingFy": 0.63,
+    "worldX": 8832.241,
+    "worldZ": 10722.071
+  },
+  {
+    "name": "Decaying Ekzykes (site)",
+    "category": "great-enemy",
+    "regionId": "caelid",
+    "existingFx": 0.503,
+    "existingFy": 1.492,
+    "worldX": 12239.914,
+    "worldZ": 9429.334
+  },
+  {
+    "name": "Fallingstar Beast (site)",
+    "category": "great-enemy",
+    "regionId": "altus-plateau",
+    "existingFx": 0.678,
+    "existingFy": 0.868,
+    "worldX": 9310.844,
+    "worldZ": 13787.795
+  },
+  {
+    "name": "Magma Wyrm (site)",
+    "category": "great-enemy",
+    "regionId": "mt-gelmir",
+    "existingFx": 1.162,
+    "existingFy": 0.812,
+    "worldX": 8961.8,
+    "worldZ": 13487.601
+  },
+  {
+    "name": "Dragonlord Placidusax's Arena",
+    "category": "great-enemy",
+    "regionId": "farum-azula",
+    "existingFx": 0.837,
+    "existingFy": 2.591,
+    "worldX": 14.45,
+    "worldZ": 329.504
   }
 ]
