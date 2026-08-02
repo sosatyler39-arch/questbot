@@ -1,0 +1,1886 @@
+[
+  {
+    "graceName": "Godrick the Grafted",
+    "bonfireEntityId": 10001950,
+    "worldX": -232.76,
+    "worldZ": 345.13
+  },
+  {
+    "graceName": "Margit, the Fell Omen",
+    "bonfireEntityId": 10001951,
+    "worldX": -28.55,
+    "worldZ": -18.58
+  },
+  {
+    "graceName": "Castleward Tunnel",
+    "bonfireEntityId": 10001952,
+    "worldX": 36.35,
+    "worldZ": 5.36
+  },
+  {
+    "graceName": "Gateside Chamber",
+    "bonfireEntityId": 10001953,
+    "worldX": -122.51,
+    "worldZ": 11.88
+  },
+  {
+    "graceName": "Stormveil Cliffside",
+    "bonfireEntityId": 10001954,
+    "worldX": -200.67,
+    "worldZ": -16.52
+  },
+  {
+    "graceName": "Rampart Tower",
+    "bonfireEntityId": 10001955,
+    "worldX": -262.26,
+    "worldZ": 112.96
+  },
+  {
+    "graceName": "Liftside Chamber",
+    "bonfireEntityId": 10001956,
+    "worldX": -273.12,
+    "worldZ": 241.41
+  },
+  {
+    "graceName": "Secluded Cell",
+    "bonfireEntityId": 10001957,
+    "worldX": -189.96,
+    "worldZ": 313.47
+  },
+  {
+    "graceName": "Stormveil Main Gate",
+    "bonfireEntityId": 10001958,
+    "worldX": -96.08,
+    "worldZ": 20.28
+  },
+  {
+    "graceName": "Elden Throne",
+    "bonfireEntityId": 11001950,
+    "worldX": 37.25,
+    "worldZ": -416.03
+  },
+  {
+    "graceName": "Erdtree Sanctuary",
+    "bonfireEntityId": 11001951,
+    "worldX": -132,
+    "worldZ": -386.5
+  },
+  {
+    "graceName": "East Capital Rampart",
+    "bonfireEntityId": 11001952,
+    "worldX": -33.04,
+    "worldZ": -80.52
+  },
+  {
+    "graceName": "Lower Capital Church",
+    "bonfireEntityId": 11001953,
+    "worldX": -215.8,
+    "worldZ": -223.22
+  },
+  {
+    "graceName": "Avenue Balcony",
+    "bonfireEntityId": 11001954,
+    "worldX": -180.35,
+    "worldZ": -185.54
+  },
+  {
+    "graceName": "West Capital Rampart",
+    "bonfireEntityId": 11001955,
+    "worldX": -217.61,
+    "worldZ": -260.53
+  },
+  {
+    "graceName": "Queen's Bedchamber",
+    "bonfireEntityId": 11001957,
+    "worldX": -55.11,
+    "worldZ": -307.16
+  },
+  {
+    "graceName": "Fortified Manor, First Floor",
+    "bonfireEntityId": 11001958,
+    "worldX": -319.98,
+    "worldZ": -270.49
+  },
+  {
+    "graceName": "Divine Bridge",
+    "bonfireEntityId": 11001959,
+    "worldX": -426.01,
+    "worldZ": -294.32
+  },
+  {
+    "graceName": "Elden Throne",
+    "bonfireEntityId": 11051950,
+    "worldX": 1317.18,
+    "worldZ": -415.93
+  },
+  {
+    "graceName": "Erdtree Sanctuary",
+    "bonfireEntityId": 11051951,
+    "worldX": 1148,
+    "worldZ": -386.5
+  },
+  {
+    "graceName": "East Capital Rampart",
+    "bonfireEntityId": 11051952,
+    "worldX": 1246.99,
+    "worldZ": -80.47
+  },
+  {
+    "graceName": "Leyndell, Capital of Ash",
+    "bonfireEntityId": 11051953,
+    "worldX": 1150.06,
+    "worldZ": -126.04
+  },
+  {
+    "graceName": "Queen's Bedchamber",
+    "bonfireEntityId": 11051954,
+    "worldX": 1225.37,
+    "worldZ": -306.38
+  },
+  {
+    "graceName": "Divine Bridge",
+    "bonfireEntityId": 11051955,
+    "worldX": 853.99,
+    "worldZ": -294.32
+  },
+  {
+    "graceName": "Table of Lost Grace",
+    "bonfireEntityId": 11101950,
+    "worldX": 2254.3,
+    "worldZ": -298.1
+  },
+  {
+    "graceName": "Dragonkin Soldier of Nokstella",
+    "bonfireEntityId": 12011950,
+    "worldX": 142.155,
+    "worldZ": 118.07
+  },
+  {
+    "graceName": "Ainsel River Well Depths",
+    "bonfireEntityId": 12011951,
+    "worldX": 656.687,
+    "worldZ": -103.113
+  },
+  {
+    "graceName": "Ainsel River Sluice Gate",
+    "bonfireEntityId": 12011952,
+    "worldX": 463.063,
+    "worldZ": -204.237
+  },
+  {
+    "graceName": "Ainsel River Downstream",
+    "bonfireEntityId": 12011953,
+    "worldX": 238.665,
+    "worldZ": -107.813
+  },
+  {
+    "graceName": "Ainsel River Main",
+    "bonfireEntityId": 12011954,
+    "worldX": 589.502,
+    "worldZ": 269.242
+  },
+  {
+    "graceName": "Nokstella, Eternal City",
+    "bonfireEntityId": 12011955,
+    "worldX": 285.589,
+    "worldZ": 76.524
+  },
+  {
+    "graceName": "Lake of Rot Shoreside",
+    "bonfireEntityId": 12011956,
+    "worldX": -52.351999999999975,
+    "worldZ": -66.554
+  },
+  {
+    "graceName": "Grand Cloister",
+    "bonfireEntityId": 12011958,
+    "worldX": -155.54899999999998,
+    "worldZ": -525.689
+  },
+  {
+    "graceName": "Nokstella Waterfall Basin",
+    "bonfireEntityId": 12011959,
+    "worldX": 12.560000000000002,
+    "worldZ": 152.997
+  },
+  {
+    "graceName": "Great Waterfall Basin",
+    "bonfireEntityId": 12021950,
+    "worldX": 1696.54,
+    "worldZ": 1909.859
+  },
+  {
+    "graceName": "Mimic Tear",
+    "bonfireEntityId": 12021951,
+    "worldX": 1528.0520000000001,
+    "worldZ": 1153.374
+  },
+  {
+    "graceName": "Siofra River Bank",
+    "bonfireEntityId": 12021953,
+    "worldX": 1610.26,
+    "worldZ": 1266.802
+  },
+  {
+    "graceName": "Worshippers' Woods",
+    "bonfireEntityId": 12021954,
+    "worldX": 1950.45,
+    "worldZ": 1519.47
+  },
+  {
+    "graceName": "Ancestral Woods",
+    "bonfireEntityId": 12021956,
+    "worldX": 1528.4450000000002,
+    "worldZ": 1462.896
+  },
+  {
+    "graceName": "Aqueduct-Facing Cliffs",
+    "bonfireEntityId": 12021957,
+    "worldX": 1688.12,
+    "worldZ": 1754.38
+  },
+  {
+    "graceName": "Night's Sacred Ground",
+    "bonfireEntityId": 12021958,
+    "worldX": 1463.6100000000001,
+    "worldZ": 1293.86
+  },
+  {
+    "graceName": "Below the Well",
+    "bonfireEntityId": 12021959,
+    "worldX": 2030.224,
+    "worldZ": 1867.396
+  },
+  {
+    "graceName": "Prince of Death's Throne",
+    "bonfireEntityId": 12031950,
+    "worldX": 388.5,
+    "worldZ": -202.16
+  },
+  {
+    "graceName": "Root-Facing Cliffs",
+    "bonfireEntityId": 12031951,
+    "worldX": 583.05,
+    "worldZ": -517.58
+  },
+  {
+    "graceName": "Great Waterfall Crest",
+    "bonfireEntityId": 12031952,
+    "worldX": 604.14,
+    "worldZ": -624.79
+  },
+  {
+    "graceName": "Deeproot Depths",
+    "bonfireEntityId": 12031953,
+    "worldX": 169.63,
+    "worldZ": -609.92
+  },
+  {
+    "graceName": "The Nameless Eternal City",
+    "bonfireEntityId": 12031954,
+    "worldX": 78.33500000000004,
+    "worldZ": -409.819
+  },
+  {
+    "graceName": "Across the Roots",
+    "bonfireEntityId": 12031955,
+    "worldX": 298.77,
+    "worldZ": -351.1
+  },
+  {
+    "graceName": "Astel, Naturalborn of the Void",
+    "bonfireEntityId": 12041950,
+    "worldX": 959.51,
+    "worldZ": -77.82
+  },
+  {
+    "graceName": "Cocoon of the Empyrean",
+    "bonfireEntityId": 12051950,
+    "worldX": 2813.44,
+    "worldZ": 1243.16
+  },
+  {
+    "graceName": "Palace Approach Ledge-Road",
+    "bonfireEntityId": 12051951,
+    "worldX": 3182.74,
+    "worldZ": 1116.63
+  },
+  {
+    "graceName": "Dynasty Mausoleum Entrance",
+    "bonfireEntityId": 12051952,
+    "worldX": 2983,
+    "worldZ": 1288.74
+  },
+  {
+    "graceName": "Dynasty Mausoleum Midpoint",
+    "bonfireEntityId": 12051953,
+    "worldX": 2917.66,
+    "worldZ": 1248
+  },
+  {
+    "graceName": "Siofra River Well Depths",
+    "bonfireEntityId": 12071950,
+    "worldX": 2540.2290000000003,
+    "worldZ": 1164.145
+  },
+  {
+    "graceName": "Nokron, Eternal City",
+    "bonfireEntityId": 12071951,
+    "worldX": 2501.945,
+    "worldZ": 1233.984
+  },
+  {
+    "graceName": "Maliketh, the Black Blade",
+    "bonfireEntityId": 13001950,
+    "worldX": 224.9,
+    "worldZ": 365.67
+  },
+  {
+    "graceName": "Dragonlord Placidusax",
+    "bonfireEntityId": 13001951,
+    "worldX": 14.94,
+    "worldZ": 330.49
+  },
+  {
+    "graceName": "Dragon Temple Altar",
+    "bonfireEntityId": 13001952,
+    "worldX": 13.73,
+    "worldZ": 411.53
+  },
+  {
+    "graceName": "Crumbling Beast Grave",
+    "bonfireEntityId": 13001953,
+    "worldX": 116.66,
+    "worldZ": 161.07
+  },
+  {
+    "graceName": "Crumbling Beast Grave Depths",
+    "bonfireEntityId": 13001954,
+    "worldX": -92.94,
+    "worldZ": 210.9
+  },
+  {
+    "graceName": "Tempest-Facing Balcony",
+    "bonfireEntityId": 13001955,
+    "worldX": -88.16,
+    "worldZ": 282.61
+  },
+  {
+    "graceName": "Dragon Temple",
+    "bonfireEntityId": 13001956,
+    "worldX": -75.41,
+    "worldZ": 404.67
+  },
+  {
+    "graceName": "Dragon Temple Transept",
+    "bonfireEntityId": 13001957,
+    "worldX": 30.4,
+    "worldZ": 361.79
+  },
+  {
+    "graceName": "Dragon Temple Lift",
+    "bonfireEntityId": 13001958,
+    "worldX": -73.6,
+    "worldZ": 498.83
+  },
+  {
+    "graceName": "Dragon Temple Rooftop",
+    "bonfireEntityId": 13001959,
+    "worldX": 83.98,
+    "worldZ": 608.5
+  },
+  {
+    "graceName": "Beside the Great Bridge",
+    "bonfireEntityId": 13001960,
+    "worldX": 64.07,
+    "worldZ": 497.52
+  },
+  {
+    "graceName": "Raya Lucaria Grand Library",
+    "bonfireEntityId": 14001950,
+    "worldX": 32.86,
+    "worldZ": -20.34
+  },
+  {
+    "graceName": "Debate Parlor",
+    "bonfireEntityId": 14001951,
+    "worldX": 154.79,
+    "worldZ": -222.38
+  },
+  {
+    "graceName": "Church of the Cuckoo",
+    "bonfireEntityId": 14001952,
+    "worldX": -13.92,
+    "worldZ": -95.64
+  },
+  {
+    "graceName": "Schoolhouse Classroom",
+    "bonfireEntityId": 14001953,
+    "worldX": 134.24,
+    "worldZ": -184.98
+  },
+  {
+    "graceName": "Malenia, Goddess of Rot",
+    "bonfireEntityId": 15001950,
+    "worldX": -21.34,
+    "worldZ": 487.89
+  },
+  {
+    "graceName": "Prayer Room",
+    "bonfireEntityId": 15001951,
+    "worldX": 77.19,
+    "worldZ": 432.05
+  },
+  {
+    "graceName": "Elphael Inner Wall",
+    "bonfireEntityId": 15001952,
+    "worldX": -28.82,
+    "worldZ": 596.6
+  },
+  {
+    "graceName": "Drainage Channel",
+    "bonfireEntityId": 15001953,
+    "worldX": 121.88,
+    "worldZ": 483.54
+  },
+  {
+    "graceName": "Haligtree Roots",
+    "bonfireEntityId": 15001954,
+    "worldX": 88.93,
+    "worldZ": 549.13
+  },
+  {
+    "graceName": "Haligtree Promenade",
+    "bonfireEntityId": 15001955,
+    "worldX": 175.95,
+    "worldZ": 297.9
+  },
+  {
+    "graceName": "Haligtree Canopy",
+    "bonfireEntityId": 15001956,
+    "worldX": -0.49,
+    "worldZ": 42.91
+  },
+  {
+    "graceName": "Haligtree Town",
+    "bonfireEntityId": 15001957,
+    "worldX": 63.54,
+    "worldZ": 231.44
+  },
+  {
+    "graceName": "Haligtree Town Plaza",
+    "bonfireEntityId": 15001958,
+    "worldX": -1.34,
+    "worldZ": 294.97
+  },
+  {
+    "graceName": "Rykard, Lord of Blasphemy",
+    "bonfireEntityId": 16001950,
+    "worldX": 93.68,
+    "worldZ": -116.08
+  },
+  {
+    "graceName": "Temple of Eiglay",
+    "bonfireEntityId": 16001951,
+    "worldX": 54.92,
+    "worldZ": -207.91
+  },
+  {
+    "graceName": "Volcano Manor",
+    "bonfireEntityId": 16001952,
+    "worldX": 40.88,
+    "worldZ": -60.27
+  },
+  {
+    "graceName": "Prison Town Church",
+    "bonfireEntityId": 16001953,
+    "worldX": -62.98,
+    "worldZ": -113.62
+  },
+  {
+    "graceName": "Guest Hall",
+    "bonfireEntityId": 16001954,
+    "worldX": -131.45,
+    "worldZ": -213.28
+  },
+  {
+    "graceName": "Audience Pathway",
+    "bonfireEntityId": 16001960,
+    "worldX": 98.2,
+    "worldZ": -11.75
+  },
+  {
+    "graceName": "Abductor Virgin",
+    "bonfireEntityId": 16001962,
+    "worldX": 273.651,
+    "worldZ": -258.567
+  },
+  {
+    "graceName": "Subterranean Inquisition Chamber",
+    "bonfireEntityId": 16001964,
+    "worldX": 163.033,
+    "worldZ": -149.041
+  },
+  {
+    "graceName": "Cave of Knowledge",
+    "bonfireEntityId": 18001950,
+    "worldX": -88.4,
+    "worldZ": 43.86
+  },
+  {
+    "graceName": "Stranded Graveyard",
+    "bonfireEntityId": 18001951,
+    "worldX": -115.7,
+    "worldZ": 12.14
+  },
+  {
+    "graceName": "Fractured Marika",
+    "bonfireEntityId": 19001950,
+    "worldX": 181.1,
+    "worldZ": -607.06
+  },
+  {
+    "graceName": "Tombsward Catacombs",
+    "bonfireEntityId": 30001950,
+    "worldX": -95.662,
+    "worldZ": 107.314
+  },
+  {
+    "graceName": "Impaler's Catacombs",
+    "bonfireEntityId": 30011950,
+    "worldX": 229.265,
+    "worldZ": -50.343
+  },
+  {
+    "graceName": "Stormfoot Catacombs",
+    "bonfireEntityId": 30021950,
+    "worldX": 554.644,
+    "worldZ": -11.158
+  },
+  {
+    "graceName": "Road's End Catacombs",
+    "bonfireEntityId": 30031950,
+    "worldX": 758.59,
+    "worldZ": -24.05
+  },
+  {
+    "graceName": "Murkwater Catacombs",
+    "bonfireEntityId": 30041950,
+    "worldX": 1113.228,
+    "worldZ": 64.978
+  },
+  {
+    "graceName": "Black Knife Catacombs",
+    "bonfireEntityId": 30051950,
+    "worldX": 1206.82,
+    "worldZ": 111.21
+  },
+  {
+    "graceName": "Cliffbottom Catacombs",
+    "bonfireEntityId": 30061950,
+    "worldX": 1611.46,
+    "worldZ": 69.66
+  },
+  {
+    "graceName": "Wyndham Catacombs",
+    "bonfireEntityId": 30071950,
+    "worldX": 1664.92,
+    "worldZ": 121.83
+  },
+  {
+    "graceName": "Sainted Hero's Grave",
+    "bonfireEntityId": 30081950,
+    "worldX": 2095.06,
+    "worldZ": 8.12
+  },
+  {
+    "graceName": "Gelmir Hero's Grave",
+    "bonfireEntityId": 30091950,
+    "worldX": 2408.56,
+    "worldZ": 15.69
+  },
+  {
+    "graceName": "Auriza Hero's Grave",
+    "bonfireEntityId": 30101950,
+    "worldX": 2622.54,
+    "worldZ": 137.72
+  },
+  {
+    "graceName": "Deathtouched Catacombs",
+    "bonfireEntityId": 30111950,
+    "worldX": 2729.88,
+    "worldZ": 30.18
+  },
+  {
+    "graceName": "Unsightly Catacombs",
+    "bonfireEntityId": 30121950,
+    "worldX": 3032.97,
+    "worldZ": 105.44
+  },
+  {
+    "graceName": "Auriza Side Tomb",
+    "bonfireEntityId": 30131950,
+    "worldX": 3430.75,
+    "worldZ": 25.77
+  },
+  {
+    "graceName": "Minor Erdtree Catacombs",
+    "bonfireEntityId": 30141950,
+    "worldX": 3529.52,
+    "worldZ": 67.589
+  },
+  {
+    "graceName": "Caelid Catacombs",
+    "bonfireEntityId": 30151950,
+    "worldX": 3930.19,
+    "worldZ": 69.13
+  },
+  {
+    "graceName": "War-Dead Catacombs",
+    "bonfireEntityId": 30161950,
+    "worldX": 4133.72,
+    "worldZ": -134.68
+  },
+  {
+    "graceName": "Giant-Conquering Hero's Grave",
+    "bonfireEntityId": 30171950,
+    "worldX": 12681.44,
+    "worldZ": 13688.04
+  },
+  {
+    "graceName": "Giants' Mountaintop Catacombs",
+    "bonfireEntityId": 30181950,
+    "worldX": 12826.16,
+    "worldZ": 13677.34
+  },
+  {
+    "graceName": "Consecrated Snowfield Catacombs",
+    "bonfireEntityId": 30191950,
+    "worldX": 12730.43,
+    "worldZ": 13993.61
+  },
+  {
+    "graceName": "Hidden Path to the Haligtree",
+    "bonfireEntityId": 30201950,
+    "worldX": 5014.88,
+    "worldZ": -122.7
+  },
+  {
+    "graceName": "Murkwater Cave",
+    "bonfireEntityId": 31001950,
+    "worldX": 11083.24,
+    "worldZ": 9533.08
+  },
+  {
+    "graceName": "Earthbore Cave",
+    "bonfireEntityId": 31011950,
+    "worldX": 152.8,
+    "worldZ": -40.21
+  },
+  {
+    "graceName": "Tombsward Cave",
+    "bonfireEntityId": 31021950,
+    "worldX": 10637.89,
+    "worldZ": 8479.25
+  },
+  {
+    "graceName": "Groveside Cave",
+    "bonfireEntityId": 31031950,
+    "worldX": 708.437,
+    "worldZ": -11.039
+  },
+  {
+    "graceName": "Stillwater Cave",
+    "bonfireEntityId": 31041950,
+    "worldX": 1038.54,
+    "worldZ": -38.15
+  },
+  {
+    "graceName": "Lakeside Crystal Cave",
+    "bonfireEntityId": 31051950,
+    "worldX": 1163.87,
+    "worldZ": -4.21
+  },
+  {
+    "graceName": "Academy Crystal Cave",
+    "bonfireEntityId": 31061950,
+    "worldX": 1608.96,
+    "worldZ": 120.51
+  },
+  {
+    "graceName": "Seethewater Cave",
+    "bonfireEntityId": 31071950,
+    "worldX": 1782.91,
+    "worldZ": 141.35
+  },
+  {
+    "graceName": "Volcano Cave",
+    "bonfireEntityId": 31091950,
+    "worldX": 2236.74,
+    "worldZ": -60.25
+  },
+  {
+    "graceName": "Dragonbarrow Cave",
+    "bonfireEntityId": 31101950,
+    "worldX": 2562.75,
+    "worldZ": 84.72
+  },
+  {
+    "graceName": "Sellia Hideaway",
+    "bonfireEntityId": 31111950,
+    "worldX": 2943.07,
+    "worldZ": 63.94
+  },
+  {
+    "graceName": "Cave of the Forlorn",
+    "bonfireEntityId": 31121950,
+    "worldX": 3017.12,
+    "worldZ": 43.99
+  },
+  {
+    "graceName": "Coastal Cave",
+    "bonfireEntityId": 31151950,
+    "worldX": 3888.107,
+    "worldZ": -41.907
+  },
+  {
+    "graceName": "Highroad Cave",
+    "bonfireEntityId": 31171950,
+    "worldX": 4412.07,
+    "worldZ": 96.4
+  },
+  {
+    "graceName": "Perfumer's Grotto",
+    "bonfireEntityId": 31181950,
+    "worldX": 4657.48,
+    "worldZ": 23.11
+  },
+  {
+    "graceName": "Sage's Cave",
+    "bonfireEntityId": 31191950,
+    "worldX": 4965.29,
+    "worldZ": -55.79
+  },
+  {
+    "graceName": "Abandoned Cave",
+    "bonfireEntityId": 31201950,
+    "worldX": 5257.79,
+    "worldZ": 42.44
+  },
+  {
+    "graceName": "Gaol Cave",
+    "bonfireEntityId": 31211950,
+    "worldX": 5311.68,
+    "worldZ": 33.87
+  },
+  {
+    "graceName": "Spiritcaller Cave",
+    "bonfireEntityId": 31221950,
+    "worldX": 13529.67,
+    "worldZ": 14450.54
+  },
+  {
+    "graceName": "Morne Tunnel",
+    "bonfireEntityId": 32001950,
+    "worldX": 36.14,
+    "worldZ": -69.91
+  },
+  {
+    "graceName": "Limgrave Tunnels",
+    "bonfireEntityId": 32011950,
+    "worldX": 10886.3,
+    "worldZ": 9437.07
+  },
+  {
+    "graceName": "Raya Lucaria Crystal Tunnel",
+    "bonfireEntityId": 32021950,
+    "worldX": 9360.02,
+    "worldZ": 12048.29
+  },
+  {
+    "graceName": "Old Altus Tunnel",
+    "bonfireEntityId": 32041950,
+    "worldX": 9815.74,
+    "worldZ": 13453.51
+  },
+  {
+    "graceName": "Altus Tunnel",
+    "bonfireEntityId": 32051950,
+    "worldX": 1227.74,
+    "worldZ": 40.72
+  },
+  {
+    "graceName": "Gael Tunnel",
+    "bonfireEntityId": 32071950,
+    "worldX": 11837.21,
+    "worldZ": 10024.33
+  },
+  {
+    "graceName": "Rear Gael Tunnel Entrance",
+    "bonfireEntityId": 32071951,
+    "worldX": 1757.8,
+    "worldZ": 113.05
+  },
+  {
+    "graceName": "Sellia Crystal Tunnel",
+    "bonfireEntityId": 32081950,
+    "worldX": 2066.43,
+    "worldZ": 110.58
+  },
+  {
+    "graceName": "Yelough Anix Tunnel",
+    "bonfireEntityId": 32111950,
+    "worldX": 12077.93,
+    "worldZ": 14018.96
+  },
+  {
+    "graceName": "Limgrave Tower Bridge",
+    "bonfireEntityId": 34101950,
+    "worldX": 2497.95,
+    "worldZ": 131.87
+  },
+  {
+    "graceName": "Divine Tower of Limgrave",
+    "bonfireEntityId": 34101952,
+    "worldX": 3492.09,
+    "worldZ": 604.25
+  },
+  {
+    "graceName": "Study Hall Entrance",
+    "bonfireEntityId": 34111950,
+    "worldX": 2803.8,
+    "worldZ": 69.27
+  },
+  {
+    "graceName": "Liurnia Tower Bridge",
+    "bonfireEntityId": 34111951,
+    "worldX": 2869.29,
+    "worldZ": 14.91
+  },
+  {
+    "graceName": "Divine Tower of Liurnia",
+    "bonfireEntityId": 34111952,
+    "worldX": 3269.77,
+    "worldZ": 79.97
+  },
+  {
+    "graceName": "Divine Tower of West Altus",
+    "bonfireEntityId": 34121950,
+    "worldX": 3024.19,
+    "worldZ": -350.04
+  },
+  {
+    "graceName": "Sealed Tunnel",
+    "bonfireEntityId": 34121951,
+    "worldX": 10941.4,
+    "worldZ": 12835.73
+  },
+  {
+    "graceName": "Divine Tower of West Altus: Gate",
+    "bonfireEntityId": 34121952,
+    "worldX": 3028.43,
+    "worldZ": -237.58
+  },
+  {
+    "graceName": "Divine Tower of Caelid: Basement",
+    "bonfireEntityId": 34131951,
+    "worldX": 3415.68,
+    "worldZ": -24.19
+  },
+  {
+    "graceName": "Divine Tower of Caelid: Center",
+    "bonfireEntityId": 34131952,
+    "worldX": 3403.945,
+    "worldZ": -7.197
+  },
+  {
+    "graceName": "Divine Tower of East Altus: Gate",
+    "bonfireEntityId": 34141950,
+    "worldX": 4186.67,
+    "worldZ": -489.58
+  },
+  {
+    "graceName": "Divine Tower of East Altus",
+    "bonfireEntityId": 34141951,
+    "worldX": 4209.03,
+    "worldZ": -549.95
+  },
+  {
+    "graceName": "Isolated Divine Tower",
+    "bonfireEntityId": 34151950,
+    "worldX": 3834.93,
+    "worldZ": -26.56
+  },
+  {
+    "graceName": "Cathedral of the Forsaken",
+    "bonfireEntityId": 35001950,
+    "worldX": 74.374,
+    "worldZ": -80.598
+  },
+  {
+    "graceName": "Underground Roadside",
+    "bonfireEntityId": 35001951,
+    "worldX": -147.44,
+    "worldZ": -165.97
+  },
+  {
+    "graceName": "Forsaken Depths",
+    "bonfireEntityId": 35001952,
+    "worldX": -49.381,
+    "worldZ": -152.096
+  },
+  {
+    "graceName": "Leyndell Catacombs",
+    "bonfireEntityId": 35001953,
+    "worldX": -138.835,
+    "worldZ": -242.308
+  },
+  {
+    "graceName": "Frenzied Flame Proscription",
+    "bonfireEntityId": 35001954,
+    "worldX": 126.051,
+    "worldZ": -63.331
+  },
+  {
+    "graceName": "Magma Wyrm Makar",
+    "bonfireEntityId": 39201950,
+    "worldX": 4995.78,
+    "worldZ": -1298.06
+  },
+  {
+    "graceName": "Ruin-Strewn Precipice",
+    "bonfireEntityId": 39201951,
+    "worldX": 5211.34,
+    "worldZ": -1312.03
+  },
+  {
+    "graceName": "Ruin-Strewn Precipice Overlook",
+    "bonfireEntityId": 39201952,
+    "worldX": 5106.74,
+    "worldZ": -1345.3
+  },
+  {
+    "graceName": "Isolated Merchant's Shack",
+    "bonfireEntityId": 1041321950,
+    "worldX": 10498.64,
+    "worldZ": 8301.86
+  },
+  {
+    "graceName": "Fourth Church of Marika",
+    "bonfireEntityId": 1041331950,
+    "worldX": 10549.79,
+    "worldZ": 8513.57
+  },
+  {
+    "graceName": "Church of Dragon Communion",
+    "bonfireEntityId": 1041351950,
+    "worldX": 10441.45,
+    "worldZ": 8937.28
+  },
+  {
+    "graceName": "Stormhill Shack",
+    "bonfireEntityId": 1041381950,
+    "worldX": 10512.85,
+    "worldZ": 9744.98
+  },
+  {
+    "graceName": "Tombsward",
+    "bonfireEntityId": 1042331950,
+    "worldX": 10829.19,
+    "worldZ": 8412.54
+  },
+  {
+    "graceName": "Church of Elleh",
+    "bonfireEntityId": 1042361950,
+    "worldX": 10711.266,
+    "worldZ": 9295.338
+  },
+  {
+    "graceName": "The First Step",
+    "bonfireEntityId": 1042361951,
+    "worldX": 10739.17,
+    "worldZ": 9161.5
+  },
+  {
+    "graceName": "Gatefront",
+    "bonfireEntityId": 1042371950,
+    "worldX": 10765.61,
+    "worldZ": 9582.21
+  },
+  {
+    "graceName": "Warmaster's Shack",
+    "bonfireEntityId": 1042381950,
+    "worldX": 10760.94,
+    "worldZ": 9827.03
+  },
+  {
+    "graceName": "Morne Moangrave",
+    "bonfireEntityId": 1043301950,
+    "worldX": 10976.9,
+    "worldZ": 7667.36
+  },
+  {
+    "graceName": "Castle Morne Lift",
+    "bonfireEntityId": 1043311950,
+    "worldX": 11112.4,
+    "worldZ": 7933.13
+  },
+  {
+    "graceName": "Behind the Castle",
+    "bonfireEntityId": 1043311951,
+    "worldX": 11046.31,
+    "worldZ": 7820.33
+  },
+  {
+    "graceName": "Beside the Rampart Gaol",
+    "bonfireEntityId": 1043311952,
+    "worldX": 11024.89,
+    "worldZ": 7792.48
+  },
+  {
+    "graceName": "Church of Pilgrimage",
+    "bonfireEntityId": 1043341950,
+    "worldX": 10897.32,
+    "worldZ": 8816.11
+  },
+  {
+    "graceName": "Seaside Ruins",
+    "bonfireEntityId": 1043351950,
+    "worldX": 10991.28,
+    "worldZ": 9010.08
+  },
+  {
+    "graceName": "Agheel Lake North",
+    "bonfireEntityId": 1043371950,
+    "worldX": 10927.95,
+    "worldZ": 9528.1
+  },
+  {
+    "graceName": "Murkwater Coast",
+    "bonfireEntityId": 1043381950,
+    "worldX": 11118.53,
+    "worldZ": 9684.87
+  },
+  {
+    "graceName": "Saintsbridge",
+    "bonfireEntityId": 1043391950,
+    "worldX": 11028.2,
+    "worldZ": 9984.87
+  },
+  {
+    "graceName": "Castle Morne Rampart",
+    "bonfireEntityId": 1044331950,
+    "worldX": 11345.25,
+    "worldZ": 8353.2
+  },
+  {
+    "graceName": "South of the Lookout Tower",
+    "bonfireEntityId": 1044331951,
+    "worldX": 11242.25,
+    "worldZ": 8531.04
+  },
+  {
+    "graceName": "Ailing Village Outskirts",
+    "bonfireEntityId": 1044331952,
+    "worldX": 11196.59,
+    "worldZ": 8522.5
+  },
+  {
+    "graceName": "Bridge of Sacrifice",
+    "bonfireEntityId": 1044341950,
+    "worldX": 11367.03,
+    "worldZ": 8704.57
+  },
+  {
+    "graceName": "Agheel Lake South",
+    "bonfireEntityId": 1044351950,
+    "worldX": 11225.76,
+    "worldZ": 9007.26
+  },
+  {
+    "graceName": "Waypoint Ruins Cellar",
+    "bonfireEntityId": 1044361950,
+    "worldX": 11279.3,
+    "worldZ": 9248.01
+  },
+  {
+    "graceName": "Mistwood Outskirts",
+    "bonfireEntityId": 1044371950,
+    "worldX": 11386.2,
+    "worldZ": 9580.18
+  },
+  {
+    "graceName": "Artist's Shack",
+    "bonfireEntityId": 1044381950,
+    "worldX": 11253.138,
+    "worldZ": 9707.618
+  },
+  {
+    "graceName": "Summonwater Village Outskirts",
+    "bonfireEntityId": 1044391950,
+    "worldX": 11386.75,
+    "worldZ": 9943.91
+  },
+  {
+    "graceName": "Beside the Crater-Pocked Glade",
+    "bonfireEntityId": 1045331950,
+    "worldX": 11453.86,
+    "worldZ": 8507.46
+  },
+  {
+    "graceName": "Fort Haight West",
+    "bonfireEntityId": 1045361950,
+    "worldX": 11639.59,
+    "worldZ": 9172.01
+  },
+  {
+    "graceName": "Third Church of Marika",
+    "bonfireEntityId": 1046381950,
+    "worldX": 11674.417,
+    "worldZ": 9799.813
+  },
+  {
+    "graceName": "Altar South",
+    "bonfireEntityId": 1033401950,
+    "worldX": 8477,
+    "worldZ": 10290.31
+  },
+  {
+    "graceName": "Revenger's Shack",
+    "bonfireEntityId": 1033441950,
+    "worldX": 8465.43,
+    "worldZ": 11284.05
+  },
+  {
+    "graceName": "Foot of the Four Belfries",
+    "bonfireEntityId": 1033461950,
+    "worldX": 8388.12,
+    "worldZ": 11711.4
+  },
+  {
+    "graceName": "The Four Belfries",
+    "bonfireEntityId": 1033471950,
+    "worldX": 8511.31,
+    "worldZ": 11929.97
+  },
+  {
+    "graceName": "Moonlight Altar",
+    "bonfireEntityId": 1034411950,
+    "worldX": 8710.69,
+    "worldZ": 10575.83
+  },
+  {
+    "graceName": "Village of the Albinaurics",
+    "bonfireEntityId": 1034421950,
+    "worldX": 8753.58,
+    "worldZ": 10651.94
+  },
+  {
+    "graceName": "Converted Tower",
+    "bonfireEntityId": 1034431950,
+    "worldX": 8612.52,
+    "worldZ": 10909.29
+  },
+  {
+    "graceName": "Temple Quarter",
+    "bonfireEntityId": 1034441950,
+    "worldX": 8662.27,
+    "worldZ": 11386.91
+  },
+  {
+    "graceName": "Crystalline Woods",
+    "bonfireEntityId": 1034461950,
+    "worldX": 8710.38,
+    "worldZ": 11706.3
+  },
+  {
+    "graceName": "Sorcerer's Isle",
+    "bonfireEntityId": 1034471951,
+    "worldX": 8780.72,
+    "worldZ": 12077.37
+  },
+  {
+    "graceName": "Northern Liurnia Lake Shore",
+    "bonfireEntityId": 1034481950,
+    "worldX": 8651.42,
+    "worldZ": 12301.38
+  },
+  {
+    "graceName": "Road to the Manor",
+    "bonfireEntityId": 1034491950,
+    "worldX": 8756.06,
+    "worldZ": 12475.44
+  },
+  {
+    "graceName": "Ranni's Rise",
+    "bonfireEntityId": 1034501950,
+    "worldX": 8618.34,
+    "worldZ": 12813.37
+  },
+  {
+    "graceName": "Ranni's Chamber",
+    "bonfireEntityId": 1034501951,
+    "worldX": 8647.1,
+    "worldZ": 12824.1
+  },
+  {
+    "graceName": "Cathedral of Manus Celes",
+    "bonfireEntityId": 1035421950,
+    "worldX": 8945.96,
+    "worldZ": 10728.16
+  },
+  {
+    "graceName": "Folly on the Lake",
+    "bonfireEntityId": 1035431950,
+    "worldX": 8986.44,
+    "worldZ": 10891.75
+  },
+  {
+    "graceName": "South Raya Lucaria Gate",
+    "bonfireEntityId": 1035451950,
+    "worldX": 9066.46,
+    "worldZ": 11457.13
+  },
+  {
+    "graceName": "Main Academy Gate",
+    "bonfireEntityId": 1035461950,
+    "worldX": 8868.22,
+    "worldZ": 11744.57
+  },
+  {
+    "graceName": "East Gate Bridge Trestle",
+    "bonfireEntityId": 1035471950,
+    "worldX": 8992.99,
+    "worldZ": 11935.08
+  },
+  {
+    "graceName": "Manor Upper Level",
+    "bonfireEntityId": 1035501950,
+    "worldX": 9062.2,
+    "worldZ": 12756.68
+  },
+  {
+    "graceName": "Manor Lower Level",
+    "bonfireEntityId": 1035501951,
+    "worldX": 8883.7,
+    "worldZ": 12763.52
+  },
+  {
+    "graceName": "Royal Moongazing Grounds",
+    "bonfireEntityId": 1035501952,
+    "worldX": 8928.1,
+    "worldZ": 12900.499
+  },
+  {
+    "graceName": "Main Caria Manor Gate",
+    "bonfireEntityId": 1035501953,
+    "worldX": 8942.51,
+    "worldZ": 12665.63
+  },
+  {
+    "graceName": "Slumbering Wolf's Shack",
+    "bonfireEntityId": 1036411950,
+    "worldX": 9354.33,
+    "worldZ": 10433.53
+  },
+  {
+    "graceName": "Boilprawn Shack",
+    "bonfireEntityId": 1036431950,
+    "worldX": 9297.71,
+    "worldZ": 10947.94
+  },
+  {
+    "graceName": "Fallen Ruins of the Lake",
+    "bonfireEntityId": 1036431951,
+    "worldX": 9097.1,
+    "worldZ": 11145.47
+  },
+  {
+    "graceName": "Gate Town North",
+    "bonfireEntityId": 1036451950,
+    "worldX": 9153.15,
+    "worldZ": 11629.64
+  },
+  {
+    "graceName": "East Raya Lucaria Gate",
+    "bonfireEntityId": 1036481950,
+    "worldX": 9128.76,
+    "worldZ": 12189.49
+  },
+  {
+    "graceName": "Bellum Church",
+    "bonfireEntityId": 1036491950,
+    "worldX": 9224.32,
+    "worldZ": 12451.98
+  },
+  {
+    "graceName": "The Ravine",
+    "bonfireEntityId": 1036491951,
+    "worldX": 9153.78,
+    "worldZ": 12531.14
+  },
+  {
+    "graceName": "Behind Caria Manor",
+    "bonfireEntityId": 1036501950,
+    "worldX": 9131.44,
+    "worldZ": 12874.55
+  },
+  {
+    "graceName": "Scenic Isle",
+    "bonfireEntityId": 1037421950,
+    "worldX": 9373.79,
+    "worldZ": 10776.97
+  },
+  {
+    "graceName": "Academy Gate Town",
+    "bonfireEntityId": 1037441950,
+    "worldX": 9441.94,
+    "worldZ": 11166.18
+  },
+  {
+    "graceName": "Church of Vows",
+    "bonfireEntityId": 1037461950,
+    "worldX": 9462.16,
+    "worldZ": 11798.98
+  },
+  {
+    "graceName": "Mausoleum Compound",
+    "bonfireEntityId": 1037481950,
+    "worldX": 9521.11,
+    "worldZ": 12164.5
+  },
+  {
+    "graceName": "Church of Inhibition",
+    "bonfireEntityId": 1037491950,
+    "worldX": 9547.66,
+    "worldZ": 12515.51
+  },
+  {
+    "graceName": "Liurnia Lake Shore",
+    "bonfireEntityId": 1038401950,
+    "worldX": 9772.1,
+    "worldZ": 10355.16
+  },
+  {
+    "graceName": "Laskyar Ruins",
+    "bonfireEntityId": 1038411950,
+    "worldX": 9648.97,
+    "worldZ": 10572.52
+  },
+  {
+    "graceName": "Gate Town Bridge",
+    "bonfireEntityId": 1038431950,
+    "worldX": 9779.6,
+    "worldZ": 11035.8
+  },
+  {
+    "graceName": "Artist's Shack",
+    "bonfireEntityId": 1038451950,
+    "worldX": 9823.38,
+    "worldZ": 11404.67
+  },
+  {
+    "graceName": "Eastern Liurnia Lake Shore",
+    "bonfireEntityId": 1038451951,
+    "worldX": 9695.51,
+    "worldZ": 11499.63
+  },
+  {
+    "graceName": "Eastern Tableland",
+    "bonfireEntityId": 1038461950,
+    "worldX": 9781.62,
+    "worldZ": 11725.78
+  },
+  {
+    "graceName": "Ruined Labyrinth",
+    "bonfireEntityId": 1038471950,
+    "worldX": 9624.95,
+    "worldZ": 12024.96
+  },
+  {
+    "graceName": "Frenzied Flame Village Outskirts",
+    "bonfireEntityId": 1038481950,
+    "worldX": 9778.22,
+    "worldZ": 12358.93
+  },
+  {
+    "graceName": "Grand Lift of Dectus",
+    "bonfireEntityId": 1038501950,
+    "worldX": 9710.66,
+    "worldZ": 12736.85
+  },
+  {
+    "graceName": "Ravine-Veiled Village",
+    "bonfireEntityId": 1038501951,
+    "worldX": 9604.4,
+    "worldZ": 12895.07
+  },
+  {
+    "graceName": "Lake-Facing Cliffs",
+    "bonfireEntityId": 1039401950,
+    "worldX": 10000.21,
+    "worldZ": 10168.88
+  },
+  {
+    "graceName": "Liurnia Highway South",
+    "bonfireEntityId": 1039411950,
+    "worldX": 10021.16,
+    "worldZ": 10373.04
+  },
+  {
+    "graceName": "Liurnia Highway North",
+    "bonfireEntityId": 1039421950,
+    "worldX": 9976.37,
+    "worldZ": 10711.79
+  },
+  {
+    "graceName": "Jarburg",
+    "bonfireEntityId": 1039441950,
+    "worldX": 10031.52,
+    "worldZ": 11204.4
+  },
+  {
+    "graceName": "Seethewater Terminus",
+    "bonfireEntityId": 1035531950,
+    "worldX": 9086.246,
+    "worldZ": 13648.353
+  },
+  {
+    "graceName": "Craftsman's Shack",
+    "bonfireEntityId": 1036521950,
+    "worldX": 9317.6,
+    "worldZ": 13287.41
+  },
+  {
+    "graceName": "Ninth Mt. Gelmir Campsite",
+    "bonfireEntityId": 1036541951,
+    "worldX": 9333.708,
+    "worldZ": 13849.469
+  },
+  {
+    "graceName": "Road of Iniquity",
+    "bonfireEntityId": 1036541952,
+    "worldX": 9197.564,
+    "worldZ": 13734.123
+  },
+  {
+    "graceName": "Abandoned Coffin",
+    "bonfireEntityId": 1037511950,
+    "worldX": 9425.93,
+    "worldZ": 12993.45
+  },
+  {
+    "graceName": "Seethewater River",
+    "bonfireEntityId": 1037521951,
+    "worldX": 9536.429,
+    "worldZ": 13367.267
+  },
+  {
+    "graceName": "Primeval Sorcerer Azur",
+    "bonfireEntityId": 1037531950,
+    "worldX": 9477.19,
+    "worldZ": 13513.232
+  },
+  {
+    "graceName": "Altus Plateau",
+    "bonfireEntityId": 1038501952,
+    "worldX": 9783.76,
+    "worldZ": 12882.93
+  },
+  {
+    "graceName": "Erdtree-Gazing Hill",
+    "bonfireEntityId": 1038511950,
+    "worldX": 9706.18,
+    "worldZ": 13106.09
+  },
+  {
+    "graceName": "First Mt. Gelmir Campsite",
+    "bonfireEntityId": 1038541950,
+    "worldX": 9756.188,
+    "worldZ": 13700.749
+  },
+  {
+    "graceName": "Altus Highway Junction",
+    "bonfireEntityId": 1039511950,
+    "worldX": 10076.8,
+    "worldZ": 13056.1
+  },
+  {
+    "graceName": "Bridge of Iniquity",
+    "bonfireEntityId": 1039531950,
+    "worldX": 9885.444,
+    "worldZ": 13605.453
+  },
+  {
+    "graceName": "Shaded Castle Ramparts",
+    "bonfireEntityId": 1039541950,
+    "worldX": 10005.95,
+    "worldZ": 13775.74
+  },
+  {
+    "graceName": "Shaded Castle Inner Gate",
+    "bonfireEntityId": 1039541951,
+    "worldX": 9933.13,
+    "worldZ": 13872.29
+  },
+  {
+    "graceName": "Castellan's Hall",
+    "bonfireEntityId": 1039541952,
+    "worldX": 9937.05,
+    "worldZ": 13880.37
+  },
+  {
+    "graceName": "Forest-Spanning Greatbridge",
+    "bonfireEntityId": 1040521950,
+    "worldX": 10349.35,
+    "worldZ": 13450.86
+  },
+  {
+    "graceName": "Bower of Bounty",
+    "bonfireEntityId": 1040531950,
+    "worldX": 10252.33,
+    "worldZ": 13487.52
+  },
+  {
+    "graceName": "Road of Iniquity Side Path",
+    "bonfireEntityId": 1040541950,
+    "worldX": 10306.43,
+    "worldZ": 13937.11
+  },
+  {
+    "graceName": "Rampartside Path",
+    "bonfireEntityId": 1041521951,
+    "worldX": 10587.8,
+    "worldZ": 13331.61
+  },
+  {
+    "graceName": "Windmill Village",
+    "bonfireEntityId": 1041541950,
+    "worldX": 10574.38,
+    "worldZ": 13881.84
+  },
+  {
+    "graceName": "Outer Wall Phantom Tree",
+    "bonfireEntityId": 1042511950,
+    "worldX": 10700.65,
+    "worldZ": 13011.67
+  },
+  {
+    "graceName": "Windmill Heights",
+    "bonfireEntityId": 1042551950,
+    "worldX": 10713.77,
+    "worldZ": 14043.98
+  },
+  {
+    "graceName": "Minor Erdtree Church",
+    "bonfireEntityId": 1043501950,
+    "worldX": 10891.5,
+    "worldZ": 12745.01
+  },
+  {
+    "graceName": "Hermit Merchant's Shack",
+    "bonfireEntityId": 1043531950,
+    "worldX": 11004.85,
+    "worldZ": 13578.57
+  },
+  {
+    "graceName": "Outer Wall Battleground",
+    "bonfireEntityId": 1043531951,
+    "worldX": 10954.34,
+    "worldZ": 13489.92
+  },
+  {
+    "graceName": "Capital Rampart",
+    "bonfireEntityId": 1045521950,
+    "worldX": 11482.02,
+    "worldZ": 13256.7
+  },
+  {
+    "graceName": "Smoldering Church",
+    "bonfireEntityId": 1046401950,
+    "worldX": 11699.07,
+    "worldZ": 10267.59
+  },
+  {
+    "graceName": "Rotview Balcony",
+    "bonfireEntityId": 1046401951,
+    "worldX": 11881.37,
+    "worldZ": 10174.81
+  },
+  {
+    "graceName": "Fort Gael North",
+    "bonfireEntityId": 1047391950,
+    "worldX": 11904.69,
+    "worldZ": 9901.92
+  },
+  {
+    "graceName": "Caelem Ruins",
+    "bonfireEntityId": 1047401950,
+    "worldX": 12137.3,
+    "worldZ": 10220.36
+  },
+  {
+    "graceName": "Cathedral of Dragon Communion",
+    "bonfireEntityId": 1048361950,
+    "worldX": 12326.53,
+    "worldZ": 9315.69
+  },
+  {
+    "graceName": "Caelid Highway South",
+    "bonfireEntityId": 1048371950,
+    "worldX": 12169.16,
+    "worldZ": 9511.76
+  },
+  {
+    "graceName": "Aeonia Swamp Shore",
+    "bonfireEntityId": 1048381950,
+    "worldX": 12285.98,
+    "worldZ": 9695.73
+  },
+  {
+    "graceName": "Astray from Caelid Highway North",
+    "bonfireEntityId": 1048381951,
+    "worldX": 12183.76,
+    "worldZ": 9750.25
+  },
+  {
+    "graceName": "Smoldering Wall",
+    "bonfireEntityId": 1048391950,
+    "worldX": 12200.11,
+    "worldZ": 9984.89
+  },
+  {
+    "graceName": "Deep Siofra Well",
+    "bonfireEntityId": 1048401950,
+    "worldX": 12398.11,
+    "worldZ": 10241.96
+  },
+  {
+    "graceName": "Dragonbarrow West",
+    "bonfireEntityId": 1048401951,
+    "worldX": 12397.25,
+    "worldZ": 10302.84
+  },
+  {
+    "graceName": "Isolated Merchant's Shack",
+    "bonfireEntityId": 1048411950,
+    "worldX": 12202.01,
+    "worldZ": 10408.86
+  },
+  {
+    "graceName": "Southern Aeonia Swamp Bank",
+    "bonfireEntityId": 1049371950,
+    "worldX": 12546.5,
+    "worldZ": 9534.24
+  },
+  {
+    "graceName": "Heart of Aeonia",
+    "bonfireEntityId": 1049381950,
+    "worldX": 12518.806,
+    "worldZ": 9774.763
+  },
+  {
+    "graceName": "Inner Aeonia",
+    "bonfireEntityId": 1049381951,
+    "worldX": 12485.54,
+    "worldZ": 9843.31
+  },
+  {
+    "graceName": "Sellia Backstreets",
+    "bonfireEntityId": 1049391950,
+    "worldX": 12672.5,
+    "worldZ": 10038.99
+  },
+  {
+    "graceName": "Chair-Crypt of Sellia",
+    "bonfireEntityId": 1049391951,
+    "worldX": 12640.982,
+    "worldZ": 10061.586
+  },
+  {
+    "graceName": "Sellia Under-Stair",
+    "bonfireEntityId": 1049391952,
+    "worldX": 12643.48,
+    "worldZ": 9952.28
+  },
+  {
+    "graceName": "Impassable Greatbridge",
+    "bonfireEntityId": 1050361950,
+    "worldX": 12731.69,
+    "worldZ": 9133.24
+  },
+  {
+    "graceName": "Church of the Plague",
+    "bonfireEntityId": 1050381950,
+    "worldX": 12819.86,
+    "worldZ": 9854.98
+  },
+  {
+    "graceName": "Dragonbarrow Fork",
+    "bonfireEntityId": 1050401950,
+    "worldX": 12876.04,
+    "worldZ": 10364.15
+  },
+  {
+    "graceName": "Redmane Castle Plaza",
+    "bonfireEntityId": 1051361950,
+    "worldX": 13137.61,
+    "worldZ": 9234.93
+  },
+  {
+    "graceName": "Chamber Outside the Plaza",
+    "bonfireEntityId": 1051361951,
+    "worldX": 13149.126,
+    "worldZ": 9175.808
+  },
+  {
+    "graceName": "Fort Faroth",
+    "bonfireEntityId": 1051391950,
+    "worldX": 12976.63,
+    "worldZ": 10107.39
+  },
+  {
+    "graceName": "Bestial Sanctum",
+    "bonfireEntityId": 1051431950,
+    "worldX": 13008.86,
+    "worldZ": 11023.59
+  },
+  {
+    "graceName": "Starscourge Radahn",
+    "bonfireEntityId": 1052381950,
+    "worldX": 13268.46,
+    "worldZ": 9686.11
+  },
+  {
+    "graceName": "Lenne's Rise",
+    "bonfireEntityId": 1052411950,
+    "worldX": 13335.46,
+    "worldZ": 10502.63
+  },
+  {
+    "graceName": "Farum Greatbridge",
+    "bonfireEntityId": 1052421950,
+    "worldX": 13203.38,
+    "worldZ": 10778.08
+  },
+  {
+    "graceName": "Forbidden Lands",
+    "bonfireEntityId": 1047511950,
+    "worldX": 12027.36,
+    "worldZ": 13031.84
+  },
+  {
+    "graceName": "Apostate Derelict",
+    "bonfireEntityId": 1047581950,
+    "worldX": 12082.95,
+    "worldZ": 14815.67
+  },
+  {
+    "graceName": "Ordina, Liturgical Town",
+    "bonfireEntityId": 1048571950,
+    "worldX": 12318.61,
+    "worldZ": 14556.33
+  },
+  {
+    "graceName": "Zamor Ruins",
+    "bonfireEntityId": 1049531950,
+    "worldX": 12622.93,
+    "worldZ": 13668.96
+  },
+  {
+    "graceName": "Grand Lift of Rold",
+    "bonfireEntityId": 1049531951,
+    "worldX": 12535.96,
+    "worldZ": 13467.87
+  },
+  {
+    "graceName": "Consecrated Snowfield",
+    "bonfireEntityId": 1049541950,
+    "worldX": 12446.28,
+    "worldZ": 13820.26
+  },
+  {
+    "graceName": "Inner Consecrated Snowfield",
+    "bonfireEntityId": 1049551950,
+    "worldX": 12439.53,
+    "worldZ": 14185.83
+  },
+  {
+    "graceName": "Church of Repose",
+    "bonfireEntityId": 1051531950,
+    "worldX": 12997.02,
+    "worldZ": 13498.53
+  },
+  {
+    "graceName": "Ancient Snow Valley Ruins",
+    "bonfireEntityId": 1051561950,
+    "worldX": 13053.14,
+    "worldZ": 14292.85
+  },
+  {
+    "graceName": "Snow Valley Ruins Overlook",
+    "bonfireEntityId": 1051571950,
+    "worldX": 13177.4,
+    "worldZ": 14552.64
+  },
+  {
+    "graceName": "Castle Sol Main Gate",
+    "bonfireEntityId": 1051571951,
+    "worldX": 13040.01,
+    "worldZ": 14651.94
+  },
+  {
+    "graceName": "Church of the Eclipse",
+    "bonfireEntityId": 1051571952,
+    "worldX": 13129.15,
+    "worldZ": 14706.25
+  },
+  {
+    "graceName": "Castle Sol Rooftop",
+    "bonfireEntityId": 1051571953,
+    "worldX": 13138.5,
+    "worldZ": 14789.39
+  },
+  {
+    "graceName": "Foot of the Forge",
+    "bonfireEntityId": 1052531950,
+    "worldX": 13232.82,
+    "worldZ": 13521.91
+  },
+  {
+    "graceName": "Giants' Gravepost",
+    "bonfireEntityId": 1052541950,
+    "worldX": 13258.32,
+    "worldZ": 13890.82
+  },
+  {
+    "graceName": "Whiteridge Road",
+    "bonfireEntityId": 1052561950,
+    "worldX": 13354.35,
+    "worldZ": 14209.89
+  },
+  {
+    "graceName": "Freezing Lake",
+    "bonfireEntityId": 1052571950,
+    "worldX": 13394.48,
+    "worldZ": 14669.83
+  },
+  {
+    "graceName": "Fire Giant",
+    "bonfireEntityId": 1053521950,
+    "worldX": 13483.6,
+    "worldZ": 13338.1
+  },
+  {
+    "graceName": "Forge of the Giants",
+    "bonfireEntityId": 1054531950,
+    "worldX": 13802.23,
+    "worldZ": 13546.89
+  },
+  {
+    "graceName": "First Church of Marika",
+    "bonfireEntityId": 1054551950,
+    "worldX": 13793.61,
+    "worldZ": 14142.3
+  }
+]
