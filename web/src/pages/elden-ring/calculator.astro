@@ -1,0 +1,110 @@
+---
+import WikiLayout from '../../components/WikiLayout.astro';
+import regulationData from '../../content/weapon-regulation-data.json';
+import { distinctWeaponNames } from '../../calculator/weapon-index.js';
+import type { RawWeapon } from '../../calculator/decode-weapon.js';
+
+const weaponNames = distinctWeaponNames(regulationData.weapons as unknown as RawWeapon[]);
+---
+<WikiLayout title="Weapon Calculator" active="calculator">
+  <div class="calculator">
+    <h1>Weapon Attack Rating Calculator</h1>
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <label>Weapon
+          <select id="calc-weapon">
+            {weaponNames.map((name) => <option value={name}>{name}</option>)}
+          </select>
+        </label>
+        <label>Affinity
+          <select id="calc-affinity"></select>
+        </label>
+        <label>Upgrade Level
+          <input id="calc-level" type="number" min="0" value="0" />
+        </label>
+        <label>Strength
+          <input id="calc-str" type="number" min="0" value="10" />
+        </label>
+        <label>Dexterity
+          <input id="calc-dex" type="number" min="0" value="10" />
+        </label>
+        <label>Intelligence
+          <input id="calc-int" type="number" min="0" value="10" />
+        </label>
+        <label>Faith
+          <input id="calc-fai" type="number" min="0" value="10" />
+        </label>
+        <label>Arcane
+          <input id="calc-arc" type="number" min="0" value="10" />
+        </label>
+        <label class="calc-checkbox">
+          <input id="calc-two-handing" type="checkbox" />
+          Two-Handing
+        </label>
+      </div>
+      <div id="calc-output" class="calc-output">Loading weapon data…</div>
+    </div>
+  </div>
+</WikiLayout>
+<style>
+  .calculator {
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    margin-top: 24px;
+  }
+  .calc-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .calc-inputs label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9em;
+    color: var(--text-dim);
+  }
+  .calc-inputs select,
+  .calc-inputs input[type='number'] {
+    background: var(--bg-panel);
+    color: inherit;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 8px;
+    font: inherit;
+  }
+  .calc-checkbox {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 8px !important;
+  }
+  .calc-output {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    height: fit-content;
+  }
+  .calc-output h2 {
+    margin-top: 0;
+    font-size: 1em;
+    color: var(--text-dim);
+  }
+  .calc-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .calc-warning {
+    color: #d68;
+    margin-top: 12px;
+    font-size: 0.9em;
+  }
+</style>
