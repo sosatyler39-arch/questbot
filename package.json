@@ -4,7 +4,7 @@
   "workspaces": ["server", "client", "web"],
   "scripts": {
     "dev": "npm run dev -w server",
-    "test": "npm test -w server && npm test -w client",
-    "typecheck": "npm run typecheck -w server && npm run typecheck -w client"
+    "test": "npm test -w server && npm test -w client && npm test -w web",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w client && npm run typecheck -w web"
   }
 }

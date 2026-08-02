@@ -9,13 +9,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "tsx --test src/**/*.test.ts",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "astro": "^7.1.6"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@types/node": "^26.1.1",
+    "tsx": "^4.19.0",
     "typescript": "^5.9.3"
   }
 }

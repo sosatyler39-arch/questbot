@@ -11,11 +11,9 @@ export function initWikiSearch(): void {
   const results = document.getElementById('wiki-search-results');
   if (!input || !results) return;
 
-  let entries: WikiSearchEntry[] | null = null;
+  let entries: Promise<WikiSearchEntry[]> | null = null;
   const loadEntries = () =>
-    (entries ??= fetch('/elden-ring/wiki/search-index.json').then((r) => r.json())) as Promise<
-      WikiSearchEntry[]
-    >;
+    (entries ??= fetch('/elden-ring/wiki/search-index.json').then((r) => r.json() as Promise<WikiSearchEntry[]>));
 
   input.addEventListener('input', async () => {
     const query = input.value.trim().toLowerCase();

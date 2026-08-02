@@ -10,11 +10,9 @@ export function initEnemySearch(): void {
   const results = document.getElementById('enemy-search-results');
   if (!input || !results) return;
 
-  let entries: EnemySearchEntry[] | null = null;
+  let entries: Promise<EnemySearchEntry[]> | null = null;
   const loadEntries = () =>
-    (entries ??= fetch('/elden-ring/enemies/search-index.json').then((r) => r.json())) as Promise<
-      EnemySearchEntry[]
-    >;
+    (entries ??= fetch('/elden-ring/enemies/search-index.json').then((r) => r.json() as Promise<EnemySearchEntry[]>));
 
   input.addEventListener('input', async () => {
     const query = input.value.trim().toLowerCase();
