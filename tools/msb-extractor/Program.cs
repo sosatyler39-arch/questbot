@@ -48,7 +48,30 @@ var graceCandidates = bonfireWarpParam.Rows
     .ToList();
 
 Console.WriteLine($"Rows with a resolvable text ID: {graceCandidates.Count}");
-foreach (var g in graceCandidates.Take(3))
+
+// --- Task 3: resolve grace display names via the PlaceName FMG ---
+
+// PlaceName.fmg is confirmed to live in item.msgbnd.dcx (not menu.msgbnd.dcx, despite "place
+// name" sounding menu-related) - found by scanning every English message bundle for the FMG
+// whose entry IDs actually overlap grace textIds (100000s); EventTextForMap.fmg and
+// GR_MenuText.fmg in menu.msgbnd.dcx were both tried first and ruled out (wrong ID range /
+// coincidental garbage matches on unrelated UI strings).
+BND4 itemMsgBnd = BND4.Read(Path.Combine(GamePath, "msg", "engus", "item.msgbnd.dcx"));
+BinderFile? placeNameFile = itemMsgBnd.Files.FirstOrDefault(f => f.Name.Contains("PlaceName"));
+if (placeNameFile is null)
 {
-    Console.WriteLine($"  entityId={g.EntityId} tile=m{g.AreaNo:D2}_{g.GridXNo:D2}_{g.GridZNo:D2} posX={g.PosX} posZ={g.PosZ} textId={g.TextId}");
+    throw new InvalidOperationException("PlaceName.fmg not found in item.msgbnd.dcx - check the bundle's actual contents.");
+}
+
+FMG placeNameFmg = FMG.Read(placeNameFile.Bytes);
+Dictionary<int, string> placeNamesByTextId = placeNameFmg.Entries.ToDictionary(e => e.ID, e => e.Text ?? string.Empty);
+
+Dictionary<uint, string> graceNamesByEntityId = graceCandidates
+    .Where(g => placeNamesByTextId.ContainsKey(g.TextId!.Value))
+    .ToDictionary(g => g.EntityId, g => placeNamesByTextId[g.TextId!.Value]);
+
+Console.WriteLine($"Resolved grace names: {graceNamesByEntityId.Count}");
+foreach (var kv in graceNamesByEntityId.Take(10))
+{
+    Console.WriteLine($"  entityId={kv.Key} name=\"{kv.Value}\"");
 }
