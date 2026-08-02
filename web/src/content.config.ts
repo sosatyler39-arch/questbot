@@ -43,4 +43,27 @@ const wiki = defineCollection({
   }),
 });
 
-export const collections = { wiki };
+const enemyCycle = z.object({
+  cycle: z.string(),
+  row: z.record(z.string(), z.string()),
+});
+
+const enemyDrop = z.object({
+  item: z.string(),
+  quantity: z.number(),
+  baseChancePercent: z.number(),
+  discoveryScaling: z.boolean(),
+});
+
+const enemies = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/enemies' }),
+  schema: z.object({
+    npcId: z.string(),
+    name: z.string().min(1),
+    location: z.string(),
+    cycles: z.array(enemyCycle).min(1),
+    drops: z.array(enemyDrop),
+  }),
+});
+
+export const collections = { wiki, enemies };
