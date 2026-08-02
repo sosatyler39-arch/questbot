@@ -1,0 +1,64 @@
+---
+import WikiLayout from '../../components/WikiLayout.astro';
+import frameData from '../../content/frame-data.json';
+
+function renderTable(rows: Record<string, string>[]) {
+  const keys = Object.keys(rows[0]);
+  return { keys, rows };
+}
+
+const parry = renderTable(frameData.parryFrames);
+const iframes = renderTable(frameData.iFrames);
+---
+<WikiLayout title="Parry & i-Frame Data">
+  <div class="frame-data">
+    <p><a href="/elden-ring/wiki/mechanic">&larr; Mechanic</a></p>
+    <h1>Parry &amp; i-Frame Data</h1>
+    <p class="frame-data-note">Data collected at 30fps — double the values for 60fps.</p>
+
+    <h2>Parry Frames</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr>{parry.keys.map((k) => <th>{k}</th>)}</tr></thead>
+        <tbody>
+          {parry.rows.map((r) => <tr>{parry.keys.map((k) => <td>{r[k]}</td>)}</tr>)}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>i-Frames</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr>{iframes.keys.map((k) => <th>{k}</th>)}</tr></thead>
+        <tbody>
+          {iframes.rows.map((r) => <tr>{iframes.keys.map((k) => <td>{r[k]}</td>)}</tr>)}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</WikiLayout>
+<style>
+  .frame-data {
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .frame-data-note {
+    color: var(--text-dim);
+    font-size: 0.9em;
+  }
+  .table-scroll {
+    overflow-x: auto;
+    margin-bottom: 32px;
+  }
+  table {
+    border-collapse: collapse;
+    font-size: 0.85em;
+    white-space: nowrap;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    text-align: left;
+  }
+</style>

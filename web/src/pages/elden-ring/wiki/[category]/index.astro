@@ -17,6 +17,9 @@ const pages = [...new Map(entries.map((e) => [e.data.pageSlug, e.data.pageTitle]
   <div class="wiki-index">
     <p><a href="/elden-ring/wiki">&larr; Wiki</a></p>
     <h1>{humanize(category)}</h1>
+    {category === 'mechanic' && (
+      <p><a href="/elden-ring/frame-data">See also: Parry &amp; i-Frame Data &rarr;</a></p>
+    )}
     <ul class="wiki-list">
       {pages.map(([pageSlug, pageTitle]) => (
         <li><a href={`/elden-ring/wiki/${category}/${pageSlug}`}>{pageTitle}</a></li>
