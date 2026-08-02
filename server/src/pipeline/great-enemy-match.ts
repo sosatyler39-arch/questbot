@@ -35,48 +35,35 @@ export interface GreatEnemyAnchor {
   matchConfidence: 'clean' | 'tiebreak';
 }
 
-export interface GraceForTileSet {
-  graceName: string;
-  mapTileId: string;
-}
-
-export interface AnchorForTileSet {
-  name: string;
-  regionId: string;
-}
+// Chosen from real data: Dragonlord Placidusax's single (correct) candidate lands at distance
+// 0.212, while Magma Wyrm Makar's single (wrong-region -- its true placement is simply missing
+// from the extracted candidates) lands at 0.274. 0.25 sits between the two.
+const DEFAULT_MAX_MATCH_DISTANCE = 0.25;
 
 /**
- * For each region, the set of map tiles its own (already-extracted) Sites of Grace resolved to.
- * Used to disambiguate which of several chr-ID candidates for a great enemy actually belongs to
- * a given region.
+ * Picks, for each pin, whichever raw MSB candidate is most plausibly its real placement.
+ *
+ * A chr ID frequently has multiple placements across the game (the same creature model reused
+ * as a plain mob elsewhere, or a legacy-dungeon copy of an overworld fight), so candidates can't
+ * just be taken as-is. Two heuristics narrow this down:
+ *  1. Overworld ("m60_"-prefixed) tiles are preferred over legacy-dungeon tiles when both exist,
+ *     since every target creature here is primarily an open-field encounter (the few that are
+ *     legitimately dungeon-hosted, e.g. Dragonlord Placidusax, simply have no m60 candidate at
+ *     all and fall through to using whatever candidates do exist).
+ *  2. Among the remaining candidates, the one whose world position -- converted through the
+ *     pin's own region's already-fitted affine transform -- lands closest to the pin's existing
+ *     (hand-placed, imprecise) schematic fx/fy is chosen.
+ *
+ * `maxMatchDistance` is a safety net: if even the best candidate's transformed position is too
+ * far from the existing pin (e.g. because a chr ID is shared with a creature in a *different*
+ * region, and that other region's real placement never made it into the candidate list at all),
+ * the pin is reported unresolved rather than silently accepting a wrong-region match.
  */
-export function buildRegionTileSets(
-  graces: GraceForTileSet[],
-  anchors: AnchorForTileSet[],
-): Map<string, Set<string>> {
-  const regionIdByName = new Map(anchors.map((a) => [a.name, a.regionId]));
-  const result = new Map<string, Set<string>>();
-
-  for (const grace of graces) {
-    const regionId = regionIdByName.get(grace.graceName);
-    if (!regionId) continue;
-
-    let tiles = result.get(regionId);
-    if (!tiles) {
-      tiles = new Set<string>();
-      result.set(regionId, tiles);
-    }
-    tiles.add(grace.mapTileId);
-  }
-
-  return result;
-}
-
 export function matchGreatEnemies(
   pinCandidates: PinCandidates[],
   locationsByName: Map<string, LocationInput>,
-  regionTileSets: Map<string, Set<string>>,
   regionTransforms: Map<string, AffineTransform>,
+  maxMatchDistance = DEFAULT_MAX_MATCH_DISTANCE,
 ): { anchors: GreatEnemyAnchor[]; unresolved: string[] } {
   const anchors: GreatEnemyAnchor[] = [];
   const unresolved: string[] = [];
@@ -87,34 +74,34 @@ export function matchGreatEnemies(
       throw new Error(`No location entry found for pin "${pin.pinName}"`);
     }
 
-    const allowedTiles = regionTileSets.get(location.regionId) ?? new Set<string>();
-    const filtered = pin.candidates.filter((c) => allowedTiles.has(c.mapTileId));
-
-    if (filtered.length === 0) {
+    if (pin.candidates.length === 0) {
       unresolved.push(pin.pinName);
       continue;
     }
 
-    let chosen = filtered[0];
-    let confidence: 'clean' | 'tiebreak' = 'clean';
+    const overworldCandidates = pin.candidates.filter((c) => c.mapTileId.startsWith('m60_'));
+    const considered = overworldCandidates.length > 0 ? overworldCandidates : pin.candidates;
 
-    if (filtered.length > 1) {
-      confidence = 'tiebreak';
-      const transform = regionTransforms.get(location.regionId);
-      if (!transform) {
-        throw new Error(`No affine transform available for region "${location.regionId}"`);
-      }
+    const transform = regionTransforms.get(location.regionId);
+    if (!transform) {
+      throw new Error(`No affine transform available for region "${location.regionId}"`);
+    }
 
-      let bestDistance = Infinity;
-      for (const candidate of filtered) {
-        const { worldX, worldZ } = tileToWorld(candidate.mapTileId, candidate.localX, candidate.localZ);
-        const { fx, fy } = applyAffineTransform(transform, worldX, worldZ);
-        const distance = Math.hypot(fx - location.fx, fy - location.fy);
-        if (distance < bestDistance) {
-          bestDistance = distance;
-          chosen = candidate;
-        }
+    let chosen = considered[0];
+    let bestDistance = Infinity;
+    for (const candidate of considered) {
+      const { worldX, worldZ } = tileToWorld(candidate.mapTileId, candidate.localX, candidate.localZ);
+      const { fx, fy } = applyAffineTransform(transform, worldX, worldZ);
+      const distance = Math.hypot(fx - location.fx, fy - location.fy);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        chosen = candidate;
       }
+    }
+
+    if (bestDistance > maxMatchDistance) {
+      unresolved.push(pin.pinName);
+      continue;
     }
 
     const { worldX, worldZ } = tileToWorld(chosen.mapTileId, chosen.localX, chosen.localZ);
@@ -126,7 +113,7 @@ export function matchGreatEnemies(
       existingFy: location.fy,
       worldX,
       worldZ,
-      matchConfidence: confidence,
+      matchConfidence: considered.length === 1 ? 'clean' : 'tiebreak',
     });
   }
 

@@ -1,32 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { tileToWorld } from './msb-coordinates.js';
-import {
-  buildRegionTileSets,
-  matchGreatEnemies,
-  type PinCandidates,
-  type LocationInput,
-} from './great-enemy-match.js';
+import { matchGreatEnemies, type PinCandidates, type LocationInput } from './great-enemy-match.js';
 import type { AffineTransform } from './affine-fit.js';
 
-test('buildRegionTileSets groups tiles by region using name-matched anchors', () => {
-  const graces = [
-    { graceName: 'Church of Elleh', mapTileId: 'm60_42_36_00' },
-    { graceName: 'Stranded Graveyard', mapTileId: 'm60_41_37_00' },
-    { graceName: 'Unrelated Grace', mapTileId: 'm60_99_99_00' },
-  ];
-  const anchors = [
-    { name: 'Church of Elleh', regionId: 'limgrave' },
-    { name: 'Stranded Graveyard', regionId: 'limgrave' },
-  ];
+const IDENTITY_SCALE_TRANSFORM: AffineTransform = { a: 0.001, b: 0, c: 0.5, d: 0, e: 0.001, f: 0.5 };
 
-  const result = buildRegionTileSets(graces, anchors);
-
-  assert.equal(result.size, 1);
-  assert.deepEqual([...result.get('limgrave')!].sort(), ['m60_41_37_00', 'm60_42_36_00']);
-});
-
-test('matchGreatEnemies resolves a pin with exactly one in-region candidate as clean', () => {
+test('matchGreatEnemies resolves a pin with exactly one candidate as clean', () => {
   const pins: PinCandidates[] = [
     {
       pinName: 'Decaying Ekzykes (site)',
@@ -40,10 +20,12 @@ test('matchGreatEnemies resolves a pin with exactly one in-region candidate as c
   const locationsByName = new Map<string, LocationInput>([
     ['Decaying Ekzykes (site)', { name: 'Decaying Ekzykes (site)', category: 'great-enemy', regionId: 'caelid', fx: 0.503, fy: 1.492 }],
   ]);
-  const regionTileSets = new Map([['caelid', new Set(['m60_48_37_00'])]]);
-  const regionTransforms = new Map<string, AffineTransform>();
+  // A constant transform that maps any world position straight onto the existing pin's fx/fy,
+  // so the single candidate always passes the distance check regardless of its raw position.
+  const transform: AffineTransform = { a: 0, b: 0, c: 0.503, d: 0, e: 0, f: 1.492 };
+  const regionTransforms = new Map([['caelid', transform]]);
 
-  const { anchors, unresolved } = matchGreatEnemies(pins, locationsByName, regionTileSets, regionTransforms);
+  const { anchors, unresolved } = matchGreatEnemies(pins, locationsByName, regionTransforms);
 
   assert.equal(unresolved.length, 0);
   assert.equal(anchors.length, 1);
@@ -53,34 +35,37 @@ test('matchGreatEnemies resolves a pin with exactly one in-region candidate as c
   assert.equal(anchors[0].worldZ, expected.worldZ);
 });
 
-test('matchGreatEnemies filters out-of-region candidates and stays clean when one remains', () => {
+test('matchGreatEnemies prefers an overworld candidate over a legacy-tile candidate even when the legacy one numerically fits better', () => {
+  // Legacy candidate lands exactly on the existing pin (distance 0); the overworld candidate is
+  // slightly off but still well within tolerance. The overworld one must still win.
   const pins: PinCandidates[] = [
     {
-      pinName: 'Tree Sentinel (Limgrave)',
-      creatureName: 'Tree Sentinel',
-      chrIds: [3251],
+      pinName: 'Some Boss (site)',
+      creatureName: 'Some Boss',
+      chrIds: [1234],
       candidates: [
-        { mapTileId: 'm60_41_51_00', partName: 'c3251_9000', localX: 91.089, localY: 851.27, localZ: -31.347 },
-        { mapTileId: 'm60_42_36_00', partName: 'c3251_9000', localX: -12.138, localY: 88.955, localZ: 46.773 },
+        { mapTileId: 'm10_00_00_00', partName: 'c1234_9000', localX: 100, localY: 0, localZ: 100 },
+        { mapTileId: 'm60_00_00_00', partName: 'c1234_9001', localX: 90, localY: 0, localZ: 90 },
       ],
     },
   ];
   const locationsByName = new Map<string, LocationInput>([
-    ['Tree Sentinel (Limgrave)', { name: 'Tree Sentinel (Limgrave)', category: 'great-enemy', regionId: 'limgrave', fx: 0.756, fy: 0.598 }],
+    ['Some Boss (site)', { name: 'Some Boss (site)', category: 'great-enemy', regionId: 'testregion', fx: 0.6, fy: 0.6 }],
   ]);
-  const regionTileSets = new Map([['limgrave', new Set(['m60_42_36_00'])]]);
-  const regionTransforms = new Map<string, AffineTransform>();
+  const regionTransforms = new Map([['testregion', IDENTITY_SCALE_TRANSFORM]]);
 
-  const { anchors } = matchGreatEnemies(pins, locationsByName, regionTileSets, regionTransforms);
+  const { anchors } = matchGreatEnemies(pins, locationsByName, regionTransforms);
 
   assert.equal(anchors.length, 1);
+  // Only one candidate survives the overworld-preference filter, so there's nothing left to
+  // tiebreak -- 'clean' correctly reflects that, even though a legacy candidate was also present.
   assert.equal(anchors[0].matchConfidence, 'clean');
-  const expected = tileToWorld('m60_42_36_00', -12.138, 46.773);
+  const expected = tileToWorld('m60_00_00_00', 90, 90);
   assert.equal(anchors[0].worldX, expected.worldX);
+  assert.equal(anchors[0].worldZ, expected.worldZ);
 });
 
-test('matchGreatEnemies tiebreaks multiple in-region candidates by distance to the existing pin', () => {
-  const transform: AffineTransform = { a: 0.001, b: 0, c: 0.5, d: 0, e: 0.001, f: 0.5 };
+test('matchGreatEnemies tiebreaks multiple overworld candidates by distance to the existing pin', () => {
   const pins: PinCandidates[] = [
     {
       pinName: 'Glintstone Dragon Smarag (site)',
@@ -95,10 +80,9 @@ test('matchGreatEnemies tiebreaks multiple in-region candidates by distance to t
   const locationsByName = new Map<string, LocationInput>([
     ['Glintstone Dragon Smarag (site)', { name: 'Glintstone Dragon Smarag (site)', category: 'great-enemy', regionId: 'liurnia', fx: 0.59, fy: 0.59 }],
   ]);
-  const regionTileSets = new Map([['liurnia', new Set(['m60_00_00_00'])]]);
-  const regionTransforms = new Map([['liurnia', transform]]);
+  const regionTransforms = new Map([['liurnia', IDENTITY_SCALE_TRANSFORM]]);
 
-  const { anchors } = matchGreatEnemies(pins, locationsByName, regionTileSets, regionTransforms);
+  const { anchors } = matchGreatEnemies(pins, locationsByName, regionTransforms);
 
   assert.equal(anchors.length, 1);
   assert.equal(anchors[0].matchConfidence, 'tiebreak');
@@ -107,25 +91,42 @@ test('matchGreatEnemies tiebreaks multiple in-region candidates by distance to t
   assert.equal(anchors[0].worldZ, expected.worldZ);
 });
 
-test('matchGreatEnemies reports a pin as unresolved when no candidate matches its region tiles', () => {
+test('matchGreatEnemies reports a pin as unresolved when it has no candidates at all', () => {
   const pins: PinCandidates[] = [
-    {
-      pinName: 'Fire Giant (site)',
-      creatureName: 'Fire Giant',
-      chrIds: [4760],
-      candidates: [
-        { mapTileId: 'm60_99_99_00', partName: 'c4760_9000', localX: 0, localY: 0, localZ: 0 },
-      ],
-    },
+    { pinName: 'Fire Giant (site)', creatureName: 'Fire Giant', chrIds: [4760], candidates: [] },
   ];
   const locationsByName = new Map<string, LocationInput>([
     ['Fire Giant (site)', { name: 'Fire Giant (site)', category: 'great-enemy', regionId: 'mountaintops', fx: 0.595, fy: 1.605 }],
   ]);
-  const regionTileSets = new Map([['mountaintops', new Set(['m60_50_56_00'])]]);
-  const regionTransforms = new Map<string, AffineTransform>();
+  const regionTransforms = new Map([['mountaintops', IDENTITY_SCALE_TRANSFORM]]);
 
-  const { anchors, unresolved } = matchGreatEnemies(pins, locationsByName, regionTileSets, regionTransforms);
+  const { anchors, unresolved } = matchGreatEnemies(pins, locationsByName, regionTransforms);
 
   assert.equal(anchors.length, 0);
   assert.deepEqual(unresolved, ['Fire Giant (site)']);
+});
+
+test('matchGreatEnemies reports a pin as unresolved when the best candidate is too far from the existing pin', () => {
+  // Simulates a chr-ID collision where the only candidates found actually belong to a different
+  // region's creature -- the transformed position ends up far from where the pin was drawn.
+  const pins: PinCandidates[] = [
+    {
+      pinName: 'Magma Wyrm Makar (site)',
+      creatureName: 'Magma Wyrm Makar',
+      chrIds: [4910],
+      candidates: [
+        { mapTileId: 'm60_00_00_00', partName: 'c4910_9000', localX: 100, localY: 0, localZ: 100 },
+      ],
+    },
+  ];
+  const locationsByName = new Map<string, LocationInput>([
+    ['Magma Wyrm Makar (site)', { name: 'Magma Wyrm Makar (site)', category: 'great-enemy', regionId: 'liurnia', fx: 0.075, fy: 0.739 }],
+  ]);
+  // worldX=100,worldZ=100 -> fx=0.6, fy=0.6 via IDENTITY_SCALE_TRANSFORM -- far from (0.075, 0.739).
+  const regionTransforms = new Map([['liurnia', IDENTITY_SCALE_TRANSFORM]]);
+
+  const { anchors, unresolved } = matchGreatEnemies(pins, locationsByName, regionTransforms);
+
+  assert.equal(anchors.length, 0);
+  assert.deepEqual(unresolved, ['Magma Wyrm Makar (site)']);
 });
