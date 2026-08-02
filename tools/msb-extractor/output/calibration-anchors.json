@@ -1,0 +1,1055 @@
+[
+  {
+    "name": "Lower Capital Church",
+    "category": "church",
+    "regionId": "leyndell",
+    "existingFx": 0.986,
+    "existingFy": 1.511,
+    "worldX": -215.8,
+    "worldZ": -223.22
+  },
+  {
+    "name": "Avenue Balcony",
+    "category": "landmark",
+    "regionId": "leyndell",
+    "existingFx": 0.864,
+    "existingFy": 1.297,
+    "worldX": -180.35,
+    "worldZ": -185.54
+  },
+  {
+    "name": "West Capital Rampart",
+    "category": "landmark",
+    "regionId": "leyndell",
+    "existingFx": 0.571,
+    "existingFy": 1.277,
+    "worldX": -217.61,
+    "worldZ": -260.53
+  },
+  {
+    "name": "Ainsel River Main",
+    "category": "landmark",
+    "regionId": "ainsel-river",
+    "existingFx": 0.4,
+    "existingFy": 0.4,
+    "worldX": 589.502,
+    "worldZ": 269.242
+  },
+  {
+    "name": "Nokstella, Eternal City",
+    "category": "legacy-dungeon",
+    "regionId": "nokstella",
+    "existingFx": 0.5,
+    "existingFy": 0.5,
+    "worldX": 285.589,
+    "worldZ": 76.524
+  },
+  {
+    "name": "Grand Cloister",
+    "category": "landmark",
+    "regionId": "lake-of-rot",
+    "existingFx": 0.4,
+    "existingFy": 0.4,
+    "worldX": -155.54899999999998,
+    "worldZ": -525.689
+  },
+  {
+    "name": "Ancestral Woods",
+    "category": "landmark",
+    "regionId": "nokron",
+    "existingFx": 0.3,
+    "existingFy": 0.6,
+    "worldX": 1528.4450000000002,
+    "worldZ": 1462.896
+  },
+  {
+    "name": "Night's Sacred Ground",
+    "category": "landmark",
+    "regionId": "nokron",
+    "existingFx": 0.4,
+    "existingFy": 0.7,
+    "worldX": 1463.6100000000001,
+    "worldZ": 1293.86
+  },
+  {
+    "name": "Prince of Death's Throne",
+    "category": "landmark",
+    "regionId": "deeproot-depths",
+    "existingFx": 0.5,
+    "existingFy": 0.15,
+    "worldX": 388.5,
+    "worldZ": -202.16
+  },
+  {
+    "name": "The Nameless Eternal City",
+    "category": "landmark",
+    "regionId": "deeproot-depths",
+    "existingFx": 0.3,
+    "existingFy": 0.5,
+    "worldX": 78.33500000000004,
+    "worldZ": -409.819
+  },
+  {
+    "name": "Nokron, Eternal City",
+    "category": "legacy-dungeon",
+    "regionId": "nokron",
+    "existingFx": 0.5,
+    "existingFy": 0.4,
+    "worldX": 2501.945,
+    "worldZ": 1233.984
+  },
+  {
+    "name": "Crumbling Beast Grave",
+    "category": "landmark",
+    "regionId": "farum-azula",
+    "existingFx": 0.884,
+    "existingFy": 2.389,
+    "worldX": 116.66,
+    "worldZ": 161.07
+  },
+  {
+    "name": "Tempest-Facing Balcony",
+    "category": "landmark",
+    "regionId": "farum-azula",
+    "existingFx": 0.912,
+    "existingFy": 2.39,
+    "worldX": -88.16,
+    "worldZ": 282.61
+  },
+  {
+    "name": "Dragon Temple",
+    "category": "landmark",
+    "regionId": "farum-azula",
+    "existingFx": 1.012,
+    "existingFy": 2.457,
+    "worldX": -75.41,
+    "worldZ": 404.67
+  },
+  {
+    "name": "Dragon Temple Rooftop",
+    "category": "landmark",
+    "regionId": "farum-azula",
+    "existingFx": 1.062,
+    "existingFy": 2.39,
+    "worldX": 83.98,
+    "worldZ": 608.5
+  },
+  {
+    "name": "Beside the Great Bridge",
+    "category": "landmark",
+    "regionId": "farum-azula",
+    "existingFx": 1.112,
+    "existingFy": 2.524,
+    "worldX": 64.07,
+    "worldZ": 497.52
+  },
+  {
+    "name": "Prayer Room",
+    "category": "landmark",
+    "regionId": "haligtree",
+    "existingFx": 1.898,
+    "existingFy": 0.912,
+    "worldX": 77.19,
+    "worldZ": 432.05
+  },
+  {
+    "name": "Haligtree Roots",
+    "category": "landmark",
+    "regionId": "haligtree",
+    "existingFx": 1.968,
+    "existingFy": 0.836,
+    "worldX": 88.93,
+    "worldZ": 549.13
+  },
+  {
+    "name": "Haligtree Town",
+    "category": "town-or-fort",
+    "regionId": "haligtree",
+    "existingFx": 1.808,
+    "existingFy": 0.59,
+    "worldX": 63.54,
+    "worldZ": 231.44
+  },
+  {
+    "name": "Volcano Manor",
+    "category": "legacy-dungeon",
+    "regionId": "mt-gelmir",
+    "existingFx": 1.075,
+    "existingFy": 0.753,
+    "worldX": 40.88,
+    "worldZ": -60.27
+  },
+  {
+    "name": "Subterranean Inquisition Chamber",
+    "category": "minor-dungeon",
+    "regionId": "mt-gelmir",
+    "existingFx": 1.038,
+    "existingFy": 0.716,
+    "worldX": 163.033,
+    "worldZ": -149.041
+  },
+  {
+    "name": "Stranded Graveyard",
+    "category": "landmark",
+    "regionId": "limgrave",
+    "existingFx": 0.824,
+    "existingFy": 0.565,
+    "worldX": -115.7,
+    "worldZ": 12.14
+  },
+  {
+    "name": "Tombsward Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "weeping-peninsula",
+    "existingFx": 1.347,
+    "existingFy": 0.468,
+    "worldX": -95.662,
+    "worldZ": 107.314
+  },
+  {
+    "name": "Impaler's Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "weeping-peninsula",
+    "existingFx": 1.435,
+    "existingFy": 0.753,
+    "worldX": 229.265,
+    "worldZ": -50.343
+  },
+  {
+    "name": "Stormfoot Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "limgrave",
+    "existingFx": 0.757,
+    "existingFy": 0.671,
+    "worldX": 554.644,
+    "worldZ": -11.158
+  },
+  {
+    "name": "Road's End Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "liurnia",
+    "existingFx": 0.519,
+    "existingFy": 0.888,
+    "worldX": 758.59,
+    "worldZ": -24.05
+  },
+  {
+    "name": "Murkwater Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "limgrave",
+    "existingFx": 1.01,
+    "existingFy": 0.736,
+    "worldX": 1113.228,
+    "worldZ": 64.978
+  },
+  {
+    "name": "Black Knife Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "liurnia",
+    "existingFx": 0.123,
+    "existingFy": 1.501,
+    "worldX": 1206.82,
+    "worldZ": 111.21
+  },
+  {
+    "name": "Cliffbottom Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "liurnia",
+    "existingFx": 0.523,
+    "existingFy": 0.485,
+    "worldX": 1611.46,
+    "worldZ": 69.66
+  },
+  {
+    "name": "Wyndham Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "altus-plateau",
+    "existingFx": 0.528,
+    "existingFy": 1.035,
+    "worldX": 1664.92,
+    "worldZ": 121.83
+  },
+  {
+    "name": "Sainted Hero's Grave",
+    "category": "minor-dungeon",
+    "regionId": "altus-plateau",
+    "existingFx": 0.701,
+    "existingFy": 0.89,
+    "worldX": 2095.06,
+    "worldZ": 8.12
+  },
+  {
+    "name": "Gelmir Hero's Grave",
+    "category": "minor-dungeon",
+    "regionId": "mt-gelmir",
+    "existingFx": 0.866,
+    "existingFy": 0.568,
+    "worldX": 2408.56,
+    "worldZ": 15.69
+  },
+  {
+    "name": "Auriza Hero's Grave",
+    "category": "minor-dungeon",
+    "regionId": "altus-plateau",
+    "existingFx": 0.68,
+    "existingFy": 1.107,
+    "worldX": 2622.54,
+    "worldZ": 137.72
+  },
+  {
+    "name": "Deathtouched Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "limgrave",
+    "existingFx": 0.922,
+    "existingFy": 0.607,
+    "worldX": 2729.88,
+    "worldZ": 30.18
+  },
+  {
+    "name": "Auriza Side Tomb",
+    "category": "minor-dungeon",
+    "regionId": "altus-plateau",
+    "existingFx": 0.678,
+    "existingFy": 1.111,
+    "worldX": 3430.75,
+    "worldZ": 25.77
+  },
+  {
+    "name": "Minor Erdtree Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "caelid",
+    "existingFx": 0.217,
+    "existingFy": 1.312,
+    "worldX": 3529.52,
+    "worldZ": 67.589
+  },
+  {
+    "name": "Caelid Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "caelid",
+    "existingFx": 0.258,
+    "existingFy": 1.402,
+    "worldX": 3930.19,
+    "worldZ": 69.13
+  },
+  {
+    "name": "War-Dead Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "caelid",
+    "existingFx": 0.666,
+    "existingFy": 1.581,
+    "worldX": 4133.72,
+    "worldZ": -134.68
+  },
+  {
+    "name": "Giant-Conquering Hero's Grave",
+    "category": "minor-dungeon",
+    "regionId": "mountaintops",
+    "existingFx": 0.707,
+    "existingFy": 1.187,
+    "worldX": 12681.44,
+    "worldZ": 13688.04
+  },
+  {
+    "name": "Giants' Mountaintop Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "mountaintops",
+    "existingFx": 0.632,
+    "existingFy": 1.056,
+    "worldX": 12826.16,
+    "worldZ": 13677.34
+  },
+  {
+    "name": "Consecrated Snowfield Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "consecrated-snowfield",
+    "existingFx": 0.38,
+    "existingFy": 2.236,
+    "worldX": 12730.43,
+    "worldZ": 13993.61
+  },
+  {
+    "name": "Hidden Path to the Haligtree",
+    "category": "landmark",
+    "regionId": "consecrated-snowfield",
+    "existingFx": 0.169,
+    "existingFy": 2.271,
+    "worldX": 5014.88,
+    "worldZ": -122.7
+  },
+  {
+    "name": "Murkwater Cave",
+    "category": "minor-dungeon",
+    "regionId": "limgrave",
+    "existingFx": 1.04,
+    "existingFy": 0.768,
+    "worldX": 11083.24,
+    "worldZ": 9533.08
+  },
+  {
+    "name": "Earthbore Cave",
+    "category": "minor-dungeon",
+    "regionId": "weeping-peninsula",
+    "existingFx": 1.113,
+    "existingFy": 0.549,
+    "worldX": 152.8,
+    "worldZ": -40.21
+  },
+  {
+    "name": "Tombsward Cave",
+    "category": "minor-dungeon",
+    "regionId": "weeping-peninsula",
+    "existingFx": 1.377,
+    "existingFy": 0.386,
+    "worldX": 10637.89,
+    "worldZ": 8479.25
+  },
+  {
+    "name": "Groveside Cave",
+    "category": "minor-dungeon",
+    "regionId": "limgrave",
+    "existingFx": 0.746,
+    "existingFy": 0.781,
+    "worldX": 708.437,
+    "worldZ": -11.039
+  },
+  {
+    "name": "Stillwater Cave",
+    "category": "minor-dungeon",
+    "regionId": "liurnia",
+    "existingFx": 0.359,
+    "existingFy": 1.475,
+    "worldX": 1038.54,
+    "worldZ": -38.15
+  },
+  {
+    "name": "Lakeside Crystal Cave",
+    "category": "minor-dungeon",
+    "regionId": "liurnia",
+    "existingFx": 0.109,
+    "existingFy": 0.449,
+    "worldX": 1163.87,
+    "worldZ": -4.21
+  },
+  {
+    "name": "Seethewater Cave",
+    "category": "minor-dungeon",
+    "regionId": "mt-gelmir",
+    "existingFx": 1.038,
+    "existingFy": 0.885,
+    "worldX": 1782.91,
+    "worldZ": 141.35
+  },
+  {
+    "name": "Dragonbarrow Cave",
+    "category": "minor-dungeon",
+    "regionId": "caelid",
+    "existingFx": 0.625,
+    "existingFy": 1.177,
+    "worldX": 2562.75,
+    "worldZ": 84.72
+  },
+  {
+    "name": "Sellia Hideaway",
+    "category": "minor-dungeon",
+    "regionId": "caelid",
+    "existingFx": 0.263,
+    "existingFy": 1.664,
+    "worldX": 2943.07,
+    "worldZ": 63.94
+  },
+  {
+    "name": "Cave of the Forlorn",
+    "category": "minor-dungeon",
+    "regionId": "consecrated-snowfield",
+    "existingFx": 0.288,
+    "existingFy": 2.298,
+    "worldX": 3017.12,
+    "worldZ": 43.99
+  },
+  {
+    "name": "Coastal Cave",
+    "category": "minor-dungeon",
+    "regionId": "limgrave",
+    "existingFx": 0.707,
+    "existingFy": 0.747,
+    "worldX": 3888.107,
+    "worldZ": -41.907
+  },
+  {
+    "name": "Highroad Cave",
+    "category": "minor-dungeon",
+    "regionId": "limgrave",
+    "existingFx": 0.893,
+    "existingFy": 0.542,
+    "worldX": 4412.07,
+    "worldZ": 96.4
+  },
+  {
+    "name": "Perfumer's Grotto",
+    "category": "minor-dungeon",
+    "regionId": "mt-gelmir",
+    "existingFx": 0.929,
+    "existingFy": 0.68,
+    "worldX": 4657.48,
+    "worldZ": 23.11
+  },
+  {
+    "name": "Sage's Cave",
+    "category": "minor-dungeon",
+    "regionId": "mt-gelmir",
+    "existingFx": 0.856,
+    "existingFy": 0.716,
+    "worldX": 4965.29,
+    "worldZ": -55.79
+  },
+  {
+    "name": "Abandoned Cave",
+    "category": "minor-dungeon",
+    "regionId": "caelid",
+    "existingFx": 0.299,
+    "existingFy": 1.357,
+    "worldX": 5257.79,
+    "worldZ": 42.44
+  },
+  {
+    "name": "Gaol Cave",
+    "category": "minor-dungeon",
+    "regionId": "caelid",
+    "existingFx": 0.217,
+    "existingFy": 1.492,
+    "worldX": 5311.68,
+    "worldZ": 33.87
+  },
+  {
+    "name": "Spiritcaller Cave",
+    "category": "minor-dungeon",
+    "regionId": "consecrated-snowfield",
+    "existingFx": 0.164,
+    "existingFy": 2.236,
+    "worldX": 13529.67,
+    "worldZ": 14450.54
+  },
+  {
+    "name": "Morne Tunnel",
+    "category": "minor-dungeon",
+    "regionId": "weeping-peninsula",
+    "existingFx": 1.178,
+    "existingFy": 0.697,
+    "worldX": 36.14,
+    "worldZ": -69.91
+  },
+  {
+    "name": "Limgrave Tunnels",
+    "category": "minor-dungeon",
+    "regionId": "limgrave",
+    "existingFx": 0.834,
+    "existingFy": 0.994,
+    "worldX": 10886.3,
+    "worldZ": 9437.07
+  },
+  {
+    "name": "Raya Lucaria Crystal Tunnel",
+    "category": "minor-dungeon",
+    "regionId": "liurnia",
+    "existingFx": 0.213,
+    "existingFy": 0.812,
+    "worldX": 9360.02,
+    "worldZ": 12048.29
+  },
+  {
+    "name": "Old Altus Tunnel",
+    "category": "minor-dungeon",
+    "regionId": "altus-plateau",
+    "existingFx": 0.377,
+    "existingFy": 0.979,
+    "worldX": 9815.74,
+    "worldZ": 13453.51
+  },
+  {
+    "name": "Altus Tunnel",
+    "category": "minor-dungeon",
+    "regionId": "mt-gelmir",
+    "existingFx": 0.965,
+    "existingFy": 0.496,
+    "worldX": 1227.74,
+    "worldZ": 40.72
+  },
+  {
+    "name": "Sellia Crystal Tunnel",
+    "category": "minor-dungeon",
+    "regionId": "caelid",
+    "existingFx": 0.244,
+    "existingFy": 1.621,
+    "worldX": 2066.43,
+    "worldZ": 110.58
+  },
+  {
+    "name": "Yelough Anix Tunnel",
+    "category": "minor-dungeon",
+    "regionId": "consecrated-snowfield",
+    "existingFx": 0.226,
+    "existingFy": 2.111,
+    "worldX": 12077.93,
+    "worldZ": 14018.96
+  },
+  {
+    "name": "Divine Tower of Limgrave",
+    "category": "landmark",
+    "regionId": "limgrave",
+    "existingFx": 0.851,
+    "existingFy": 0.568,
+    "worldX": 3492.09,
+    "worldZ": 604.25
+  },
+  {
+    "name": "Divine Tower of Liurnia",
+    "category": "landmark",
+    "regionId": "liurnia",
+    "existingFx": 0.523,
+    "existingFy": 0.485,
+    "worldX": 3269.77,
+    "worldZ": 79.97
+  },
+  {
+    "name": "Sealed Tunnel",
+    "category": "minor-dungeon",
+    "regionId": "altus-plateau",
+    "existingFx": 0.415,
+    "existingFy": 0.757,
+    "worldX": 10941.4,
+    "worldZ": 12835.73
+  },
+  {
+    "name": "Divine Tower of East Altus",
+    "category": "landmark",
+    "regionId": "altus-plateau",
+    "existingFx": 0.226,
+    "existingFy": 0.979,
+    "worldX": 4209.03,
+    "worldZ": -549.95
+  },
+  {
+    "name": "Cathedral of the Forsaken",
+    "category": "landmark",
+    "regionId": "leyndell",
+    "existingFx": 0.668,
+    "existingFy": 1.958,
+    "worldX": 74.374,
+    "worldZ": -80.598
+  },
+  {
+    "name": "Leyndell Catacombs",
+    "category": "minor-dungeon",
+    "regionId": "leyndell",
+    "existingFx": 0.712,
+    "existingFy": 1.973,
+    "worldX": -138.835,
+    "worldZ": -242.308
+  },
+  {
+    "name": "Ruin-Strewn Precipice",
+    "category": "minor-dungeon",
+    "regionId": "liurnia",
+    "existingFx": 0.075,
+    "existingFy": 0.685,
+    "worldX": 5211.34,
+    "worldZ": -1312.03
+  },
+  {
+    "name": "Fourth Church of Marika",
+    "category": "church",
+    "regionId": "weeping-peninsula",
+    "existingFx": 1.377,
+    "existingFy": 0.631,
+    "worldX": 10549.79,
+    "worldZ": 8513.57
+  },
+  {
+    "name": "Church of Dragon Communion",
+    "category": "church",
+    "regionId": "limgrave",
+    "existingFx": 0.863,
+    "existingFy": 0.833,
+    "worldX": 10441.45,
+    "worldZ": 8937.28
+  },
+  {
+    "name": "Stormhill Shack",
+    "category": "landmark",
+    "regionId": "limgrave",
+    "existingFx": 0.775,
+    "existingFy": 0.588,
+    "worldX": 10512.85,
+    "worldZ": 9744.98
+  },
+  {
+    "name": "Church of Elleh",
+    "category": "church",
+    "regionId": "limgrave",
+    "existingFx": 0.793,
+    "existingFy": 0.691,
+    "worldX": 10711.266,
+    "worldZ": 9295.338
+  },
+  {
+    "name": "Warmaster's Shack",
+    "category": "landmark",
+    "regionId": "limgrave",
+    "existingFx": 0.746,
+    "existingFy": 0.639,
+    "worldX": 10760.94,
+    "worldZ": 9827.03
+  },
+  {
+    "name": "Church of Pilgrimage",
+    "category": "church",
+    "regionId": "weeping-peninsula",
+    "existingFx": 1.289,
+    "existingFy": 0.508,
+    "worldX": 10897.32,
+    "worldZ": 8816.11
+  },
+  {
+    "name": "Seaside Ruins",
+    "category": "town-or-fort",
+    "regionId": "limgrave",
+    "existingFx": 0.756,
+    "existingFy": 0.868,
+    "worldX": 10991.28,
+    "worldZ": 9010.08
+  },
+  {
+    "name": "Bridge of Sacrifice",
+    "category": "landmark",
+    "regionId": "limgrave",
+    "existingFx": 1.04,
+    "existingFy": 0.994,
+    "worldX": 11367.03,
+    "worldZ": 8704.57
+  },
+  {
+    "name": "Third Church of Marika",
+    "category": "church",
+    "regionId": "limgrave",
+    "existingFx": 0.951,
+    "existingFy": 0.575,
+    "worldX": 11674.417,
+    "worldZ": 9799.813
+  },
+  {
+    "name": "The Four Belfries",
+    "category": "landmark",
+    "regionId": "liurnia",
+    "existingFx": 0.33,
+    "existingFy": 0.921,
+    "worldX": 8511.31,
+    "worldZ": 11929.97
+  },
+  {
+    "name": "Moonlight Altar",
+    "category": "landmark",
+    "regionId": "ainsel-river",
+    "existingFx": 0.85,
+    "existingFy": 0.55,
+    "worldX": 8710.69,
+    "worldZ": 10575.83
+  },
+  {
+    "name": "Village of the Albinaurics",
+    "category": "town-or-fort",
+    "regionId": "liurnia",
+    "existingFx": 0.295,
+    "existingFy": 1.501,
+    "worldX": 8753.58,
+    "worldZ": 10651.94
+  },
+  {
+    "name": "Temple Quarter",
+    "category": "town-or-fort",
+    "regionId": "liurnia",
+    "existingFx": 0.398,
+    "existingFy": 0.195,
+    "worldX": 8662.27,
+    "worldZ": 11386.91
+  },
+  {
+    "name": "Ranni's Rise",
+    "category": "landmark",
+    "regionId": "liurnia",
+    "existingFx": 0.123,
+    "existingFy": 0.268,
+    "worldX": 8618.34,
+    "worldZ": 12813.37
+  },
+  {
+    "name": "Cathedral of Manus Celes",
+    "category": "church",
+    "regionId": "liurnia",
+    "existingFx": 0.123,
+    "existingFy": 1.411,
+    "worldX": 8945.96,
+    "worldZ": 10728.16
+  },
+  {
+    "name": "Bellum Church",
+    "category": "church",
+    "regionId": "liurnia",
+    "existingFx": 0.103,
+    "existingFy": 0.812,
+    "worldX": 9224.32,
+    "worldZ": 12451.98
+  },
+  {
+    "name": "Academy Gate Town",
+    "category": "town-or-fort",
+    "regionId": "liurnia",
+    "existingFx": 0.261,
+    "existingFy": 0.776,
+    "worldX": 9441.94,
+    "worldZ": 11166.18
+  },
+  {
+    "name": "Church of Vows",
+    "category": "church",
+    "regionId": "liurnia",
+    "existingFx": 0.33,
+    "existingFy": 0.594,
+    "worldX": 9462.16,
+    "worldZ": 11798.98
+  },
+  {
+    "name": "Church of Inhibition",
+    "category": "church",
+    "regionId": "liurnia",
+    "existingFx": 0.51,
+    "existingFy": 0.692,
+    "worldX": 9547.66,
+    "worldZ": 12515.51
+  },
+  {
+    "name": "Laskyar Ruins",
+    "category": "town-or-fort",
+    "regionId": "liurnia",
+    "existingFx": 0.536,
+    "existingFy": 0.413,
+    "worldX": 9648.97,
+    "worldZ": 10572.52
+  },
+  {
+    "name": "Grand Lift of Dectus",
+    "category": "landmark",
+    "regionId": "liurnia",
+    "existingFx": 0.518,
+    "existingFy": 0.477,
+    "worldX": 9710.66,
+    "worldZ": 12736.85
+  },
+  {
+    "name": "Ravine-Veiled Village",
+    "category": "town-or-fort",
+    "regionId": "liurnia",
+    "existingFx": 0.509,
+    "existingFy": 0.462,
+    "worldX": 9604.4,
+    "worldZ": 12895.07
+  },
+  {
+    "name": "Jarburg",
+    "category": "town-or-fort",
+    "regionId": "liurnia",
+    "existingFx": 0.269,
+    "existingFy": 1.485,
+    "worldX": 10031.52,
+    "worldZ": 11204.4
+  },
+  {
+    "name": "Seethewater Terminus",
+    "category": "landmark",
+    "regionId": "mt-gelmir",
+    "existingFx": 1.075,
+    "existingFy": 0.863,
+    "worldX": 9086.246,
+    "worldZ": 13648.353
+  },
+  {
+    "name": "Ninth Mt. Gelmir Campsite",
+    "category": "landmark",
+    "regionId": "mt-gelmir",
+    "existingFx": 1.147,
+    "existingFy": 0.826,
+    "worldX": 9333.708,
+    "worldZ": 13849.469
+  },
+  {
+    "name": "Erdtree-Gazing Hill",
+    "category": "landmark",
+    "regionId": "altus-plateau",
+    "existingFx": 0.678,
+    "existingFy": 0.846,
+    "worldX": 9706.18,
+    "worldZ": 13106.09
+  },
+  {
+    "name": "Minor Erdtree Church",
+    "category": "church",
+    "regionId": "altus-plateau",
+    "existingFx": 0.505,
+    "existingFy": 1.112,
+    "worldX": 10891.5,
+    "worldZ": 12745.01
+  },
+  {
+    "name": "Smoldering Church",
+    "category": "church",
+    "regionId": "caelid",
+    "existingFx": 0.503,
+    "existingFy": 1.447,
+    "worldX": 11699.07,
+    "worldZ": 10267.59
+  },
+  {
+    "name": "Caelem Ruins",
+    "category": "town-or-fort",
+    "regionId": "caelid",
+    "existingFx": 0.614,
+    "existingFy": 1.231,
+    "worldX": 12137.3,
+    "worldZ": 10220.36
+  },
+  {
+    "name": "Cathedral of Dragon Communion",
+    "category": "church",
+    "regionId": "caelid",
+    "existingFx": 0.579,
+    "existingFy": 1.163,
+    "worldX": 12326.53,
+    "worldZ": 9315.69
+  },
+  {
+    "name": "Deep Siofra Well",
+    "category": "landmark",
+    "regionId": "caelid",
+    "existingFx": 0.381,
+    "existingFy": 1.294,
+    "worldX": 12398.11,
+    "worldZ": 10241.96
+  },
+  {
+    "name": "Church of the Plague",
+    "category": "church",
+    "regionId": "caelid",
+    "existingFx": 0.381,
+    "existingFy": 1.761,
+    "worldX": 12819.86,
+    "worldZ": 9854.98
+  },
+  {
+    "name": "Fort Faroth",
+    "category": "town-or-fort",
+    "regionId": "caelid",
+    "existingFx": 0.235,
+    "existingFy": 1.261,
+    "worldX": 12976.63,
+    "worldZ": 10107.39
+  },
+  {
+    "name": "Bestial Sanctum",
+    "category": "town-or-fort",
+    "regionId": "caelid",
+    "existingFx": 0.392,
+    "existingFy": 1.294,
+    "worldX": 13008.86,
+    "worldZ": 11023.59
+  },
+  {
+    "name": "Lenne's Rise",
+    "category": "landmark",
+    "regionId": "caelid",
+    "existingFx": 0.565,
+    "existingFy": 1.35,
+    "worldX": 13335.46,
+    "worldZ": 10502.63
+  },
+  {
+    "name": "Forbidden Lands",
+    "category": "landmark",
+    "regionId": "mountaintops",
+    "existingFx": 0.669,
+    "existingFy": 0.533,
+    "worldX": 12027.36,
+    "worldZ": 13031.84
+  },
+  {
+    "name": "Apostate Derelict",
+    "category": "town-or-fort",
+    "regionId": "consecrated-snowfield",
+    "existingFx": 0.154,
+    "existingFy": 2.253,
+    "worldX": 12082.95,
+    "worldZ": 14815.67
+  },
+  {
+    "name": "Ordina, Liturgical Town",
+    "category": "town-or-fort",
+    "regionId": "consecrated-snowfield",
+    "existingFx": 0.349,
+    "existingFy": 2.548,
+    "worldX": 12318.61,
+    "worldZ": 14556.33
+  },
+  {
+    "name": "Zamor Ruins",
+    "category": "town-or-fort",
+    "regionId": "mountaintops",
+    "existingFx": 0.569,
+    "existingFy": 1.173,
+    "worldX": 12622.93,
+    "worldZ": 13668.96
+  },
+  {
+    "name": "Grand Lift of Rold",
+    "category": "landmark",
+    "regionId": "mountaintops",
+    "existingFx": 0.643,
+    "existingFy": 0.581,
+    "worldX": 12535.96,
+    "worldZ": 13467.87
+  },
+  {
+    "name": "Church of Repose",
+    "category": "church",
+    "regionId": "mountaintops",
+    "existingFx": 0.521,
+    "existingFy": 1.318,
+    "worldX": 12997.02,
+    "worldZ": 13498.53
+  },
+  {
+    "name": "Church of the Eclipse",
+    "category": "church",
+    "regionId": "mountaintops",
+    "existingFx": 0.892,
+    "existingFy": 0.729,
+    "worldX": 13129.15,
+    "worldZ": 14706.25
+  },
+  {
+    "name": "Forge of the Giants",
+    "category": "landmark",
+    "regionId": "mountaintops",
+    "existingFx": 0.595,
+    "existingFy": 1.579,
+    "worldX": 13802.23,
+    "worldZ": 13546.89
+  },
+  {
+    "name": "First Church of Marika",
+    "category": "church",
+    "regionId": "mountaintops",
+    "existingFx": 0.669,
+    "existingFy": 0.794,
+    "worldX": 13793.61,
+    "worldZ": 14142.3
+  }
+]
