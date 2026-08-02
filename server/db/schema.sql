@@ -71,3 +71,20 @@ CREATE TABLE item_locations (
   summary        TEXT NOT NULL,
   PRIMARY KEY (item_name, category)
 );
+
+-- Enemy/boss combat stats, keyed by name (not embedded — see
+-- docs/superpowers/specs/2026-08-01-enemy-combat-stats-design.md for why
+-- this is structured reference data like item_locations, not chunked
+-- prose). One row per (npc_id, ng_cycle) where the stat block actually
+-- changed from the previous cycle.
+CREATE TABLE enemy_stats (
+  id                       BIGSERIAL PRIMARY KEY,
+  npc_id                   TEXT NOT NULL,
+  name                     TEXT NOT NULL,
+  ng_cycle                 TEXT NOT NULL,
+  location                 TEXT,
+  stat_block               JSONB NOT NULL,
+  drops                    JSONB NOT NULL,
+  UNIQUE (npc_id, ng_cycle)
+);
+CREATE INDEX enemy_stats_name_idx ON enemy_stats (lower(name));

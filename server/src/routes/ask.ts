@@ -8,6 +8,7 @@ import { getUser, CONFIDENCE_THRESHOLD } from '../tiers.js';
 import { extractItemName, getItemLocation } from '../pipeline/location-store.js';
 import { categoryFromWikiUrl } from '../pipeline/wiki-url.js';
 import { locationCategoryForWikiCategory } from '../pipeline/sources/data/item-locations/categorized.js';
+import { extractPageTitle, getEnemyStats } from '../pipeline/enemy-stats-store.js';
 
 export default async function askRoutes(app: FastifyInstance) {
   app.post<{ Body: AskRequest; Reply: AskResponse }>('/ask', async (req, reply) => {
@@ -64,9 +65,22 @@ export default async function askRoutes(app: FastifyInstance) {
       }
     }
 
+    let enemySummary: string | undefined;
+    if (top.source.kind === 'article') {
+      const bossName = extractPageTitle(top.source.title);
+      const stats = bossName ? await getEnemyStats(bossName) : null;
+      if (stats) {
+        const negations = Object.entries(stats.statBlock)
+          .filter(([key]) => key.startsWith('Damage Negation'))
+          .map(([key, value]) => `${key.replace('Damage Negation ', '')} ${value}%`)
+          .join(', ');
+        enemySummary = negations ? `Damage negations — ${negations}.` : undefined;
+      }
+    }
+
     return {
       answerId,
-      answer: await synthesize(question, ctx, top, locationSummary),
+      answer: await synthesize(question, ctx, top, locationSummary, enemySummary),
       confidence: top.score,
       source: top.source,
       locations,

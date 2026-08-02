@@ -15,6 +15,7 @@ export async function synthesize(
   ctx: GameContext | null,
   match: Match,
   locationSummary?: string,
+  enemySummary?: string,
 ): Promise<string> {
   const response = await genai.models.generateContent({
     model: MODEL,
@@ -23,7 +24,8 @@ export async function synthesize(
       `Question: ${question}\n\n` +
       (ctx ? `Current game state: ${ctx.summary}\n\n` : '') +
       `Source (${match.source.title}):\n${match.content}` +
-      (locationSummary ? `\n\nWhere to find it: ${locationSummary}` : ''),
+      (locationSummary ? `\n\nWhere to find it: ${locationSummary}` : '') +
+      (enemySummary ? `\n\nCombat stats: ${enemySummary}` : ''),
   });
 
   return response.text ?? '';
