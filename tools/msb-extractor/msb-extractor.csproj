@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- The vendored submodule lives inside this project directory and is built via its own
+         .csproj through ProjectReference below - excluded here so the default **/*.cs glob
+         doesn't also compile its source directly into this project (which caused duplicate
+         AssemblyInfo attribute errors). -->
+    <Compile Remove="vendor/**/*.cs" />
     <ProjectReference Include="vendor/SoulsFormatsNEXT/SoulsFormats/SoulsFormats.csproj" />
   </ItemGroup>
 
