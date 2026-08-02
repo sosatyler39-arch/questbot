@@ -1,12 +1,13 @@
 ---
 interface Props {
-  active: 'wiki' | 'map';
+  active: 'wiki' | 'map' | 'enemies';
 }
 const { active } = Astro.props;
 ---
 <nav class="sub-tabs">
   <a href="/elden-ring/wiki" class:list={['sub-tab', { active: active === 'wiki' }]}>Wiki</a>
   <a href="/elden-ring/map" class:list={['sub-tab', { active: active === 'map' }]}>Map</a>
+  <a href="/elden-ring/enemies" class:list={['sub-tab', { active: active === 'enemies' }]}>Enemies</a>
 </nav>
 
 <style>

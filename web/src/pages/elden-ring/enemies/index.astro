@@ -1,0 +1,87 @@
+---
+import WikiLayout from '../../../components/WikiLayout.astro';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('enemies');
+const sorted = [...entries].sort((a, b) => a.data.name.localeCompare(b.data.name));
+---
+<WikiLayout title="Elden Ring Enemies" active="enemies">
+  <div class="enemy-index">
+    <h1>Enemies</h1>
+    <div id="enemy-search-box">
+      <input id="enemy-search" type="text" placeholder="Search enemies…" autocomplete="off" />
+      <div id="enemy-search-results"></div>
+    </div>
+    <ul class="enemy-list">
+      {sorted.map((entry) => (
+        <li><a href={`/elden-ring/enemies/${entry.data.npcId}`}>{entry.data.name}</a></li>
+      ))}
+    </ul>
+  </div>
+</WikiLayout>
+<script>
+  import { initEnemySearch } from '../../../enemies/search.js';
+  initEnemySearch();
+</script>
+<style>
+  .enemy-index {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  #enemy-search-box {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  #enemy-search {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    background: var(--bg-panel);
+    color: inherit;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font: inherit;
+  }
+  #enemy-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+  }
+  .enemy-search-result {
+    display: block;
+    padding: 8px 14px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .enemy-search-result:hover {
+    background: rgba(201, 162, 75, 0.15);
+  }
+  .enemy-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+  }
+  .enemy-list a {
+    display: block;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9em;
+  }
+  .enemy-list a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>
