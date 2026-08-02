@@ -5,6 +5,10 @@ import { AttackPowerType } from './attackPowerTypes.js';
 
 const testData: RegulationData = {
   calcCorrectGraphs: {
+    '0': [
+      { maxVal: 1, maxGrowVal: 5, adjPt: 1 },
+      { maxVal: 150, maxGrowVal: 5, adjPt: 1 },
+    ],
     '1': [
       { maxVal: 1, maxGrowVal: 0, adjPt: 1 },
       { maxVal: 150, maxGrowVal: 1, adjPt: 1 },
@@ -62,4 +66,16 @@ test('decodeWeapon passes attackElementCorrect through directly', () => {
 test('decodeWeapon throws on an unknown reinforceTypeId rather than silently producing wrong data', () => {
   const badWeapon = { ...testRawWeapon, reinforceTypeId: 999 };
   assert.throws(() => decodeWeapon(badWeapon, testData), /Unknown reinforceTypeId/);
+});
+
+test('decodeWeapon defaults a damage type missing from calcCorrectGraphIds to graph "0"', () => {
+  // Real regulation data omits a type's entry from calcCorrectGraphIds when it uses the
+  // standard graph (id 0) — e.g. every standard-affinity melee weapon's physical scaling.
+  // Confirmed directly against the live regulation JSON (Uchigatana, Longsword, etc: empty
+  // calcCorrectGraphIds despite dealing physical damage).
+  const weaponWithNoOverride: RawWeapon = { ...testRawWeapon, calcCorrectGraphIds: {} };
+  const weapon = decodeWeapon(weaponWithNoOverride, testData);
+  // Graph "0" has maxGrowVal 5 throughout; graph "1" (what the explicit
+  // override in testRawWeapon points to) has maxGrowVal 0 at this index.
+  assert.equal(weapon.calcCorrectGraphs[AttackPowerType.PHYSICAL][1], 5);
 });

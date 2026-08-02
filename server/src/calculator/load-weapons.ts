@@ -52,9 +52,19 @@ export function decodeWeapon(raw: RawWeapon, data: RegulationData): Weapon {
     ),
   );
 
+  // The live regulation data omits a damage type's entry from calcCorrectGraphIds when it
+  // uses the standard graph (id 0) — e.g. every standard-affinity melee weapon's physical
+  // scaling (Uchigatana, Longsword, etc. all have calcCorrectGraphIds: {} despite dealing
+  // physical damage). So every type the weapon actually deals damage in needs a graph,
+  // defaulting to graph 0 when calcCorrectGraphIds doesn't override it.
+  const damageTypes = new Set([
+    ...raw.attack.map(([type]) => String(type)),
+    ...Object.keys(raw.calcCorrectGraphIds),
+  ]);
   const calcCorrectGraphs = Object.fromEntries(
-    Object.entries(raw.calcCorrectGraphIds).map(([type, graphId]) => {
-      const graph = data.calcCorrectGraphs[graphId as unknown as string];
+    [...damageTypes].map((type) => {
+      const graphId = raw.calcCorrectGraphIds[type as unknown as AttackPowerType] ?? 0;
+      const graph = data.calcCorrectGraphs[graphId];
       if (!graph) {
         throw new Error(`Unknown calcCorrectGraph ${graphId} on "${raw.name}"`);
       }
