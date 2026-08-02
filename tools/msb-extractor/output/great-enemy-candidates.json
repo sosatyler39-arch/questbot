@@ -1,0 +1,550 @@
+[
+  {
+    "pinName": "Tree Sentinel (Limgrave)",
+    "creatureName": "Tree Sentinel",
+    "chrIds": [
+      3251
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m60_41_51_00",
+        "partName": "c3251_9000",
+        "localX": 91.089,
+        "localY": 851.27,
+        "localZ": -31.347
+      },
+      {
+        "mapTileId": "m60_41_51_00",
+        "partName": "c3251_9001",
+        "localX": 93.744,
+        "localY": 851.38,
+        "localZ": -52.391
+      },
+      {
+        "mapTileId": "m60_42_36_00",
+        "partName": "c3251_9000",
+        "localX": -12.138,
+        "localY": 88.955,
+        "localZ": 46.773
+      }
+    ]
+  },
+  {
+    "pinName": "Tibia Mariner (Limgrave site)",
+    "creatureName": "Tibia Mariner",
+    "chrIds": [
+      4950
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m60_38_52_00",
+        "partName": "c4950_9000",
+        "localX": -40.163,
+        "localY": 792.941,
+        "localZ": -24.929
+      },
+      {
+        "mapTileId": "m60_39_44_00",
+        "partName": "c4950_9000",
+        "localX": -81.594,
+        "localY": 294.788,
+        "localZ": -41.358
+      },
+      {
+        "mapTileId": "m60_45_39_00",
+        "partName": "c4950_9000",
+        "localX": -35.05,
+        "localY": 92.19,
+        "localZ": 1.295
+      },
+      {
+        "mapTileId": "m60_51_57_00",
+        "partName": "c4950_9001",
+        "localX": -17.574,
+        "localY": 1657.963,
+        "localZ": -12.835
+      }
+    ]
+  },
+  {
+    "pinName": "Flying Dragon Agheel (site)",
+    "creatureName": "Flying Dragon Agheel",
+    "chrIds": [
+      4500
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m14_00_00_00",
+        "partName": "c4500_9000",
+        "localX": 102.443,
+        "localY": -838.539,
+        "localZ": -7.077
+      },
+      {
+        "mapTileId": "m60_43_36_00",
+        "partName": "c4500_9000",
+        "localX": -73.89011,
+        "localY": 64.98778,
+        "localZ": 65.08713
+      },
+      {
+        "mapTileId": "m60_52_41_00",
+        "partName": "c4500_9000",
+        "localX": -113.588,
+        "localY": 248.473,
+        "localZ": 137.471
+      }
+    ]
+  },
+  {
+    "pinName": "Erdtree Avatar (Weeping Peninsula site)",
+    "creatureName": "Erdtree Avatar",
+    "chrIds": [
+      4810
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m11_00_00_00",
+        "partName": "c4810_9000",
+        "localX": -160.643,
+        "localY": -45.5,
+        "localZ": -202.993
+      },
+      {
+        "mapTileId": "m12_03_00_00",
+        "partName": "c4810_9000",
+        "localX": -188.204,
+        "localY": 92.58,
+        "localZ": -678.163
+      },
+      {
+        "mapTileId": "m60_33_43_00",
+        "partName": "c4810_9000",
+        "localX": 42.488,
+        "localY": 291.7,
+        "localZ": 31.133
+      },
+      {
+        "mapTileId": "m60_38_48_00",
+        "partName": "c4810_9000",
+        "localX": -30.168,
+        "localY": 404.115,
+        "localZ": -102.922
+      },
+      {
+        "mapTileId": "m60_43_33_00",
+        "partName": "c4810_9000",
+        "localX": -55.753,
+        "localY": 83.065,
+        "localZ": 18.901
+      },
+      {
+        "mapTileId": "m60_52_56_00",
+        "partName": "c4810_9000",
+        "localX": -44.022,
+        "localY": 1674.29,
+        "localZ": 69.736
+      },
+      {
+        "mapTileId": "m60_52_56_00",
+        "partName": "c4810_9001",
+        "localX": -39.644,
+        "localY": 1679.702,
+        "localZ": 55.491
+      },
+      {
+        "mapTileId": "m60_52_56_00",
+        "partName": "c4810_9002",
+        "localX": -45.267,
+        "localY": 1658.027,
+        "localZ": 55.175
+      },
+      {
+        "mapTileId": "m60_52_56_00",
+        "partName": "c4810_9003",
+        "localX": -87.672,
+        "localY": 1641.348,
+        "localZ": 20.781
+      }
+    ]
+  },
+  {
+    "pinName": "Magma Wyrm Makar (site)",
+    "creatureName": "Magma Wyrm Makar",
+    "chrIds": [
+      4910
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m16_00_00_00",
+        "partName": "c4910_9002",
+        "localX": 17.952,
+        "localY": -54.479,
+        "localZ": -180.561
+      },
+      {
+        "mapTileId": "m32_07_00_00",
+        "partName": "c4910_9000",
+        "localX": -20.456,
+        "localY": 89.597,
+        "localZ": 158.679
+      },
+      {
+        "mapTileId": "m39_20_00_00",
+        "partName": "c4910_9000",
+        "localX": -102.687,
+        "localY": 353.031,
+        "localZ": -1299.211
+      },
+      {
+        "mapTileId": "m60_35_53_00",
+        "partName": "c4910_9000",
+        "localX": 1.8,
+        "localY": 823.671,
+        "localZ": -80.399
+      }
+    ]
+  },
+  {
+    "pinName": "Glintstone Dragon Smarag (site)",
+    "creatureName": "Glintstone Dragon Smarag",
+    "chrIds": [
+      4502
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m60_33_41_00",
+        "partName": "c4502_9000",
+        "localX": 99.07,
+        "localY": 355.614,
+        "localZ": 113.248
+      },
+      {
+        "mapTileId": "m60_33_41_00",
+        "partName": "c4502_9001",
+        "localX": 118.379,
+        "localY": 348.26,
+        "localZ": 59.4
+      },
+      {
+        "mapTileId": "m60_34_42_00",
+        "partName": "c4502_9000",
+        "localX": 128.241,
+        "localY": 401.772,
+        "localZ": -29.929
+      },
+      {
+        "mapTileId": "m60_34_42_00",
+        "partName": "c4502_9001",
+        "localX": -106.606,
+        "localY": 362.5,
+        "localZ": -122.315
+      },
+      {
+        "mapTileId": "m60_34_45_00",
+        "partName": "c4502_9000",
+        "localX": -50.952,
+        "localY": 237.872,
+        "localZ": 41.258
+      },
+      {
+        "mapTileId": "m60_34_50_00",
+        "partName": "c4502_9000",
+        "localX": 22.054,
+        "localY": 453.149,
+        "localZ": 59.607
+      }
+    ]
+  },
+  {
+    "pinName": "Glintstone Dragon Adula (site)",
+    "creatureName": "Glintstone Dragon Adula",
+    "chrIds": [
+      4502
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m60_33_41_00",
+        "partName": "c4502_9000",
+        "localX": 99.07,
+        "localY": 355.614,
+        "localZ": 113.248
+      },
+      {
+        "mapTileId": "m60_33_41_00",
+        "partName": "c4502_9001",
+        "localX": 118.379,
+        "localY": 348.26,
+        "localZ": 59.4
+      },
+      {
+        "mapTileId": "m60_34_42_00",
+        "partName": "c4502_9000",
+        "localX": 128.241,
+        "localY": 401.772,
+        "localZ": -29.929
+      },
+      {
+        "mapTileId": "m60_34_42_00",
+        "partName": "c4502_9001",
+        "localX": -106.606,
+        "localY": 362.5,
+        "localZ": -122.315
+      },
+      {
+        "mapTileId": "m60_34_45_00",
+        "partName": "c4502_9000",
+        "localX": -50.952,
+        "localY": 237.872,
+        "localZ": 41.258
+      },
+      {
+        "mapTileId": "m60_34_50_00",
+        "partName": "c4502_9000",
+        "localX": 22.054,
+        "localY": 453.149,
+        "localZ": 59.607
+      }
+    ]
+  },
+  {
+    "pinName": "Elder Dragon Greyoll (site)",
+    "creatureName": "Elder Dragon Greyoll",
+    "chrIds": [],
+    "candidates": []
+  },
+  {
+    "pinName": "Flying Dragon Greyoll (post-quest site)",
+    "creatureName": "Flying Dragon Greyoll",
+    "chrIds": [],
+    "candidates": []
+  },
+  {
+    "pinName": "Decaying Ekzykes (site)",
+    "creatureName": "Decaying Ekzykes",
+    "chrIds": [
+      4501
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m60_48_37_00",
+        "partName": "c4501_9000",
+        "localX": -48.086,
+        "localY": 114.951,
+        "localZ": -42.666
+      }
+    ]
+  },
+  {
+    "pinName": "Fallingstar Beast (site)",
+    "creatureName": "Fallingstar Beast",
+    "chrIds": [
+      4680
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m32_08_00_00",
+        "partName": "c4680_9000",
+        "localX": -65.221,
+        "localY": 123.909,
+        "localZ": 239.753
+      },
+      {
+        "mapTileId": "m60_36_54_00",
+        "partName": "c4680_9000",
+        "localX": 94.844,
+        "localY": 1047.502,
+        "localZ": -36.205
+      },
+      {
+        "mapTileId": "m60_41_50_00",
+        "partName": "c4680_9001",
+        "localX": 42.838,
+        "localY": 834.146,
+        "localZ": 109.239
+      }
+    ]
+  },
+  {
+    "pinName": "Magma Wyrm (site)",
+    "creatureName": "Magma Wyrm",
+    "chrIds": [
+      4910
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m16_00_00_00",
+        "partName": "c4910_9002",
+        "localX": 17.952,
+        "localY": -54.479,
+        "localZ": -180.561
+      },
+      {
+        "mapTileId": "m32_07_00_00",
+        "partName": "c4910_9000",
+        "localX": -20.456,
+        "localY": 89.597,
+        "localZ": 158.679
+      },
+      {
+        "mapTileId": "m39_20_00_00",
+        "partName": "c4910_9000",
+        "localX": -102.687,
+        "localY": 353.031,
+        "localZ": -1299.211
+      },
+      {
+        "mapTileId": "m60_35_53_00",
+        "partName": "c4910_9000",
+        "localX": 1.8,
+        "localY": 823.671,
+        "localZ": -80.399
+      }
+    ]
+  },
+  {
+    "pinName": "Godskin Apostle (Dominula site)",
+    "creatureName": "Godskin Apostle",
+    "chrIds": [
+      3560
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m13_00_00_00",
+        "partName": "c3560_9000",
+        "localX": 26.418,
+        "localY": -38.5,
+        "localZ": 409.347
+      },
+      {
+        "mapTileId": "m13_00_00_00",
+        "partName": "c3560_9001",
+        "localX": -3.547,
+        "localY": -52.201,
+        "localZ": 406.518
+      },
+      {
+        "mapTileId": "m31_22_00_00",
+        "partName": "c3560_9000",
+        "localX": -39.169,
+        "localY": 1577.333,
+        "localZ": -122.811
+      },
+      {
+        "mapTileId": "m34_13_00_00",
+        "partName": "c3560_9000",
+        "localX": 77.108,
+        "localY": 36.31,
+        "localZ": -95.652
+      },
+      {
+        "mapTileId": "m60_42_55_00",
+        "partName": "c3560_9000",
+        "localX": -35.54,
+        "localY": 968.164,
+        "localZ": -38.939
+      }
+    ]
+  },
+  {
+    "pinName": "Draconic Tree Sentinel (site)",
+    "creatureName": "Draconic Tree Sentinel",
+    "chrIds": [
+      3250
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m13_00_00_00",
+        "partName": "c3250_9000",
+        "localX": 120.355,
+        "localY": -32.7,
+        "localZ": 399.675
+      },
+      {
+        "mapTileId": "m60_45_52_00",
+        "partName": "c3250_9000",
+        "localX": 27.693,
+        "localY": 1023.759,
+        "localZ": 43.921
+      }
+    ]
+  },
+  {
+    "pinName": "Borealis the Freezing Fog (site)",
+    "creatureName": "Borealis the Freezing Fog",
+    "chrIds": [
+      4503
+    ],
+    "candidates": []
+  },
+  {
+    "pinName": "Full-Grown Fallingstar Beast (site)",
+    "creatureName": "Full-Grown Fallingstar Beast",
+    "chrIds": [
+      4680
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m32_08_00_00",
+        "partName": "c4680_9000",
+        "localX": -65.221,
+        "localY": 123.909,
+        "localZ": 239.753
+      },
+      {
+        "mapTileId": "m60_36_54_00",
+        "partName": "c4680_9000",
+        "localX": 94.844,
+        "localY": 1047.502,
+        "localZ": -36.205
+      },
+      {
+        "mapTileId": "m60_41_50_00",
+        "partName": "c4680_9001",
+        "localX": 42.838,
+        "localY": 834.146,
+        "localZ": 109.239
+      }
+    ]
+  },
+  {
+    "pinName": "Fire Giant (site)",
+    "creatureName": "Fire Giant",
+    "chrIds": [
+      4760
+    ],
+    "candidates": []
+  },
+  {
+    "pinName": "Great Wyrm Theodorix (site)",
+    "creatureName": "Great Wyrm Theodorix",
+    "chrIds": [
+      4911
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m60_50_56_00",
+        "partName": "c4911_9000",
+        "localX": 12.074,
+        "localY": 1255.064,
+        "localZ": 12.362
+      }
+    ]
+  },
+  {
+    "pinName": "Dragonlord Placidusax\u0027s Arena",
+    "creatureName": "Dragonlord Placidusax",
+    "chrIds": [
+      4520
+    ],
+    "candidates": [
+      {
+        "mapTileId": "m13_00_00_00",
+        "partName": "c4520_9000",
+        "localX": 14.45,
+        "localY": 1009.676,
+        "localZ": 329.504
+      }
+    ]
+  }
+]
