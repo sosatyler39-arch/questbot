@@ -1,3 +1,4 @@
+using System.Text.Json;
 using SoulsFormats;
 using SoulsFormats.Cryptography;
 
@@ -71,7 +72,26 @@ Dictionary<uint, string> graceNamesByEntityId = graceCandidates
     .ToDictionary(g => g.EntityId, g => placeNamesByTextId[g.TextId!.Value]);
 
 Console.WriteLine($"Resolved grace names: {graceNamesByEntityId.Count}");
-foreach (var kv in graceNamesByEntityId.Take(10))
-{
-    Console.WriteLine($"  entityId={kv.Key} name=\"{kv.Value}\"");
-}
+
+// --- Task 5: write the output JSON ---
+
+// posY is deliberately omitted: BonfireWarpParam's own paramdef documents it as "not used"
+// (see tools/msb-extractor/paramdefs/BonfireWarpParam.xml), so including it would present
+// meaningless data as if it were real - this simpler param-only path never touches the MSB
+// Region.Position that would have supplied a real height value (see the README's note on why
+// the original MSB-walk approach turned out to be unnecessary for this category).
+var output = graceCandidates
+    .Where(g => graceNamesByEntityId.ContainsKey(g.EntityId))
+    .Select(g => new
+    {
+        graceName = graceNamesByEntityId[g.EntityId],
+        bonfireEntityId = g.EntityId,
+        mapTileId = $"m{g.AreaNo:D2}_{g.GridXNo:D2}_{g.GridZNo:D2}_00",
+        localX = g.PosX,
+        localZ = g.PosZ,
+    })
+    .ToList();
+
+Directory.CreateDirectory("output");
+File.WriteAllText("output/sites-of-grace.json", JsonSerializer.Serialize(output, new JsonSerializerOptions { WriteIndented = true }));
+Console.WriteLine($"Wrote {output.Count} sites of grace to output/sites-of-grace.json");
