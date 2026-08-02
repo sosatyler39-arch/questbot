@@ -76,7 +76,7 @@ export const TALISMAN_PAGES: ArticlePage[] = [
       { heading: 'Curved Sword Talisman', text: 'Enhances guard counter damage by 20%.' },
       { heading: 'Twinblade Talisman', text: 'Enhances the final hit of chain attacks by 45%.' },
       { heading: 'Axe Talisman', text: 'Enhances charged attacks by 10%.' },
-      { heading: 'Hammer Talisman', text: 'Enhances attacks that reduce a blocking enemy’s stamina/guard.' },
+      { heading: 'Hammer Talisman', text: 'Enhances attacks that reduce a blocking enemy’s stamina/guard by 40%.' },
       { heading: 'Spear Talisman', text: 'Enhances counterattacks unique to piercing weapons by 15%.' },
       { heading: 'Lance Talisman', text: 'Enhances attacks made while mounted on horseback by 15%.' },
       { heading: 'Claw Talisman', text: 'Enhances jump attacks by 15%.' },
@@ -87,7 +87,7 @@ export const TALISMAN_PAGES: ArticlePage[] = [
     title: 'Guarding, movement, and ranged talismans',
     url: PLACEHOLDER('guarding-movement-ranged'),
     sections: [
-      { heading: 'Greatshield Talisman', text: 'Boosts overall guarding ability (stability/stamina cost when blocking).' },
+      { heading: 'Greatshield Talisman', text: 'Reduces incoming stamina damage while guarding by 20%.' },
       {
         heading: 'Pearl Shield Talisman',
         text: 'Boosts all non-physical damage negation by 20% specifically while actively guarding. Shadow of the Erdtree.',
@@ -126,13 +126,13 @@ export const TALISMAN_PAGES: ArticlePage[] = [
       },
       { heading: 'Moon of Nokstella', text: 'Increases the number of Memory Slots available for equipping spells by 2.' },
       { heading: "Old Lord's Talisman", text: 'Extends the duration of buff/effect spells by 30%.' },
-      { heading: 'Radagon Icon', text: 'Shortens spell casting time.' },
+      { heading: 'Radagon Icon', text: 'Shortens spell casting time, equivalent to +30 virtual Dexterity.' },
       {
         heading: 'Beloved Stardust',
-        text: 'Shortens spell casting time to the greatest degree of any talisman, but increases damage taken by 30% as a tradeoff. Shadow of the Erdtree.',
+        text: 'Shortens spell casting time to the greatest degree of any talisman (equivalent to +99 virtual Dexterity), but increases damage taken by 30% as a tradeoff. Shadow of the Erdtree.',
       },
-      { heading: 'Roar Medallion', text: 'Enhances roar and breath-type attacks by 15%.' },
-      { heading: 'Companion Jar', text: 'Raises the potency of thrown Perfume Bottles/Throwing Pots by 20%.' },
+      { heading: 'Roar Medallion', text: 'Enhances roar-type attacks by 15% and breath-type attacks by 10%.' },
+      { heading: 'Companion Jar', text: 'Raises the potency of thrown Cracked Pots/Ritual Pots by 20%, and Hefty Cracked Pots by 10%.' },
       { heading: "Perfumer's Talisman", text: 'Raises the potency of Perfume items by 20%.' },
       { heading: 'Carian Filigreed Crest', text: 'Lowers the FP consumed by weapon Skills by 25%.' },
       { heading: 'Warrior Jar Shard', text: 'Boosts the attack power of weapon Skills by 10%.' },
@@ -156,7 +156,7 @@ export const TALISMAN_PAGES: ArticlePage[] = [
       { heading: 'Enraged Divine Beast Talisman', text: 'Raises the damage of storm-based attacks by 10%. Shadow of the Erdtree.' },
       { heading: 'Talisman of the Dread', text: 'Raises the potency of magma-based attacks by 15%. Shadow of the Erdtree.' },
       { heading: "Bull-Goat's Talisman", text: 'Raises Poise by 33%.' },
-      { heading: 'Blue Dancer Charm', text: 'Raises attack power the lower the wearer’s current Equip Load is.' },
+      { heading: 'Blue Dancer Charm', text: 'Raises physical attack power by up to 15%, more effective the lower the wearer’s current Equip Load is.' },
       {
         heading: 'Verdigris Discus',
         text: 'Reduces damage taken by 10% while carrying heavy equip load, and by 20% while overloaded. Shadow of the Erdtree.',
@@ -176,7 +176,7 @@ export const TALISMAN_PAGES: ArticlePage[] = [
         heading: 'Crucible Feather Talisman',
         text: 'Improves dodge rolling with roughly 6 additional invincibility frames, but increases damage taken by 30% as a tradeoff.',
       },
-      { heading: 'Crucible Knot Talisman', text: 'Reduces damage and stagger impact from headshots taken by 33%.' },
+      { heading: 'Crucible Knot Talisman', text: 'Nullifies bonus headshot damage entirely and prevents the headshot stagger animation.' },
       {
         heading: 'Fine Crucible Feather Talisman',
         text: 'Improves backstep distance/speed, but increases damage taken by 15% as a tradeoff. Shadow of the Erdtree.',
@@ -229,7 +229,7 @@ export const TALISMAN_PAGES: ArticlePage[] = [
       },
       {
         heading: 'Dried Bouquet',
-        text: 'Raises attack power by 15% for 30 seconds after a summoned Spirit Ash dies. Shadow of the Erdtree.',
+        text: 'Raises attack power by 20% for 30 seconds after a summoned Spirit Ash dies. Shadow of the Erdtree.',
       },
     ],
   },
@@ -273,7 +273,7 @@ export const TALISMAN_PAGES: ArticlePage[] = [
       { heading: 'Cerulean Amber Medallion', text: 'Raises maximum FP by 7%.' },
       { heading: 'Cerulean Amber Medallion +1', text: 'Raises maximum FP by 9%.' },
       { heading: 'Cerulean Amber Medallion +2', text: 'Raises maximum FP by 11%.' },
-      { heading: 'Cerulean Amber Medallion +3', text: 'Raises maximum FP by 12.5%. Shadow of the Erdtree.' },
+      { heading: 'Cerulean Amber Medallion +3', text: 'Raises maximum FP by 13%. Shadow of the Erdtree.' },
       { heading: 'Cerulean Seed Talisman', text: 'Boosts FP restored per use of the Flask of Cerulean Tears by 20%.' },
       {
         heading: 'Cerulean Seed Talisman +1',
