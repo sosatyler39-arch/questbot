@@ -43,6 +43,15 @@ const PIN_LABEL_BASE_PX = 9;
 const PIN_LABEL_MIN_SCREEN_PX = 6;
 const PIN_LABEL_MAX_SCREEN_PX = 20;
 const PIN_LABEL_HOVER_FACTOR = 1.35;
+// Below this zoom, base pin labels hide entirely (dots stay visible) — real
+// clusters of a dozen-plus locations within a tiny area (e.g. around Raya
+// Lucaria Academy) can't be made legible by font shrinking alone, no matter
+// how small PIN_LABEL_MIN_SCREEN_PX goes. Hovering a dot always shows its
+// label regardless of this threshold (see the hover-clone logic in addPin).
+const PIN_LABEL_MIN_SCALE = 1.5;
+// Raised from 4 so the densest real clusters can be zoomed in far enough to
+// physically separate their pins, not just to read one label at a time.
+const MAX_ZOOM_SCALE = 8;
 const REGION_LABEL_BASE_PX = 21;
 const REGION_LABEL_MIN_SCREEN_PX = 14;
 const REGION_LABEL_MAX_SCREEN_PX = 40;
@@ -261,6 +270,7 @@ function addPin(svg: SVGSVGElement, frontLayer: SVGGElement, loc: MapLocation): 
   text.setAttribute('y', String(pos.y + 3));
   text.setAttribute('class', 'pin-label');
   text.style.fontSize = `${pinLabelFontSize(scale)}px`;
+  text.style.display = scale >= PIN_LABEL_MIN_SCALE ? '' : 'none';
   text.textContent = loc.name;
 
   group.append(dot, text);
@@ -272,7 +282,12 @@ function addPin(svg: SVGSVGElement, frontLayer: SVGGElement, loc: MapLocation): 
     hoverClone.classList.add('pin-hover');
     hoverClone.style.pointerEvents = 'none';
     const cloneLabel = hoverClone.querySelector<SVGTextElement>('.pin-label');
-    if (cloneLabel) cloneLabel.style.fontSize = `${pinLabelHoverFontSize(scale)}px`;
+    if (cloneLabel) {
+      cloneLabel.style.fontSize = `${pinLabelHoverFontSize(scale)}px`;
+      // Hover always reveals the label, even below PIN_LABEL_MIN_SCALE where
+      // the base pin's own label is hidden.
+      cloneLabel.style.display = '';
+    }
     frontLayer.appendChild(hoverClone);
   });
   group.addEventListener('mouseleave', () => {
@@ -384,8 +399,14 @@ function buildSvg(): SVGSVGElement {
 function updateLabelSizes(): void {
   const pinPx = pinLabelFontSize(scale);
   const regionPx = regionLabelFontSize(scale);
+  const showPinLabels = scale >= PIN_LABEL_MIN_SCALE;
   wrap.querySelectorAll<SVGTextElement>('.pin-label').forEach((el) => {
     el.style.fontSize = `${pinPx}px`;
+    // Skip hover clones (in #front-layer) — they always stay visible
+    // regardless of the base zoom threshold.
+    if (!el.closest('#front-layer')) {
+      el.style.display = showPinLabels ? '' : 'none';
+    }
   });
   wrap.querySelectorAll<SVGTextElement>('.region-label').forEach((el) => {
     el.style.fontSize = `${regionPx}px`;
@@ -480,9 +501,8 @@ function initPanZoom(): void {
       const factor = e.deltaY < 0 ? 1.1 : 1 / 1.1;
       const { width, height } = viewboxFor(layer);
       // Zoom out only until the whole map is visible, plus a small margin.
-      // Zoom-in ceiling (4) is unchanged.
       const minScale = minZoomScale(viewport.clientWidth, viewport.clientHeight, width, height);
-      scale = Math.min(4, Math.max(minScale, scale * factor));
+      scale = Math.min(MAX_ZOOM_SCALE, Math.max(minScale, scale * factor));
 
       panX = mx - contentX * scale;
       panY = my - contentY * scale;
