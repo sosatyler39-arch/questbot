@@ -146,8 +146,7 @@
   cursor: pointer;
 }
 
-#map-layer-toggle,
-#map-edit-toggle {
+#map-layer-toggle {
   background: none;
   border: 1px solid #4a4234;
   border-radius: 4px;
@@ -156,68 +155,6 @@
   font-size: 12px;
   padding: 6px 10px;
   white-space: nowrap;
-}
-
-#map-edit-toggle.active {
-  background: rgba(201, 162, 75, 0.15);
-  border-color: #c9a24b;
-}
-
-#map-edit-panel[hidden] {
-  display: none;
-}
-
-#map-edit-panel {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid #4a4234;
-  border-radius: 6px;
-  padding: 6px 10px;
-}
-
-#map-edit-panel p {
-  margin: 0;
-  font-size: 11px;
-  color: #b8ab90;
-  flex-shrink: 0;
-  max-width: 180px;
-}
-
-#map-edit-panel code {
-  color: #c9a24b;
-}
-
-#map-edit-output {
-  flex: 1;
-  background: rgba(0, 0, 0, 0.4);
-  color: #e8e2d5;
-  border: 1px solid #6b5d3f;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 10.5px;
-  padding: 4px 6px;
-  resize: none;
-}
-
-#map-edit-copy {
-  background: none;
-  border: 1px solid #4a4234;
-  border-radius: 4px;
-  color: inherit;
-  cursor: pointer;
-  font-size: 12px;
-  padding: 6px 10px;
-  white-space: nowrap;
-}
-
-#map-canvas-wrap.edit-mode .pin-group {
-  cursor: grab;
-}
-
-#map-canvas-wrap.edit-mode .pin-group:active {
-  cursor: grabbing;
 }
 
 #map-viewport {
@@ -471,6 +408,187 @@
 
 .shape-resize-handle:hover {
   fill: #8fc4ea;
+}
+
+#shapes-pin-edit-panel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid #4a4234;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+#shapes-pin-edit-output {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.4);
+  color: #e8e2d5;
+  border: 1px solid #6b5d3f;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 10.5px;
+  padding: 4px 6px;
+  resize: none;
+}
+
+#shapes-pin-edit-copy {
+  background: none;
+  border: 1px solid #4a4234;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+#shapes-body {
+  display: flex;
+  gap: 8px;
+}
+
+#shapes-body #shapes-viewport {
+  flex: 1;
+  height: 640px;
+}
+
+#shapes-pin-side {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 640px;
+}
+
+#shapes-pin-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#shapes-pin-prev,
+#shapes-pin-next {
+  background: none;
+  border: 1px solid #4a4234;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 11px;
+  padding: 4px 8px;
+}
+
+#shapes-pin-current {
+  flex: 1;
+  min-width: 0;
+  font-size: 10.5px;
+  color: #b8ab90;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#shapes-pin-search {
+  background: rgba(0, 0, 0, 0.4);
+  color: inherit;
+  border: 1px solid #6b5d3f;
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 12px;
+  outline: none;
+}
+
+#shapes-pin-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  border: 1px solid #4a4234;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.shapes-pin-region-header {
+  position: sticky;
+  top: 0;
+  background: #1a1712;
+  color: #8f8877;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 8px;
+}
+
+.shapes-pin-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(74, 66, 52, 0.4);
+  color: inherit;
+  cursor: pointer;
+  font-size: 11px;
+  padding: 5px 8px;
+}
+
+.shapes-pin-row:hover {
+  background: rgba(201, 162, 75, 0.1);
+}
+
+.shapes-pin-row.selected {
+  background: rgba(201, 162, 75, 0.22);
+}
+
+.shapes-pin-row.adjusted .shapes-pin-row-name {
+  color: #c9a24b;
+}
+
+.shapes-pin-row-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.shapes-pin-row-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shapes-pin-row-pos {
+  flex-shrink: 0;
+  color: #7a705c;
+  font-family: monospace;
+  font-size: 9.5px;
+}
+
+.shape-editor-pin {
+  stroke: #12100e;
+  stroke-width: 1;
+}
+
+.shape-editor-pin-selected-ring {
+  fill: none;
+  stroke: #fff6df;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.shape-editor-pin-selected-label {
+  fill: #fff6df;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: #12100e;
+  stroke-width: 3px;
+  pointer-events: none;
 }
 
 #speedrun-panel {

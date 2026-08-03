@@ -135,13 +135,7 @@
       <label id="filter-bosses-label" title="Currently: Evergaols + open-world Great Enemies. Bosses inside dungeons are a planned addition.">
         <input id="filter-bosses" type="checkbox" checked /> Bosses
       </label>
-      <button id="map-edit-toggle" type="button">Edit positions</button>
       <button id="map-layer-toggle" type="button">Surface</button>
-    </div>
-    <div id="map-edit-panel" hidden>
-      <p>Drag pins to reposition. Copy the adjustments below and paste them back into <code>locations.ts</code>.</p>
-      <textarea id="map-edit-output" readonly rows="3" placeholder="No adjustments yet."></textarea>
-      <button id="map-edit-copy" type="button">Copy adjustments</button>
     </div>
     <div id="map-viewport">
       <div id="map-canvas-wrap"></div>
@@ -187,8 +181,8 @@
 
   <div id="shapes-panel" class="panel">
     <div id="shapes-toolbar">
-      <p id="shapes-hint">Drag a dot to move it, click the outline to add one, double-click a dot to remove it. No locations here — the Map tab is untouched.</p>
-      <button id="shapes-reset" type="button">Reset shapes</button>
+      <p id="shapes-hint">Shapes: drag a dot to move it, click the outline to add one, double-click a dot to remove it. Pins: drag a colored dot to reposition that location.</p>
+      <button id="shapes-reset" type="button">Reset all</button>
       <button id="shapes-layer-toggle" type="button">Surface</button>
     </div>
     <div id="shapes-ref-toolbar">
@@ -199,12 +193,27 @@
       <span id="shapes-ref-note">Loaded from your own disk only — never saved by this app.</span>
     </div>
     <div id="shapes-edit-panel">
-      <textarea id="shapes-edit-output" readonly rows="3" placeholder="No shape changes yet."></textarea>
+      <textarea id="shapes-edit-output" readonly rows="2" placeholder="No shape changes yet."></textarea>
       <button id="shapes-edit-copy" type="button">Copy shape adjustments</button>
     </div>
-    <div id="shapes-viewport">
-      <div id="shapes-canvas-wrap">
-        <img id="shapes-reference-img" hidden alt="" />
+    <div id="shapes-pin-edit-panel">
+      <textarea id="shapes-pin-edit-output" readonly rows="2" placeholder="No pin changes yet."></textarea>
+      <button id="shapes-pin-edit-copy" type="button">Copy pin adjustments</button>
+    </div>
+    <div id="shapes-body">
+      <div id="shapes-viewport">
+        <div id="shapes-canvas-wrap">
+          <img id="shapes-reference-img" hidden alt="" />
+        </div>
+      </div>
+      <div id="shapes-pin-side">
+        <div id="shapes-pin-nav">
+          <button id="shapes-pin-prev" type="button" title="Previous pin">◀</button>
+          <span id="shapes-pin-current">No pin selected</span>
+          <button id="shapes-pin-next" type="button" title="Next pin">▶</button>
+        </div>
+        <input id="shapes-pin-search" type="text" placeholder="Filter pins…" autocomplete="off" />
+        <div id="shapes-pin-list"></div>
       </div>
     </div>
   </div>

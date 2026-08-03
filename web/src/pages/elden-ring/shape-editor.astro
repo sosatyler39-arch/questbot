@@ -1,0 +1,60 @@
+---
+import Header from '../../components/Header.astro';
+import SubTabs from '../../components/SubTabs.astro';
+import '../../styles/theme.css';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Questbot — Elden Ring — Shape Editor</title>
+    <link rel="stylesheet" href="/map.css" />
+  </head>
+  <body>
+    <Header />
+    <SubTabs active="shape-editor" />
+    <main>
+      <div id="shapes-root">
+        <div id="shapes-toolbar">
+          <p id="shapes-hint">Shapes: drag a dot to move it, click the outline to add one, double-click a dot to remove it. Pins: drag a colored dot to reposition that location.</p>
+          <button id="shapes-reset" type="button">Reset all</button>
+          <button id="shapes-layer-toggle" type="button">Surface</button>
+        </div>
+        <div id="shapes-ref-toolbar">
+          <input id="shapes-ref-file" type="file" accept="image/*" hidden />
+          <button id="shapes-ref-load" type="button">Load reference image…</button>
+          <label id="shapes-ref-opacity-label">Opacity <input id="shapes-ref-opacity" type="range" min="0" max="100" value="45" /></label>
+          <button id="shapes-ref-clear" type="button">Clear reference</button>
+          <span id="shapes-ref-note">Loaded from your own disk only — never uploaded or saved by this site.</span>
+        </div>
+        <div id="shapes-edit-panel">
+          <textarea id="shapes-edit-output" readonly rows="2" placeholder="No shape changes yet."></textarea>
+          <button id="shapes-edit-copy" type="button">Copy shape adjustments</button>
+        </div>
+        <div id="shapes-pin-edit-panel">
+          <textarea id="shapes-pin-edit-output" readonly rows="2" placeholder="No pin changes yet."></textarea>
+          <button id="shapes-pin-edit-copy" type="button">Copy pin adjustments</button>
+        </div>
+        <div id="shapes-body">
+          <div id="shapes-viewport">
+            <div id="shapes-canvas-wrap">
+              <img id="shapes-reference-img" hidden alt="" />
+            </div>
+          </div>
+          <div id="shapes-pin-side">
+            <div id="shapes-pin-nav">
+              <button id="shapes-pin-prev" type="button" title="Previous pin">◀</button>
+              <span id="shapes-pin-current">No pin selected</span>
+              <button id="shapes-pin-next" type="button" title="Next pin">▶</button>
+            </div>
+            <input id="shapes-pin-search" type="text" placeholder="Filter pins…" autocomplete="off" />
+            <div id="shapes-pin-list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      import { initShapeEditor } from '../../map/shape-editor.js';
+      initShapeEditor();
+    </script>
+  </body>
+</html>

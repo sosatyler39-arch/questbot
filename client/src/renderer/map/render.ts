@@ -1,6 +1,6 @@
 import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './regions.js';
 import { MAP_LOCATIONS, type MapLocation } from './locations.js';
-import { clamp, clamp01, seeded, catmullRomPath, polygonCentroid, minZoomScale, clampedLabelFontSize } from './geometry.js';
+import { clamp, seeded, catmullRomPath, polygonCentroid, minZoomScale, clampedLabelFontSize } from './geometry.js';
 import { isLocationFavorite } from '../library-logic.js';
 import { loadFavorites, toggleFavoriteStored } from '../library.js';
 import { ROLE_FOR_CATEGORY, type Category } from './roles.js';
@@ -12,7 +12,9 @@ const UNDERGROUND_VIEWBOX = { width: 1200, height: 800 };
 type Layer = 'surface' | 'underground';
 
 // One visually distinct hue per category (legend + pins share this map).
-const CATEGORY_COLOR: Record<Category, string> = {
+// Exported so the Shape Editor's own pin overlay (see shape-editor.ts) uses
+// identical colors instead of a second hand-kept copy.
+export const CATEGORY_COLOR: Record<Category, string> = {
   'legacy-dungeon': '#c23b32',
   'great-enemy': '#e0752f',
   'minor-dungeon': '#c9a24b',
@@ -77,14 +79,6 @@ let dragStartX = 0;
 let dragStartY = 0;
 let panStartX = 0;
 let panStartY = 0;
-let editMode = false;
-
-// Session-local manual position corrections, keyed by location name —
-// applied on top of the authored fx/fy in locations.ts. Set by dragging a
-// pin in "Edit positions" mode. Not persisted to disk; the edit panel
-// exports them as a snippet to hand-paste back into locations.ts.
-const pinPositionOverrides: Record<string, { fx: number; fy: number }> = {};
-const adjustments = new Map<string, { fx: number; fy: number }>();
 
 const wrap = document.getElementById('map-canvas-wrap')!;
 const layerToggle = document.getElementById('map-layer-toggle') as HTMLButtonElement;
@@ -93,10 +87,6 @@ const searchResults = document.getElementById('map-search-results')!;
 const filterLocations = document.getElementById('filter-locations') as HTMLInputElement;
 const filterBosses = document.getElementById('filter-bosses') as HTMLInputElement;
 const legend = document.getElementById('map-legend')!;
-const editToggle = document.getElementById('map-edit-toggle') as HTMLButtonElement;
-const editPanel = document.getElementById('map-edit-panel')!;
-const editOutput = document.getElementById('map-edit-output') as HTMLTextAreaElement;
-const editCopy = document.getElementById('map-edit-copy') as HTMLButtonElement;
 
 function regionsFor(l: Layer): Region[] {
   return l === 'surface' ? SURFACE_REGIONS : UNDERGROUND_REGIONS;
@@ -106,15 +96,10 @@ function viewboxFor(l: Layer) {
   return l === 'surface' ? SURFACE_VIEWBOX : UNDERGROUND_VIEWBOX;
 }
 
-function currentFraction(loc: MapLocation): { fx: number; fy: number } {
-  return pinPositionOverrides[loc.name] ?? { fx: loc.fx, fy: loc.fy };
-}
-
 function absolutePosition(loc: MapLocation): { x: number; y: number } | null {
   const region = regionsFor(loc.layer).find((r) => r.id === loc.regionId);
   if (!region) return null;
-  const { fx, fy } = currentFraction(loc);
-  return { x: region.x + fx * region.width, y: region.y + fy * region.height };
+  return { x: region.x + loc.fx * region.width, y: region.y + loc.fy * region.height };
 }
 
 function shade(hex: string, percent: number): string {
@@ -241,6 +226,9 @@ function addDefs(svg: SVGSVGElement, regions: Region[]): void {
 // paints a throwaway, non-interactive clone into `frontLayer` — which is
 // always the last SVG child — and removes it on mouseleave. The real pin
 // never moves, so its own hover state can never get stuck.
+//
+// Positions are read-only here — dragging a pin to reposition it lives in
+// the Shape Editor tab now (see shape-editor.ts), not on this browsable Map.
 function addPin(svg: SVGSVGElement, frontLayer: SVGGElement, loc: MapLocation): void {
   const pos = absolutePosition(loc);
   if (!pos) return;
@@ -249,11 +237,8 @@ function addPin(svg: SVGSVGElement, frontLayer: SVGGElement, loc: MapLocation): 
   group.setAttribute('class', `pin-group role-${ROLE_FOR_CATEGORY[loc.category]}`);
   group.classList.toggle('favorited', isLocationFavorite(loadFavorites(), loc.name));
 
-  // §B3: click a pin (outside edit mode) to save/unsave the location. A
-  // drag that happens to end on the same pin won't fire `click`, so this
-  // doesn't fight the pan handler.
+  // §B3: click a pin to save/unsave the location.
   group.addEventListener('click', () => {
-    if (editMode) return;
     const favorites = toggleFavoriteStored({ kind: 'location', name: loc.name, createdAt: Date.now() });
     group.classList.toggle('favorited', isLocationFavorite(favorites, loc.name));
   });
@@ -277,7 +262,6 @@ function addPin(svg: SVGSVGElement, frontLayer: SVGGElement, loc: MapLocation): 
 
   let hoverClone: SVGGElement | null = null;
   group.addEventListener('mouseenter', () => {
-    if (editMode) return;
     hoverClone = group.cloneNode(true) as SVGGElement;
     hoverClone.classList.add('pin-hover');
     hoverClone.style.pointerEvents = 'none';
@@ -293,37 +277,6 @@ function addPin(svg: SVGSVGElement, frontLayer: SVGGElement, loc: MapLocation): 
   group.addEventListener('mouseleave', () => {
     hoverClone?.remove();
     hoverClone = null;
-  });
-
-  group.addEventListener('mousedown', (e) => {
-    if (!editMode) return;
-    e.stopPropagation(); // don't also start a viewport pan
-    const startClientX = e.clientX;
-    const startClientY = e.clientY;
-    let curX = pos.x;
-    let curY = pos.y;
-
-    const onMove = (me: MouseEvent) => {
-      curX = pos.x + (me.clientX - startClientX) / scale;
-      curY = pos.y + (me.clientY - startClientY) / scale;
-      dot.setAttribute('cx', String(curX));
-      dot.setAttribute('cy', String(curY));
-      text.setAttribute('x', String(curX + 6));
-      text.setAttribute('y', String(curY + 3));
-    };
-    const onUp = () => {
-      window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mouseup', onUp);
-      const region = regionsFor(loc.layer).find((r) => r.id === loc.regionId);
-      if (!region) return;
-      const fx = clamp01((curX - region.x) / region.width);
-      const fy = clamp01((curY - region.y) / region.height);
-      pinPositionOverrides[loc.name] = { fx, fy };
-      adjustments.set(loc.name, { fx, fy });
-      renderEditOutput();
-    };
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseup', onUp);
   });
 
   svg.appendChild(group);
@@ -462,7 +415,6 @@ function initPanZoom(): void {
   const viewport = document.getElementById('map-viewport')!;
 
   viewport.addEventListener('mousedown', (e) => {
-    if (editMode) return;
     dragging = true;
     dragStartX = e.clientX;
     dragStartY = e.clientY;
@@ -561,34 +513,6 @@ function initLegend(): void {
   }
 }
 
-function renderEditOutput(): void {
-  if (adjustments.size === 0) {
-    editOutput.value = '';
-    return;
-  }
-  const lines = [...adjustments.entries()].map(
-    ([name, pos]) => `  // '${name}': fx: ${pos.fx.toFixed(3)}, fy: ${pos.fy.toFixed(3)}`,
-  );
-  editOutput.value = lines.join('\n');
-}
-
-function initEditMode(): void {
-  editToggle.addEventListener('click', () => {
-    editMode = !editMode;
-    editToggle.classList.toggle('active', editMode);
-    editPanel.hidden = !editMode;
-    wrap.classList.toggle('edit-mode', editMode);
-  });
-  editCopy.addEventListener('click', () => {
-    void navigator.clipboard?.writeText(editOutput.value);
-  });
-  // Safety net: if focus leaves the window mid-hover (e.g. alt-tab), any
-  // stray hover clones would otherwise linger until the next layer render.
-  window.addEventListener('blur', () => {
-    document.getElementById('front-layer')?.replaceChildren();
-  });
-}
-
 export function initMap(): void {
   renderLayer();
   initPanZoom();
@@ -596,5 +520,9 @@ export function initMap(): void {
   initLayerToggle();
   initFilters();
   initLegend();
-  initEditMode();
+  // Safety net: if focus leaves the window mid-hover (e.g. alt-tab), any
+  // stray hover clones would otherwise linger until the next layer render.
+  window.addEventListener('blur', () => {
+    document.getElementById('front-layer')?.replaceChildren();
+  });
 }

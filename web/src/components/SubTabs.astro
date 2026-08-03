@@ -1,6 +1,6 @@
 ---
 interface Props {
-  active: 'wiki' | 'map' | 'enemies' | 'calculator';
+  active: 'wiki' | 'map' | 'enemies' | 'calculator' | 'shape-editor';
 }
 const { active } = Astro.props;
 ---
@@ -9,6 +9,7 @@ const { active } = Astro.props;
   <a href="/elden-ring/map" class:list={['sub-tab', { active: active === 'map' }]}>Map</a>
   <a href="/elden-ring/enemies" class:list={['sub-tab', { active: active === 'enemies' }]}>Enemies</a>
   <a href="/elden-ring/calculator" class:list={['sub-tab', { active: active === 'calculator' }]}>Calculator</a>
+  <a href="/elden-ring/shape-editor" class:list={['sub-tab', { active: active === 'shape-editor' }]}>Shape Editor</a>
 </nav>
 
 <style>
