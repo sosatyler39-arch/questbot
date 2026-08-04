@@ -138,6 +138,53 @@ function findPinByName(name: string): PinLike | undefined {
   return MAP_LOCATIONS.find((l) => l.name === name) ?? customPins.find((p) => p.name === name);
 }
 
+const STORAGE_KEY = 'questbot-shape-editor-state';
+
+interface PersistedState {
+  shapeOverrides: Record<string, [number, number][]>;
+  labelOverrides: Record<string, [number, number]>;
+  touchedRegions: string[];
+  touchedLabels: string[];
+  pinOverrides: [string, { fx: number; fy: number }][];
+  customPins: CustomPin[];
+  nextCustomPinId: number;
+}
+
+function persist(): void {
+  try {
+    const state: PersistedState = {
+      shapeOverrides,
+      labelOverrides,
+      touchedRegions: [...touchedRegions],
+      touchedLabels: [...touchedLabels],
+      pinOverrides: [...pinOverrides.entries()],
+      customPins,
+      nextCustomPinId,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {
+    // localStorage unavailable/full — the in-memory session still works,
+    // it just won't survive a refresh. Not a user-facing error.
+  }
+}
+
+function restore(): void {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const state = JSON.parse(raw) as PersistedState;
+    for (const [id, points] of Object.entries(state.shapeOverrides ?? {})) shapeOverrides[id] = points;
+    for (const [id, pos] of Object.entries(state.labelOverrides ?? {})) labelOverrides[id] = pos;
+    for (const id of state.touchedRegions ?? []) touchedRegions.add(id);
+    for (const id of state.touchedLabels ?? []) touchedLabels.add(id);
+    for (const [name, pos] of state.pinOverrides ?? []) pinOverrides.set(name, pos);
+    customPins.push(...(state.customPins ?? []));
+    nextCustomPinId = state.nextCustomPinId ?? 1;
+  } catch {
+    // Malformed/foreign data — treat exactly like "nothing saved yet".
+  }
+}
+
 const wrap = document.getElementById('shapes-canvas-wrap')!;
 const layerToggle = document.getElementById('shapes-layer-toggle') as HTMLButtonElement;
 const resetButton = document.getElementById('shapes-reset') as HTMLButtonElement;
@@ -337,6 +384,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
         const onUp = () => {
           window.removeEventListener('mousemove', onMove);
           window.removeEventListener('mouseup', onUp);
+          persist();
           renderExportOutput();
         };
         window.addEventListener('mousemove', onMove);
@@ -354,6 +402,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
         redrawShape();
         refreshHandles();
         refreshBBox();
+        persist();
         renderExportOutput();
       });
 
@@ -412,6 +461,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
     const onUp = () => {
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseup', onUp);
+      persist();
       renderExportOutput();
     };
     window.addEventListener('mousemove', onMove);
@@ -463,6 +513,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
     redrawShape();
     refreshHandles();
     refreshBBox();
+    persist();
     renderExportOutput();
   }
 
@@ -509,6 +560,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseup', onUp);
       if (moved) {
+        persist();
         renderExportOutput();
       } else {
         addPointAt(startClientX, startClientY);
@@ -539,6 +591,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
     const onUp = () => {
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseup', onUp);
+      persist();
       renderExportOutput();
     };
     window.addEventListener('mousemove', onMove);
@@ -617,6 +670,7 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
         pinOverrides.set(loc.name, { fx, fy });
         renderPinExportOutput();
       }
+      persist();
       refreshPinListRow(loc.name);
     };
     window.addEventListener('mousemove', onMove);
@@ -795,6 +849,11 @@ function initExport(): void {
     touchedLabels.clear();
     pinOverrides.clear();
     customPins.length = 0;
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // ignore
+    }
     hideNewPinForm();
     renderExportOutput();
     renderPinExportOutput();
@@ -922,6 +981,7 @@ function deleteCustomPin(id: number): void {
     selectedPinIndex = -1;
     updatePinCurrentReadout();
   }
+  persist();
   renderLayer();
   renderPinList();
   renderNewPinExportOutput();
@@ -1099,6 +1159,7 @@ function initPinCreation(): void {
       fy: pendingPinPos.fy,
     };
     customPins.push(pin);
+    persist();
     hideNewPinForm();
     renderLayer();
     renderPinList();
@@ -1131,6 +1192,7 @@ function initModeToggle(): void {
 }
 
 export function initShapeEditor(): void {
+  restore();
   initModeToggle();
   renderLayer();
   initPanZoom();
@@ -1139,4 +1201,10 @@ export function initShapeEditor(): void {
   initReferenceImage();
   initPinTools();
   initPinCreation();
+  // restore() only repopulates the in-memory structures the export panels
+  // read from — re-render them now so a restored session shows its pending
+  // changes immediately, not just after the next edit.
+  renderExportOutput();
+  renderPinExportOutput();
+  renderNewPinExportOutput();
 }
