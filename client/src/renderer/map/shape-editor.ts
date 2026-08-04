@@ -188,15 +188,13 @@ function restore(): void {
 const wrap = document.getElementById('shapes-canvas-wrap')!;
 const layerToggle = document.getElementById('shapes-layer-toggle') as HTMLButtonElement;
 const resetButton = document.getElementById('shapes-reset') as HTMLButtonElement;
-const exportOutput = document.getElementById('shapes-edit-output') as HTMLTextAreaElement;
-const exportCopy = document.getElementById('shapes-edit-copy') as HTMLButtonElement;
+const exportOutput = document.getElementById('shapes-export-output') as HTMLTextAreaElement;
+const exportCopy = document.getElementById('shapes-export-copy') as HTMLButtonElement;
 const refImg = document.getElementById('shapes-reference-img') as HTMLImageElement;
 const refFileInput = document.getElementById('shapes-ref-file') as HTMLInputElement;
 const refLoadButton = document.getElementById('shapes-ref-load') as HTMLButtonElement;
 const refOpacity = document.getElementById('shapes-ref-opacity') as HTMLInputElement;
 const refClearButton = document.getElementById('shapes-ref-clear') as HTMLButtonElement;
-const pinExportOutput = document.getElementById('shapes-pin-edit-output') as HTMLTextAreaElement;
-const pinExportCopy = document.getElementById('shapes-pin-edit-copy') as HTMLButtonElement;
 const pinSearch = document.getElementById('shapes-pin-search') as HTMLInputElement;
 const pinList = document.getElementById('shapes-pin-list')!;
 const pinPrev = document.getElementById('shapes-pin-prev') as HTMLButtonElement;
@@ -210,8 +208,6 @@ const newPinCategory = document.getElementById('shapes-new-pin-category') as HTM
 const newPinRegion = document.getElementById('shapes-new-pin-region') as HTMLSelectElement;
 const newPinConfirm = document.getElementById('shapes-new-pin-confirm') as HTMLButtonElement;
 const newPinCancel = document.getElementById('shapes-new-pin-cancel') as HTMLButtonElement;
-const newPinExportOutput = document.getElementById('shapes-new-pin-edit-output') as HTMLTextAreaElement;
-const newPinExportCopy = document.getElementById('shapes-new-pin-edit-copy') as HTMLButtonElement;
 
 function regionsFor(l: Layer): Region[] {
   return l === 'surface' ? SURFACE_REGIONS : UNDERGROUND_REGIONS;
@@ -665,11 +661,10 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
       if (isCustomPin(loc)) {
         loc.fx = fx;
         loc.fy = fy;
-        renderNewPinExportOutput();
       } else {
         pinOverrides.set(loc.name, { fx, fy });
-        renderPinExportOutput();
       }
+      renderExportOutput();
       persist();
       refreshPinListRow(loc.name);
     };
@@ -821,19 +816,34 @@ function initLayerToggle(): void {
 }
 
 function renderExportOutput(): void {
-  if (touchedRegions.size === 0 && touchedLabels.size === 0) {
-    exportOutput.value = '';
-    return;
-  }
   const lines: string[] = [];
-  for (const id of touchedRegions) {
-    lines.push(`  // '${id}': shapePoints: [`);
-    for (const [fx, fy] of shapeOverrides[id]) lines.push(`  //   [${fx.toFixed(3)}, ${fy.toFixed(3)}],`);
-    lines.push('  // ],');
+  if (touchedRegions.size > 0 || touchedLabels.size > 0) {
+    lines.push('// --- Region/label adjustments (regions.ts) ---');
+    for (const id of touchedRegions) {
+      lines.push(`  // '${id}': shapePoints: [`);
+      for (const [fx, fy] of shapeOverrides[id]) lines.push(`  //   [${fx.toFixed(3)}, ${fy.toFixed(3)}],`);
+      lines.push('  // ],');
+    }
+    for (const id of touchedLabels) {
+      const [fx, fy] = labelOverrides[id];
+      lines.push(`  // '${id}': labelPos: [${fx.toFixed(3)}, ${fy.toFixed(3)}],`);
+    }
   }
-  for (const id of touchedLabels) {
-    const [fx, fy] = labelOverrides[id];
-    lines.push(`  // '${id}': labelPos: [${fx.toFixed(3)}, ${fy.toFixed(3)}],`);
+  if (pinOverrides.size > 0) {
+    if (lines.length > 0) lines.push('');
+    lines.push('// --- Pin position adjustments (locations.ts) ---');
+    for (const [name, pos] of pinOverrides.entries()) {
+      lines.push(`  // '${name}': fx: ${pos.fx.toFixed(3)}, fy: ${pos.fy.toFixed(3)}`);
+    }
+  }
+  if (customPins.length > 0) {
+    if (lines.length > 0) lines.push('');
+    lines.push('// --- New pins (locations.ts) ---');
+    for (const p of customPins) {
+      lines.push(
+        `  { name: '${p.name.replace(/'/g, "\\'")}', category: '${p.category}', regionId: '${p.regionId}', layer: '${p.layer}', fx: ${p.fx.toFixed(3)}, fy: ${p.fy.toFixed(3)} },`,
+      );
+    }
   }
   exportOutput.value = lines.join('\n');
 }
@@ -856,8 +866,6 @@ function initExport(): void {
     }
     hideNewPinForm();
     renderExportOutput();
-    renderPinExportOutput();
-    renderNewPinExportOutput();
     renderLayer();
     renderPinList();
   });
@@ -895,17 +903,6 @@ function initReferenceImage(): void {
 }
 
 // ---- Pin repositioning + "go through every pin" sidebar ----
-
-function renderPinExportOutput(): void {
-  if (pinOverrides.size === 0) {
-    pinExportOutput.value = '';
-    return;
-  }
-  const lines = [...pinOverrides.entries()].map(
-    ([name, pos]) => `  // '${name}': fx: ${pos.fx.toFixed(3)}, fy: ${pos.fy.toFixed(3)}`,
-  );
-  pinExportOutput.value = lines.join('\n');
-}
 
 function centerOnSelectedPin(): void {
   if (selectedPinIndex < 0) return;
@@ -984,7 +981,7 @@ function deleteCustomPin(id: number): void {
   persist();
   renderLayer();
   renderPinList();
-  renderNewPinExportOutput();
+  renderExportOutput();
 }
 
 function renderPinList(): void {
@@ -1041,9 +1038,6 @@ function renderPinList(): void {
 }
 
 function initPinTools(): void {
-  pinExportCopy.addEventListener('click', () => {
-    void navigator.clipboard?.writeText(pinExportOutput.value);
-  });
   pinSearch.addEventListener('input', renderPinList);
   pinPrev.addEventListener('click', () => selectPinByIndex(selectedPinIndex <= 0 ? pinOrder.length - 1 : selectedPinIndex - 1));
   pinNext.addEventListener('click', () => selectPinByIndex(selectedPinIndex >= pinOrder.length - 1 ? 0 : selectedPinIndex + 1));
@@ -1093,18 +1087,6 @@ function regionContainingPoint(absX: number, absY: number): Region | null {
     }
   }
   return best;
-}
-
-function renderNewPinExportOutput(): void {
-  if (customPins.length === 0) {
-    newPinExportOutput.value = '';
-    return;
-  }
-  const lines = customPins.map(
-    (p) =>
-      `  { name: '${p.name.replace(/'/g, "\\'")}', category: '${p.category}', regionId: '${p.regionId}', layer: '${p.layer}', fx: ${p.fx.toFixed(3)}, fy: ${p.fy.toFixed(3)} },`,
-  );
-  newPinExportOutput.value = lines.join('\n');
 }
 
 function hideNewPinForm(): void {
@@ -1163,15 +1145,11 @@ function initPinCreation(): void {
     hideNewPinForm();
     renderLayer();
     renderPinList();
-    renderNewPinExportOutput();
+    renderExportOutput();
     selectPinByName(pin.name);
   });
 
   newPinCancel.addEventListener('click', hideNewPinForm);
-
-  newPinExportCopy.addEventListener('click', () => {
-    void navigator.clipboard?.writeText(newPinExportOutput.value);
-  });
 }
 
 function setMode(next: EditorMode): void {
@@ -1201,10 +1179,8 @@ export function initShapeEditor(): void {
   initReferenceImage();
   initPinTools();
   initPinCreation();
-  // restore() only repopulates the in-memory structures the export panels
-  // read from — re-render them now so a restored session shows its pending
+  // restore() only repopulates the in-memory structures the export panel
+  // reads from — re-render it now so a restored session shows its pending
   // changes immediately, not just after the next edit.
   renderExportOutput();
-  renderPinExportOutput();
-  renderNewPinExportOutput();
 }

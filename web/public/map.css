@@ -263,7 +263,6 @@
 #shapes-reset,
 #shapes-layer-toggle,
 #shapes-mode-toggle,
-#shapes-edit-copy,
 #shapes-ref-load,
 #shapes-ref-clear {
   background: none;
@@ -344,27 +343,6 @@
   flex: 1;
 }
 
-#shapes-edit-panel {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid #4a4234;
-  border-radius: 6px;
-  padding: 6px 10px;
-}
-
-#shapes-edit-output {
-  flex: 1;
-  background: rgba(0, 0, 0, 0.4);
-  color: #e8e2d5;
-  border: 1px solid #6b5d3f;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 10.5px;
-  padding: 4px 6px;
-  resize: none;
-}
 
 #shapes-viewport {
   flex: 1;
@@ -454,7 +432,7 @@
   fill: #8fc4ea;
 }
 
-#shapes-pin-edit-panel {
+#shapes-export-panel {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -464,7 +442,7 @@
   padding: 6px 10px;
 }
 
-#shapes-pin-edit-output {
+#shapes-export-output {
   flex: 1;
   background: rgba(0, 0, 0, 0.4);
   color: #e8e2d5;
@@ -476,40 +454,7 @@
   resize: none;
 }
 
-#shapes-pin-edit-copy {
-  background: none;
-  border: 1px solid #4a4234;
-  border-radius: 4px;
-  color: inherit;
-  cursor: pointer;
-  font-size: 12px;
-  padding: 6px 10px;
-  white-space: nowrap;
-}
-
-#shapes-new-pin-edit-panel {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid #4a4234;
-  border-radius: 6px;
-  padding: 6px 10px;
-}
-
-#shapes-new-pin-edit-output {
-  flex: 1;
-  background: rgba(0, 0, 0, 0.4);
-  color: #e8e2d5;
-  border: 1px solid #6b5d3f;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 10.5px;
-  padding: 4px 6px;
-  resize: none;
-}
-
-#shapes-new-pin-edit-copy {
+#shapes-export-copy {
   background: none;
   border: 1px solid #4a4234;
   border-radius: 4px;
