@@ -2,6 +2,7 @@ import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './regions.js'
 import { MAP_LOCATIONS, type MapLocation } from './locations.js';
 import { seeded, catmullRomPath, polygonCentroid } from './geometry.js';
 import { CATEGORY_COLOR } from './render.js';
+import type { Category } from './roles.js';
 
 // A workspace for hand-molding each region's outline (dragging vertices) and
 // now also for repositioning every location pin — moved here from the Map
@@ -100,9 +101,41 @@ const pinOverrides = new Map<string, { fx: number; fy: number }>();
 // every location in the current layer, in locations.ts's own file order
 // (already grouped region-by-region), so stepping through it visits one
 // region's pins together before moving to the next.
-let pinOrder: MapLocation[] = [];
+let pinOrder: PinLike[] = [];
 let selectedPinIndex = -1;
 const pinDotByName = new Map<string, SVGCircleElement>();
+
+// User-created pins, not present in locations.ts yet. Kept separate from
+// MAP_LOCATIONS (a read-only import) rather than routed through
+// pinOverrides — a brand-new pin has no authored fx/fy to override, and its
+// export format (a full pasteable object literal) differs from the
+// existing "adjust this pin" comment format below.
+interface CustomPin {
+  isCustom: true;
+  id: number;
+  name: string;
+  category: Category;
+  regionId: string;
+  layer: Layer;
+  fx: number;
+  fy: number;
+}
+type PinLike = MapLocation | CustomPin;
+function isCustomPin(loc: PinLike): loc is CustomPin {
+  return 'isCustom' in loc;
+}
+const customPins: CustomPin[] = [];
+let nextCustomPinId = 1;
+let creatingPin = false;
+let pendingPinPos: { regionId: string; fx: number; fy: number } | null = null;
+
+function allPinsForLayer(l: Layer): PinLike[] {
+  return [...MAP_LOCATIONS.filter((loc) => loc.layer === l), ...customPins.filter((p) => p.layer === l)];
+}
+
+function findPinByName(name: string): PinLike | undefined {
+  return MAP_LOCATIONS.find((l) => l.name === name) ?? customPins.find((p) => p.name === name);
+}
 
 const wrap = document.getElementById('shapes-canvas-wrap')!;
 const layerToggle = document.getElementById('shapes-layer-toggle') as HTMLButtonElement;
@@ -121,6 +154,15 @@ const pinList = document.getElementById('shapes-pin-list')!;
 const pinPrev = document.getElementById('shapes-pin-prev') as HTMLButtonElement;
 const pinNext = document.getElementById('shapes-pin-next') as HTMLButtonElement;
 const pinCurrent = document.getElementById('shapes-pin-current')!;
+const newPinToggle = document.getElementById('shapes-new-pin-toggle') as HTMLButtonElement;
+const newPinForm = document.getElementById('shapes-new-pin-form') as HTMLDivElement;
+const newPinName = document.getElementById('shapes-new-pin-name') as HTMLInputElement;
+const newPinCategory = document.getElementById('shapes-new-pin-category') as HTMLSelectElement;
+const newPinRegion = document.getElementById('shapes-new-pin-region') as HTMLSelectElement;
+const newPinConfirm = document.getElementById('shapes-new-pin-confirm') as HTMLButtonElement;
+const newPinCancel = document.getElementById('shapes-new-pin-cancel') as HTMLButtonElement;
+const newPinExportOutput = document.getElementById('shapes-new-pin-edit-output') as HTMLTextAreaElement;
+const newPinExportCopy = document.getElementById('shapes-new-pin-edit-copy') as HTMLButtonElement;
 
 function regionsFor(l: Layer): Region[] {
   return l === 'surface' ? SURFACE_REGIONS : UNDERGROUND_REGIONS;
@@ -502,13 +544,15 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
   refreshBBox();
 }
 
-// A location's current working fx/fy: the session-local override if the
+// A location's current working fx/fy: a custom pin's own (directly mutable)
+// fields, or for an authored location, the session-local override if the
 // user has dragged it this session, otherwise its authored value.
-function currentFraction(loc: MapLocation): { fx: number; fy: number } {
+function currentFraction(loc: PinLike): { fx: number; fy: number } {
+  if (isCustomPin(loc)) return { fx: loc.fx, fy: loc.fy };
   return pinOverrides.get(loc.name) ?? { fx: loc.fx, fy: loc.fy };
 }
 
-function pinAbsolutePosition(loc: MapLocation): [number, number] | null {
+function pinAbsolutePosition(loc: PinLike): [number, number] | null {
   const region = regionsFor(loc.layer).find((r) => r.id === loc.regionId);
   if (!region) return null;
   const { fx, fy } = currentFraction(loc);
@@ -520,7 +564,7 @@ function pinAbsolutePosition(loc: MapLocation): [number, number] | null {
 // clutter (the exact problem the Map tab's own zoom-based label hiding
 // exists to solve). The selected pin (from the sidebar / Prev-Next) gets
 // its own always-visible label plus a highlight ring instead.
-function addPin(svg: SVGSVGElement, loc: MapLocation): void {
+function addPin(svg: SVGSVGElement, loc: PinLike): void {
   const pos = pinAbsolutePosition(loc);
   if (!pos) return;
   const [x, y] = pos;
@@ -529,7 +573,7 @@ function addPin(svg: SVGSVGElement, loc: MapLocation): void {
   dot.setAttribute('cx', String(x));
   dot.setAttribute('cy', String(y));
   dot.setAttribute('r', '4');
-  dot.setAttribute('class', 'shape-editor-pin');
+  dot.setAttribute('class', isCustomPin(loc) ? 'shape-editor-pin custom' : 'shape-editor-pin');
   dot.setAttribute('fill', CATEGORY_COLOR[loc.category]);
   dot.style.cursor = 'grab';
   pinDotByName.set(loc.name, dot);
@@ -558,8 +602,14 @@ function addPin(svg: SVGSVGElement, loc: MapLocation): void {
       // between neighbors, and pins need that same freedom.
       const fx = (curX - region.x) / region.width;
       const fy = (curY - region.y) / region.height;
-      pinOverrides.set(loc.name, { fx, fy });
-      renderPinExportOutput();
+      if (isCustomPin(loc)) {
+        loc.fx = fx;
+        loc.fy = fy;
+        renderNewPinExportOutput();
+      } else {
+        pinOverrides.set(loc.name, { fx, fy });
+        renderPinExportOutput();
+      }
       refreshPinListRow(loc.name);
     };
     window.addEventListener('mousemove', onMove);
@@ -623,7 +673,7 @@ function buildSvg(): SVGSVGElement {
   for (const region of regionsFor(layer)) addRegion(svg, region);
 
   pinDotByName.clear();
-  for (const loc of MAP_LOCATIONS.filter((l) => l.layer === layer)) addPin(svg, loc);
+  for (const loc of allPinsForLayer(layer)) addPin(svg, loc);
   refreshSelectedPinOverlay(svg);
 
   return svg;
@@ -666,7 +716,10 @@ function initPanZoom(): void {
     applyTransform();
   });
 
-  window.addEventListener('mouseup', () => {
+  window.addEventListener('mouseup', (e) => {
+    if (dragging && creatingPin && Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY) <= DRAG_THRESHOLD) {
+      handleCreatePinClick(e);
+    }
     dragging = false;
     viewport.classList.remove('dragging');
   });
@@ -732,8 +785,14 @@ function initExport(): void {
     touchedRegions.clear();
     touchedLabels.clear();
     pinOverrides.clear();
+    customPins.length = 0;
+    creatingPin = false;
+    newPinToggle.classList.remove('active');
+    newPinToggle.textContent = 'New Pin';
+    hideNewPinForm();
     renderExportOutput();
     renderPinExportOutput();
+    renderNewPinExportOutput();
     renderLayer();
     renderPinList();
   });
@@ -840,7 +899,7 @@ function refreshPinListSelection(): void {
 
 function refreshPinListRow(name: string): void {
   const row = pinListRows.get(name);
-  const loc = MAP_LOCATIONS.find((l) => l.name === name);
+  const loc = findPinByName(name);
   if (!row || !loc) return;
   const { fx, fy } = currentFraction(loc);
   const posEl = row.querySelector('.shapes-pin-row-pos');
@@ -848,9 +907,23 @@ function refreshPinListRow(name: string): void {
   row.classList.toggle('adjusted', pinOverrides.has(name));
 }
 
+function deleteCustomPin(id: number): void {
+  const idx = customPins.findIndex((p) => p.id === id);
+  if (idx === -1) return;
+  const wasSelected = selectedPinIndex >= 0 && pinOrder[selectedPinIndex]?.name === customPins[idx].name;
+  customPins.splice(idx, 1);
+  if (wasSelected) {
+    selectedPinIndex = -1;
+    updatePinCurrentReadout();
+  }
+  renderLayer();
+  renderPinList();
+  renderNewPinExportOutput();
+}
+
 function renderPinList(): void {
   const query = pinSearch.value.trim().toLowerCase();
-  pinOrder = MAP_LOCATIONS.filter((l) => l.layer === layer && (!query || l.name.toLowerCase().includes(query)));
+  pinOrder = allPinsForLayer(layer).filter((l) => !query || l.name.toLowerCase().includes(query));
   pinList.replaceChildren();
   pinListRows.clear();
 
@@ -879,6 +952,19 @@ function renderPinList(): void {
     pos.textContent = `${fx.toFixed(2)}, ${fy.toFixed(2)}`;
     row.classList.toggle('adjusted', pinOverrides.has(loc.name));
     row.append(dot, name, pos);
+    if (isCustomPin(loc)) {
+      row.classList.add('custom');
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'shapes-pin-row-delete';
+      del.textContent = '×';
+      del.title = 'Delete this pin';
+      del.addEventListener('click', (e) => {
+        e.stopPropagation();
+        deleteCustomPin(loc.id);
+      });
+      row.appendChild(del);
+    }
     row.addEventListener('click', () => selectPinByName(loc.name));
     pinList.appendChild(row);
     pinListRows.set(loc.name, row);
@@ -898,6 +984,136 @@ function initPinTools(): void {
   renderPinList();
 }
 
+// ---- Create-and-name new pins ----
+//
+// "New Pin" arms click-to-place: the next plain click on the viewport (not
+// a pan-drag, not a click on an existing pin/shape/handle — those already
+// stopPropagation on their own mousedown) opens a small form pre-filled
+// with the region detected under the click. Confirming adds a CustomPin;
+// its export panel emits full object literals, ready to paste as brand-new
+// locations.ts entries — unlike the pin-adjustment panel above, which only
+// describes fx/fy diffs for pins that already exist there.
+
+function pointInPolygon(point: [number, number], polygon: [number, number][]): boolean {
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const [xi, yi] = polygon[i];
+    const [xj, yj] = polygon[j];
+    const intersect = yi > point[1] !== yj > point[1] && point[0] < ((xj - xi) * (point[1] - yi)) / (yj - yi) + xi;
+    if (intersect) inside = !inside;
+  }
+  return inside;
+}
+
+// Regions deliberately overlap (see regions.ts) to close gaps between
+// neighbors, so a click can land inside more than one shape — pick
+// whichever's centroid is nearest.
+function regionContainingPoint(absX: number, absY: number): Region | null {
+  const candidates = regionsFor(layer).filter((region) => {
+    const points = workingPoints(region).map((p) => absPoint(region, p));
+    return pointInPolygon([absX, absY], points);
+  });
+  if (candidates.length === 0) return null;
+  if (candidates.length === 1) return candidates[0];
+  let best = candidates[0];
+  let bestDist = Infinity;
+  for (const region of candidates) {
+    const points = workingPoints(region).map((p) => absPoint(region, p));
+    const [cx, cy] = polygonCentroid(points);
+    const d = Math.hypot(absX - cx, absY - cy);
+    if (d < bestDist) {
+      bestDist = d;
+      best = region;
+    }
+  }
+  return best;
+}
+
+function renderNewPinExportOutput(): void {
+  if (customPins.length === 0) {
+    newPinExportOutput.value = '';
+    return;
+  }
+  const lines = customPins.map(
+    (p) =>
+      `  { name: '${p.name.replace(/'/g, "\\'")}', category: '${p.category}', regionId: '${p.regionId}', layer: '${p.layer}', fx: ${p.fx.toFixed(3)}, fy: ${p.fy.toFixed(3)} },`,
+  );
+  newPinExportOutput.value = lines.join('\n');
+}
+
+function hideNewPinForm(): void {
+  newPinForm.hidden = true;
+  pendingPinPos = null;
+  newPinName.value = '';
+}
+
+function showNewPinForm(regionId: string, fx: number, fy: number): void {
+  pendingPinPos = { regionId, fx, fy };
+  newPinRegion.innerHTML = '';
+  for (const region of regionsFor(layer)) {
+    const opt = document.createElement('option');
+    opt.value = region.id;
+    opt.textContent = region.name;
+    if (region.id === regionId) opt.selected = true;
+    newPinRegion.appendChild(opt);
+  }
+  newPinForm.hidden = false;
+  newPinName.value = '';
+  newPinName.focus();
+}
+
+function handleCreatePinClick(e: MouseEvent): void {
+  const svg = wrap.querySelector('svg');
+  if (!svg) return;
+  const [x, y] = svgPointFromEvent(svg, e);
+  const region = regionContainingPoint(x, y);
+  if (!region) return; // clicked outside every region shape
+  showNewPinForm(region.id, (x - region.x) / region.width, (y - region.y) / region.height);
+}
+
+function initPinCreation(): void {
+  for (const category of Object.keys(CATEGORY_COLOR) as Category[]) {
+    const opt = document.createElement('option');
+    opt.value = category;
+    opt.textContent = category;
+    newPinCategory.appendChild(opt);
+  }
+
+  newPinToggle.addEventListener('click', () => {
+    creatingPin = !creatingPin;
+    newPinToggle.classList.toggle('active', creatingPin);
+    newPinToggle.textContent = creatingPin ? 'Click map to place…' : 'New Pin';
+    if (!creatingPin) hideNewPinForm();
+  });
+
+  newPinConfirm.addEventListener('click', () => {
+    const name = newPinName.value.trim();
+    if (!pendingPinPos || !name) return;
+    const pin: CustomPin = {
+      isCustom: true,
+      id: nextCustomPinId++,
+      name,
+      category: newPinCategory.value as Category,
+      regionId: newPinRegion.value,
+      layer,
+      fx: pendingPinPos.fx,
+      fy: pendingPinPos.fy,
+    };
+    customPins.push(pin);
+    hideNewPinForm();
+    renderLayer();
+    renderPinList();
+    renderNewPinExportOutput();
+    selectPinByName(pin.name);
+  });
+
+  newPinCancel.addEventListener('click', hideNewPinForm);
+
+  newPinExportCopy.addEventListener('click', () => {
+    void navigator.clipboard?.writeText(newPinExportOutput.value);
+  });
+}
+
 export function initShapeEditor(): void {
   renderLayer();
   initPanZoom();
@@ -905,4 +1121,5 @@ export function initShapeEditor(): void {
   initExport();
   initReferenceImage();
   initPinTools();
+  initPinCreation();
 }

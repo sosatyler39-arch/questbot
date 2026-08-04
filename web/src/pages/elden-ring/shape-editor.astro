@@ -16,8 +16,16 @@ import '../../styles/theme.css';
       <div id="shapes-root">
         <div id="shapes-toolbar">
           <p id="shapes-hint">Shapes: drag a dot to move it, click the outline to add one, double-click a dot to remove it. Pins: drag a colored dot to reposition that location.</p>
+          <button id="shapes-new-pin-toggle" type="button">New Pin</button>
           <button id="shapes-reset" type="button">Reset all</button>
           <button id="shapes-layer-toggle" type="button">Surface</button>
+        </div>
+        <div id="shapes-new-pin-form" hidden>
+          <input id="shapes-new-pin-name" type="text" placeholder="Pin name…" autocomplete="off" />
+          <select id="shapes-new-pin-category"></select>
+          <select id="shapes-new-pin-region"></select>
+          <button id="shapes-new-pin-confirm" type="button">Add pin</button>
+          <button id="shapes-new-pin-cancel" type="button">Cancel</button>
         </div>
         <div id="shapes-ref-toolbar">
           <input id="shapes-ref-file" type="file" accept="image/*" hidden />
@@ -33,6 +41,10 @@ import '../../styles/theme.css';
         <div id="shapes-pin-edit-panel">
           <textarea id="shapes-pin-edit-output" readonly rows="2" placeholder="No pin changes yet."></textarea>
           <button id="shapes-pin-edit-copy" type="button">Copy pin adjustments</button>
+        </div>
+        <div id="shapes-new-pin-edit-panel">
+          <textarea id="shapes-new-pin-edit-output" readonly rows="2" placeholder="No new pins yet."></textarea>
+          <button id="shapes-new-pin-edit-copy" type="button">Copy new pins</button>
         </div>
         <div id="shapes-body">
           <div id="shapes-viewport">
