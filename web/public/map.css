@@ -262,7 +262,7 @@
 
 #shapes-reset,
 #shapes-layer-toggle,
-#shapes-new-pin-toggle,
+#shapes-mode-toggle,
 #shapes-edit-copy,
 #shapes-ref-load,
 #shapes-ref-clear {
@@ -274,11 +274,6 @@
   font-size: 12px;
   padding: 6px 10px;
   white-space: nowrap;
-}
-
-#shapes-new-pin-toggle.active {
-  background: rgba(201, 162, 75, 0.15);
-  border-color: #c9a24b;
 }
 
 #shapes-new-pin-form[hidden] {

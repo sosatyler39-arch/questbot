@@ -25,6 +25,7 @@ const DRAG_THRESHOLD = 4; // px, in screen space — below this a shape mousedow
 const RESIZE_HANDLE_SIZE = 8;
 
 type Layer = 'surface' | 'underground';
+type EditorMode = 'shape' | 'pin';
 
 // The 8 handles around a region's bounding box, image-editor style: corners
 // resize freely on both axes, edge midpoints resize just the one axis.
@@ -72,6 +73,7 @@ function anchorCoord(bbox: BBox, pos: HandlePos): [number, number] {
 }
 
 let layer: Layer = 'surface';
+let mode: EditorMode = 'shape';
 let scale = 1;
 let panX = 0;
 let panY = 0;
@@ -126,7 +128,6 @@ function isCustomPin(loc: PinLike): loc is CustomPin {
 }
 const customPins: CustomPin[] = [];
 let nextCustomPinId = 1;
-let creatingPin = false;
 let pendingPinPos: { regionId: string; fx: number; fy: number } | null = null;
 
 function allPinsForLayer(l: Layer): PinLike[] {
@@ -154,7 +155,8 @@ const pinList = document.getElementById('shapes-pin-list')!;
 const pinPrev = document.getElementById('shapes-pin-prev') as HTMLButtonElement;
 const pinNext = document.getElementById('shapes-pin-next') as HTMLButtonElement;
 const pinCurrent = document.getElementById('shapes-pin-current')!;
-const newPinToggle = document.getElementById('shapes-new-pin-toggle') as HTMLButtonElement;
+const modeToggle = document.getElementById('shapes-mode-toggle') as HTMLButtonElement;
+const pinSide = document.getElementById('shapes-pin-side')!;
 const newPinForm = document.getElementById('shapes-new-pin-form') as HTMLDivElement;
 const newPinName = document.getElementById('shapes-new-pin-name') as HTMLInputElement;
 const newPinCategory = document.getElementById('shapes-new-pin-category') as HTMLSelectElement;
@@ -314,6 +316,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
       handle.setAttribute('cy', String(hy));
 
       handle.addEventListener('mousedown', (e) => {
+        if (mode !== 'shape') return;
         e.stopPropagation(); // don't also start a viewport pan
         const startClientX = e.clientX;
         const startClientY = e.clientY;
@@ -343,6 +346,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
       // Double-click a handle to remove that vertex (keeps a minimum
       // viable shape so it can't be collapsed to nothing).
       handle.addEventListener('dblclick', (e) => {
+        if (mode !== 'shape') return;
         e.stopPropagation();
         if (points.length <= MIN_POINTS) return;
         points.splice(i, 1);
@@ -363,6 +367,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
   // independently (free resize, not locked to aspect ratio); edges scale
   // just the one axis.
   function startResize(pos: HandlePos, e: MouseEvent): void {
+    if (mode !== 'shape') return;
     e.stopPropagation();
     const bboxStart = computeBBox(region, points);
     const anchor = anchorCoord(bboxStart, pos);
@@ -469,6 +474,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
   // listener) avoids relying on the browser's own click-after-drag
   // suppression, which isn't reliable for small movements.
   shape.addEventListener('mousedown', (e) => {
+    if (mode !== 'shape') return;
     e.stopPropagation();
     const startClientX = e.clientX;
     const startClientY = e.clientY;
@@ -515,6 +521,7 @@ function addRegion(svg: SVGSVGElement, region: Region): void {
   // Independent label drag, for fine-tuning after (or without) moving the
   // whole region.
   label.addEventListener('mousedown', (e) => {
+    if (mode !== 'shape') return;
     e.stopPropagation();
     const startClientX = e.clientX;
     const startClientY = e.clientY;
@@ -673,8 +680,10 @@ function buildSvg(): SVGSVGElement {
   for (const region of regionsFor(layer)) addRegion(svg, region);
 
   pinDotByName.clear();
-  for (const loc of allPinsForLayer(layer)) addPin(svg, loc);
-  refreshSelectedPinOverlay(svg);
+  if (mode === 'pin') {
+    for (const loc of allPinsForLayer(layer)) addPin(svg, loc);
+    refreshSelectedPinOverlay(svg);
+  }
 
   return svg;
 }
@@ -717,7 +726,7 @@ function initPanZoom(): void {
   });
 
   window.addEventListener('mouseup', (e) => {
-    if (dragging && creatingPin && Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY) <= DRAG_THRESHOLD) {
+    if (dragging && mode === 'pin' && Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY) <= DRAG_THRESHOLD) {
       handleCreatePinClick(e);
     }
     dragging = false;
@@ -786,9 +795,6 @@ function initExport(): void {
     touchedLabels.clear();
     pinOverrides.clear();
     customPins.length = 0;
-    creatingPin = false;
-    newPinToggle.classList.remove('active');
-    newPinToggle.textContent = 'New Pin';
     hideNewPinForm();
     renderExportOutput();
     renderPinExportOutput();
@@ -1079,13 +1085,6 @@ function initPinCreation(): void {
     newPinCategory.appendChild(opt);
   }
 
-  newPinToggle.addEventListener('click', () => {
-    creatingPin = !creatingPin;
-    newPinToggle.classList.toggle('active', creatingPin);
-    newPinToggle.textContent = creatingPin ? 'Click map to place…' : 'New Pin';
-    if (!creatingPin) hideNewPinForm();
-  });
-
   newPinConfirm.addEventListener('click', () => {
     const name = newPinName.value.trim();
     if (!pendingPinPos || !name) return;
@@ -1114,7 +1113,25 @@ function initPinCreation(): void {
   });
 }
 
+function setMode(next: EditorMode): void {
+  mode = next;
+  modeToggle.textContent = mode === 'shape' ? 'Pin adjustment' : 'Shape adjustment';
+  pinSide.hidden = mode === 'shape';
+  hideNewPinForm();
+  renderLayer();
+  if (mode === 'pin') renderPinList();
+}
+
+function initModeToggle(): void {
+  modeToggle.textContent = 'Pin adjustment';
+  pinSide.hidden = true;
+  modeToggle.addEventListener('click', () => {
+    setMode(mode === 'shape' ? 'pin' : 'shape');
+  });
+}
+
 export function initShapeEditor(): void {
+  initModeToggle();
   renderLayer();
   initPanZoom();
   initLayerToggle();
