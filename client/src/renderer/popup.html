@@ -181,17 +181,10 @@
 
   <div id="shapes-panel" class="panel">
     <div id="shapes-toolbar">
-      <p id="shapes-hint">Shape mode: drag a dot to move it, click the outline to add one, double-click a dot to remove it. Pin mode: drag a colored dot to reposition it, click empty space to create a new one.</p>
-      <button id="shapes-mode-toggle" type="button">Pin adjustment</button>
+      <p id="shapes-hint">Shape mode: drag a dot to move it, click the outline to add one, double-click a dot to remove it. Pin mode: click empty space to create a pin, drag a dot to reposition it, double-click a pin you created to remove it.</p>
+      <button id="shapes-mode-toggle" type="button">Shape adjustment</button>
       <button id="shapes-reset" type="button">Reset all</button>
       <button id="shapes-layer-toggle" type="button">Surface</button>
-    </div>
-    <div id="shapes-new-pin-form" hidden>
-      <input id="shapes-new-pin-name" type="text" placeholder="Pin name…" autocomplete="off" />
-      <select id="shapes-new-pin-category"></select>
-      <select id="shapes-new-pin-region"></select>
-      <button id="shapes-new-pin-confirm" type="button">Add pin</button>
-      <button id="shapes-new-pin-cancel" type="button">Cancel</button>
     </div>
     <div id="shapes-ref-toolbar">
       <input id="shapes-ref-file" type="file" accept="image/*" hidden />

@@ -128,7 +128,6 @@ function isCustomPin(loc: PinLike): loc is CustomPin {
 }
 const customPins: CustomPin[] = [];
 let nextCustomPinId = 1;
-let pendingPinPos: { regionId: string; fx: number; fy: number } | null = null;
 
 function allPinsForLayer(l: Layer): PinLike[] {
   return [...MAP_LOCATIONS.filter((loc) => loc.layer === l), ...customPins.filter((p) => p.layer === l)];
@@ -202,12 +201,6 @@ const pinNext = document.getElementById('shapes-pin-next') as HTMLButtonElement;
 const pinCurrent = document.getElementById('shapes-pin-current')!;
 const modeToggle = document.getElementById('shapes-mode-toggle') as HTMLButtonElement;
 const pinSide = document.getElementById('shapes-pin-side')!;
-const newPinForm = document.getElementById('shapes-new-pin-form') as HTMLDivElement;
-const newPinName = document.getElementById('shapes-new-pin-name') as HTMLInputElement;
-const newPinCategory = document.getElementById('shapes-new-pin-category') as HTMLSelectElement;
-const newPinRegion = document.getElementById('shapes-new-pin-region') as HTMLSelectElement;
-const newPinConfirm = document.getElementById('shapes-new-pin-confirm') as HTMLButtonElement;
-const newPinCancel = document.getElementById('shapes-new-pin-cancel') as HTMLButtonElement;
 
 function regionsFor(l: Layer): Region[] {
   return l === 'surface' ? SURFACE_REGIONS : UNDERGROUND_REGIONS;
@@ -672,6 +665,13 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
     window.addEventListener('mouseup', onUp);
   });
 
+  if (isCustomPin(loc)) {
+    dot.addEventListener('dblclick', (e) => {
+      e.stopPropagation();
+      deleteCustomPin(loc.id);
+    });
+  }
+
   svg.appendChild(dot);
 }
 
@@ -864,7 +864,6 @@ function initExport(): void {
     } catch {
       // ignore
     }
-    hideNewPinForm();
     renderExportOutput();
     renderLayer();
     renderPinList();
@@ -1046,13 +1045,15 @@ function initPinTools(): void {
 
 // ---- Create-and-name new pins ----
 //
-// "New Pin" arms click-to-place: the next plain click on the viewport (not
-// a pan-drag, not a click on an existing pin/shape/handle — those already
-// stopPropagation on their own mousedown) opens a small form pre-filled
-// with the region detected under the click. Confirming adds a CustomPin;
-// its export panel emits full object literals, ready to paste as brand-new
-// locations.ts entries — unlike the pin-adjustment panel above, which only
-// describes fx/fy diffs for pins that already exist there.
+// In pin mode, a plain click on the viewport (not a pan-drag, not a click
+// on an existing pin/shape/handle — those already stopPropagation on their
+// own mousedown) creates a new pin immediately at that spot, with an
+// auto-generated placeholder name/category and the region auto-detected
+// under the click. Double-clicking a custom pin's dot removes it. The
+// export panel emits full object literals for these, ready to paste as
+// brand-new locations.ts entries — unlike the pin-adjustment section
+// above, which only describes fx/fy diffs for pins that already exist
+// there.
 
 function pointInPolygon(point: [number, number], polygon: [number, number][]): boolean {
   let inside = false;
@@ -1089,80 +1090,41 @@ function regionContainingPoint(absX: number, absY: number): Region | null {
   return best;
 }
 
-function hideNewPinForm(): void {
-  newPinForm.hidden = true;
-  pendingPinPos = null;
-  newPinName.value = '';
-}
-
-function showNewPinForm(regionId: string, fx: number, fy: number): void {
-  pendingPinPos = { regionId, fx, fy };
-  newPinRegion.innerHTML = '';
-  for (const region of regionsFor(layer)) {
-    const opt = document.createElement('option');
-    opt.value = region.id;
-    opt.textContent = region.name;
-    if (region.id === regionId) opt.selected = true;
-    newPinRegion.appendChild(opt);
-  }
-  newPinForm.hidden = false;
-  newPinName.value = '';
-  newPinName.focus();
-}
-
 function handleCreatePinClick(e: MouseEvent): void {
   const svg = wrap.querySelector('svg');
   if (!svg) return;
   const [x, y] = svgPointFromEvent(svg, e);
   const region = regionContainingPoint(x, y);
   if (!region) return; // clicked outside every region shape
-  showNewPinForm(region.id, (x - region.x) / region.width, (y - region.y) / region.height);
-}
-
-function initPinCreation(): void {
-  for (const category of Object.keys(CATEGORY_COLOR) as Category[]) {
-    const opt = document.createElement('option');
-    opt.value = category;
-    opt.textContent = category;
-    newPinCategory.appendChild(opt);
-  }
-
-  newPinConfirm.addEventListener('click', () => {
-    const name = newPinName.value.trim();
-    if (!pendingPinPos || !name) return;
-    const pin: CustomPin = {
-      isCustom: true,
-      id: nextCustomPinId++,
-      name,
-      category: newPinCategory.value as Category,
-      regionId: newPinRegion.value,
-      layer,
-      fx: pendingPinPos.fx,
-      fy: pendingPinPos.fy,
-    };
-    customPins.push(pin);
-    persist();
-    hideNewPinForm();
-    renderLayer();
-    renderPinList();
-    renderExportOutput();
-    selectPinByName(pin.name);
-  });
-
-  newPinCancel.addEventListener('click', hideNewPinForm);
+  const id = nextCustomPinId++;
+  const pin: CustomPin = {
+    isCustom: true,
+    id,
+    name: `New Pin ${id}`,
+    category: 'landmark',
+    regionId: region.id,
+    layer,
+    fx: (x - region.x) / region.width,
+    fy: (y - region.y) / region.height,
+  };
+  customPins.push(pin);
+  persist();
+  renderLayer();
+  renderPinList();
+  renderExportOutput();
+  selectPinByName(pin.name);
 }
 
 function setMode(next: EditorMode): void {
   mode = next;
-  modeToggle.textContent = mode === 'shape' ? 'Pin adjustment' : 'Shape adjustment';
+  modeToggle.textContent = mode === 'shape' ? 'Shape adjustment' : 'Pin adjustment';
   pinSide.hidden = mode === 'shape';
-  hideNewPinForm();
   renderLayer();
   if (mode === 'pin') renderPinList();
 }
 
 function initModeToggle(): void {
-  modeToggle.textContent = 'Pin adjustment';
+  modeToggle.textContent = 'Shape adjustment';
   pinSide.hidden = true;
   modeToggle.addEventListener('click', () => {
     setMode(mode === 'shape' ? 'pin' : 'shape');
@@ -1178,7 +1140,6 @@ export function initShapeEditor(): void {
   initExport();
   initReferenceImage();
   initPinTools();
-  initPinCreation();
   // restore() only repopulates the in-memory structures the export panel
   // reads from — re-render it now so a restored session shows its pending
   // changes immediately, not just after the next edit.

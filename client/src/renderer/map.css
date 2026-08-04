@@ -275,49 +275,6 @@
   white-space: nowrap;
 }
 
-#shapes-new-pin-form[hidden] {
-  display: none;
-}
-
-#shapes-new-pin-form {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid #4a4234;
-  border-radius: 6px;
-  padding: 6px 10px;
-}
-
-#shapes-new-pin-name,
-#shapes-new-pin-category,
-#shapes-new-pin-region {
-  background: rgba(0, 0, 0, 0.4);
-  color: inherit;
-  border: 1px solid #6b5d3f;
-  border-radius: 4px;
-  padding: 5px 8px;
-  font-size: 12px;
-  outline: none;
-}
-
-#shapes-new-pin-name {
-  flex: 1;
-  min-width: 0;
-}
-
-#shapes-new-pin-confirm,
-#shapes-new-pin-cancel {
-  background: none;
-  border: 1px solid #4a4234;
-  border-radius: 4px;
-  color: inherit;
-  cursor: pointer;
-  font-size: 12px;
-  padding: 6px 10px;
-  white-space: nowrap;
-}
-
 #shapes-ref-toolbar {
   display: flex;
   align-items: center;
