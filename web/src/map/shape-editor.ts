@@ -618,18 +618,34 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
   if (!pos) return;
   const [x, y] = pos;
 
+  // A larger invisible hit target sits under the small visible dot, so a
+  // pin stays easy to grab/re-grab without needing pixel-perfect aim — the
+  // visible dot alone (r=4) was an easy miss right after dragging one,
+  // which landed the next click on the map/shape underneath instead.
+  const hitTarget = document.createElementNS(SVG_NS, 'circle');
+  hitTarget.setAttribute('cx', String(x));
+  hitTarget.setAttribute('cy', String(y));
+  hitTarget.setAttribute('r', '9');
+  hitTarget.setAttribute('class', 'shape-editor-pin-hit');
+  hitTarget.setAttribute('fill', CATEGORY_COLOR[loc.category]);
+  svg.appendChild(hitTarget);
+
   const dot = document.createElementNS(SVG_NS, 'circle');
   dot.setAttribute('cx', String(x));
   dot.setAttribute('cy', String(y));
   dot.setAttribute('r', '4');
   dot.setAttribute('class', isCustomPin(loc) ? 'shape-editor-pin custom' : 'shape-editor-pin');
   dot.setAttribute('fill', CATEGORY_COLOR[loc.category]);
-  dot.style.cursor = 'grab';
+  dot.style.pointerEvents = 'none';
+  svg.appendChild(dot);
   pinDotByName.set(loc.name, dot);
 
-  dot.addEventListener('mousedown', (e) => {
+  hitTarget.addEventListener('mousedown', (e) => {
     e.stopPropagation(); // don't also start a viewport pan or shape drag
-    selectPinByName(loc.name);
+    // No recenter here (unlike sidebar/Prev-Next selection): the viewport
+    // snapping to scale 3 the instant you grab a pin is what made "moving
+    // a pin" feel like it also moved the map out from under the cursor.
+    selectPinByName(loc.name, false);
     const startClientX = e.clientX;
     const startClientY = e.clientY;
     const region = regionsFor(loc.layer).find((r) => r.id === loc.regionId)!;
@@ -639,6 +655,8 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
     const onMove = (me: MouseEvent) => {
       curX = x + (me.clientX - startClientX) / scale;
       curY = y + (me.clientY - startClientY) / scale;
+      hitTarget.setAttribute('cx', String(curX));
+      hitTarget.setAttribute('cy', String(curY));
       dot.setAttribute('cx', String(curX));
       dot.setAttribute('cy', String(curY));
       updateSelectedPinLabelPosition();
@@ -666,13 +684,11 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
   });
 
   if (isCustomPin(loc)) {
-    dot.addEventListener('dblclick', (e) => {
+    hitTarget.addEventListener('dblclick', (e) => {
       e.stopPropagation();
       deleteCustomPin(loc.id);
     });
   }
-
-  svg.appendChild(dot);
 }
 
 let selectedPinLabel: SVGTextElement | null = null;
@@ -932,11 +948,15 @@ function updatePinCurrentReadout(): void {
   pinCurrent.textContent = `${selectedPinIndex + 1} / ${pinOrder.length} — ${loc.name} (fx: ${fx.toFixed(3)}, fy: ${fy.toFixed(3)})`;
 }
 
-function selectPinByName(name: string): void {
+function selectPinByName(name: string, recenter = true): void {
   const index = pinOrder.findIndex((l) => l.name === name);
   if (index < 0) return;
   selectedPinIndex = index;
-  centerOnSelectedPin();
+  if (recenter) {
+    centerOnSelectedPin();
+  } else {
+    refreshSelectedPinOverlay(wrap.querySelector('svg')!);
+  }
   updatePinCurrentReadout();
   refreshPinListSelection();
 }
@@ -1005,9 +1025,37 @@ function renderPinList(): void {
     const dot = document.createElement('span');
     dot.className = 'shapes-pin-row-dot';
     dot.style.background = CATEGORY_COLOR[loc.category];
-    const name = document.createElement('span');
-    name.className = 'shapes-pin-row-name';
-    name.textContent = loc.name;
+    let name: HTMLElement;
+    if (isCustomPin(loc)) {
+      const nameInput = document.createElement('input');
+      nameInput.type = 'text';
+      nameInput.className = 'shapes-pin-row-name shapes-pin-row-name-input';
+      nameInput.value = loc.name;
+      nameInput.addEventListener('mousedown', (e) => e.stopPropagation());
+      nameInput.addEventListener('click', (e) => e.stopPropagation());
+      nameInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') nameInput.blur();
+      });
+      nameInput.addEventListener('blur', () => {
+        const trimmed = nameInput.value.trim();
+        if (!trimmed || trimmed === loc.name) {
+          nameInput.value = loc.name;
+          return;
+        }
+        loc.name = trimmed;
+        persist();
+        renderExportOutput();
+        renderLayer();
+        renderPinList();
+        updatePinCurrentReadout();
+      });
+      name = nameInput;
+    } else {
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'shapes-pin-row-name';
+      nameSpan.textContent = loc.name;
+      name = nameSpan;
+    }
     const pos = document.createElement('span');
     pos.className = 'shapes-pin-row-pos';
     const { fx, fy } = currentFraction(loc);
@@ -1112,7 +1160,7 @@ function handleCreatePinClick(e: MouseEvent): void {
   renderLayer();
   renderPinList();
   renderExportOutput();
-  selectPinByName(pin.name);
+  selectPinByName(pin.name, false);
 }
 
 function setMode(next: EditorMode): void {

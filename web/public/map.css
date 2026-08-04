@@ -558,6 +558,20 @@
   white-space: nowrap;
 }
 
+.shapes-pin-row-name-input {
+  background: rgba(0, 0, 0, 0.35);
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font: inherit;
+  padding: 1px 3px;
+}
+
+.shapes-pin-row-name-input:focus {
+  border-color: #c9a24b;
+  outline: none;
+}
+
 .shapes-pin-row-pos {
   flex-shrink: 0;
   color: #7a705c;
@@ -568,6 +582,19 @@
 .shape-editor-pin {
   stroke: #12100e;
   stroke-width: 1;
+}
+
+.shape-editor-pin-hit {
+  fill-opacity: 0;
+  cursor: grab;
+}
+
+.shape-editor-pin-hit:hover {
+  fill-opacity: 0.25;
+}
+
+.shape-editor-pin-hit:active {
+  cursor: grabbing;
 }
 
 .shape-editor-pin.custom {
