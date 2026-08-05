@@ -1,7 +1,7 @@
 import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './regions.js';
 import { MAP_LOCATIONS, type MapLocation } from './locations.js';
 import { seeded, catmullRomPath, polygonCentroid } from './geometry.js';
-import { CATEGORY_COLOR } from './legend.js';
+import { CATEGORY_COLOR, buildLegend } from './legend.js';
 import type { Category } from './locations.js';
 
 // A workspace for hand-molding each region's outline (dragging vertices) and
@@ -74,6 +74,7 @@ function anchorCoord(bbox: BBox, pos: HandlePos): [number, number] {
 
 let layer: Layer = 'surface';
 let mode: EditorMode = 'shape';
+const hiddenCategories = new Set<Category>();
 let scale = 1;
 let panX = 0;
 let panY = 0;
@@ -202,6 +203,7 @@ const pinCurrent = document.getElementById('shapes-pin-current')!;
 const modeToggle = document.getElementById('shapes-mode-toggle') as HTMLButtonElement;
 const pinSide = document.getElementById('shapes-pin-side')!;
 const refToolbar = document.getElementById('shapes-ref-toolbar')!;
+const shapesLegend = document.getElementById('shapes-legend')!;
 
 function regionsFor(l: Layer): Region[] {
   return l === 'surface' ? SURFACE_REGIONS : UNDERGROUND_REGIONS;
@@ -629,6 +631,7 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
   hitTarget.setAttribute('r', '9');
   hitTarget.setAttribute('class', 'shape-editor-pin-hit');
   hitTarget.setAttribute('fill', CATEGORY_COLOR[loc.category]);
+  hitTarget.setAttribute('data-category', loc.category);
   svg.appendChild(hitTarget);
 
   const dot = document.createElementNS(SVG_NS, 'circle');
@@ -637,6 +640,7 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
   dot.setAttribute('r', '4');
   dot.setAttribute('class', isCustomPin(loc) ? 'shape-editor-pin custom' : 'shape-editor-pin');
   dot.setAttribute('fill', CATEGORY_COLOR[loc.category]);
+  dot.setAttribute('data-category', loc.category);
   dot.style.pointerEvents = 'none';
   svg.appendChild(dot);
   pinDotByName.set(loc.name, dot);
@@ -805,6 +809,17 @@ function rebuildSvg(): void {
   const oldSvg = wrap.querySelector('svg');
   oldSvg?.remove();
   wrap.appendChild(buildSvg());
+  applyPinFilters();
+}
+
+// Hides pins whose category is unchecked in the legend — lets you isolate
+// one category (e.g. just Weapons) while placing/adjusting its pins instead
+// of hunting through all 200+ pins on screen at once.
+function applyPinFilters(): void {
+  wrap.querySelectorAll<SVGElement>('[data-category]').forEach((el) => {
+    const category = el.getAttribute('data-category') as Category;
+    el.style.display = hiddenCategories.has(category) ? 'none' : '';
+  });
 }
 
 // Rebuilds the SVG and resets the view to scale 1 — only appropriate when
@@ -1237,6 +1252,7 @@ function setMode(next: EditorMode): void {
   modeToggle.textContent = mode === 'shape' ? 'Shape adjustment' : 'Pin adjustment';
   pinSide.hidden = mode === 'shape';
   refToolbar.hidden = mode === 'pin';
+  shapesLegend.hidden = mode === 'shape';
   rebuildSvg();
   if (mode === 'pin') renderPinList();
 }
@@ -1245,14 +1261,24 @@ function initModeToggle(): void {
   modeToggle.textContent = 'Shape adjustment';
   pinSide.hidden = true;
   refToolbar.hidden = false;
+  shapesLegend.hidden = true;
   modeToggle.addEventListener('click', () => {
     setMode(mode === 'shape' ? 'pin' : 'shape');
+  });
+}
+
+function initShapesLegend(): void {
+  buildLegend(shapesLegend, (category, hidden) => {
+    if (hidden) hiddenCategories.add(category);
+    else hiddenCategories.delete(category);
+    applyPinFilters();
   });
 }
 
 export function initShapeEditor(): void {
   restore();
   initModeToggle();
+  initShapesLegend();
   renderLayer();
   initPanZoom();
   initLayerToggle();

@@ -201,7 +201,8 @@
 }
 
 #map-legend,
-#speedrun-legend {
+#speedrun-legend,
+#shapes-legend {
   display: flex;
   flex-direction: column;
   gap: 6px;
