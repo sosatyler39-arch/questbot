@@ -736,6 +736,24 @@ function refreshSelectedPinOverlay(svg: SVGSVGElement): void {
   updateSelectedPinLabelPosition();
 }
 
+// Pin mode's non-interactive stand-in for a region: just its name, so you
+// still know where you are while placing pins, without the shape-editing
+// outline/vertex-handles/resize-handles cluttering the view or intercepting
+// clicks meant for a pin.
+function addRegionLabel(svg: SVGSVGElement, region: Region): void {
+  const points = workingPoints(region);
+  const labelPos = workingLabelPos(region, points);
+  const [lx, ly] = absPoint(region, labelPos);
+  const label = document.createElementNS(SVG_NS, 'text');
+  label.setAttribute('text-anchor', 'middle');
+  label.setAttribute('class', 'shape-editor-label');
+  label.setAttribute('x', String(lx));
+  label.setAttribute('y', String(ly));
+  label.style.pointerEvents = 'none';
+  label.textContent = region.name;
+  svg.appendChild(label);
+}
+
 function buildSvg(): SVGSVGElement {
   const { width, height } = viewboxFor(layer);
   const svg = document.createElementNS(SVG_NS, 'svg');
@@ -743,7 +761,11 @@ function buildSvg(): SVGSVGElement {
   svg.setAttribute('width', String(width));
   svg.setAttribute('height', String(height));
 
-  for (const region of regionsFor(layer)) addRegion(svg, region);
+  if (mode === 'shape') {
+    for (const region of regionsFor(layer)) addRegion(svg, region);
+  } else {
+    for (const region of regionsFor(layer)) addRegionLabel(svg, region);
+  }
 
   pinDotByName.clear();
   if (mode === 'pin') {
