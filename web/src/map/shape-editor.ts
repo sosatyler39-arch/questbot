@@ -201,6 +201,7 @@ const pinNext = document.getElementById('shapes-pin-next') as HTMLButtonElement;
 const pinCurrent = document.getElementById('shapes-pin-current')!;
 const modeToggle = document.getElementById('shapes-mode-toggle') as HTMLButtonElement;
 const pinSide = document.getElementById('shapes-pin-side')!;
+const refToolbar = document.getElementById('shapes-ref-toolbar')!;
 
 function regionsFor(l: Layer): Region[] {
   return l === 'surface' ? SURFACE_REGIONS : UNDERGROUND_REGIONS;
@@ -1179,6 +1180,7 @@ function setMode(next: EditorMode): void {
   mode = next;
   modeToggle.textContent = mode === 'shape' ? 'Shape adjustment' : 'Pin adjustment';
   pinSide.hidden = mode === 'shape';
+  refToolbar.hidden = mode === 'pin';
   rebuildSvg();
   if (mode === 'pin') renderPinList();
 }
@@ -1186,6 +1188,7 @@ function setMode(next: EditorMode): void {
 function initModeToggle(): void {
   modeToggle.textContent = 'Shape adjustment';
   pinSide.hidden = true;
+  refToolbar.hidden = false;
   modeToggle.addEventListener('click', () => {
     setMode(mode === 'shape' ? 'pin' : 'shape');
   });
