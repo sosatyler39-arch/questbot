@@ -1,7 +1,7 @@
 import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './map/regions.js';
-import { MAP_LOCATIONS, type MapLocation } from './map/locations.js';
+import { MAP_LOCATIONS, type MapLocation, type Category } from './map/locations.js';
 import { catmullRomPath, minZoomScale, clampedLabelFontSize } from './map/geometry.js';
-import { ROLE_FOR_CATEGORY } from './map/roles.js';
+import { buildLegend } from './map/legend.js';
 import { toggleStop, removeStopAt, serializeRoute, deserializeRoute } from './speedrun-logic.js';
 import { makeChecklist } from './checklist-logic.js';
 import { saveChecklist, renderSavedChecklists } from './checklists.js';
@@ -49,8 +49,8 @@ const clearButton = document.getElementById('speedrun-clear') as HTMLButtonEleme
 const checklistButton = document.getElementById('speedrun-make-checklist') as HTMLButtonElement;
 const layerToggle = document.getElementById('speedrun-layer-toggle') as HTMLButtonElement;
 const checklistsEl = document.getElementById('speedrun-checklists')!;
-const filterLocations = document.getElementById('speedrun-filter-locations') as HTMLInputElement;
-const filterBosses = document.getElementById('speedrun-filter-bosses') as HTMLInputElement;
+const legendEl = document.getElementById('speedrun-legend')!;
+const hiddenCategories = new Set<Category>();
 
 const locationsByName = new Map<string, MapLocation>(MAP_LOCATIONS.map((l) => [l.name, l]));
 
@@ -68,11 +68,11 @@ function absolutePosition(loc: MapLocation): { x: number; y: number } | null {
   return { x: region.x + loc.fx * region.width, y: region.y + loc.fy * region.height };
 }
 
-// Same two-group filter as the Map tab (locations vs. bosses) — a route stop
-// that's currently filtered out stays in the saved route, it just isn't
-// shown as a clickable pin until the filter is switched back on.
+// Same per-category filter as the Map tab — a route stop that's currently
+// filtered out stays in the saved route, it just isn't shown as a clickable
+// pin until its category is switched back on.
 function filterAllows(loc: MapLocation): boolean {
-  return ROLE_FOR_CATEGORY[loc.category] === 'boss' ? filterBosses.checked : filterLocations.checked;
+  return !hiddenCategories.has(loc.category);
 }
 
 function setRoute(next: string[]): void {
@@ -299,8 +299,11 @@ layerToggle.addEventListener('click', () => {
   renderLayer();
 });
 
-filterLocations.addEventListener('change', renderLayer);
-filterBosses.addEventListener('change', renderLayer);
+buildLegend(legendEl, (category, hidden) => {
+  if (hidden) hiddenCategories.add(category);
+  else hiddenCategories.delete(category);
+  renderLayer();
+});
 
 clearButton.addEventListener('click', () => setRoute([]));
 
