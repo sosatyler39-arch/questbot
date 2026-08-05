@@ -1,38 +1,15 @@
 import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './regions.js';
-import { MAP_LOCATIONS, type MapLocation } from './locations.js';
+import { MAP_LOCATIONS, type MapLocation, type Category } from './locations.js';
 import { clamp, seeded, catmullRomPath, polygonCentroid, minZoomScale, clampedLabelFontSize } from './geometry.js';
 import { isLocationFavorite } from './favorites-logic.js';
 import { loadFavorites, toggleFavoriteStored } from './favorites.js';
-import { ROLE_FOR_CATEGORY, type Category } from './roles.js';
+import { CATEGORY_COLOR, buildLegend } from './legend.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const SURFACE_VIEWBOX = { width: 1200, height: 1050 };
 const UNDERGROUND_VIEWBOX = { width: 1200, height: 800 };
 
 type Layer = 'surface' | 'underground';
-
-// One visually distinct hue per category (legend + pins share this map).
-// Exported so the Shape Editor's own pin overlay (see shape-editor.ts) uses
-// identical colors instead of a second hand-kept copy.
-export const CATEGORY_COLOR: Record<Category, string> = {
-  'legacy-dungeon': '#c23b32',
-  'great-enemy': '#e0752f',
-  'minor-dungeon': '#c9a24b',
-  church: '#e8d16b',
-  landmark: '#5b9bd5',
-  'town-or-fort': '#4fae7a',
-  evergaol: '#8f5ee0',
-};
-
-const CATEGORY_LABEL: Record<Category, string> = {
-  'legacy-dungeon': 'Legacy dungeon',
-  'minor-dungeon': 'Minor dungeon',
-  evergaol: 'Evergaol',
-  church: 'Church',
-  landmark: 'Landmark',
-  'town-or-fort': 'Town / fort / ruins',
-  'great-enemy': 'Great Enemy',
-};
 
 // Pin/region label font sizes are computed live from the current zoom
 // `scale`, not fixed — like Google Maps, labels grow as you zoom in and
@@ -74,6 +51,7 @@ let layer: Layer = 'surface';
 let scale = 1;
 let panX = 0;
 let panY = 0;
+let hiddenCategories = new Set<Category>();
 let dragging = false;
 let dragStartX = 0;
 let dragStartY = 0;
@@ -84,8 +62,6 @@ const wrap = document.getElementById('map-canvas-wrap')!;
 const layerToggle = document.getElementById('map-layer-toggle') as HTMLButtonElement;
 const searchInput = document.getElementById('map-search') as HTMLInputElement;
 const searchResults = document.getElementById('map-search-results')!;
-const filterLocations = document.getElementById('filter-locations') as HTMLInputElement;
-const filterBosses = document.getElementById('filter-bosses') as HTMLInputElement;
 const legend = document.getElementById('map-legend')!;
 
 function regionsFor(l: Layer): Region[] {
@@ -234,7 +210,8 @@ function addPin(svg: SVGSVGElement, frontLayer: SVGGElement, loc: MapLocation): 
   if (!pos) return;
 
   const group = document.createElementNS(SVG_NS, 'g');
-  group.setAttribute('class', `pin-group role-${ROLE_FOR_CATEGORY[loc.category]}`);
+  group.setAttribute('class', 'pin-group');
+  group.setAttribute('data-category', loc.category);
   group.classList.toggle('favorited', isLocationFavorite(loadFavorites(), loc.name));
 
   // §B3: click a pin to save/unsave the location.
@@ -372,8 +349,10 @@ function applyTransform(): void {
 }
 
 function applyFilters(): void {
-  wrap.classList.toggle('hide-locations', !filterLocations.checked);
-  wrap.classList.toggle('hide-bosses', !filterBosses.checked);
+  wrap.querySelectorAll<SVGElement>('[data-category]').forEach((el) => {
+    const category = el.getAttribute('data-category') as Category;
+    el.style.display = hiddenCategories.has(category) ? 'none' : '';
+  });
 }
 
 function renderLayer(): void {
@@ -498,19 +477,12 @@ function initLayerToggle(): void {
   });
 }
 
-function initFilters(): void {
-  filterLocations.addEventListener('change', applyFilters);
-  filterBosses.addEventListener('change', applyFilters);
-}
-
 function initLegend(): void {
-  for (const category of Object.keys(CATEGORY_LABEL) as Category[]) {
-    const item = document.createElement('span');
-    const dot = document.createElement('i');
-    dot.style.background = CATEGORY_COLOR[category];
-    item.append(dot, document.createTextNode(CATEGORY_LABEL[category]));
-    legend.appendChild(item);
-  }
+  buildLegend(legend, (category, hidden) => {
+    if (hidden) hiddenCategories.add(category);
+    else hiddenCategories.delete(category);
+    applyFilters();
+  });
 }
 
 export function initMap(): void {
@@ -518,7 +490,6 @@ export function initMap(): void {
   initPanZoom();
   initSearch();
   initLayerToggle();
-  initFilters();
   initLegend();
   // Safety net: if focus leaves the window mid-hover (e.g. alt-tab), any
   // stray hover clones would otherwise linger until the next layer render.
