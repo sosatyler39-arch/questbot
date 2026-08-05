@@ -583,6 +583,21 @@
   outline: none;
 }
 
+.shapes-pin-row-category {
+  background: rgba(0, 0, 0, 0.35);
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font: inherit;
+  font-size: 10px;
+  padding: 1px 2px;
+}
+
+.shapes-pin-row-category:focus {
+  border-color: #c9a24b;
+  outline: none;
+}
+
 .shapes-pin-row-pos {
   flex-shrink: 0;
   color: #7a705c;
