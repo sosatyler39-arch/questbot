@@ -757,7 +757,12 @@ function applyTransform(): void {
   wrap.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
 }
 
-function renderLayer(): void {
+// Rebuilds the SVG (shapes + pins) in place without touching the current
+// pan/zoom — use this whenever a data change (create/rename/delete a pin,
+// toggle mode) just needs the canvas to reflect it. Panning/zooming back
+// to scale 1 on every such edit is what made "adjust a pin" feel like it
+// also zoomed the map out from under you.
+function rebuildSvg(): void {
   const { width, height } = viewboxFor(layer);
   refImg.style.width = `${width}px`;
   refImg.style.height = `${height}px`;
@@ -765,6 +770,13 @@ function renderLayer(): void {
   const oldSvg = wrap.querySelector('svg');
   oldSvg?.remove();
   wrap.appendChild(buildSvg());
+}
+
+// Rebuilds the SVG and resets the view to scale 1 — only appropriate when
+// the viewBox itself just changed size (switching Surface/Underground) or
+// on first load, where there's no "current view" worth preserving yet.
+function renderLayer(): void {
+  rebuildSvg();
   scale = 1;
   panX = 0;
   panY = 0;
@@ -998,7 +1010,7 @@ function deleteCustomPin(id: number): void {
     updatePinCurrentReadout();
   }
   persist();
-  renderLayer();
+  rebuildSvg();
   renderPinList();
   renderExportOutput();
 }
@@ -1045,7 +1057,7 @@ function renderPinList(): void {
         loc.name = trimmed;
         persist();
         renderExportOutput();
-        renderLayer();
+        rebuildSvg();
         renderPinList();
         updatePinCurrentReadout();
       });
@@ -1157,7 +1169,7 @@ function handleCreatePinClick(e: MouseEvent): void {
   };
   customPins.push(pin);
   persist();
-  renderLayer();
+  rebuildSvg();
   renderPinList();
   renderExportOutput();
   selectPinByName(pin.name, false);
@@ -1167,7 +1179,7 @@ function setMode(next: EditorMode): void {
   mode = next;
   modeToggle.textContent = mode === 'shape' ? 'Shape adjustment' : 'Pin adjustment';
   pinSide.hidden = mode === 'shape';
-  renderLayer();
+  rebuildSvg();
   if (mode === 'pin') renderPinList();
 }
 
