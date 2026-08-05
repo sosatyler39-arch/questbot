@@ -1,23 +1,98 @@
 ---
 // The bare /elden-ring URL (what the header's game tab links to) defaults
-// to the Wiki sub-tab — same content as wiki.astro, not a redirect, so it
-// loads directly with no extra hop.
-import Header from '../../components/Header.astro';
-import SubTabs from '../../components/SubTabs.astro';
-import '../../styles/theme.css';
+// to the Wiki sub-tab — same content as wiki/index.astro, not a redirect,
+// so it loads directly with no extra hop. Kept in sync by hand since Astro
+// pages can't easily re-export another page's render output.
+import WikiLayout from '../../components/WikiLayout.astro';
+import { getCollection } from 'astro:content';
+import { humanize } from '../../wiki/format';
+
+const entries = await getCollection('wiki');
+const categories = [...new Set(entries.map((e) => e.data.category))].sort();
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Questbot — Elden Ring</title>
-  </head>
-  <body>
-    <Header />
-    <SubTabs active="wiki" />
-    <main>
-      <p style="padding: 40px; text-align: center; color: var(--text-dim);">
-        Wiki coming soon.
-      </p>
-    </main>
-  </body>
-</html>
+<WikiLayout title="Elden Ring Wiki">
+  <div class="wiki-index">
+    <h1>Wiki</h1>
+    <div id="wiki-search-box">
+      <input id="wiki-search" type="text" placeholder="Search all wiki entries…" autocomplete="off" />
+      <div id="wiki-search-results"></div>
+    </div>
+    <ul class="wiki-list">
+      {categories.map((category) => (
+        <li><a href={`/elden-ring/wiki/${category}`}>{humanize(category)}</a></li>
+      ))}
+    </ul>
+  </div>
+</WikiLayout>
+<script>
+  import { initWikiSearch } from '../../wiki/search.js';
+  initWikiSearch();
+</script>
+<style>
+  .wiki-index {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  #wiki-search-box {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  #wiki-search {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    background: var(--bg-panel);
+    color: inherit;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font: inherit;
+  }
+  #wiki-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+  }
+  .wiki-search-result {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 14px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .wiki-search-result:hover {
+    background: rgba(201, 162, 75, 0.15);
+  }
+  .wiki-search-result-page {
+    color: var(--text-dim);
+    font-size: 0.85em;
+    white-space: nowrap;
+  }
+  .wiki-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .wiki-list a {
+    display: block;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .wiki-list a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>
