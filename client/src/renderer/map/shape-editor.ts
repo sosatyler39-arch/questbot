@@ -1,8 +1,8 @@
 import { SURFACE_REGIONS, UNDERGROUND_REGIONS, type Region } from './regions.js';
 import { MAP_LOCATIONS, type MapLocation } from './locations.js';
 import { seeded, catmullRomPath, polygonCentroid } from './geometry.js';
-import { CATEGORY_COLOR } from './render.js';
-import type { Category } from './roles.js';
+import { CATEGORY_COLOR } from './legend.js';
+import type { Category } from './locations.js';
 
 // A workspace for hand-molding each region's outline (dragging vertices) and
 // now also for repositioning every location pin — moved here from the Map
@@ -1103,12 +1103,34 @@ function renderPinList(): void {
       nameSpan.textContent = loc.name;
       name = nameSpan;
     }
+    let categorySelect: HTMLSelectElement | null = null;
+    if (isCustomPin(loc)) {
+      categorySelect = document.createElement('select');
+      categorySelect.className = 'shapes-pin-row-category';
+      for (const category of Object.keys(CATEGORY_COLOR) as Category[]) {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        option.selected = category === loc.category;
+        categorySelect.appendChild(option);
+      }
+      categorySelect.addEventListener('mousedown', (e) => e.stopPropagation());
+      categorySelect.addEventListener('click', (e) => e.stopPropagation());
+      categorySelect.addEventListener('change', () => {
+        loc.category = categorySelect!.value as Category;
+        persist();
+        renderExportOutput();
+        rebuildSvg();
+        renderPinList();
+      });
+    }
     const pos = document.createElement('span');
     pos.className = 'shapes-pin-row-pos';
     const { fx, fy } = currentFraction(loc);
     pos.textContent = `${fx.toFixed(2)}, ${fy.toFixed(2)}`;
     row.classList.toggle('adjusted', pinOverrides.has(loc.name));
     row.append(dot, name, pos);
+    if (categorySelect) row.appendChild(categorySelect);
     if (isCustomPin(loc)) {
       row.classList.add('custom');
       const del = document.createElement('button');
@@ -1196,7 +1218,7 @@ function handleCreatePinClick(e: MouseEvent): void {
     isCustom: true,
     id,
     name: `New Pin ${id}`,
-    category: 'landmark',
+    category: 'locations',
     regionId: region.id,
     layer,
     fx: (x - region.x) / region.width,
