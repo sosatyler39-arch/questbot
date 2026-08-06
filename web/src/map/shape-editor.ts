@@ -100,6 +100,10 @@ const touchedLabels = new Set<string>();
 // persisted; the pin export panel below turns them into a snippet to
 // hand-paste back into locations.ts.
 const pinOverrides = new Map<string, { fx: number; fy: number }>();
+// Same idea as pinOverrides, but for category — lets any of the 247
+// authored pins be reclassified into the new legend without touching the
+// read-only MAP_LOCATIONS import.
+const categoryOverrides = new Map<string, Category>();
 // The pin list order the Prev/Next buttons and the sidebar both walk —
 // every location in the current layer, in locations.ts's own file order
 // (already grouped region-by-region), so stepping through it visits one
@@ -146,6 +150,7 @@ interface PersistedState {
   touchedRegions: string[];
   touchedLabels: string[];
   pinOverrides: [string, { fx: number; fy: number }][];
+  categoryOverrides: [string, Category][];
   customPins: CustomPin[];
   nextCustomPinId: number;
 }
@@ -158,6 +163,7 @@ function persist(): void {
       touchedRegions: [...touchedRegions],
       touchedLabels: [...touchedLabels],
       pinOverrides: [...pinOverrides.entries()],
+      categoryOverrides: [...categoryOverrides.entries()],
       customPins,
       nextCustomPinId,
     };
@@ -178,6 +184,7 @@ function restore(): void {
     for (const id of state.touchedRegions ?? []) touchedRegions.add(id);
     for (const id of state.touchedLabels ?? []) touchedLabels.add(id);
     for (const [name, pos] of state.pinOverrides ?? []) pinOverrides.set(name, pos);
+    for (const [name, category] of state.categoryOverrides ?? []) categoryOverrides.set(name, category);
     customPins.push(...(state.customPins ?? []));
     nextCustomPinId = state.nextCustomPinId ?? 1;
   } catch {
@@ -604,6 +611,13 @@ function currentFraction(loc: PinLike): { fx: number; fy: number } {
   return pinOverrides.get(loc.name) ?? { fx: loc.fx, fy: loc.fy };
 }
 
+// Same idea, for category: a custom pin's own field, or for an authored
+// location, the session-local override if it's been reclassified.
+function currentCategory(loc: PinLike): Category {
+  if (isCustomPin(loc)) return loc.category;
+  return categoryOverrides.get(loc.name) ?? loc.category;
+}
+
 function pinAbsolutePosition(loc: PinLike): [number, number] | null {
   const region = regionsFor(loc.layer).find((r) => r.id === loc.regionId);
   if (!region) return null;
@@ -619,7 +633,13 @@ function pinAbsolutePosition(loc: PinLike): [number, number] | null {
 function addPin(svg: SVGSVGElement, loc: PinLike): void {
   const pos = pinAbsolutePosition(loc);
   if (!pos) return;
-  const [x, y] = pos;
+  // Mutable, tracks the pin's live position across repeated drags on the
+  // same rendered pin — a previous version rebased every drag off the
+  // original render-time position instead of where the last drag left it,
+  // so re-grabbing an already-moved pin snapped it back toward its
+  // original spot as soon as you moved the mouse at all.
+  let [x, y] = pos;
+  const category = currentCategory(loc);
 
   // A larger invisible hit target sits under the small visible dot, so a
   // pin stays easy to grab/re-grab without needing pixel-perfect aim — the
@@ -630,8 +650,8 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
   hitTarget.setAttribute('cy', String(y));
   hitTarget.setAttribute('r', '9');
   hitTarget.setAttribute('class', 'shape-editor-pin-hit');
-  hitTarget.setAttribute('fill', CATEGORY_COLOR[loc.category]);
-  hitTarget.setAttribute('data-category', loc.category);
+  hitTarget.setAttribute('fill', CATEGORY_COLOR[category]);
+  hitTarget.setAttribute('data-category', category);
   svg.appendChild(hitTarget);
 
   const dot = document.createElementNS(SVG_NS, 'circle');
@@ -639,8 +659,8 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
   dot.setAttribute('cy', String(y));
   dot.setAttribute('r', '4');
   dot.setAttribute('class', isCustomPin(loc) ? 'shape-editor-pin custom' : 'shape-editor-pin');
-  dot.setAttribute('fill', CATEGORY_COLOR[loc.category]);
-  dot.setAttribute('data-category', loc.category);
+  dot.setAttribute('fill', CATEGORY_COLOR[category]);
+  dot.setAttribute('data-category', category);
   dot.style.pointerEvents = 'none';
   svg.appendChild(dot);
   pinDotByName.set(loc.name, dot);
@@ -663,9 +683,9 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
 
     const startClientX = e.clientX;
     const startClientY = e.clientY;
+    const startX = x; // this drag's base point is wherever the pin currently is
+    const startY = y;
     const region = regionsFor(loc.layer).find((r) => r.id === loc.regionId)!;
-    let curX = x;
-    let curY = y;
     let pendingMove: MouseEvent | null = null;
     let frame = 0;
 
@@ -676,13 +696,13 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
     const applyMove = () => {
       frame = 0;
       if (!pendingMove) return;
-      curX = x + (pendingMove.clientX - startClientX) / scale;
-      curY = y + (pendingMove.clientY - startClientY) / scale;
+      x = startX + (pendingMove.clientX - startClientX) / scale;
+      y = startY + (pendingMove.clientY - startClientY) / scale;
       pendingMove = null;
-      hitTarget.setAttribute('cx', String(curX));
-      hitTarget.setAttribute('cy', String(curY));
-      dot.setAttribute('cx', String(curX));
-      dot.setAttribute('cy', String(curY));
+      hitTarget.setAttribute('cx', String(x));
+      hitTarget.setAttribute('cy', String(y));
+      dot.setAttribute('cx', String(x));
+      dot.setAttribute('cy', String(y));
       updateSelectedPinLabelPosition();
     };
     const onMove = (me: MouseEvent) => {
@@ -699,8 +719,8 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
       // No 0-1 clamp: several regions' real shapePoints deliberately extend
       // outside their own nominal box (see regions.ts) to close gaps
       // between neighbors, and pins need that same freedom.
-      const fx = (curX - region.x) / region.width;
-      const fy = (curY - region.y) / region.height;
+      const fx = (x - region.x) / region.width;
+      const fy = (y - region.y) / region.height;
       if (isCustomPin(loc)) {
         loc.fx = fx;
         loc.fy = fy;
@@ -941,6 +961,13 @@ function renderExportOutput(): void {
       lines.push(`  // '${name}': fx: ${pos.fx.toFixed(3)}, fy: ${pos.fy.toFixed(3)}`);
     }
   }
+  if (categoryOverrides.size > 0) {
+    if (lines.length > 0) lines.push('');
+    lines.push('// --- Pin category adjustments (locations.ts) ---');
+    for (const [name, category] of categoryOverrides.entries()) {
+      lines.push(`  // '${name}': category: '${category}'`);
+    }
+  }
   if (customPins.length > 0) {
     if (lines.length > 0) lines.push('');
     lines.push('// --- New pins (locations.ts) ---');
@@ -963,6 +990,7 @@ function initExport(): void {
     touchedRegions.clear();
     touchedLabels.clear();
     pinOverrides.clear();
+    categoryOverrides.clear();
     customPins.length = 0;
     try {
       localStorage.removeItem(STORAGE_KEY);
@@ -1074,7 +1102,7 @@ function refreshPinListRow(name: string): void {
   const { fx, fy } = currentFraction(loc);
   const posEl = row.querySelector('.shapes-pin-row-pos');
   if (posEl) posEl.textContent = `${fx.toFixed(2)}, ${fy.toFixed(2)}`;
-  row.classList.toggle('adjusted', pinOverrides.has(name));
+  row.classList.toggle('adjusted', pinOverrides.has(name) || categoryOverrides.has(name));
 }
 
 function deleteCustomPin(id: number): void {
@@ -1113,7 +1141,7 @@ function renderPinList(): void {
     row.className = 'shapes-pin-row';
     const dot = document.createElement('span');
     dot.className = 'shapes-pin-row-dot';
-    dot.style.background = CATEGORY_COLOR[loc.category];
+    dot.style.background = CATEGORY_COLOR[currentCategory(loc)];
     let name: HTMLElement;
     if (isCustomPin(loc)) {
       const nameInput = document.createElement('input');
@@ -1146,20 +1174,26 @@ function renderPinList(): void {
       name = nameSpan;
     }
     let categorySelect: HTMLSelectElement | null = null;
-    if (isCustomPin(loc)) {
+    {
       categorySelect = document.createElement('select');
       categorySelect.className = 'shapes-pin-row-category';
+      const selected = currentCategory(loc);
       for (const category of Object.keys(CATEGORY_COLOR) as Category[]) {
         const option = document.createElement('option');
         option.value = category;
         option.textContent = category;
-        option.selected = category === loc.category;
+        option.selected = category === selected;
         categorySelect.appendChild(option);
       }
       categorySelect.addEventListener('mousedown', (e) => e.stopPropagation());
       categorySelect.addEventListener('click', (e) => e.stopPropagation());
       categorySelect.addEventListener('change', () => {
-        loc.category = categorySelect!.value as Category;
+        const newCategory = categorySelect!.value as Category;
+        if (isCustomPin(loc)) {
+          loc.category = newCategory;
+        } else {
+          categoryOverrides.set(loc.name, newCategory);
+        }
         persist();
         renderExportOutput();
         rebuildSvg();
@@ -1170,7 +1204,7 @@ function renderPinList(): void {
     pos.className = 'shapes-pin-row-pos';
     const { fx, fy } = currentFraction(loc);
     pos.textContent = `${fx.toFixed(2)}, ${fy.toFixed(2)}`;
-    row.classList.toggle('adjusted', pinOverrides.has(loc.name));
+    row.classList.toggle('adjusted', pinOverrides.has(loc.name) || categoryOverrides.has(loc.name));
     row.append(dot, name, pos);
     if (categorySelect) row.appendChild(categorySelect);
     if (isCustomPin(loc)) {
