@@ -473,7 +473,7 @@ body:has(main) main {
 }
 
 #shapes-pin-side {
-  width: 280px;
+  width: 460px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -591,8 +591,8 @@ body:has(main) main {
 }
 
 .shapes-pin-row-name {
-  flex: 1;
-  min-width: 0;
+  flex: 1 1 150px;
+  min-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -620,6 +620,8 @@ body:has(main) main {
   font: inherit;
   font-size: 10px;
   padding: 1px 2px;
+  width: 82px;
+  flex-shrink: 0;
 }
 
 .shapes-pin-row-category:focus {
@@ -635,7 +637,8 @@ body:has(main) main {
   font: inherit;
   font-size: 10px;
   padding: 1px 2px;
-  max-width: 100px;
+  width: 96px;
+  flex-shrink: 0;
 }
 
 .shapes-pin-row-region:focus {

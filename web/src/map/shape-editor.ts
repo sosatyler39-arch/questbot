@@ -1224,6 +1224,7 @@ function renderPinList(): void {
       const nameSpan = document.createElement('span');
       nameSpan.className = 'shapes-pin-row-name';
       nameSpan.textContent = loc.name;
+      nameSpan.title = loc.name;
       name = nameSpan;
     }
     let categorySelect: HTMLSelectElement | null = null;
