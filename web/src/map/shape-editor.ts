@@ -651,24 +651,51 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
     // snapping to scale 3 the instant you grab a pin is what made "moving
     // a pin" feel like it also moved the map out from under the cursor.
     selectPinByName(loc.name, false);
+
+    // Bring the grabbed pin to the front and mark it visually — in a dense
+    // cluster a neighboring pin can otherwise sit on top and quietly eat
+    // the drag, which reads as "I moved it but it snapped back" (the pin
+    // you meant to grab never moved; a different one did, out of sight).
+    svg.appendChild(hitTarget);
+    svg.appendChild(dot);
+    hitTarget.classList.add('dragging');
+    dot.classList.add('dragging');
+
     const startClientX = e.clientX;
     const startClientY = e.clientY;
     const region = regionsFor(loc.layer).find((r) => r.id === loc.regionId)!;
     let curX = x;
     let curY = y;
+    let pendingMove: MouseEvent | null = null;
+    let frame = 0;
 
-    const onMove = (me: MouseEvent) => {
-      curX = x + (me.clientX - startClientX) / scale;
-      curY = y + (me.clientY - startClientY) / scale;
+    // Coalesce mousemove into one DOM update per animation frame — a mouse
+    // can fire far more move events than the screen repaints, and writing
+    // 5 attributes on every single one of them is what made dragging feel
+    // stuttery rather than smooth.
+    const applyMove = () => {
+      frame = 0;
+      if (!pendingMove) return;
+      curX = x + (pendingMove.clientX - startClientX) / scale;
+      curY = y + (pendingMove.clientY - startClientY) / scale;
+      pendingMove = null;
       hitTarget.setAttribute('cx', String(curX));
       hitTarget.setAttribute('cy', String(curY));
       dot.setAttribute('cx', String(curX));
       dot.setAttribute('cy', String(curY));
       updateSelectedPinLabelPosition();
     };
+    const onMove = (me: MouseEvent) => {
+      pendingMove = me;
+      if (!frame) frame = requestAnimationFrame(applyMove);
+    };
     const onUp = () => {
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseup', onUp);
+      if (frame) cancelAnimationFrame(frame);
+      applyMove(); // flush any move coalesced into the frame that just got cancelled
+      hitTarget.classList.remove('dragging');
+      dot.classList.remove('dragging');
       // No 0-1 clamp: several regions' real shapePoints deliberately extend
       // outside their own nominal box (see regions.ts) to close gaps
       // between neighbors, and pins need that same freedom.

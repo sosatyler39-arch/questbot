@@ -652,6 +652,15 @@ body:has(main) main {
   cursor: grabbing;
 }
 
+.shape-editor-pin-hit.dragging {
+  fill-opacity: 0.35;
+}
+
+.shape-editor-pin.dragging {
+  r: 6;
+  stroke-width: 2;
+}
+
 .shape-editor-pin.custom {
   stroke: #fff6df;
   stroke-width: 2;
