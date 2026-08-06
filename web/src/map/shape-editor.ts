@@ -104,6 +104,17 @@ const pinOverrides = new Map<string, { fx: number; fy: number }>();
 // authored pins be reclassified into the new legend without touching the
 // read-only MAP_LOCATIONS import.
 const categoryOverrides = new Map<string, Category>();
+// Same idea, for region — moving an authored pin to a different region.
+// fx/fy are left as-is when this changes (they'll land somewhere in the new
+// region's box, not necessarily the right spot) — the point is to get the
+// pin visible and grabbable in the correct region so it can be dragged into
+// place with the normal drag, not to guess a position for it.
+const regionOverrides = new Map<string, string>();
+// Authored pins deleted this session. Can't actually remove an entry from
+// the read-only MAP_LOCATIONS import, so instead this hides it everywhere
+// (list, map, search) exactly like a real delete would — the export panel
+// turns it into a "remove this line" instruction for locations.ts.
+const deletedPinNames = new Set<string>();
 // The pin list order the Prev/Next buttons and the sidebar both walk —
 // every location in the current layer, in locations.ts's own file order
 // (already grouped region-by-region), so stepping through it visits one
@@ -135,7 +146,10 @@ const customPins: CustomPin[] = [];
 let nextCustomPinId = 1;
 
 function allPinsForLayer(l: Layer): PinLike[] {
-  return [...MAP_LOCATIONS.filter((loc) => loc.layer === l), ...customPins.filter((p) => p.layer === l)];
+  return [
+    ...MAP_LOCATIONS.filter((loc) => loc.layer === l && !deletedPinNames.has(loc.name)),
+    ...customPins.filter((p) => p.layer === l),
+  ];
 }
 
 function findPinByName(name: string): PinLike | undefined {
@@ -151,6 +165,8 @@ interface PersistedState {
   touchedLabels: string[];
   pinOverrides: [string, { fx: number; fy: number }][];
   categoryOverrides: [string, Category][];
+  regionOverrides: [string, string][];
+  deletedPinNames: string[];
   customPins: CustomPin[];
   nextCustomPinId: number;
 }
@@ -164,6 +180,8 @@ function persist(): void {
       touchedLabels: [...touchedLabels],
       pinOverrides: [...pinOverrides.entries()],
       categoryOverrides: [...categoryOverrides.entries()],
+      regionOverrides: [...regionOverrides.entries()],
+      deletedPinNames: [...deletedPinNames],
       customPins,
       nextCustomPinId,
     };
@@ -185,6 +203,8 @@ function restore(): void {
     for (const id of state.touchedLabels ?? []) touchedLabels.add(id);
     for (const [name, pos] of state.pinOverrides ?? []) pinOverrides.set(name, pos);
     for (const [name, category] of state.categoryOverrides ?? []) categoryOverrides.set(name, category);
+    for (const [name, regionId] of state.regionOverrides ?? []) regionOverrides.set(name, regionId);
+    for (const name of state.deletedPinNames ?? []) deletedPinNames.add(name);
     customPins.push(...(state.customPins ?? []));
     nextCustomPinId = state.nextCustomPinId ?? 1;
   } catch {
@@ -618,8 +638,15 @@ function currentCategory(loc: PinLike): Category {
   return categoryOverrides.get(loc.name) ?? loc.category;
 }
 
+// Same idea, for region: a custom pin's own field, or for an authored
+// location, the session-local override if it's been moved to a new region.
+function currentRegionId(loc: PinLike): string {
+  if (isCustomPin(loc)) return loc.regionId;
+  return regionOverrides.get(loc.name) ?? loc.regionId;
+}
+
 function pinAbsolutePosition(loc: PinLike): [number, number] | null {
-  const region = regionsFor(loc.layer).find((r) => r.id === loc.regionId);
+  const region = regionsFor(loc.layer).find((r) => r.id === currentRegionId(loc));
   if (!region) return null;
   const { fx, fy } = currentFraction(loc);
   return [region.x + fx * region.width, region.y + fy * region.height];
@@ -685,7 +712,7 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
     const startClientY = e.clientY;
     const startX = x; // this drag's base point is wherever the pin currently is
     const startY = y;
-    const region = regionsFor(loc.layer).find((r) => r.id === loc.regionId)!;
+    const region = regionsFor(loc.layer).find((r) => r.id === currentRegionId(loc))!;
     let pendingMove: MouseEvent | null = null;
     let frame = 0;
 
@@ -735,12 +762,10 @@ function addPin(svg: SVGSVGElement, loc: PinLike): void {
     window.addEventListener('mouseup', onUp);
   });
 
-  if (isCustomPin(loc)) {
-    hitTarget.addEventListener('dblclick', (e) => {
-      e.stopPropagation();
-      deleteCustomPin(loc.id);
-    });
-  }
+  hitTarget.addEventListener('dblclick', (e) => {
+    e.stopPropagation();
+    deletePin(loc);
+  });
 }
 
 let selectedPinLabel: SVGTextElement | null = null;
@@ -968,6 +993,20 @@ function renderExportOutput(): void {
       lines.push(`  // '${name}': category: '${category}'`);
     }
   }
+  if (regionOverrides.size > 0) {
+    if (lines.length > 0) lines.push('');
+    lines.push('// --- Pin region adjustments (locations.ts) ---');
+    for (const [name, regionId] of regionOverrides.entries()) {
+      lines.push(`  // '${name}': regionId: '${regionId}'`);
+    }
+  }
+  if (deletedPinNames.size > 0) {
+    if (lines.length > 0) lines.push('');
+    lines.push('// --- Deleted pins: remove these entries from locations.ts ---');
+    for (const name of deletedPinNames) {
+      lines.push(`  // '${name}'`);
+    }
+  }
   if (customPins.length > 0) {
     if (lines.length > 0) lines.push('');
     lines.push('// --- New pins (locations.ts) ---');
@@ -991,6 +1030,8 @@ function initExport(): void {
     touchedLabels.clear();
     pinOverrides.clear();
     categoryOverrides.clear();
+    regionOverrides.clear();
+    deletedPinNames.clear();
     customPins.length = 0;
     try {
       localStorage.removeItem(STORAGE_KEY);
@@ -1102,14 +1143,25 @@ function refreshPinListRow(name: string): void {
   const { fx, fy } = currentFraction(loc);
   const posEl = row.querySelector('.shapes-pin-row-pos');
   if (posEl) posEl.textContent = `${fx.toFixed(2)}, ${fy.toFixed(2)}`;
-  row.classList.toggle('adjusted', pinOverrides.has(name) || categoryOverrides.has(name));
+  row.classList.toggle('adjusted', pinOverrides.has(name) || categoryOverrides.has(name) || regionOverrides.has(name));
 }
 
-function deleteCustomPin(id: number): void {
-  const idx = customPins.findIndex((p) => p.id === id);
-  if (idx === -1) return;
-  const wasSelected = selectedPinIndex >= 0 && pinOrder[selectedPinIndex]?.name === customPins[idx].name;
-  customPins.splice(idx, 1);
+// Deletes any pin — custom pins are spliced out entirely (they never had
+// authored data to protect), authored pins are hidden via deletedPinNames
+// (can't remove a line from the read-only MAP_LOCATIONS import; the export
+// panel turns this into a "remove this line" instruction instead).
+function deletePin(loc: PinLike): void {
+  const wasSelected = selectedPinIndex >= 0 && pinOrder[selectedPinIndex]?.name === loc.name;
+  if (isCustomPin(loc)) {
+    const idx = customPins.findIndex((p) => p.id === loc.id);
+    if (idx === -1) return;
+    customPins.splice(idx, 1);
+  } else {
+    deletedPinNames.add(loc.name);
+    pinOverrides.delete(loc.name);
+    categoryOverrides.delete(loc.name);
+    regionOverrides.delete(loc.name);
+  }
   if (wasSelected) {
     selectedPinIndex = -1;
     updatePinCurrentReadout();
@@ -1128,11 +1180,12 @@ function renderPinList(): void {
 
   let lastRegionId: string | null = null;
   for (const loc of pinOrder) {
-    if (loc.regionId !== lastRegionId) {
-      lastRegionId = loc.regionId;
+    const regionId = currentRegionId(loc);
+    if (regionId !== lastRegionId) {
+      lastRegionId = regionId;
       const header = document.createElement('div');
       header.className = 'shapes-pin-region-header';
-      header.textContent = loc.regionId;
+      header.textContent = regionId;
       pinList.appendChild(header);
     }
 
@@ -1200,26 +1253,56 @@ function renderPinList(): void {
         renderPinList();
       });
     }
+    let regionSelect: HTMLSelectElement | null = null;
+    {
+      regionSelect = document.createElement('select');
+      regionSelect.className = 'shapes-pin-row-region';
+      const selectedRegion = currentRegionId(loc);
+      for (const region of regionsFor(loc.layer)) {
+        const option = document.createElement('option');
+        option.value = region.id;
+        option.textContent = region.name;
+        option.selected = region.id === selectedRegion;
+        regionSelect.appendChild(option);
+      }
+      regionSelect.addEventListener('mousedown', (e) => e.stopPropagation());
+      regionSelect.addEventListener('click', (e) => e.stopPropagation());
+      regionSelect.addEventListener('change', () => {
+        const newRegionId = regionSelect!.value;
+        if (isCustomPin(loc)) {
+          loc.regionId = newRegionId;
+        } else {
+          regionOverrides.set(loc.name, newRegionId);
+        }
+        persist();
+        renderExportOutput();
+        rebuildSvg();
+        renderPinList();
+      });
+    }
     const pos = document.createElement('span');
     pos.className = 'shapes-pin-row-pos';
     const { fx, fy } = currentFraction(loc);
     pos.textContent = `${fx.toFixed(2)}, ${fy.toFixed(2)}`;
-    row.classList.toggle('adjusted', pinOverrides.has(loc.name) || categoryOverrides.has(loc.name));
+    row.classList.toggle(
+      'adjusted',
+      pinOverrides.has(loc.name) || categoryOverrides.has(loc.name) || regionOverrides.has(loc.name),
+    );
     row.append(dot, name, pos);
     if (categorySelect) row.appendChild(categorySelect);
-    if (isCustomPin(loc)) {
-      row.classList.add('custom');
-      const del = document.createElement('button');
-      del.type = 'button';
-      del.className = 'shapes-pin-row-delete';
-      del.textContent = '×';
-      del.title = 'Delete this pin';
-      del.addEventListener('click', (e) => {
-        e.stopPropagation();
-        deleteCustomPin(loc.id);
-      });
-      row.appendChild(del);
-    }
+    if (regionSelect) row.appendChild(regionSelect);
+    if (isCustomPin(loc)) row.classList.add('custom');
+    const del = document.createElement('button');
+    del.type = 'button';
+    del.className = 'shapes-pin-row-delete';
+    del.textContent = '×';
+    del.title = 'Delete this pin';
+    del.addEventListener('mousedown', (e) => e.stopPropagation());
+    del.addEventListener('click', (e) => {
+      e.stopPropagation();
+      deletePin(loc);
+    });
+    row.appendChild(del);
     row.addEventListener('click', () => selectPinByName(loc.name));
     pinList.appendChild(row);
     pinListRows.set(loc.name, row);
