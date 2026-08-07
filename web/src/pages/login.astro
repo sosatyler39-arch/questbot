@@ -10,7 +10,7 @@ if (Astro.request.method === 'POST') {
   const sitePassword = process.env.SITE_PASSWORD ?? '';
 
   if (typeof password === 'string' && password === sitePassword) {
-    const token = signSiteSessionToken(process.env.SESSION_SECRET ?? '');
+    const token = await signSiteSessionToken(process.env.SESSION_SECRET ?? '');
     Astro.cookies.set(COOKIE_NAME, token, {
       path: '/',
       maxAge: 30 * 24 * 60 * 60,
