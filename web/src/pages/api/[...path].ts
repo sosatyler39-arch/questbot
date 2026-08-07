@@ -26,6 +26,8 @@ async function getApp(): Promise<FastifyInstance> {
 // `/auth/discord/start`, etc, with no /api prefix at all. Strip it before
 // forwarding, or every request 404s inside Fastify despite matching here.
 export const ALL: APIRoute = async ({ request }) => {
+  const dbUrl = process.env.DATABASE_URL ?? '(unset)';
+  console.error('[DEBUG env v2]', JSON.stringify(dbUrl));
   const app = await getApp();
   const url = new URL(request.url);
   const forwardedPath = url.pathname.replace(/^\/api/, '') || '/';
