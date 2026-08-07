@@ -1,18 +1,16 @@
 ---
 import WikiLayout from '../../../components/WikiLayout.astro';
 import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 
-export async function getStaticPaths() {
-  const entries = await getCollection('enemies');
-  return entries.map((entry) => ({ params: { npcId: entry.data.npcId }, props: { entry } }));
-}
+// Looked up at request time via Astro.params rather than getStaticPaths'
+// props — this page is on-demand rendered (see astro.config.mjs's
+// output: 'server', needed so the site-lockdown middleware sees every
+// request), and getStaticPaths is ignored for non-prerendered pages.
+const { npcId } = Astro.params as { npcId: string };
+const entries = await getCollection('enemies', (e) => e.data.npcId === npcId);
+const entry = entries[0];
+if (!entry) return new Response('Not found', { status: 404 });
 
-interface Props {
-  entry: CollectionEntry<'enemies'>;
-}
-
-const { entry } = Astro.props;
 const { name, location, cycles, drops } = entry.data;
 const allKeys = [...new Set(cycles.flatMap((c) => Object.keys(c.row)))];
 ---

@@ -1,26 +1,18 @@
 ---
 import WikiLayout from '../../../../../components/WikiLayout.astro';
 import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 
-export async function getStaticPaths() {
-  const entries = await getCollection('wiki');
-  return entries.map((entry) => ({
-    params: {
-      category: entry.data.category,
-      page: entry.data.pageSlug,
-      item: entry.data.itemSlug,
-    },
-    props: { entry },
-  }));
-}
-
-interface Props {
-  entry: CollectionEntry<'wiki'>;
-}
-
-const { entry } = Astro.props;
-const { category, page } = Astro.params as { category: string; page: string };
+// Looked up at request time via Astro.params rather than getStaticPaths'
+// props — this page is on-demand rendered (see astro.config.mjs's
+// output: 'server', needed so the site-lockdown middleware sees every
+// request), and getStaticPaths is ignored for non-prerendered pages.
+const { category, page, item } = Astro.params as { category: string; page: string; item: string };
+const entries = await getCollection(
+  'wiki',
+  (e) => e.data.category === category && e.data.pageSlug === page && e.data.itemSlug === item,
+);
+const entry = entries[0];
+if (!entry) return new Response('Not found', { status: 404 });
 ---
 <WikiLayout title={entry.data.name}>
   <div class="wiki-item">

@@ -3,16 +3,8 @@ import WikiLayout from '../../../../../components/WikiLayout.astro';
 import { getCollection } from 'astro:content';
 import { humanize } from '../../../../../wiki/format';
 
-export async function getStaticPaths() {
-  const entries = await getCollection('wiki');
-  const seen = new Map<string, { category: string; page: string }>();
-  for (const entry of entries) {
-    const key = `${entry.data.category}/${entry.data.pageSlug}`;
-    seen.set(key, { category: entry.data.category, page: entry.data.pageSlug });
-  }
-  return [...seen.values()].map(({ category, page }) => ({ params: { category, page } }));
-}
-
+// On-demand rendered (astro.config.mjs's output: 'server') — Astro.params
+// comes straight from the URL either way, so no getStaticPaths needed here.
 const { category, page } = Astro.params as { category: string; page: string };
 const entries = await getCollection(
   'wiki',
