@@ -1,0 +1,79 @@
+---
+export const prerender = false;
+import { signSiteSessionToken, COOKIE_NAME } from '../lib/site-lock.js';
+
+let error = false;
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  const password = form.get('password');
+  const sitePassword = process.env.SITE_PASSWORD ?? '';
+
+  if (typeof password === 'string' && password === sitePassword) {
+    const token = signSiteSessionToken(process.env.SESSION_SECRET ?? '');
+    Astro.cookies.set(COOKIE_NAME, token, {
+      path: '/',
+      maxAge: 30 * 24 * 60 * 60,
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+    });
+    const next = new URL(Astro.request.url).searchParams.get('next') || '/';
+    return Astro.redirect(next, 302);
+  }
+  error = true;
+}
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Questbot — Sign in</title>
+  </head>
+  <body class="login-body">
+    <form method="POST" class="login-form">
+      <h1>Questbot</h1>
+      <input type="password" name="password" placeholder="Password" autofocus required />
+      {error && <p class="login-error">Wrong password.</p>}
+      <button type="submit">Enter</button>
+    </form>
+    <style>
+      .login-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        background: var(--bg, #0c0f14);
+        color: var(--text, #e8e2d4);
+        font-family: system-ui, sans-serif;
+      }
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 260px;
+      }
+      .login-form input {
+        padding: 10px 12px;
+        font: inherit;
+        border-radius: 4px;
+        border: 1px solid #4a4234;
+        background: rgba(0, 0, 0, 0.3);
+        color: inherit;
+      }
+      .login-form button {
+        padding: 10px 12px;
+        font: inherit;
+        border-radius: 4px;
+        border: 1px solid #c9a24b;
+        background: transparent;
+        color: #c9a24b;
+        cursor: pointer;
+      }
+      .login-error {
+        color: #e85c5c;
+        margin: 0;
+      }
+    </style>
+  </body>
+</html>
